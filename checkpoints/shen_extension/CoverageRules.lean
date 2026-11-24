@@ -12,6 +12,7 @@ import checkpoints.shen_extension.ShapeClimb
 import checkpoints.shen_extension.ShapeClimbAt
 import checkpoints.shen_extension.ShapeClimbAt3
 import checkpoints.shen_extension.FourthStripTopAll
+import checkpoints.shen_extension.FifthStripAll
 
 /-!
 # Generic exclusion rules behind the coverage map
@@ -37,6 +38,7 @@ def ruleWith (b3 b : ℕ) (n r q : ℕ) : Nat :=
   else if 2*r-6 < q ∨ (q = 2*r-6 ∧ (11 < r ∨ n < q*r)) then 4
   else if 7 ≤ r ∧ q = 2*r-7 ∧ n+4 ≤ q*r then 5
   else if 9 ≤ r ∧ q = 2*r-6 ∧ 0 < n ∧ n ≤ q*r then 30
+  else if 11 ≤ r ∧ q = 2*r-7 ∧ 0 < n ∧ n+1 ≤ q*r then 31
   else if n < ShellBankFrontier.orderFloor q r then 6
   else if SinkDepthCover.Fits n r q then 7
   else if LowShellCycleSelection.searchedWindow n r q then 8
@@ -87,7 +89,10 @@ theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := b
   have fourth : ¬(9 ≤ p.s ∧ cutoff p = 2*p.s-6 ∧ 0 < p.n ∧ p.n ≤ cutoff p*p.s) :=
     fun ⟨hs, hq, hn, hnq⟩ => bad.missing
       (FourthStripTopAll.cycle_fourth_strip_closed_all hs hq hn hnq bad.loopless bad.degree)
-  simp [rule, ruleWith, reach, climb, fourth, show ¬p.s ≤ 8 by omega, show ¬(cutoff p = 3 ∧ p.s ≤ 9) by
+  have fifthTop : ¬(11 ≤ p.s ∧ cutoff p = 2*p.s-7 ∧ 0 < p.n ∧ p.n < cutoff p*p.s) :=
+    fun ⟨hs, hq, hn, hnq⟩ => bad.missing
+      (FifthStripAll.cycle_fifth_strip_below_top_all hs hq hn hnq bad.loopless bad.degree)
+  simp [rule, ruleWith, reach, climb, fourth, fifthTop, show ¬p.s ≤ 8 by omega, show ¬(cutoff p = 3 ∧ p.s ≤ 9) by
     rintro ⟨h,le⟩; exact (triangle h).not_gt (by omega), quota, strip, fifth,
     Nat.not_lt_of_ge (ShellBankFrontier.native_order p bad),
     SinkDepthCover.exclude bad, LowShellCycleSelection.outside_search bad,

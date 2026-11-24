@@ -59,11 +59,12 @@ private theorem le_cut {n r : ℕ} (hr : 0 < r) : n ≤ CH.ceilDiv n r * r := by
 
 /-- **Beyond Shen's range at every degree.** Shen proved the bound for
 `n ≥ 2r² - 3r + 1`. Here it holds for `n ≥ 2r² - G·r + 1` with `G = 7` at every
-degree, `G = 8` from degree 59, `G = 9` from degree 6276, and every `G` with
-`424·G² ≤ r`. The range is written without subtraction. -/
+degree, `G = 8` at every odd degree from 13 and every degree from 43, `G = 9` from
+degree 6276, and every `G` with `424·G² ≤ r`. The range is written without subtraction. -/
 theorem beyond_shen {n r G : ℕ} (D : CH.Digraph) (order : 0 < n) (positive : 0 < r)
     (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n r)
-    (wide : G ≤ 7 ∨ (G = 8 ∧ 59 ≤ r) ∨ (G = 9 ∧ 6276 ≤ r) ∨ 424*(G*G) ≤ r)
+    (wide : G ≤ 7 ∨ (G = 8 ∧ (43 ≤ r ∨ (13 ≤ r ∧ r % 2 = 1))) ∨ (G = 9 ∧ 6276 ≤ r) ∨
+      424*(G*G) ≤ r)
     (range : 2*(r*r)+1 ≤ n+G*r) :
     CH.HasDirectedCycleAtMost D n (CH.ceilDiv n r) := by
   by_contra missing
@@ -84,8 +85,10 @@ theorem beyond_shen {n r G : ℕ} (D : CH.Digraph) (order : 0 < n) (positive : 0
       (replay_completed_floor bad : 9 ≤ r) top order cover loopless degree)
   · rcases wide with w | ⟨w,d⟩ | ⟨w,d⟩ | w
     · omega
-    · have := sixth d
-      omega
+    · have hs : 13 ≤ r := by omega
+      have hpar : r % 2 = 1 ∨ 43 ≤ r := by omega
+      exact missing (FifthStripAll.cycle_fifth_strip_closed_all hs hpar
+        (by omega : cutoff ⟨n, r, D⟩ = 2*r-7) order cover loopless degree)
     · have := sixth (by omega : 59 ≤ r)
       exact missing (SixthStripSharp.cycle_sixth_strip_closed d
         (by omega : cutoff ⟨n, r, D⟩ = 2*r-8) order cover loopless degree)
