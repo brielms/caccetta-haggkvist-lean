@@ -4,7 +4,7 @@ set -euo pipefail
 export PATH="$HOME/.elan/bin:$PATH"
 src=checkpoints/shen_extension
 for module in PackingForwardReplay FamilyWorklistReplay HeadSlotReplay MarkedRepairReplayTest \
-  RankedContractionReplayTest WakeAfterPremiseTest RootLowerQuotasTest ReceiverMarkedRootTest; do
+  RankedContractionReplayTest WakeAfterPremiseTest RootLowerQuotasTest ReceiverMarkedRootTest DistinctReceiverReplayTest RecursivePrefixReplayTest; do
   printf '\nChecking %s\n' "$module"
   lake env lean "$src/$module.lean"
 done

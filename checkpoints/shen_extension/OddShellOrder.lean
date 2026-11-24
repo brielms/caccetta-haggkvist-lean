@@ -14,8 +14,9 @@ instance (q r i j) : Decidable (Capacity q r i j) := by unfold Capacity; infer_i
 /-- An odd cutoff spends different radii on the forward and reverse
 balls. At equality the third layer of a physical root transfers into the
 second layer of its own sink, exceeding that sink's derived capacity. -/
-theorem order {D V q r i j} (free : QFree D V q) (live : V.Nonempty)
-    (degree : ∀v∈V,r≤(outN D V v).card) (room : Capacity q r i j) : 9*r+1≤V.card := by
+theorem order_and_balls {D V q r i j} (free : QFree D V q) (live : V.Nonempty)
+    (degree : ∀v∈V,r≤(outN D V v).card) (room : Capacity q r i j) :
+    (∀u∈V,4*r+1≤(ball D V u 4).card ∧ 5*r≤(ball D V u 5).card) ∧ 9*r+1≤V.card := by
   obtain ⟨hr,time,nine,si,sj,ir,jr,radii,ri,rj,guard4,guard5,guard3⟩ := room
   obtain ⟨F,sub,reg⟩ := exists_outEq degree
   have ff := qfree_sub sub free
@@ -56,12 +57,18 @@ theorem order {D V q r i j} (free : QFree D V q) (live : V.Nonempty)
     have := fourth u um
     change (ball F V u 4).card≤4*r at cap
     omega
+  refine ⟨fun u hu => ⟨(fourth u hu).trans (card_le_card (ball_sub sub)),
+    (fifth u hu).trans (card_le_card (ball_sub sub))⟩,?_⟩
   have orderSize := card_ge_of_two_balls ff (by omega : 4+5≤q) fourth fifth live
   by_contra! small
   have exactSizes := two_balls_boundary_cards ff (by omega : 4+5≤q) fourth fifth (by omega)
   apply OddBoundaryLayers.exclude_flat ff live reg hr time _ (fun u um=>(exactSizes u um).1) (fun u um=>(exactSizes u um).2.1)
   intro u um
   exact bound u um (exactSizes u um).1.le (by omega) guard3
+
+theorem order {D V q r i j} (free : QFree D V q) (live : V.Nonempty)
+    (degree : ∀v∈V,r≤(outN D V v).card) (room : Capacity q r i j) : 9*r+1≤V.card :=
+  (order_and_balls free live degree room).2
 
 attribute [aesop safe forward (immediate := [free,live,degree,room]) (rule_sets := [CHGraphFamilies])] order
 #print axioms order

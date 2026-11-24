@@ -6,6 +6,8 @@ Goal: every loopless digraph on n vertices with minimum outdegree r has a direct
 
 - All orders n for 1 ≤ r ≤ 8 (`degree_one_to_eight`).
 - n = 34 or 35 with r = 9: a cycle of length at most 4 (`degree_nine_at_34_or_35`). [Liang–Xu](https://content.scirp.org/pdf/AM20120700013_11769404.pdf) give 5.
+- Every (n, r) with a nonzero cell in the coverage map (`of_covered_cell`), and every (n, r) with ⌈n/r⌉ > 2r − 6 (`above_top_strip`).
+- r = 9: every n except 36, 44, 45, 54, 59–63, 67–72, 77–81, 88–90, 98, 99 and 108 (`degree_nine_except`).
 
 ![Who closes each order n and degree r](docs/attribution-n-r.svg)
 
