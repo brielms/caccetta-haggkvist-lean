@@ -1,4 +1,7 @@
 import checkpoints.shen_extension.CoverageRules
+import checkpoints.shen_extension.WindowSchedule
+import checkpoints.shen_extension.CumulativeDeficitSharp
+import checkpoints.shen_extension.SixthStripSharp
 
 namespace LeanCH.Results
 
@@ -56,18 +59,17 @@ private theorem le_cut {n r : ℕ} (hr : 0 < r) : n ≤ CH.ceilDiv n r * r := by
 
 /-- **Beyond Shen's range at every degree.** Shen proved the bound for
 `n ≥ 2r² - 3r + 1`. Here it holds for `n ≥ 2r² - G·r + 1` with `G = 6` at every
-degree, `G = 7` from degree 12, `G = 8` from degree 59, `G = 9` from degree 8192,
-and every `G` with `35840·G² ≤ r`. The range is written without subtraction. -/
+degree, `G = 7` from degree 12, `G = 8` from degree 59, `G = 9` from degree 6276,
+and every `G` with `424·G² ≤ r`. The range is written without subtraction. -/
 theorem beyond_shen {n r G : ℕ} (D : CH.Digraph) (order : 0 < n) (positive : 0 < r)
     (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n r)
-    (wide : G ≤ 6 ∨ (G = 7 ∧ 12 ≤ r) ∨ (G = 8 ∧ 59 ≤ r) ∨ (G = 9 ∧ 8192 ≤ r) ∨
-      35840*(G*G) ≤ r)
+    (wide : G ≤ 6 ∨ (G = 7 ∧ 12 ≤ r) ∨ (G = 8 ∧ 59 ≤ r) ∨ (G = 9 ∧ 6276 ≤ r) ∨
+      424*(G*G) ≤ r)
     (range : 2*(r*r)+1 ≤ n+G*r) :
     CH.HasDirectedCycleAtMost D n (CH.ceilDiv n r) := by
   by_contra missing
   have bad : Bad ⟨n, r, D⟩ := ⟨order, positive, loopless, degree, missing⟩
   obtain ⟨_, six, region⟩ := remaining_from_run ⟨n, r, D⟩ bad
-  have cumulative := exclusion_from_run ⟨n, r, D⟩ bad .cumulative
   have cover : n ≤ cutoff ⟨n, r, D⟩ * r := le_cut positive
   have big : 2*r+1 ≤ cutoff ⟨n, r, D⟩ + G := by
     by_contra small
@@ -92,25 +94,35 @@ theorem beyond_shen {n r G : ℕ} (D : CH.Digraph) (order : 0 < n) (positive : 0
     · omega
     · have := sixth d
       omega
-    · have := seventh d
-      omega
+    · have := sixth (by omega : 59 ≤ r)
+      exact missing (SixthStripSharp.cycle_sixth_strip_closed d
+        (by omega : cutoff ⟨n, r, D⟩ = 2*r-8) order cover loopless degree)
     · have gap : 2*r - cutoff ⟨n, r, D⟩ + 1 ≤ G := by omega
       have square : (2*r - cutoff ⟨n, r, D⟩ + 1)^2 ≤ G*G := by
         rw [pow_two]
         exact Nat.mul_le_mul gap gap
-      exact cumulative ⟨2*r - cutoff ⟨n, r, D⟩, by omega, by omega,
-        (Nat.mul_le_mul_left _ square).trans w⟩
+      exact missing (CumulativeDeficitSharp.cycle_in_window
+        (q := cutoff ⟨n, r, D⟩) (h := 2*r - cutoff ⟨n, r, D⟩) (by omega) (by omega)
+        ((Nat.mul_le_mul_left _ square).trans w) order cover loopless degree)
 
-/-- Below that range, most of each cutoff strip: at cutoff `⌈n/r⌉ = 2r - g`
-with `3g ≤ r`, every order at least `3g²` below the top of the strip. -/
-theorem strip_window {n r g : ℕ} (D : CH.Digraph) (order : 0 < n) (positive : 0 < r)
+/-- Below that range, most of each strip. For any gap `g` with `3g ≤ 2r`, a
+digraph of order at most `(2r - g)·r - (g-1)²/2` has a cycle of length at most
+`2r - g`. The earlier window needed `3g ≤ r` and `3g²`. -/
+theorem strip_window {n r q g : ℕ} (D : CH.Digraph) (order : 0 < n)
     (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n r)
-    (one : 1 ≤ g) (small : 3*g ≤ r) (cut : CH.ceilDiv n r + g = 2*r)
-    (room : n+3*g*g ≤ CH.ceilDiv n r * r) :
-    CH.HasDirectedCycleAtMost D n (CH.ceilDiv n r) := by
-  by_contra missing
-  exact exclusion_from_run ⟨n, r, D⟩ ⟨order, positive, loopless, degree, missing⟩
-    .variableWindow ⟨g, cut, one, small, room⟩
+    (gap : q+g = 2*r) (one : 1 ≤ g) (small : 3*g ≤ 2*r)
+    (room : 2*n+(g-1)*(g-1) ≤ 2*(q*r)) :
+    CH.HasDirectedCycleAtMost D n q :=
+  Window.variable_window' gap one small order room loopless degree
+
+/-- The same with slack about `g²/8`, for gaps with `2g + 2 ≤ r` and `g² ≤ 8r`.
+Ball counting cannot go below `⌊g²/8⌋`: see `WindowBreakpoint.prof_two_balls`. -/
+theorem strip_window_eighth {n r q g : ℕ} (D : CH.Digraph) (order : 0 < n)
+    (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n r)
+    (gap : q+g = 2*r) (small : 2*g+2 ≤ r) (square : g*g ≤ 8*r)
+    (room : 8*n+((g+2)*(g+2)+1) ≤ 8*(q*r)) :
+    CH.HasDirectedCycleAtMost D n q :=
+  Window.variable_window_rec gap small square order room loopless degree
 
 set_option maxRecDepth 100000 in
 set_option maxHeartbeats 0 in
@@ -133,6 +145,9 @@ theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
 /-- info: 'LeanCH.Results.strip_window' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms strip_window
+/-- info: 'LeanCH.Results.strip_window_eighth' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms strip_window_eighth
 /-- info: 'LeanCH.Results.above_top_strip' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms above_top_strip
