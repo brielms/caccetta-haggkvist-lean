@@ -5,7 +5,7 @@ Goal: every loopless digraph on n vertices with minimum outdegree r has a direct
 ## Results ([Lean](checkpoints/shen_extension/PublicResults.lean))
 
 - CH is proved for all orders n for 1 ≤ r ≤ 8 (`degree_one_to_eight`).
-- CH holds for n = 34 or 35 with r = 9: a cycle of length at most 4, improving the limit of 5 shown by [Liang–Xu](https://content.scirp.org/pdf/AM20120700013_11769404.pdf) (`degree_nine_at_34_or_35`).
+- CH holds for r = 9 and n ∈ {34, 35}: every loopless digraph on n vertices with minimum outdegree 9 has a directed cycle of length at most 4 = ⌈n/9⌉ (`degree_nine_at_34_or_35`). This improves the bound of 5 that follows from [Liang–Xu](https://content.scirp.org/pdf/AM20120700013_11769404.pdf), who prove a directed cycle of length at most 5 whenever r ≥ 0.24817n.
 - Extension of the [Shen](https://www.sciencedirect.com/science/article/pii/S0012365X99003234) bound (`beyond_shen`):
 
 | | Degrees | CH holds for |
