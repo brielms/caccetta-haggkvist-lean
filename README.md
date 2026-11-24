@@ -4,17 +4,20 @@ Goal: every loopless digraph on n vertices with minimum outdegree r has a direct
 
 ## Results ([Lean](checkpoints/shen_extension/PublicResults.lean))
 
-Each line names a theorem in that file, proved with the standard axioms only.
+- CH is proved for all orders n for 1 ≤ r ≤ 8 (`degree_one_to_eight`).
+- CH holds for n = 34 or 35 with r = 9: a cycle of length at most 4, improving the limit of 5 shown by [Liang–Xu](https://content.scirp.org/pdf/AM20120700013_11769404.pdf) (`degree_nine_at_34_or_35`).
+- Extension of the [Shen](https://www.sciencedirect.com/science/article/pii/S0012365X99003234) bound (`beyond_shen`):
 
-- **Beyond Shen's range at every degree** (`beyond_shen`). [Shen](https://www.sciencedirect.com/science/article/pii/S0012365X99003234) proved the bound for n ≥ 2r² − 3r + 1. Lean proves it for n ≥ 2r² − G·r + 1 with
-  - G = 6 at every degree r,
-  - G = 7 for r ≥ 12, G = 8 for r ≥ 59, G = 9 for r ≥ 8192,
-  - every G with r ≥ 35840·G².
-- **Most of each strip below that** (`strip_window`): at cutoff ⌈n/r⌉ = 2r − g with 3g ≤ r, every n ≤ ⌈n/r⌉·r − 3g².
-- **All orders n for 1 ≤ r ≤ 8** (`degree_one_to_eight`).
-- **r = 9**: every n except 36, 44, 45, 54, 59–63, 67–72, 77–81, 89, 90, 98, 99 and 108 (`degree_nine_except`).
-- n = 34 or 35 with r = 9: a cycle of length at most 4 (`degree_nine_at_34_or_35`). [Liang–Xu](https://content.scirp.org/pdf/AM20120700013_11769404.pdf) give 5.
-- Every (n, r) with a nonzero cell in the coverage map (`of_covered_cell`).
+| | Degrees | CH holds for |
+|---|---|---|
+| Shen | every r | n ≥ 2r² − 3r + 1 |
+| Lean | every r | n ≥ 2r² − 6r + 1 |
+| Lean | r ≥ 12 | n ≥ 2r² − 7r + 1 |
+| Lean | r ≥ 59 | n ≥ 2r² − 8r + 1 |
+| Lean | r ≥ 8192 | n ≥ 2r² − 9r + 1 |
+| Lean | r ≥ 35840·G² | n ≥ 2r² − G·r + 1 |
+
+Also proved: at cutoff ⌈n/r⌉ = 2r − g with 3g ≤ r, every n ≤ ⌈n/r⌉·r − 3g² (`strip_window`); r = 9 for every n except 36, 44, 45, 54, 59–63, 67–72, 77–81, 89, 90, 98, 99 and 108 (`degree_nine_except`); every (n, r) with a nonzero cell in the coverage map (`of_covered_cell`). Every theorem named here uses the standard axioms only.
 
 ![Who closes each order n and degree r](docs/attribution-n-r.svg)
 
