@@ -1,0 +1,229 @@
+"""Index the exact open contexts of a finished local Capstone.lean replay."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import re
+import sys
+
+
+def replay_events(lines):
+    events = []
+    event_pattern = re.compile(r"^(CH-INSTANCE|CH-FORWARD|CH-FAMILY OPEN|CH-FAMILY ROUND|CH-NUMERIC) (\S+) (.*)")
+    for i, line in enumerate(lines):
+        match = event_pattern.match(line)
+        if not match:
+            continue
+        kind, tag, detail = match.groups()
+        tail = i + 1
+        while tail < len(lines) and lines[tail].startswith(" "):
+            tail += 1
+        events.append({"kind": kind, "case": tag.split("._@.")[0], "line": i + 1,
+                       "detail": "\n".join([detail, *lines[i + 1:tail]])})
+    return events
+
+
+def published_bounds(lines, leaf):
+    """Recover the capstone's named numerical frontier from a saved goal, including old replays."""
+    names = set("""
+        hn hs cutoffReduction hNoOneLossChild q hcover hq hq1 hq2 hq3
+        hbankLaw h24 htriangleOrder htri htriangleResidual hsmall hCertifiedPrefix
+        hdegreeSix degreeFrontier hbelowWindow hnextStrip hdeeper hfourthLow hfourth
+        hbelowFourth hfifthClosed hremainingCutoff hsixthClosed hsixthRemaining
+        gap hgap hgapPos hremainingScale hceilSlack hremainingGap hremainingPaid
+        hfifthRemaining hfifthHigherRemaining hfifthTensorRemaining
+        hInputAtLeastEight hAboveDegreeSeven hDegreeSevenGone hEightOrder hTightCoverBudget
+        hNo38DegreeNine hReducedOrder hReducedParity hOneLossOrder
+    """.split())
+    projected = ("GuardedDegreeFrontier.Direct", "GuardedDegreeFrontier.Terminal",
+                 "GuardedFamilyRules.Fits", "GuardedProfileBudget.Window", "InheritedProfileWindow.Fits", "OneSpareGrowth.BelowFour",
+                 "OneSpareGrowth.Window", "ParentCutFrontier.Gate",
+                 "ProjectedQuotaTransfer.from_recorded_projection", "SymbolicQuotaSweep.Covers")
+    bounds = []
+    def take(name, parts):
+        statement = " ".join(" ".join(parts).split())
+        if name in names:
+            bounds.append(name + " : " + statement)
+        elif name.startswith("fwd") and any(p in statement for p in projected):
+            bounds.append(statement)
+    name, parts = "", []
+    for line in lines[leaf["context_line"]:leaf["goal_line"] - 1]:
+        if line.startswith(" "):
+            parts.append(line)
+        else:
+            take(name, parts)
+            name, _, first = line.partition(" :")
+            parts = [first]
+    take(name, parts)
+    return sorted(set(bounds))
+
+
+def leaf_facts(lines, leaf):
+    """Statements of one saved context, without local names, name suffixes or replay bookkeeping."""
+    facts, parts = set(), None
+    def take(parts):
+        if parts is None:
+            return
+        statement = " ".join(" ".join(parts).split())
+        statement = re.sub(r"✝[⁰¹²³⁴⁵⁶⁷⁸⁹]*", "", statement)
+        if statement and not re.search(r"CHFamilyWorklist\.Opened|CHContextCatalog\.Fired", statement):
+            facts.add(statement)
+    for line in lines[leaf["context_line"]:leaf["goal_line"] - 1]:
+        if line.startswith(" "):
+            if parts is not None:
+                parts.append(line)
+        else:
+            take(parts)
+            _, colon, first = line.partition(" :")
+            parts = [first] if colon else None
+    take(parts)
+    return facts
+
+
+def independent_obligations(lines, leaves):
+    """Factor the open contexts into splits that never interact.
+
+    Two varying statements belong to one factor when the sets of contexts that
+    hold them are not independent. If the contexts are exactly the product of
+    the factors, each factor can be discharged on its own, and the number of
+    separate obligations is the sum of the factor sizes."""
+    if len(leaves) < 2:
+        return None
+    facts = [leaf_facts(lines, leaf) for leaf in leaves]
+    total = len(leaves)
+    support = {}
+    for i, held in enumerate(facts):
+        for fact in held:
+            support.setdefault(fact, set()).add(i)
+    by_support = {}
+    for fact, where in support.items():
+        if len(where) < total:
+            by_support.setdefault(frozenset(where), []).append(fact)
+    keys = list(by_support)
+    parent = list(range(len(keys)))
+    def find(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+    for i, a in enumerate(keys):
+        for j in range(i + 1, len(keys)):
+            b = keys[j]
+            if len(a & b) * total != len(a) * len(b):
+                parent[find(i)] = find(j)
+    groups = {}
+    for i, key in enumerate(keys):
+        groups.setdefault(find(i), []).append(key)
+    factors, product = [], 1
+    for members in groups.values():
+        kinds = {}
+        for i in range(total):
+            kinds.setdefault(tuple(i in key for key in members), []).append(leaves[i]["case"])
+        product *= len(kinds)
+        examples = sorted((fact for key in members for fact in by_support[key]), key=len)[:6]
+        factors.append({"kinds": len(kinds), "contexts_per_kind": sorted(len(v) for v in kinds.values()),
+                        "varying_statements": sum(len(by_support[key]) for key in members),
+                        "shortest_varying_statements": examples,
+                        "one_context_per_kind": sorted(v[0] for v in kinds.values())})
+    factors.sort(key=lambda f: -f["kinds"])
+    exact = product == total and all(len(set(f["contexts_per_kind"])) == 1 for f in factors)
+    return {"open_contexts": total, "factors": factors, "exact_product": exact,
+            "separate_obligations": sum(f["kinds"] for f in factors) if exact else total}
+
+
+def compare_frontiers(previous_path, leaves, lines):
+    previous = json.loads(previous_path.read_text(encoding="utf-8-sig"))
+    old_data = Path(previous["source_log"]).read_bytes()
+    if hashlib.sha256(old_data).hexdigest() != previous["sha256"]:
+        sys.exit("The previous frontier no longer matches its source log.")
+    old_lines = old_data.decode("utf-8-sig").splitlines()
+    old_events = replay_events(old_lines)
+    new_events = replay_events(lines)
+    comparison = []
+    for old in previous["leaves"]:
+        name = old["case"]
+        def in_family(tag):
+            return tag == name or tag.startswith(name + ".")
+        survivors = [leaf["case"] for leaf in leaves if in_family(leaf["case"])]
+        previous_facts = {e["detail"] for e in old_events if e["kind"] == "CH-FORWARD" and in_family(e["case"])}
+        activity = [e for e in new_events if in_family(e["case"])]
+        old_context = " ".join(" ".join(old_lines[old["context_line"]:old["goal_line"] - 1]).split())
+        numbers = {}
+        old_bounds = set(published_bounds(old_lines, old))
+        for child in survivors:
+            facts = [" ".join(e["detail"].split()) for e in activity
+                     if e["kind"] == "CH-NUMERIC" and e["case"] == child]
+            child_leaf = next(leaf for leaf in leaves if leaf["case"] == child)
+            new_bounds = set(published_bounds(lines, child_leaf))
+            numbers[child] = {"lean_numeric_facts": len(facts), "without_literal_baseline_match":
+                              [fact for fact in facts if fact not in old_context],
+                              "without_baseline_proposition":
+                              [fact for fact in facts if fact.partition(" : ")[2] not in old_context],
+                              "baseline_named_bounds": len(old_bounds), "current_named_bounds": len(new_bounds),
+                              "removed_bounds": sorted(old_bounds - new_bounds), "added_bounds": sorted(new_bounds - old_bounds)}
+        comparison.append({"previous_case": name, "open_descendants": survivors,
+                           "numerical_context_check": numbers,
+                           "opened_alternatives": [e for e in activity if e["kind"] == "CH-FAMILY OPEN"],
+                           "named_applications": [e for e in activity if e["kind"] == "CH-INSTANCE"],
+                           "additional_forward_facts": [e for e in activity if e["kind"] == "CH-FORWARD"
+                                                        and e["detail"] not in previous_facts]})
+    old_names = {leaf["case"] for leaf in previous["leaves"]}
+    inherited = [e for e in new_events if e["kind"] == "CH-INSTANCE" and
+                 not any(e["case"] == tag or e["case"].startswith(tag + ".") for tag in old_names)]
+    return {"baseline": str(previous_path.resolve()), "baseline_sha256": previous["sha256"],
+            "applications_before_the_six_contexts": inherited, "cases": comparison}
+
+
+def main():
+    sys.stdout.reconfigure(encoding="utf-8")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("log", type=Path)
+    parser.add_argument("--case", help="print every hypothesis and the goal for this case")
+    parser.add_argument("--compare", type=Path, help="compare the named families with a saved frontier JSON")
+    args = parser.parse_args()
+    data = args.log.read_bytes()
+    lines = data.decode("utf-8-sig").splitlines()
+    errors = [(i, line) for i, line in enumerate(lines)
+              if re.match(r"^.+:\d+:\d+: error(?:\([^)]*\))?:", line)]
+    if len(errors) != 1 or not errors[0][1].endswith("error: unsolved goals"):
+        sys.exit("No verified open-frontier diagnostic. " + " ".join(line for _, line in errors))
+    begin = errors[0][0] + 1
+    cases = [i for i in range(begin, len(lines)) if lines[i].startswith("case ")]
+    if not cases:
+        sys.exit("Lean did not print named case contexts.")
+    leaves = []
+    for start, end in zip(cases, cases[1:] + [len(lines)]):
+        end_goal = next(i for i in range(start + 1, end) if lines[i].startswith("⊢ "))
+        target = [lines[end_goal][2:]]
+        for line in lines[end_goal + 1:end]:
+            if not line.startswith(" "):
+                break
+            target.append(line)
+        name = lines[start][5:]
+        if args.case == name:
+            print("\n".join(lines[start:end_goal + len(target)]))
+            return
+        leaves.append({"case": name, "context_line": start + 1, "goal_line": end_goal + 1,
+                       "missing_implication_conclusion": "\n".join(target)})
+    if args.case:
+        sys.exit("Unknown case. Available cases: " + ", ".join(item["case"] for item in leaves))
+    rounds = [line for line in lines[:begin] if line.startswith("CH-FAMILY ROUND ")]
+    result = {"source_log": str(args.log.resolve()), "sha256": hashlib.sha256(data).hexdigest(),
+              "open_leaves": len(leaves), "rounds": rounds, "leaves": leaves}
+    result["published_bounds"] = {leaf["case"]: published_bounds(lines, leaf) for leaf in leaves}
+    factored = independent_obligations(lines, leaves)
+    if factored:
+        result["independent_obligations"] = factored
+    numeric = {}
+    for event in replay_events(lines[:begin]):
+        if event["kind"] == "CH-NUMERIC":
+            numeric.setdefault(event["case"], []).append(event["detail"])
+    if numeric:
+        result["numerical_hypotheses"] = numeric
+    if args.compare:
+        result["comparison"] = compare_frontiers(args.compare, leaves, lines)
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+
+
+if __name__ == "__main__":
+    main()

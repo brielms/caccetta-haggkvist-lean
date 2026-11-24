@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caccetta–Häggkvist proof map</title>
+<style>
+:root{--green:#188256;--yellow:#e0ad43;--viz-series-1:#397aba;--viz-series-2:#cf7034;--viz-series-5:#8158ac;--viz-series-6:#278e9d;--viz-series-4:#c95b8b;--foreground:#182527;--background:#fff;--muted-foreground:#59686e;--border:#dfe6e8}
+body{max-width:850px;margin:32px auto;padding:0 16px;background:var(--background);color:var(--foreground);font:16px/1.5 system-ui,sans-serif}
+h2,h3,p{margin:0}.text-small{font-size:.85em}.text-muted{color:var(--muted-foreground)}hr{width:100%;border:0;border-top:1px solid var(--border)}
+input,select{font:inherit;padding:.25em}a{color:#185883}summary{cursor:pointer}
+</style><body>
+<section id="ch-proof-attribution">
+<style>
+#ch-proof-attribution {display:grid;gap:.7em}
+#ch-proof-attribution header,#ch-proof-attribution .readout,#ch-proof-attribution .sources {display:grid;gap:.3em}
+#ch-proof-attribution .plot {display:block;width:100%;height:287px;touch-action:manipulation}
+#ch-proof-attribution .plot text {fill:var(--muted-foreground);font-family:inherit;font-size:12px}
+#ch-proof-attribution .plot .chosen {fill:var(--foreground);font-weight:500}
+#ch-proof-attribution .credits,#ch-proof-attribution .inputs {display:flex;align-items:center;flex-wrap:wrap;gap:.4em 1em}
+#ch-proof-attribution .key {display:inline-flex;align-items:center;gap:.35em}
+#ch-proof-attribution .chip {height:.82em;width:.82em;display:inline-block;flex-shrink:0}
+#ch-proof-attribution .inputs label {display:inline-flex;align-items:center;gap:.48em}
+#ch-proof-attribution .inputs input {width:5em}
+#ch-proof-attribution .inputs select {width:auto}
+#ch-proof-attribution .readout code {overflow-wrap:anywhere}
+#ch-proof-attribution .sources {margin-top:.4em}
+</style>
+<header><h2>Caccetta–Häggkvist proof map</h2>
+<p class="text-muted">Each row fixes the minimum outdegree. Within a tile, graph orders increase from left to right.</p></header>
+<div class="text-small">Minimum outdegree r</div>
+<svg class="plot cursor-interaction" role="img" aria-label="Minimum outdegree by integer quotient. Colors identify sources. Select an exact order using the controls below."></svg>
+<div class="credits text-small" aria-label="Attribution by color"></div>
+<hr>
+<div class="inputs tabular-nums">
+<label>Degree r <input class="form-control" name="degree" type="number" min="1" max="12" step="1" value="8"></label>
+<label>⌊n/r⌋ <input class="form-control" name="quotient" type="number" min="1" max="22" step="1" value="6"></label>
+<label>Order n <select class="form-select" name="order" aria-label="Exact order in the selected tile"></select></label>
+<output class="cutoff">q = 6</output>
+</div>
+<div class="readout" aria-live="polite"><h3 class="who"></h3><p class="why"></p><div class="also text-small text-muted"></div></div>
+<details><summary class="cursor-interaction">Sources and color assignment</summary><div class="sources text-small">
+<div>A tile at degree r and quotient k contains the r orders from kr to kr + r − 1. The CH cutoff q is k at the first order and k + 1 at the others.</div>
+<div>Color gives one applicable source: a direct classical theorem first, then a deletion consequence, then the public degree-six manuscript, then the capstone. The selected order lists other applicable sources from this comparison. Green compares with the listed bounds; historical priority is a separate question.</div>
+<div><a href="https://www.sciencedirect.com/science/article/pii/0095895687900098" target="_blank" rel="noopener">Caccetta–Häggkvist and Hamidoune</a> cover degrees two and three, respectively. <a href="https://www.sciencedirect.com/science/article/pii/0012365X87901221" target="_blank" rel="noopener">Hoàng–Reed</a> cover four and five. Degree one and the reciprocal-pair bound n ≤ 2r are elementary.</div>
+<div><a href="https://www.sciencedirect.com/science/article/pii/S0012365X99003234" target="_blank" rel="noopener">Shen</a> covers n ≥ 2r² − 3r + 1. <a href="https://arxiv.org/abs/0908.2791" target="_blank" rel="noopener">Hladký–Král’–Norin</a> force a triangle in oriented graphs when r ≥ 0.3465n.</div>
+<div>Striped gold denotes the <a href="https://github.com/joshp123/solve-a-maths-problem-dont-care-which-make-no-mistakes/blob/main/paper/manuscript.md" target="_blank" rel="noopener">unpublished fixed-degree-six manuscript by Josh P.</a> or a deletion consequence. Its certificates were not audited for this map. Gray means the selected rules leave the cell unclassified.</div>
+</div></details>
+<script type="application/json" class="data">["11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111","11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111","11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111","11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111","11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111","11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111","11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111","11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111","33333333333333333022222222233333300033333000033330000033300000033000000030000000000000000055555000044444444044444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444","33333333333333333300333333000033330000003300000000000000000000000000000000000000000000000000000000000000000000000000000055555500004444444440444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444","33333333333333333330003333300000033000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005555555000044444444440444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444","33333333333333333333000033330000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000055555555000044444444444444444444444444444444444444444444444444444444444444444444444"]</script>
+<script>
+(() => {
+ const root=document.getElementById("ch-proof-attribution"), get=s=>root.querySelector(s);
+ const plot=get(".plot"), degree=get("[name=degree]"), quotient=get("[name=quotient]"), order=get("[name=order]");
+ const data=JSON.parse(get(".data").textContent), NS="http://www.w3.org/2000/svg", K=22;
+ const src={
+   cap:["This capstone","var(--green)"],ch:["Caccetta–Häggkvist","var(--viz-series-1)"],
+   ham:["Hamidoune","var(--viz-series-2)"],hr:["Hoàng–Reed","var(--viz-series-5)"],
+   shen:["Shen","var(--viz-series-6)"],hkn:["Hladký–Král’–Norin","var(--viz-series-4)"],
+   ms:["Josh P. · degree-six manuscript","var(--yellow)"],elem:["Elementary","var(--muted-foreground)"],
+   none:["Unclassified here","var(--border)"],void:["Infeasible","var(--background)"]
+ };
+ const paint=id=>id==="ms"?"url(#ch-gold-lines)":id==="void"?"url(#ch-no-graph)":src[id][1];
+ function chip(id){
+   const s=document.createElement("i");s.className="chip";s.setAttribute("aria-hidden","true");
+   s.style.background=id==="ms"?"repeating-linear-gradient(130deg,var(--yellow) 0 3px,var(--background) 3px 4px)":id==="void"?"repeating-linear-gradient(130deg,var(--background) 0 4px,var(--muted-foreground) 4px 5px)":src[id][1];return s;
+ }
+ for(const [id,[label]] of Object.entries(src)){const key=document.createElement("span");key.className="key";key.append(chip(id),label);get(".credits").append(key);}
+ const ruleNames=["","ProjectedQuotaTransfer.replay_completed_floor","CompromiseQuotaTransfer.any_triangle_degree","ProjectedQuotaTransfer.replay_completed_window","CHRuleCatalog.remaining_from_run","CHRuleCatalog.exclusion_from_run (fifthLow)","ShellBankFrontier.native_order","SinkDepthCover.exclude","LowShellCycleSelection.outside_search"];
+ const authors=["","elem","ch","ham","hr","hr"];
+ function assess(n,r){
+   const q=Math.ceil(n/r), hits=new Map(), hit=(id,why)=>{if(!hits.has(id))hits.set(id,why);};
+   if(n<=r){hit("void","A loopless graph on "+n+" vertices has at most "+(n-1)+" heads per row.");return hits;}
+   if(r<=5)hit(authors[r],r===1?"Following outgoing arcs forces a directed cycle.":"The all-orders theorem for minimum outdegree "+r+" applies.");
+   if(n<=2*r)hit("elem","Counting arcs forces a reciprocal pair, a cycle of length two.");
+   if(n>=2*r*r-3*r+1)hit("shen","At degree "+r+", Shen’s large-order bound starts at n = "+(2*r*r-3*r+1)+".");
+   if(q>=3 && 10000*r>=3465*n)hit("hkn","The triangle density bound applies once reciprocal pairs have been excluded.");
+   for(let d=r-1;d>=1;d--){
+     const m=Math.min(n,q*d), loss=n-m;if(m<=d||d+loss>r)continue;
+     const how=(loss?"Delete "+loss+" vertices. ":"")+"The remaining "+m+" labels support degree at least "+d+" and a cycle of length at most "+q+".";
+     if(d<=5)hit(authors[d],how);
+     if(m>=2*d*d-3*d+1)hit("shen",how);
+   }
+   if(r>=6){const m=Math.min(n,6*q),loss=n-m;if(r-loss>=6)hit("ms",r===6?"The unpublished manuscript by Josh P. claims this bound at every order.":"Deleting "+loss+" vertices reduces this case to the public degree-six claim.");}
+   const v=Number(data[r-1][n-1]);if(v)hit("cap","Lean · "+ruleNames[v]+(n===48&&r===8?" · direct endpoint proof in PrimaryContactClosure.lean":""));
+   if(!hits.size)hit("none","The bounds displayed here supply no certificate for this pair.");
+   return hits;
+ }
+ const tiles=Array.from({length:12},(_,i)=>Array.from({length:K},(_,j)=>Array.from({length:i+1},(_,s)=>assess((j+1)*(i+1)+s,i+1).keys().next().value)));
+ let r=8,k=6,rem=0,geom;
+ const valid=(v,a,b)=>Number.isInteger(v)&&v>=a&&v<=b;
+ function restore(v){if(v&&valid(v.r,1,12)&&valid(v.k,1,K)&&valid(v.rem,0,v.r-1)){r=v.r;k=v.k;rem=v.rem;}}
+ restore(window.openai?.widgetState?.modelContent);
+ function svg(tag,attrs,parent=plot,txt){
+   const node=document.createElementNS(NS,tag);for(const [name,value] of Object.entries(attrs))node.setAttribute(name,value);
+   if(txt!==undefined)node.textContent=txt;parent.appendChild(node);return node;
+ }
+ function draw(){
+   const W=Math.max(200,plot.getBoundingClientRect().width||650),left=25,top=5,dy=19,cw=(W-left-3)/K;
+   geom={W,left,top,dy,cw};plot.replaceChildren();plot.setAttribute("viewBox","0 0 "+W+" 287");
+   const defs=svg("defs",{});
+   for(const [id,bg,line] of [["ch-gold-lines","var(--yellow)","var(--background)"],["ch-no-graph","var(--background)","var(--muted-foreground)"]]){
+     const p=svg("pattern",{id,width:5,height:5,patternUnits:"userSpaceOnUse"},defs);
+     svg("rect",{width:5,height:5,fill:bg},p);svg("path",{d:"M-1 1L1 -1 M0 5L5 0 M4 6L6 4",fill:"none",stroke:line,"stroke-width":1},p);
+   }
+   tiles.forEach((row,i)=>{
+     const d=i+1,y=top+(12-d)*dy;
+     svg("text",{x:left-7,y:y+13,"text-anchor":"end",class:d===r?"chosen":""},plot,d);
+     row.forEach((parts,j)=>{
+       const x=left+j*cw+.5,span=cw-1;let a=0;
+       for(let b=1;b<=d;b++){if(b!==d&&parts[a]===parts[b])continue;
+         svg("rect",{x:x+a*span/d,y,width:(b-a)*span/d,height:dy-2,fill:paint(parts[a])});a=b;}
+     });
+   });
+   const x=left+(k-1)*cw,y=top+(12-r)*dy;
+   svg("rect",{x:x+.25,y:y-.2,width:cw-.5,height:dy-1.7,fill:"none",stroke:"var(--foreground)","stroke-width":1.6});
+   const cx=x+.5+(rem+.5)*(cw-1)/r;
+   svg("circle",{cx,cy:y+(dy-2)/2,r:2.7,fill:"var(--foreground)",stroke:"var(--background)","stroke-width":1.2});
+   for(let j=1;j<=K;j++){if(W<560&&j!==1&&j%2!==0)continue;if(W<385&&j>1&&j!==22&&j%4!==0)continue;
+     svg("text",{x:left+(j-.5)*cw,y:251,"text-anchor":"middle",class:j===k?"chosen":""},plot,j);}
+   svg("text",{x:left+K*cw/2,y:277,"text-anchor":"middle"},plot,"Integer quotient ⌊n/r⌋");
+ }
+ let lastRange="";
+ function update(save=false){
+   const n=r*k+rem, list=assess(n,r), ids=[...list.keys()], first=ids[0];
+   degree.value=r;quotient.value=k;
+   if(lastRange!==r+"/"+k){order.replaceChildren();for(let j=0;j<r;j++){const o=document.createElement("option");o.value=String(j);o.textContent=String(r*k+j);order.append(o);}lastRange=r+"/"+k;}
+   order.value=String(rem);get(".cutoff").textContent="q = ⌈n/r⌉ = "+Math.ceil(n/r);
+   get(".who").replaceChildren(chip(first)," "+src[first][0]);get(".why").textContent=list.get(first);
+   get(".also").textContent=ids.length>1?"Other matching sources include "+ids.slice(1).map(id=>src[id][0]).join(" · "):"";
+   draw();if(save)window.openai?.setWidgetState?.({modelContent:{r,k,rem}})?.catch(()=>{});
+ }
+ for(const control of [degree,quotient]){control.addEventListener("input",()=>{const a=degree.valueAsNumber,b=quotient.valueAsNumber;
+   if(valid(a,1,12)&&valid(b,1,K)){r=a;k=b;rem=Math.min(rem,r-1);update(true);}});control.addEventListener("blur",()=>update());}
+ order.addEventListener("change",()=>{rem=Number(order.value);update(true);});
+ plot.addEventListener("click",e=>{const box=plot.getBoundingClientRect(), x=e.clientX-box.left,y=e.clientY-box.top;
+   const f=(x-geom.left)/geom.cw, b=Math.floor(f)+1, a=12-Math.floor((y-geom.top)/geom.dy);
+   if(valid(a,1,12)&&valid(b,1,K)){r=a;k=b;const dx=(f-Math.floor(f))*geom.cw-.5;
+     rem=Math.max(0,Math.min(r-1,Math.floor(dx*r/(geom.cw-1))));update(true);}});
+ window.addEventListener("openai:set_globals",e=>{restore(e.detail?.globals?.widgetState?.modelContent);update();});
+ new ResizeObserver(draw).observe(plot);update();
+})();
+</script>
+
+</body></html>

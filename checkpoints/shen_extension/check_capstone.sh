@@ -1,0 +1,202 @@
+#!/usr/bin/env bash
+# Run from the lean-ch repository root.
+set -euo pipefail
+export PATH="$HOME/.elan/bin:$PATH"
+
+replay_capstone() {
+  local base="${CH_FRONTIER_DIR:-.lake/ch-frontier}"
+  mkdir -p "$base"
+  local receipt
+  receipt=$(mktemp -d "$base/replay.XXXXXXXX")
+  local log="$receipt/Capstone.log"
+  local status=0
+  CH_CATALOG_TRACE_FILE="${CH_CATALOG_TRACE_FILE:-$receipt/catalog.trace}" \
+    lake env lean checkpoints/shen_extension/Capstone.lean 2>&1 | tee "$log" || status=$?
+  if ((status != 0)); then
+    if python checkpoints/shen_extension/report_family_frontier.py "$log" > "$receipt/frontier.tmp"; then
+      mv "$receipt/frontier.tmp" "$receipt/frontier.json"
+      echo "Exact open contexts indexed in $receipt/frontier.json"
+    else
+      rm -f -- "$receipt/frontier.tmp"
+      echo "Check the Lean diagnostics in $log" >&2
+    fi
+  fi
+  echo "Lean replay log in $log"
+  return "$status"
+}
+
+if [[ ${1:-} == --replay ]]; then
+  replay_capstone
+  exit
+fi
+
+lake build LeanCH.BR.BRWeightedInverseTransport LeanCH.BR.BRWeightedBallExit LeanCH.BR.BRFiniteWalk LeanCH.BR.BRFiveCutoff OAI.Combinatorics.SecondNeighborhood.Main LeanCH.BR.BRWeightedUnitCoreExtension LeanCH.BR.BRWeightedFoldBoundary LeanCH.BR.BRWeightedCycleStructure LeanCH.BR.BRWeightedExtremalCompetitors LeanCH.BR.BRDeficiencyRigidity LeanCH.BR.BRWeightedOutUniformSaturation LeanCH.BR.BRWeightedRetainedHeadTransfer LeanCH.BR.BRDonorWalks LeanCH.BR.BRRegionCycle LeanCH.BR.BRCirculantReturnCapacity
+# LeanCH modules used by the script-compiled checkpoints.
+# Building them here makes the checkpoint sequence work on a fresh checkout.
+lake build \
+  LeanCH.BR.BRHalfBallWindow LeanCH.BR.BRTwoBallEquality \
+  LeanCH.BR.BRWeightedThirdExterior LeanCH.BR.BRWeightedPressureFrontier \
+  LeanCH.BR.Triangle24 LeanCH.BR.BRRichMissGeometry LeanCH.BR.BRTightCycleReversal \
+  LeanCH.BR.BRWeightedStrictAtomFloor LeanCH.BR.BRUnitCoreExtensionGeometry \
+  LeanCH.BR.BRWeightedExtremalExchange LeanCH.BR.BRWeightedNativePressureRepair \
+  LeanCH.BR.BRFiniteSimplexAlternative LeanCH.BR.BRWeightedSplitTransfer \
+  LeanCH.BR.BRq5All LeanCH.BR.BR96 LeanCH.BR.BR37Z LeanCH.BR.BR37 \
+  LeanCH.BR.BRq3FSE4 LeanCH.CompromiseNine LeanCH.CompromiseTenTwoException \
+  LeanCH.BR.BRCompletionConflict LeanCH.BR.BRWeightedExactRepairProfile
+mkdir -p .lake/build/lib/lean/checkpoints/shen_extension/dot_tensor_research
+for module in CommonTensorClosure ThirdStrip PrefixTensor ThirdStripEndpoints DotTwoPassShellTransport_20261117 FourthStrip FourthStripFlat FourthStripTop DotClonePairCompletion_20261118 DotFourthSourceAdapters_20261118 DotFourthPrefixQuadratic_20261118 DotFourthStripClosure_20261118 StripTransfer ContainerTransfer RectangleTransfer LabelledReachTensor CommonSuccessorTensor NearTotalTensor FifthStrip FifthStripEndpoints FifthStripIteration FifthStripCommonSuccessors MixedCloneTensor FifthStripMixedClone VariableCutoff VariablePaidTensor ShellTrafficTensor SixthStripTraffic FirstDeficientTensor CumulativeDeficitTensor SharedHeadTriangle SharedHeadEndpoints MinimalCutReturns RecursiveCutTransitions TerminalTransport CutReturnIncidence SharedHeadFeedback SharedHeadNonedges SharedHeadPairTransfer TransitionGraph InducedPrimeTransition CircularPhaseTransition CenterTableTransition DeleteRepairUnlock dot_tensor_research/DotFullReturnCut_20261118 CenterTablePaidReturn TransversalExchange ParentIntersection RootedKernelTransition SeymourTransition ReachTransition MinimumOrderProfile dot_tensor_research/DotKernelSharedHead_20261118 TightCycleSuccessor TightRowLink TightRowCapstone HalfRowsSink SecondNeighbourTransport UnitRowPacking PuncturedSeymourBank BankReturnRectangles FiveParentDeletion FiveParentPayment FiveParentEndpoint WeightedHost TransitionClosure TransitionClosureStatic RecursiveDeficitLevels RecursivePackingFrontier RecursivePrivateCompletion BlockSlack IrregularBlockPacking HalfRowsThree HalfLawSupply TightProfileGeneral UnitStateBoundary PrivateCompletionOrder dot_tensor_research/DotOriginalStarReturn_20261118 OneHeadHeavyRows OneHeadPivotLoops UnitBatchComponents PivotLoopNativeOrder PivotTriangleContraction TwoReplacementContraction TwoReplacementNearMiss ClosedHeadIntersection RecursiveHeadTransition FourLabelRecursiveHost SponsoredHeadPool FreeSecondHeadGap UnitLoopCapstone DenseArcRectangle DenseArcPayment RecursiveFourReturns ColumnBlockerEscape DistinctUnmatchedRows ColumnRecurrence RadiusColumnRecurrence ThresholdReturn WeightedColumnEscape FourReturnEscape PaidLayerDescent CommonExitReplacement RootFourCyclePacking TwoBankDescent CoverBankRecurrence RemoteBankDeletion SeparatedReturnBank ReturnBankOrder RootFirstArcReturns FirstArcRecurrence DisjointRootFourCycles PuncturedRootReturns BankDescentFrontier ReturnArcRecurrence CutoffDegreeRank ShortestCyclePacking ShortestCycleClasses ShortestCyclePeeling ShortestCycleDescent RootedCycleLayers CoreExchange CycleClassFrontier ClassParentBanks SaturatedCycleClasses ShortestCycleWeights WeightedOneVertexSplit WeightedSplitInduction TrianglePunctureClass TriangleMinimumPuncture MinimumPunctureIncidence PunctureDualExtension PunctureCycleLoop PunctureFrontier CycleSquareTensor CycleSquareBalance SquareFiberPressure MarkedSquareFrontier AnchoredShiftFlow ShortestCycleFiberModule AnchoredExteriorColumn MinimumRootColumn AllCutoffPacketEscape RootedSplice PunctureBypass PunctureWeightCoverage PuncturedDistance PunctureReceiverFrontier MandatoryTwoStep ComparableColumnCut LightColumnPacking TwoSidedPuncture LayeredPathCertificate ShortestReturnCertificate EqualColumnRepair JointBlockerCycle MultiPivotRepair MandatoryExcursion BlockerHeadRouting ConsecutiveBlockerPool RoutedPoolEscape MinimumPairEscape PairEscapeTransition PairWithdrawal ClassPunctureRecurrence MarkedCyclePeeling FirstPacketBarrier CriticalCycleFamily PrivateArcEndpoints TwoCycleTransfer JointCycleFamilyBarrier PaidCycleFamilyOrbit TransferHeadChoices CyclePhaseFork ProtectedHeadPayment CycleWithdrawal NativePaidHeadFork GlobalFamilyDual RecipientBalance CycleFanDistance CycleSlotOrbit EqualizerTransfer PairedFamilyLoop FullCycleTransfer FullFamilySchedule RecurrentRecipient ShortSplitExterior PairingPressure OpposedPairPrices ChargedLabelOrbit PunctureLawMixture PunctureParentFlow PunctureDiscrepancy DisjointCutCapacity OpposedExteriorCapacity PunctureFlowCapstone CanonicalCycleLaw ResidualRepairOrbit ClosedArcDrift PaidArcTrajectory TwoCutReplacement TwoCutParentBanks TwoCutVariation RawTransferBill ChargedRepairFiber RawRepairAlternative CoupledArcTrajectory FlatChildClosure FlatChildExchange FlatExchangeCycle FlatExchangeIntervals FlatExchangeChain FlatExchangeOverlap FlatExchangeTriangle FlatOrbitSaturation FlatPairedExcursion FlatReturnLayers FlatMinimumExterior FlatBankRectangle FlatTightTraffic FlatTransientReturn FlatOverlapDescent FlatCycleFamilyCompletion FlatPairCover CycleCoverWeights UniversalSlackPair SlackPairOrbit SlackBoundaryBanks StoppedParentHall FiniteHorizonHall CyclePortMatching CyclePortCollision CyclePortNative NativeSharedSegment PinnedReturn CoupledSegmentPorts SharedArcExpansion SharedArcGrid NativeCycleConnectivity SharedArcBarrier SharedArcInduction SharedArcBudget SharedArcAffordablePaths SharedArcMinimalPacket SharedArcPacketPrices SharedArcPacketReturns SharedArcPacketDescent SharedArcTailExchange SharedArcComponentExchange SharedArcFlatResponse SharedArcFlatCut SharedArcFlatChain SharedArcCover SharedArcFlatArithmetic InverseOffDiagonal InversePacketDeletion SharedArcStrictParent PacketDeletionProfile SharedArcReachMargin SharedArcSingleCorridor PacketCompression SharedArcCompression PacketReturnMass OneExchange SharedArcExchangeReturn PacketLoopElimination PacketLoopTest SharedArcLoopTest SharedArcLoopClosure SharedArcPivot SharedArcPivotPaths SharedArcPunctureExpansion SharedArcIntervalPuncture SharedArcProductReach SharedArcPivotLoopSums SharedArcPivotChoice SharedArcPivotDetour SharedArcPivotSpread StrictSubgraphInverse SharedArcFlatBudget SharedArcPivotGate SharedArcPivotFold SharedArcCleanRecurrence StrictReturnLayers PairedReturnCuts ForwardShortcutLayers ForwardMerge RankedMerge TwoReceiverIntersection SharedArcFlatTransport IntervalArcRecurrence TriangleIntervalResponse SingleArcReturnProfile SingleArcNeighbourWitness SingleArcAlternative PuncturedSquareRoles MinimumOrbitEscape TriangleReachableRoles MarkedRolePayment; do
+  lake env lean \
+    -o ".lake/build/lib/lean/checkpoints/shen_extension/$module.olean" \
+    "checkpoints/shen_extension/$module.lean"
+done
+exchange_dir=checkpoints/puncture_law_20261119
+mkdir -p ".lake/build/lib/lean/$exchange_dir"
+lake env lean -o ".lake/build/lib/lean/$exchange_dir/FlatExchange.olean" "$exchange_dir/FlatExchange.lean"
+lake env lean -o ".lake/build/lib/lean/checkpoints/shen_extension/SingleArcDoubleExchange.olean" \
+  checkpoints/shen_extension/SingleArcDoubleExchange.lean
+for module in PunctureLaw DeckFactorization HeirExit HeirRound HeirLaw RehomeExits ClosedSetExit; do
+  lake env lean -o ".lake/build/lib/lean/$exchange_dir/$module.olean" "$exchange_dir/$module.lean"
+done
+for module in SingleArcModuleBoundary SingleArcSwitchSign SingleArcPunctureSign SingleArcLocalSignExample SharedArcPivotMerge StrictFlatSubsetMerge StrictMergeSignControl SingleArcTensorMerge FlatPeelReach ReachInversePrices PunctureWalkCertificate OneStepColumnMerge EndpointLayerWitness ReturnRowPrices EndpointLayerControl SingleArcResidualSource SingleArcHeirMidpoint SingleArcMidpointSign SingleArcCycleParents SingleArcCycleControl SingleArcCyclePrices SingleArcCyclePivot SingleArcCycleHead SingleArcCycleBalance BalancedSecondNeighborhood SingletonSecondNeighbors SingleArcCycleSlope SingleArcCycleSparse CycleHitMass SingleArcCommonTilt SingleArcCommonParent CommonParentRepair CornerResidualJoint CornerHeadRecurrence CornerBlockPayment CornerBlockExchange CornerBlockSubstitution CornerBlockInterval CornerBlockRegular CornerBlockTower CornerTowerPayment; do
+  lake env lean -o ".lake/build/lib/lean/checkpoints/shen_extension/$module.olean" \
+    "checkpoints/shen_extension/$module.lean"
+done
+for module in PairedArcAudit CommonParentHeadRepair CommonParentReplay CommonParentEndpointPath CommonParentEndpointReplay EndpointPrivateRows; do
+  lake env lean -o ".lake/build/lib/lean/checkpoints/shen_extension/$module.olean" \
+    "checkpoints/shen_extension/$module.lean"
+done
+pair_dir=checkpoints/pair_tilt_20261119
+mkdir -p ".lake/build/lib/lean/$pair_dir"
+for module in PairTilt DeadExitInterval TwoExitBlockers; do
+  lake env lean -o ".lake/build/lib/lean/$pair_dir/$module.olean" "$pair_dir/$module.lean"
+done
+for module in PortParentInvariant LabelledLeakageCapacity LabelledLeakageControl SoleExitWeightGap TwoExitOverlapCap TwoHeadRepairLanes TwoHeadRepairReplay TwoHeadRepairReroot OneParentReroot RerootTerminalRows TwoHeadForcedMiss ParentReturnDeposit TwoParentWithdrawalDual TwoParentReturnPivot TwoParentOpposedBanks TwoParentOldWeight TwoParentReturnCapacity SparseParentDual NativeReturnAccounts TwoParentReverseCharge ReturnSponsorMass MissedFreshCut LateTargetReach ReturnTargetReach ReturnTargetCycles CrossValueOmissions ReturnCycleOmissions ReturnSuffixCover OmittedCycleProgress RestorationAtGate SharedExitReturn MenuEscapeGrowth LastArcGatePayment LastArcPriceTransport LastArcCompetitor LastArcDistanceConflict LastArcSeparatorSink LastArcMergePayment LastArcReturnMenu LastArcHeadDeposit LastArcMenuPayment CycleSpread EndpointBills ThirdPrice DepositTrace AttachmentLaws BoundaryReceiverWitness ReceiverMixture ReceiverRetry ReceiverRetryMerge ReceiverTwoLoss ReceiverBank CorridorOriginalBills ReceiverBankPrice ReceiverSharedBank IndependentReturnGeometry ReturnIncidenceAntichain CHRootExclusions CHRuleCatalog CHExitSuppliers CHContextCatalog; do
+  lake env lean -o ".lake/build/lib/lean/checkpoints/shen_extension/$module.olean" \
+    "checkpoints/shen_extension/$module.lean"
+done
+lake env lean -o ".lake/build/lib/lean/$pair_dir/SwappedParentRoom.olean" "$pair_dir/SwappedParentRoom.lean"
+for module in EvenCutoffDescent OneLossCutoffDescent LastArcParameterControls CutoffCapstoneEntry TwoHeadAncestorReplay FeederPrivateHeadDescent FeederPrivateHeadRepair FeederProtectedReceiver FeederDegreeSignature FeederComparisonClosure FeederCyclePeriod FeederReceiverMultiplicity FeederCycleSpill FeederJoinedComparisons FeederNativeDirections FeederRetainedIncidence FeederStrictReplay; do
+  lake env lean -o ".lake/build/lib/lean/checkpoints/shen_extension/$module.olean" "checkpoints/shen_extension/$module.lean"
+done
+# Fixed-degree endpoint files, in dependency order.
+lake build LeanCH.BR.BRHighPairGrowth LeanCH.BR.BRHighTwoPredecessor LeanCH.BR.BRNearBoundaryRows LeanCH.BR.BRsubTripleLayers LeanCH.BR.BR96 LeanCH.BR.BR45KillC LeanCH.BR.BRAcyclicPair
+degree_dir=checkpoints/shen_extension/dot_tensor_research
+degree_modules=(
+  DotDegreeSevenQ8_20261121
+  DotDegreeSevenQ7Mixed_20261121
+  DotDegreeSevenQ7EndpointProfile_20261121
+  DotDegreeSevenQ7EndpointProfileUnique_20261121
+  DotDegreeSevenQ7PrefixTwinBudget_20261121
+  DotDegreeSevenQ7RecipientPacking_20261121
+  DotDegreeSevenQ6Growth_20261121
+  DotDegreeSevenLowCutoffs_20261121
+  DotDegreeSevenQ5Order33_20261121
+  DotTightParentCarrier_20261118
+  DotDegreeSeven_20261121
+  DotDegreeSevenFourEndpoints_20261121
+  DotDegreeSevenQ4LocalGuarded_20261121
+  DotDegreeSevenQ5Prefix_20261121
+  DotDegreeSevenQ5BankGeometry_20261121
+  DotDegreeSevenQ5SpillGeometry_20261121
+  DotDegreeSevenQ5Charges_20261121
+  DotDegreeSevenQ5SameBank_20261121
+  DotDegreeSevenQ5EscortMultiplicity_20261121
+  DotDegreeSevenQ4Multiplicity_20261121
+  DotDegreeSevenQ5EscortFrames_20261121
+  DotDegreeSevenQ4GuardPayment_20261121
+  DotDegreeSevenQ4LocalTransport_20261121
+  DotDegreeSevenQ6Order41Profile_20261121
+  DotDegreeSevenQ6Order42Budget_20261121
+  DotDegreeSevenQ4Order28Budget_20261121
+  DotDegreeSevenQ4SameBank_20261121
+  DotDegreeSevenQ4Order28Assembly_20261121
+  DotDegreeSevenQ4EndpointVerified_20261121
+  DotDegreeSevenThreeEndpoints_20261121
+  DotDegreeSevenQ6SpillBanks_20261121
+  DotDegreeSevenQ6EndpointConstructors_20261121
+  DotDegreeSevenQ6EndpointAssembly_20261121
+  DotDegreeSevenQ6EndpointCyclic_20261121
+  DotDegreeSevenQ6EndpointAcyclic_20261121
+  DotDegreeSevenQ6EndpointNative_20261121
+  DotDegreeSevenQ6EndpointFinal_20261121
+  DotDegreeSevenTwoEndpoints_20261121
+  DotDegreeSevenQ7PackedEndpoint_20261121
+  DotDegreeSevenQ5BankPacking_20261121
+  DotDegreeSevenQ5Order34_20261121
+  DotDegreeSevenQ5EscortBudget_20261121
+  DotDegreeSevenQ5EscortMultiplicityFull_20261121
+  DotDegreeSevenQ5EndpointAssemblyFrames_20261121
+  DotDegreeSevenQ5EndpointAssembly_20261121
+  DotDegreeSevenQ5BankPropagation_20261121
+  DotDegreeSevenQ5EndpointSeam_20261121
+  DotDegreeSevenQ5ExactSupport_20261121
+  DotDegreeSevenQ5ExactCarriers_20261121
+  DotDegreeSevenQ5ExactReturnBank_20261121
+  DotDegreeSevenQ5ExactLayers_20261121
+  DotDegreeSevenQ5ExactSeven_20261121
+  DotDegreeSevenQ5ExactGoodSpill_20261121
+  DotDegreeSevenQ5ExactGoodReturn_20261121
+  DotDegreeSevenQ5ExactSixShape_20261121
+  DotDegreeSevenQ5EndpointAssemblyAcyclic_20261121
+  DotDegreeSevenQ5EndpointAssemblyNoSink_20261121
+  DotDegreeSevenQ5ExactEndpoint_20261121
+  DotDegreeSevenQ5EndpointAssemblyFinal_20261121
+  DegreeSevenVerified_20261121
+  DotDegreeSixQ4EscortTransfer_20261121
+  DotDegreeSixQ5Local_20261121
+  DotDegreeSixQ5Floors_20261121
+  DotDegreeSixQ5Bank_20261121
+  DotDegreeSixQ5Budget_20261121
+  DotDegreeSixCapstone_20261121
+  DotDegreeSixVerified_20261121
+  SingleOmissionPacking
+  DiagonalEight
+)
+for module in "${degree_modules[@]}"; do
+  lake env lean -o ".lake/build/lib/lean/$degree_dir/$module.olean" "$degree_dir/$module.lean"
+done
+lake env lean -o .lake/build/lib/lean/checkpoints/shen_extension/SevenDegreeCapstoneEntry.olean checkpoints/shen_extension/SevenDegreeCapstoneEntry.lean
+lake env lean -o .lake/build/lib/lean/checkpoints/shen_extension/TightBankDegreeTransfer.olean checkpoints/shen_extension/TightBankDegreeTransfer.lean
+lake env lean -o .lake/build/lib/lean/checkpoints/shen_extension/VerifiedDegreeFrontier.olean checkpoints/shen_extension/VerifiedDegreeFrontier.lean
+prefix_modules=(
+  DotDegreeEightFrontier_20261121
+  DotDegreeSevenQ7EndpointProfileTraits_20261121
+  DotDegreeSevenQ7EndpointProfileBasins_20261121
+  DotDegreeSevenQ7EndpointProfileBudget_20261121
+  DotDegreeSevenQ7EndpointProfileOmissions_20261121
+  DotDegreeSevenQ7EndpointProfileActive_20261121
+  DotDegreeSevenQ7EndpointProfileClose_20261121
+  DotDegreeSevenQ7GrowthProof_20261121
+  DotDegreeSevenQ7GrowthProofSingleton_20261121
+  DotDegreeSevenQ7EndpointProfileCapstone_20261121
+  DotDegreeEightPairCover_20261121
+  DotDegreeEightMoments_20261121
+  DotDegreeEightGram_20261121
+  DotDegreeEightOrder51_20261121
+  DotDegreeEightNarrowed_20261121
+)
+for module in "${prefix_modules[@]}"; do
+  lake env lean -o ".lake/build/lib/lean/$degree_dir/$module.olean" "$degree_dir/$module.lean"
+done
+lake env lean -o .lake/build/lib/lean/checkpoints/shen_extension/PrefixOrderFrontier.olean checkpoints/shen_extension/PrefixOrderFrontier.lean
+lake env lean -o ".lake/build/lib/lean/$degree_dir/PhysicalBankRouting.olean" "$degree_dir/PhysicalBankRouting.lean"
+for module in CycleExteriorPacking ParentCutPacking PrefixDegreeGrowth RecursivePackingRules CHForwardCatalog; do
+  lake env lean -o ".lake/build/lib/lean/checkpoints/shen_extension/$module.olean" "checkpoints/shen_extension/$module.lean"
+done
+lake env lean -o ".lake/build/lib/lean/$degree_dir/DegreeEightParentCuts.olean" "$degree_dir/DegreeEightParentCuts.lean"
+lake env lean -o .lake/build/lib/lean/checkpoints/shen_extension/ParentCutFrontier.olean checkpoints/shen_extension/ParentCutFrontier.lean
+lake env lean -o .lake/build/lib/lean/checkpoints/shen_extension/PackingForwardRules.olean checkpoints/shen_extension/PackingForwardRules.lean
+lake env lean -o ".lake/build/lib/lean/$degree_dir/DegreeEightPaperInterface.olean" "$degree_dir/DegreeEightPaperInterface.lean"
+lake build LeanCH.BR.CH.Side.ScFinsetEnumeration
+for module in OneSpareGrowth OneSpareTurns OneSpareBankPacking SharedSuccessorEquality PrivateHeadClone OneSpareTightRow OneSpareBoundary OneSpareForwardRules OneSpareBoundaryForward LocalBallTransfer GuardedLayerGrowth GuardedMixedOrder LightRowRadius SharedLayerBarrier BankReachTransfer SharedBankLedger ChildAncestorPairs GuardedFamilyRules GuardedDegreeFrontier CHFamilyDeclarations CHFamilyWorklist FamilyLoopLedger MixedFragmentEscape HeadSlotRules PeriodicDebit RootFamilyEntry FreshMenuExitRules RankedExteriorParents RankedCommonBank RankedHeadChoices RankedArcMenus RankedUnitWindow RankedMenuThreshold RankedNativeContraction RankedContractionEntry RankedUnitDescent RemoteHeadRectangle RankedLiveSources RankedContractionReplayTest MarkedRepairReplayTest WakeAfterPremiseTest; do
+  lake env lean -o ".lake/build/lib/lean/checkpoints/shen_extension/$module.olean" "checkpoints/shen_extension/$module.lean"
+done
+for module in RemoteParentPacking FundedCascade NativeCascade BypassRepair BypassDegreeDescent BypassBankReplay BypassCloneCover BypassTwoStepRow JointShortcut JointShortcutReplay SharedParentFirstHops BackwardBallBank LoneRow LoneRowCatalog WeightedJoint InsertionTests WeightedJointCatalog InsertionTestCatalog RetainedMixedCapacity RetainedRadiusLayers MinimalPowerDescent MinimumDegreeFrontier TopOvershootProfiles BoundaryHub NativeDistance AnchoredDebt ShortfallBridge RootRegularBridge ShortfallBankReplay ReachLedger ReachLedgerCatalog StrictCount ParentBankPeel SignatureRestoration BankExitRanks ReachDescentCatalog RegularFirstLayer MixedRadiusCompletion SharedHeadSuppliers StrictPairBanks FifthStripLedger ReachCompletionCatalog ReverseReachPayment ReachSlotMatching PricedReachAssignments ParentReachCapacity ReservedReachDebt OldCorridorCapacity GuardedProfileBudget InheritedProfileWindow RetainedLayerCapacity RetainedLayerOrders ConsecutiveShellBanks FullRowEscape ShellBankOrders EqualShellEscape SecondShellClasses CycleRowMultiplicity ShellCycleSupply EqualShellRows ShortCycleBalance ShellProfileCapacity BalancedShellOrder SinkReturnAncestors SinkLayerWindow SinkTransit EqualLayerTransit RootLayerTransit FullRowsOnShortestCycle CyclePrefixGrowth OneOmissionSinkBank OneOmissionTransit OneOmissionExpansion RetainedShellScores WidePrefixCapacity WideShellOrder ExpandedBankRows MixedBankSupply MixedShellUniform ClosedHeadBank ReturnBankEscape SinkBankReturn UniformSinkExclusion ThinRowTurn CommonBankPath UniformShellTurn UniformProfileCapacity SymmetricUniformProfile PhysicalCycleStock PhysicalCycleStockShells PhysicalCycleStockOrigins PhysicalCycleStockReplay PhysicalCycleStockDag PhysicalCycleStockFullLayers PhysicalCycleStockOverlap PhysicalCycleStockClassLedger PhysicalCycleStockMiddle PhysicalCycleStockPrimary PhysicalCycleStockChain PhysicalCycleStockAnchors PhysicalCycleStockWitnessReplay SecondaryCycleCohort MixedBankPayments CycleLayerTransport MixedBankScore MixedBankProfile WideBankEscape EqualMixedShells TallBankTransfer TallBankTransferBudget TallBankTransferReplay TallBankTransferFibre TallBankTransferStrong TallBankTransferWitness TallBankTransferStrongReplay TallBankTransferWitnessReplay RecipientUnionAudit RecipientUnionReplay SparseCycleReturns OneSpareCycleBudget OneSpareShellEscape ExtremalSinkReturn SingleOmissionOrigin SingleOmissionPartition BoundaryOneOmission BoundaryPrefixRank MixedRadiusPrefix OddBoundaryLayers OddShellOrder DiagonalShellTransfer TerminalLayerReturns ShellTransferCatalog ShellBankFrontier CyclicFirstLayer ProfileSinkReturns UniqueSinkReturnCapacity SinkDepthCover LowShellCycleSelection LowShellWholeCycle LowShellRecovery CycleClaimLedger AcyclicClaimPayment SharedCycleContacts UnpaidCycleClaims MarkedCycleDeficit WeakBankCompression CycleDeficitReplay CommonBankCapacity ExclusiveRouteCapacity RoutedCycleLedger GlobalCycleDeficit WidePrimaryReceipt CyclePaymentSchedule ReturningSinkBudget WideShortCycleExit WideMiddleBank WidePrimaryPayment NarrowPrimaryFrontier FullPrimaryPayment FullPrimaryComplete MeasuredCycleBudget ProperPrimaryFrontier ShortShellPayer CompleteBankScore SecondShellTransfer ShortShellSwitchReplay SwitchFamilyEntry ResidualShellDebt SwitchBooking SecondaryBookingBill SecondaryBookingPayment RoutedAccountBalance BookedSecondaryRoute BookedPrimaryArrivals SparseBankGate MixedPayerMark MixedPayerEntry CohortBalance MixedContactBill ContactBallShrink SharedExceptionGuard MixedOmissionPayment OmissionFamilyEntry MixedClaimTransfer MixedResidualDebt RecoverRoutedStock RecoveredCyclePayment TransferFamilyEntry PartialRouteSupply SimultaneousShellPayments RemainingPayerEntry FirstCyclePrefixPrice ShortFirstStock ShortFirstRecovery ExceptionalFirstBill BookedShortPrice ShortFirstFrontier TwoLayerParentCapacity ShortLargeSecondEscape MarkedMiddlePrice PureMiddleFrontier PureMiddleEntry FedMiddleTiers UniqueMiddleClaim MiddleReturnBudgets SameExteriorMiddle SameExteriorPayment CompleteWidthFrontier CompleteAccount CompleteAccountEntry ArrivalParentReserve CompleteArrivalBill PayIncomingAccounts DirectAccountEntry SecondHeadReturnGate ExteriorSinkContacts ExteriorSinkClaims ExteriorSinkPayment CyclicExteriorEntry PrefixReturnSize StrongDirectBudget OneExtraSecondShell PrimaryShellEntry SharedShellSuccessor PrimaryContactBudget FullSuccessorContact PrimaryContactClosure PrimaryContactSearch ProjectedQuotaTransfer SymbolicQuotaSweep QuotaProjectionReplay QuotaBankPromotion MixedDeletionCover QuotaLibraryPromotion FragmentScoreEquality PuncturedFragmentBudget FlatFragmentReplay FragmentHeadTransfer InheritedHeadBudget UniformFragmentFamily UniformPowerReplay PowerReceiverBudget LastShellRetention RenewedFragmentBudget RenewedShellExit FragmentTransitionCatalog OpposedPowerRows NativePowerBank NativeBankDescent ErasedPowerWitness LoneReturnedHeadReplay ShellDeficitTransfer FlatDeletionBank ShortRowHeadExit ErasedQuotaFrontier FlatTurnMatrix CompromiseQuotaTransfer CompromiseQuotaReplay AvoidedHeadQuota BoundaryRectangleReplay RectangleShellFloor BoundaryQuotaLift RectangleMissingHeads MarkedRectangleRows LabelledCompromiseRecipe CompromiseReceiverReplay PhysicalReceiverRows ReceiverColumnBudget ReceiverFullHead ReceiverSourceFrontier BoundaryShortRowReturn ReceiverReturnFork ReceiverBankReplay ReceiverReadyReplay ReceiverReturnCapacity ReceiverTightReturns ReceiverTurnCounts RetainedShortfall BoundaryDebtColumns ReceiverParentDebt ReceiverLastArcCut ReceiverShortcutPrice ReceiverCommonRepair ReceiverFullBankCover ReceiverCoveredColumns ReceiverCoverCatalog ReceiverMenuRepair ReceiverOneCover ReceiverOneCoverReplay CoverageContradictions ReceiverProtectedMenu BoundaryTightParentReach BoundaryParentQuota ReceiverRemoteBalance ReceiverPrivateReturn ReceiverPrivateReturnReplay ReceiverPrivatePacking ReceiverAlignedReplay ReceiverNeutralQuota ReceiverPrivateExits ReceiverMarkedRoot ShellExcessFork RootLowerQuotas RootLowerQuotasTest ReceiverMarkedRootTest BankAverage WideCutoffOrder FloorInduction; do
+  lake env lean -o ".lake/build/lib/lean/checkpoints/shen_extension/$module.olean" "checkpoints/shen_extension/$module.lean"
+done
+
+if [[ ${1:-} == --build-only ]]; then
+  exit 0
+fi
+
+replay_capstone

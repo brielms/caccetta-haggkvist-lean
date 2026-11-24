@@ -1,0 +1,44 @@
+name: Replay the CH research frontier
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: leanprover/lean-action@ba3fdfe5c4476c925da13bf11a005ddb47e47aee # v1
+        with:
+          auto-config: "false"
+          use-mathlib-cache: "true"
+      - name: Verify archived evidence
+        run: python3 evidence/check_snapshot.py
+      - name: Build proof dependencies
+        run: bash checkpoints/shen_extension/check_capstone.sh --build-only
+      - name: Test replay and catalog
+        run: bash checkpoints/shen_extension/check_regressions.sh
+      - name: Check coverage map against Lean
+        run: |
+          lake env lean docs/CoverageMap.lean > "$RUNNER_TEMP/map.log"
+          python3 docs/check_map.py "$RUNNER_TEMP/map.log"
+      - name: Replay the full capstone and compare the open frontier
+        run: |
+          export CH_FRONTIER_DIR="$RUNNER_TEMP/ch-frontier"
+          status=0
+          bash checkpoints/shen_extension/check_capstone.sh --replay > "$RUNNER_TEMP/replay.out" 2>&1 || status=$?
+          if [ "$status" != 1 ]; then
+            tail -c 3000 "$RUNNER_TEMP/replay.out"
+            echo "Expected Lean's open-goal exit 1, got $status. Review the new result."
+            exit 1
+          fi
+          python3 evidence/compare_frontier.py "$CH_FRONTIER_DIR"/replay.*/frontier.json
+      - name: Save the live Lean evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: capstone-replay
+          path: |
+            ${{ runner.temp }}/ch-frontier
+            ${{ runner.temp }}/replay.out
+          if-no-files-found: ignore
