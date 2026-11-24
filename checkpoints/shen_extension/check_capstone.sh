@@ -195,6 +195,10 @@ for module in RemoteParentPacking FundedCascade NativeCascade BypassRepair Bypas
   lake env lean -o ".lake/build/lib/lean/checkpoints/shen_extension/$module.olean" "checkpoints/shen_extension/$module.lean"
 done
 
+for module in SharedBankOrderTransfer PublicResults; do
+  lake env lean -o ".lake/build/lib/lean/checkpoints/shen_extension/$module.olean" "checkpoints/shen_extension/$module.lean"
+done
+
 if [[ ${1:-} == --build-only ]]; then
   exit 0
 fi

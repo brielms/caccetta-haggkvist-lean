@@ -4,9 +4,9 @@ This repository develops the [full recursive capstone](checkpoints/shen_extensio
 
 ## Results
 
-**All orders at degrees 6, 7 and 8.** Together with the classical cases through degree 5, Lean proves that for every positive order n and minimum outdegree r with 1 ≤ r ≤ 8, there is a directed cycle of length at most ⌈n/r⌉. [All-orders degree bound](checkpoints/shen_extension/QuotaProjectionReplay.lean#L54)
+**All orders through degree 8.** For every nonempty loopless digraph on n vertices and every integer r with 1 ≤ r ≤ 8, minimum outdegree at least r guarantees a directed cycle of length at most ⌈n/r⌉. This includes the classical cases through degree 5 and the project proofs for degrees 6, 7 and 8. [Lean theorem `degree_one_to_eight`](checkpoints/shen_extension/PublicResults.lean#L8)
 
-**Selected orders at degree 9.** At both 34 and 35 vertices, minimum outdegree 9 guarantees a directed cycle of length at most **4**. At these same orders, Liang and Xu’s density bounds guarantee a cycle of length at most **5** at degree 9. Their four-cycle bound of 0.28724n requires degree 10 at order 34 and degree 11 at order 35. [Shared-head bound](checkpoints/shen_extension/SharedHeadSuppliers.lean#L585) · [Ball equality](LeanCH/BR/BRTwoBallEquality.lean#L53) · [Second-neighbour witness](checkpoints/shen_extension/PowerReceiverBudget.lean#L9) · [Liang–Xu five-cycle bound](https://www.scirp.org/journal/paperinformation?paperid=20013) · [Liang–Xu four-cycle bound](https://doi.org/10.12386/A2013sxxb0049)
+**A sharper numerical bound at two orders.** On either 34 or 35 vertices, minimum outdegree at least 9 guarantees a directed cycle of length at most **4**. Liang and Xu’s five-cycle threshold (0.24817n) gives **5** at both orders. Their four-cycle threshold (0.28724n) requires degree 10 at order 34 and degree 11 at order 35. [Lean theorem `degree_nine_at_34_or_35`](checkpoints/shen_extension/PublicResults.lean#L18) · [Liang–Xu five-cycle theorem](https://content.scirp.org/pdf/AM20120700013_11769404.pdf) · [Liang–Xu four-cycle theorem](https://actamath.cjoe.ac.cn/Jwk_sxxb_cn/EN/10.12386/A2013sxxb0049)
 
 [![Coverage by minimum outdegree and integer quotient, colored by source](docs/coverage.png)](docs/coverage.html)
 
@@ -17,6 +17,7 @@ With [Elan](https://github.com/leanprover/elan), Python 3 and Bash installed, ru
 ```bash
 lake exe cache get
 bash checkpoints/shen_extension/check_capstone.sh --build-only
+lake env lean checkpoints/shen_extension/PublicResults.lean
 bash checkpoints/shen_extension/check_regressions.sh
 bash checkpoints/shen_extension/check_capstone.sh --replay
 ```

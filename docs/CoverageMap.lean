@@ -1,5 +1,6 @@
 import checkpoints.shen_extension.CompromiseQuotaReplay
 import checkpoints.shen_extension.SymbolicQuotaSweep
+import checkpoints.shen_extension.SharedBankOrderTransfer
 
 namespace LeanCH.BR.CoverageMapPreview
 open CHRuleCatalog ProjectedQuotaTransfer
@@ -14,6 +15,7 @@ def rule (n r q : ℕ) : Nat :=
   else if n < ShellBankFrontier.orderFloor q r then 6
   else if SinkDepthCover.Fits n r q then 7
   else if LowShellCycleSelection.searchedWindow n r q then 8
+  else if SharedBankOrderTransfer.Window n r q projectionFloor then 9
   else 0
 
 theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := by
@@ -30,7 +32,11 @@ theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := b
   simp [rule, show ¬p.s ≤ 8 by omega, show ¬(cutoff p = 3 ∧ p.s ≤ 9) by
     rintro ⟨h,le⟩; exact (triangle h).not_gt (by omega), quota, strip, fifth,
     Nat.not_lt_of_ge (ShellBankFrontier.native_order p bad),
-    SinkDepthCover.exclude bad, LowShellCycleSelection.outside_search bad]
+    SinkDepthCover.exclude bad, LowShellCycleSelection.outside_search bad,
+    SharedBankOrderTransfer.from_prefix bad]
+
+/-- Both degree-nine results in the README appear in the generated map. -/
+example : rule 34 9 (CH.ceilDiv 34 9) ≠ 0 ∧ rule 35 9 (CH.ceilDiv 35 9) ≠ 0 := by decide
 
 #print axioms zero_on_bad
 #eval do
