@@ -8,6 +8,7 @@ import checkpoints.shen_extension.OpposedPowerRows
 import checkpoints.shen_extension.CompromiseQuotaReplay
 import checkpoints.shen_extension.SymbolicQuotaSweep
 import checkpoints.shen_extension.WideQuotaWindow
+import checkpoints.shen_extension.ShapeClimb
 
 /-!
 # Generic exclusion rules behind the coverage map
@@ -51,6 +52,7 @@ def rule (n r q : ℕ) : Nat :=
   else if RecursivePrefixBudget.Window n r q projectionFloor then 24
   else if RenewedPrefixWitness.Window n r q projectionFloor then 25
   else if WideQuotaWindow.Window n r q projectionFloor then 26
+  else if ShapeClimb.Window n r q projectionFloor then 27
   else 0
 
 theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := by
@@ -77,7 +79,7 @@ theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := b
     AvoidedHeadQuota.window_excluded bad (AvoidedHeadQuota.available bad),
     SymbolicQuotaSweep.replay_outside bad, SingleExitProfile.at_completed bad,
     RecursivePrefixBudget.at_completed bad, RenewedPrefixWitness.at_completed bad,
-    WideQuotaWindow.from_prefix bad]
+    WideQuotaWindow.from_prefix bad, ShapeClimb.at_completed bad]
 
 /-- A nonzero cell of the map is a Caccetta–Häggkvist bound at that order and degree. -/
 theorem ch_of_rule {n r : ℕ} (D : CH.Digraph) (order : 0 < n) (positive : 0 < r)

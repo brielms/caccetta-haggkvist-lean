@@ -224,7 +224,7 @@ for module in SinkDepthReturn WideLayerReturn LayerExcess TightLayerShapes Tight
   compile "checkpoints/shen_extension/$module.lean"
 done
 
-for module in SharedBankOrderTransfer DistinctReceiverBudget RecursivePrefixBudget SingleExitProfile RenewedPrefixWitness WideQuotaWindow CoverageRules PublicResults; do
+for module in SharedBankOrderTransfer DistinctReceiverBudget RecursivePrefixBudget SingleExitProfile RenewedPrefixWitness WideQuotaWindow Wide2Cycle Wide2Ring Wide2Acyclic TightPeel ShapeClimbRoot ShapeClimbDead ShapeClimb CoverageRules PublicResults; do
   compile "checkpoints/shen_extension/$module.lean"
 done
 

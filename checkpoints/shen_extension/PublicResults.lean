@@ -51,15 +51,15 @@ theorem above_top_strip {n r : ℕ} (D : CH.Digraph) (order : 0 < n) (positive :
 
 set_option maxRecDepth 100000 in
 set_option maxHeartbeats 0 in
-/-- Outdegree nine, every order except the 26 listed ones: one instantiation of
+/-- Outdegree nine, every order except the 25 listed ones: one instantiation of
 `of_covered_cell` (orders up to 108, checked cell by cell) and `above_top_strip`. -/
 theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
     (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n 9)
-    (known : n ∉ [36,44,45,54,59,60,61,62,63,67,68,69,70,71,72,77,78,79,80,81,88,89,90,98,99,108]) :
+    (known : n ∉ [36,44,45,54,59,60,61,62,63,67,68,69,70,71,72,77,78,79,80,81,89,90,98,99,108]) :
     CH.HasDirectedCycleAtMost D n (CH.ceilDiv n 9) := by
   by_cases small : n < 109
   · have cells : ∀ m < 109, 0 < m →
-        m ∉ [36,44,45,54,59,60,61,62,63,67,68,69,70,71,72,77,78,79,80,81,88,89,90,98,99,108] →
+        m ∉ [36,44,45,54,59,60,61,62,63,67,68,69,70,71,72,77,78,79,80,81,89,90,98,99,108] →
         CoverageRules.rule m 9 (CH.ceilDiv m 9) ≠ 0 := by decide +kernel
     exact of_covered_cell D order (by decide) loopless degree (cells n small order known)
   · exact above_top_strip D order (by decide) loopless degree (by unfold CH.ceilDiv; omega)
