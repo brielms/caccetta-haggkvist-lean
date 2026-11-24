@@ -58,13 +58,12 @@ private theorem le_cut {n r : ℕ} (hr : 0 < r) : n ≤ CH.ceilDiv n r * r := by
   omega
 
 /-- **Beyond Shen's range at every degree.** Shen proved the bound for
-`n ≥ 2r² - 3r + 1`. Here it holds for `n ≥ 2r² - G·r + 1` with `G = 6` at every
-degree, `G = 7` from degree 12, `G = 8` from degree 59, `G = 9` from degree 6276,
-and every `G` with `424·G² ≤ r`. The range is written without subtraction. -/
+`n ≥ 2r² - 3r + 1`. Here it holds for `n ≥ 2r² - G·r + 1` with `G = 7` at every
+degree, `G = 8` from degree 59, `G = 9` from degree 6276, and every `G` with
+`424·G² ≤ r`. The range is written without subtraction. -/
 theorem beyond_shen {n r G : ℕ} (D : CH.Digraph) (order : 0 < n) (positive : 0 < r)
     (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n r)
-    (wide : G ≤ 6 ∨ (G = 7 ∧ 12 ≤ r) ∨ (G = 8 ∧ 59 ≤ r) ∨ (G = 9 ∧ 6276 ≤ r) ∨
-      424*(G*G) ≤ r)
+    (wide : G ≤ 7 ∨ (G = 8 ∧ 59 ≤ r) ∨ (G = 9 ∧ 6276 ≤ r) ∨ 424*(G*G) ≤ r)
     (range : 2*(r*r)+1 ≤ n+G*r) :
     CH.HasDirectedCycleAtMost D n (CH.ceilDiv n r) := by
   by_contra missing
@@ -81,16 +80,9 @@ theorem beyond_shen {n r G : ℕ} (D : CH.Digraph) (order : 0 < n) (positive : 0
   have ord : (⟨n, r, D⟩ : Input).n = n := rfl
   dsimp only at six region
   rcases region with ⟨top, low, high, _⟩ | ⟨fifth, sixth, seventh⟩
-  · rcases wide with w | ⟨w,_⟩ | ⟨w,_⟩ | ⟨w,_⟩ | w
-    · omega
-    · omega
-    · omega
-    · omega
-    · have seven : 7 ≤ G := by omega
-      have := Nat.mul_le_mul seven seven
-      omega
-  · rcases wide with w | ⟨w,_⟩ | ⟨w,d⟩ | ⟨w,d⟩ | w
-    · omega
+  · exact missing (FourthStripTopAll.cycle_fourth_strip_closed_all
+      (replay_completed_floor bad : 9 ≤ r) top order cover loopless degree)
+  · rcases wide with w | ⟨w,d⟩ | ⟨w,d⟩ | w
     · omega
     · have := sixth d
       omega
@@ -126,15 +118,15 @@ theorem strip_window_eighth {n r q g : ℕ} (D : CH.Digraph) (order : 0 < n)
 
 set_option maxRecDepth 100000 in
 set_option maxHeartbeats 0 in
-/-- Outdegree nine, every order except the 25 listed ones: one instantiation of
+/-- Outdegree nine, every order except the 20 listed ones: one instantiation of
 `of_covered_cell` (orders up to 108, checked cell by cell) and `above_top_strip`. -/
 theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
     (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n 9)
-    (known : n ∉ [36,44,45,54,59,60,61,62,63,67,68,69,70,71,72,77,78,79,80,81,89,90,98,99,108]) :
+    (known : n ∉ [36,44,45,54,59,60,61,62,63,68,69,70,71,72,78,79,80,81,98,99]) :
     CH.HasDirectedCycleAtMost D n (CH.ceilDiv n 9) := by
   by_cases small : n < 109
   · have cells : ∀ m < 109, 0 < m →
-        m ∉ [36,44,45,54,59,60,61,62,63,67,68,69,70,71,72,77,78,79,80,81,89,90,98,99,108] →
+        m ∉ [36,44,45,54,59,60,61,62,63,68,69,70,71,72,78,79,80,81,98,99] →
         CoverageRules.rule m 9 (CH.ceilDiv m 9) ≠ 0 := by decide +kernel
     exact of_covered_cell D order (by decide) loopless degree (cells n small order known)
   · exact above_top_strip D order (by decide) loopless degree (by unfold CH.ceilDiv; omega)

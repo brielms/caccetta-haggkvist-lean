@@ -1,16 +1,48 @@
 import checkpoints.shen_extension.CoverageRules
 
 namespace LeanCH.BR.CoverageMapPreview
-open CoverageRules
+open CoverageRules ProjectedQuotaTransfer
 
 /-- Both degree-nine results in the README appear in the generated map. -/
 example : rule 34 9 (CH.ceilDiv 34 9) ≠ 0 ∧ rule 35 9 (CH.ceilDiv 35 9) ≠ 0 := by decide
 
+/-- The two climb bounds of one cutoff, computed once per row. Where an earlier rule
+(degree at most eight, cutoff below two, or the top strip and above) already decides every
+cell of the row, they are not computed. -/
+def rowBounds (r q : ℕ) : ℕ × ℕ :=
+  if r ≤ 8 ∨ q < 2 ∨ 2*r-6 ≤ q then (0, 0)
+  else (ShapeClimbAt3.guardedBoundAt3 q r projectionFloor 1,
+    ShapeClimbAt.guardedBoundAt q r projectionFloor 2)
+
+/-- Each printed cell is the rule itself (the map has `q = ⌈n/r⌉`, so `n ≤ q·r`). -/
+theorem cell_eq (n r q : ℕ) (hn : n ≤ q*r) :
+    ruleWith (rowBounds r q).1 (rowBounds r q).2 n r q = rule n r q := by
+  unfold rowBounds rule
+  split
+  next h =>
+    by_cases r8 : r ≤ 8
+    · simp [ruleWith, r8]
+    by_cases q2 : q < 2
+    · simp [ruleWith, ShapeClimbAt3.WindowGWith, ShapeClimbAt.WindowGWith, show ¬2 ≤ q by omega]
+    have pos : 0 < q*r := Nat.mul_pos (by omega) (by omega)
+    have top : (2*r-6 < q ∨ (q = 2*r-6 ∧ (11 < r ∨ n < q*r))) ∨
+        (9 ≤ r ∧ q = 2*r-6 ∧ 0 < n ∧ n ≤ q*r) := by
+      generalize q*r = m at *
+      omega
+    rcases top with t | t
+    · simp [ruleWith, t]
+    · simp only [ruleWith, ite_eq_left t]
+  next => rfl
+
 #print axioms zero_on_bad
+#print axioms cell_eq
 #eval do
   for r in [1:13] do
+    let bounds := (List.range (CH.ceilDiv 275 r + 1)).map (rowBounds r)
     let cells := (List.range 275).map fun i =>
-      let id := rule (i+1) r (CH.ceilDiv (i+1) r)
+      let q := CH.ceilDiv (i+1) r
+      let (b3, b) := bounds.getD q (0, 0)
+      let id := ruleWith b3 b (i+1) r q
       Char.ofNat (if id < 10 then 48 + id else 55 + id)
     IO.println s!"ROW {r} {String.ofList cells}"
 end LeanCH.BR.CoverageMapPreview

@@ -9,6 +9,9 @@ import checkpoints.shen_extension.CompromiseQuotaReplay
 import checkpoints.shen_extension.SymbolicQuotaSweep
 import checkpoints.shen_extension.WideQuotaWindow
 import checkpoints.shen_extension.ShapeClimb
+import checkpoints.shen_extension.ShapeClimbAt
+import checkpoints.shen_extension.ShapeClimbAt3
+import checkpoints.shen_extension.FourthStripTopAll
 
 /-!
 # Generic exclusion rules behind the coverage map
@@ -24,13 +27,16 @@ Caccetta–Häggkvist bound (`ch_of_rule`).
 namespace LeanCH.BR.CoverageRules
 open CHRuleCatalog ProjectedQuotaTransfer
 
-/-- Each nonzero output names a particular checked exclusion on this input. -/
-def rule (n r q : ℕ) : Nat :=
+/-- Each nonzero output names a particular checked exclusion on this input. The two
+climb bounds at the true degree are arguments, so a caller can compute them once per
+`(q, r)`; `rule` supplies them. -/
+def ruleWith (b3 b : ℕ) (n r q : ℕ) : Nat :=
   if r ≤ 8 then 1
   else if q = 3 ∧ r ≤ 9 then 2
   else if QuotaWindow n r q 8 then 3
   else if 2*r-6 < q ∨ (q = 2*r-6 ∧ (11 < r ∨ n < q*r)) then 4
   else if 7 ≤ r ∧ q = 2*r-7 ∧ n+4 ≤ q*r then 5
+  else if 9 ≤ r ∧ q = 2*r-6 ∧ 0 < n ∧ n ≤ q*r then 30
   else if n < ShellBankFrontier.orderFloor q r then 6
   else if SinkDepthCover.Fits n r q then 7
   else if LowShellCycleSelection.searchedWindow n r q then 8
@@ -53,7 +59,15 @@ def rule (n r q : ℕ) : Nat :=
   else if RenewedPrefixWitness.Window n r q projectionFloor then 25
   else if WideQuotaWindow.Window n r q projectionFloor then 26
   else if ShapeClimb.Window n r q projectionFloor then 27
+  else if ShapeClimbAt3.WindowGWith b3 n r q projectionFloor then 28
+  else if ShapeClimbAt.WindowGWith b n r q projectionFloor then 29
   else 0
+
+/-- The reach climb up to one degree above the closed prefix, the committed-checker climb
+up to two above it. -/
+def rule (n r q : ℕ) : Nat :=
+  ruleWith (ShapeClimbAt3.guardedBoundAt3 q r projectionFloor 1)
+    (ShapeClimbAt.guardedBoundAt q r projectionFloor 2) n r q
 
 theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := by
   have floor : 9 ≤ p.s := replay_completed_floor bad
@@ -66,7 +80,14 @@ theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := b
     · omega
   have fifth : ¬(7 ≤ p.s ∧ cutoff p = 2*p.s-7 ∧ p.n+4 ≤ cutoff p*p.s) :=
     exclusion_from_run p bad .fifthLow
-  simp [rule, show ¬p.s ≤ 8 by omega, show ¬(cutoff p = 3 ∧ p.s ≤ 9) by
+  have reach : ¬ShapeClimbAt3.WindowGWith (ShapeClimbAt3.guardedBoundAt3 (cutoff p) p.s
+      projectionFloor 1) p.n p.s (cutoff p) projectionFloor := ShapeClimbAt3.at_completedG bad 1
+  have climb : ¬ShapeClimbAt.WindowGWith (ShapeClimbAt.guardedBoundAt (cutoff p) p.s
+      projectionFloor 2) p.n p.s (cutoff p) projectionFloor := ShapeClimbAt.at_completedG bad 2
+  have fourth : ¬(9 ≤ p.s ∧ cutoff p = 2*p.s-6 ∧ 0 < p.n ∧ p.n ≤ cutoff p*p.s) :=
+    fun ⟨hs, hq, hn, hnq⟩ => bad.missing
+      (FourthStripTopAll.cycle_fourth_strip_closed_all hs hq hn hnq bad.loopless bad.degree)
+  simp [rule, ruleWith, reach, climb, fourth, show ¬p.s ≤ 8 by omega, show ¬(cutoff p = 3 ∧ p.s ≤ 9) by
     rintro ⟨h,le⟩; exact (triangle h).not_gt (by omega), quota, strip, fifth,
     Nat.not_lt_of_ge (ShellBankFrontier.native_order p bad),
     SinkDepthCover.exclude bad, LowShellCycleSelection.outside_search bad,
