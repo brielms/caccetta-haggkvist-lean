@@ -12,6 +12,14 @@ This repository develops the [full recursive capstone](checkpoints/shen_extensio
 
 [Download the interactive map](https://raw.githubusercontent.com/brielms/caccetta-haggkvist-lean/main/docs/coverage.html) and open it in a browser to inspect exact orders and sources. Green marks coverage from this project beyond the comparison bounds shown. Striped gold marks overlap with [Josh P.’s unpublished degree-six manuscript](https://github.com/joshp123/solve-a-maths-problem-dont-care-which-make-no-mistakes/blob/main/paper/manuscript.md). The [Lean map theorem](docs/CoverageMap.lean) certifies the project exclusions.
 
+### Who closes what
+
+Each cell is one pair (order n, minimum outdegree r) and shows the first source that guarantees a directed cycle of length at most ⌈n/r⌉. Published results come first: [Caccetta–Häggkvist](https://www.sciencedirect.com/science/article/pii/0095895687900098) for r = 2, Hamidoune for r = 3, [Hoàng–Reed](https://www.sciencedirect.com/science/article/pii/0012365X87901221) for r = 4 and 5, [Shen](https://www.sciencedirect.com/science/article/pii/S0012365X99003234) for n ≥ 2r² − 3r + 1 and [Hladký–Král’–Norin](https://arxiv.org/abs/0908.2791) for r ≥ 0.3465n, each also through vertex deletion. Green cells are closed only by this project’s Lean proofs.
+
+![Attribution of each order n and degree r](docs/attribution-n-r.svg)
+
+`python docs/attribution_grids.py` redraws it from the Lean-printed rows in `docs/coverage.html`, using the same source order as the interactive map.
+
 With [Elan](https://github.com/leanprover/elan), Python 3 and Bash installed, run:
 
 ```bash

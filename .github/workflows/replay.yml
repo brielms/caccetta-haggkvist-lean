@@ -1,5 +1,37 @@
 name: Replay the CH research frontier
-on: [push, pull_request, workflow_dispatch]
+on:
+  # Run only when something the replay reads has changed. README, images and
+  # other documentation commits do not start a run.
+  push:
+    branches: [main]
+    paths:
+      - "**/*.lean"
+      - lakefile.toml
+      - lake-manifest.json
+      - lean-toolchain
+      - "checkpoints/**/*.sh"
+      - "checkpoints/**/*.py"
+      - "evidence/**"
+      - docs/check_map.py
+      - docs/coverage.html
+      - .github/workflows/replay.yml
+  pull_request:
+    paths:
+      - "**/*.lean"
+      - lakefile.toml
+      - lake-manifest.json
+      - lean-toolchain
+      - "checkpoints/**/*.sh"
+      - "checkpoints/**/*.py"
+      - "evidence/**"
+      - docs/check_map.py
+      - docs/coverage.html
+      - .github/workflows/replay.yml
+  workflow_dispatch:
+# A newer push to the same branch or pull request cancels the older run.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
@@ -12,10 +44,24 @@ jobs:
         with:
           auto-config: "false"
           use-mathlib-cache: "true"
+      # lean-action saves its cache before this project is built, so keep the
+      # project's own build output in a separate cache.
+      - name: Restore the project build
+        uses: actions/cache/restore@caa296126883cff596d87d8935842f9db880ef25 # same pin lean-action uses
+        with:
+          path: .lake/build
+          key: ch-build-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ hashFiles('**/*.lean') }}
+          restore-keys: |
+            ch-build-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-
       - name: Verify archived evidence
         run: python3 evidence/check_snapshot.py
       - name: Build proof dependencies
         run: bash checkpoints/shen_extension/check_capstone.sh --build-only
+      - name: Save the project build
+        uses: actions/cache/save@caa296126883cff596d87d8935842f9db880ef25 # same pin lean-action uses
+        with:
+          path: .lake/build
+          key: ch-build-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ hashFiles('**/*.lean') }}
       - name: Test replay and catalog
         run: bash checkpoints/shen_extension/check_regressions.sh
       - name: Check coverage map against Lean
@@ -42,3 +88,4 @@ jobs:
             ${{ runner.temp }}/ch-frontier
             ${{ runner.temp }}/replay.out
           if-no-files-found: ignore
+          retention-days: 14
