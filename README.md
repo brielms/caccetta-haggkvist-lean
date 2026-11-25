@@ -4,8 +4,7 @@ Goal: every loopless digraph on n vertices with minimum outdegree r has a direct
 
 ## Results ([Lean](checkpoints/shen_extension/PublicResults.lean))
 
-- CH is proved for all orders n for 1 ≤ r ≤ 8 (`degree_one_to_eight`).
-- CH holds for r = 9 and n ∈ {34, 35}: every loopless digraph on n vertices with minimum outdegree 9 has a directed cycle of length at most 4 = ⌈n/9⌉ (`degree_nine_at_34_or_35`). This improves the bound of 5 that follows from [Liang–Xu](https://content.scirp.org/pdf/AM20120700013_11769404.pdf), who prove a directed cycle of length at most 5 whenever r ≥ 0.24817n.
+- CH is proved for all orders n for 1 ≤ r ≤ 9 (`degree_one_to_nine`; degree nine alone is `degree_nine`).
 - Extension of the [Shen](https://www.sciencedirect.com/science/article/pii/S0012365X99003234) bound (`beyond_shen`):
 
 | | Degrees | CH holds for |
@@ -31,7 +30,6 @@ Also proved (every theorem named here uses the standard axioms only):
 - Degree equal to the cutoff. A loopless digraph with minimum outdegree q and 1 ≤ n ≤ `FlatRule.flatBound q` has a directed cycle of length at most q (`flat_row`).
 - Degree two above the cutoff. A loopless digraph with minimum outdegree q + 2 and 1 ≤ n ≤ `TightRule2.tightBound2 q` has a directed cycle of length at most q (`tight_row`).
 - Thin roots. A loopless digraph with minimum outdegree r and 1 ≤ n ≤ `ThinRule.thinBound q r` has a directed cycle of length at most q (`thin_row`).
-- Degree nine. CH holds for r = 9 at every n except 63 (`degree_nine_except`).
 - The coverage map. CH holds at every (n, r) whose cell in the map is nonzero (`of_covered_cell`).
 
 ![Who closes each order n and degree r](docs/attribution-n-r.svg)

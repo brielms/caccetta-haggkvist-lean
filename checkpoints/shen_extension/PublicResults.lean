@@ -194,19 +194,18 @@ set_option maxRecDepth 100000 in
 set_option maxHeartbeats 0 in
 set_option synthInstance.maxSize 4096 in
 set_option synthInstance.maxHeartbeats 0 in
-/-- Outdegree nine, every order except the one listed: one instantiation of
+/-- Outdegree nine, every order: one instantiation of
 `of_covered_cell` (orders up to 108, checked cell by cell) and `above_top_strip`. The seeded
 reach bound and the collar, flat, tight and thin bounds enter the cell check as the literals
 `DegreeNineReach.nineReach`, `DegreeNineReach.nineCollar`, `DegreeNineReach.nineFlat`,
 `DegreeNineReach.nineTight`, `DegreeNineReach.nineThin`, proved lower bounds
 (`CoverageRules.rule_ne_zero`). -/
-theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
-    (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n 9)
-    (known : n ∉ [63]) :
+theorem degree_nine {n : ℕ} (D : CH.Digraph) (order : 0 < n)
+    (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n 9) :
     CH.HasDirectedCycleAtMost D n (CH.ceilDiv n 9) := by
   by_cases small : n < 109
   · -- The cheap cells first, so that rules 1–32 are evaluated only where none of them applies.
-    have cells : ∀ m < 109, 0 < m → m ∉ [63] →
+    have cells : ∀ m < 109, 0 < m →
         CoverageRules.collarCell (DegreeNineReach.nineCollar (CH.ceilDiv m 9)) m 9
             (CH.ceilDiv m 9) ≠ 0 ∨
           CoverageRules.flatCell (DegreeNineReach.nineFlat (CH.ceilDiv m 9)) m 9
@@ -220,6 +219,7 @@ theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
           CoverageRules.nineFiftyFourCell m 9 (CH.ceilDiv m 9) ≠ 0 ∨
           CoverageRules.nineSixtyTwoCell m 9 (CH.ceilDiv m 9) ≠ 0 ∨
           CoverageRules.nineSeventyTwoCell m 9 (CH.ceilDiv m 9) ≠ 0 ∨
+          CoverageRules.nineSixtyThreeCell m 9 (CH.ceilDiv m 9) ≠ 0 ∨
           CoverageRules.ruleWith (DegreeNineReach.nineReach (CH.ceilDiv m 9)) 0 0 m 9
             (CH.ceilDiv m 9) ≠ 0 := by decide +kernel
     exact of_covered_cell D order (by decide) loopless degree
@@ -227,14 +227,25 @@ theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
         (Nat.zero_le _) (DegreeNineReach.nineCollar_le _) (DegreeNineReach.nineFlat_le _)
         (DegreeNineReach.nineTight_le _) (DegreeNineReach.nineThin_le _)
         (by
-          rcases cells n small order known with c | c | c | c | c | c | c | c | c | c
+          rcases cells n small order with c | c | c | c | c | c | c | c | c | c | c
           exacts [.inr (.inl c), .inr (.inr (.inl c)), .inr (.inr (.inr (.inl c))),
             .inr (.inr (.inr (.inr (.inl c)))), .inr (.inr (.inr (.inr (.inr (.inl c))))),
             .inr (.inr (.inr (.inr (.inr (.inr (.inl c)))))),
             .inr (.inr (.inr (.inr (.inr (.inr (.inr (.inl c))))))),
             .inr (.inr (.inr (.inr (.inr (.inr (.inr (.inr (.inl c)))))))),
-            .inr (.inr (.inr (.inr (.inr (.inr (.inr (.inr (.inr c)))))))), .inl c]))
+            .inr (.inr (.inr (.inr (.inr (.inr (.inr (.inr (.inr (.inl c))))))))),
+            .inr (.inr (.inr (.inr (.inr (.inr (.inr (.inr (.inr (.inr c))))))))), .inl c]))
   · exact above_top_strip D order (by decide) loopless degree (by unfold CH.ceilDiv; omega)
+
+/-- The Caccetta–Häggkvist cycle bound for every positive order at degrees one through nine. -/
+theorem degree_one_to_nine {n r : ℕ} (D : CH.Digraph) (order : 0 < n)
+    (positive : 1 ≤ r) (upper : r ≤ 9) (loopless : CH.Loopless D n)
+    (degree : CH.MinOutdegreeAtLeast D n r) :
+    CH.HasDirectedCycleAtMost D n (CH.ceilDiv n r) := by
+  rcases Nat.lt_or_ge r 9 with low | high
+  · exact degree_one_to_eight D order positive (by omega) loopless degree
+  · obtain rfl : r = 9 := by omega
+    exact degree_nine D order loopless degree
 
 /-- info: 'LeanCH.Results.beyond_shen' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
@@ -266,9 +277,12 @@ theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
 /-- info: 'LeanCH.Results.thin_row' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms thin_row
-/-- info: 'LeanCH.Results.degree_nine_except' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+/-- info: 'LeanCH.Results.degree_nine' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
-#print axioms degree_nine_except
+#print axioms degree_nine
+/-- info: 'LeanCH.Results.degree_one_to_nine' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms degree_one_to_nine
 /-- info: 'LeanCH.Results.of_covered_cell' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms of_covered_cell
