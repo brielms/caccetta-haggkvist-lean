@@ -11,6 +11,7 @@ import checkpoints.shen_extension.WideQuotaWindow
 import checkpoints.shen_extension.ShapeClimb
 import checkpoints.shen_extension.ShapeClimbAt
 import checkpoints.shen_extension.ShapeClimbAt3
+import checkpoints.shen_extension.ShapeClimbMono
 import checkpoints.shen_extension.FourthStripTopAll
 import checkpoints.shen_extension.FifthStripAll
 
@@ -69,13 +70,15 @@ def ruleWith (b3 b b3' : ℕ) (n r q : ℕ) : Nat :=
 /-- The reach climb up to seven degrees above the closed prefix, used by rule 32 below the
 fifth strip (`q ≤ 2r - 8`). -/
 def reachBound32 (q r : ℕ) : ℕ :=
-  if q + 8 ≤ 2*r then ShapeClimbAt3.guardedBoundAt3 q r projectionFloor 7 else 0
+  if q + 8 ≤ 2*r then ShapeClimbMono.guardedBoundM q r projectionFloor 7 else 0
 
 /-- The reach climb up to one degree above the closed prefix, the committed-checker climb
 up to two above it, and the reach climb again up to seven above it below the fifth strip
-(rule 32; the map evaluates it with `ShapeClimbFast.guardedBoundAt3F`, proved equal). -/
+(rule 32). Both reach bounds are the seeded climb of `ShapeClimbMono` (floors of the cutoff
+below as starting values, strict and tight-pair gains at the middle); the map
+evaluates them with `ShapeClimbMono.guardedBoundMF`, proved equal. -/
 def rule (n r q : ℕ) : Nat :=
-  ruleWith (ShapeClimbAt3.guardedBoundAt3 q r projectionFloor 1)
+  ruleWith (ShapeClimbMono.guardedBoundM q r projectionFloor 1)
     (ShapeClimbAt.guardedBoundAt q r projectionFloor 2) (reachBound32 q r) n r q
 
 theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := by
@@ -89,15 +92,15 @@ theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := b
     · omega
   have fifth : ¬(7 ≤ p.s ∧ cutoff p = 2*p.s-7 ∧ p.n+4 ≤ cutoff p*p.s) :=
     exclusion_from_run p bad .fifthLow
-  have reach : ¬ShapeClimbAt3.WindowGWith (ShapeClimbAt3.guardedBoundAt3 (cutoff p) p.s
-      projectionFloor 1) p.n p.s (cutoff p) projectionFloor := ShapeClimbAt3.at_completedG bad 1
+  have reach : ¬ShapeClimbAt3.WindowGWith (ShapeClimbMono.guardedBoundM (cutoff p) p.s
+      projectionFloor 1) p.n p.s (cutoff p) projectionFloor := ShapeClimbMono.at_completedGM bad 1
   have climb : ¬ShapeClimbAt.WindowGWith (ShapeClimbAt.guardedBoundAt (cutoff p) p.s
       projectionFloor 2) p.n p.s (cutoff p) projectionFloor := ShapeClimbAt.at_completedG bad 2
   have reach3 : ¬ShapeClimbAt3.WindowGWith (reachBound32 (cutoff p) p.s) p.n p.s (cutoff p)
       projectionFloor := by
     unfold reachBound32
     split
-    · exact ShapeClimbAt3.at_completedG bad 7
+    · exact ShapeClimbMono.at_completedGM bad 7
     · exact fun ⟨_, _, _, pos, le⟩ => by omega
   have fourth : ¬(9 ≤ p.s ∧ cutoff p = 2*p.s-6 ∧ 0 < p.n ∧ p.n ≤ cutoff p*p.s) :=
     fun ⟨hs, hq, hn, hnq⟩ => bad.missing
@@ -128,6 +131,35 @@ theorem ch_of_rule {n r : ℕ} (D : CH.Digraph) (order : 0 < n) (positive : 0 < 
   by_contra missing
   exact cell (zero_on_bad ⟨n, r, D⟩ ⟨order, positive, loopless, degree, missing⟩)
 
+private theorem ite_mono {c : Prop} [Decidable c] {k a b : ℕ} (hk : k ≠ 0)
+    (h : a ≠ 0 → b ≠ 0) : (if c then k else a) ≠ 0 → (if c then k else b) ≠ 0 := by
+  split_ifs
+  · exact fun _ => hk
+  · exact h
+
+/-- A covered cell stays covered when the three climb bounds grow. A caller may therefore
+replace each bound by any proved lower bound, for instance a literal. -/
+theorem ruleWith_mono {b3 b b3' c3 c c3' n r q : ℕ} (h3 : b3 ≤ c3) (h : b ≤ c) (h3' : b3' ≤ c3') :
+    ruleWith b3 b b3' n r q ≠ 0 → ruleWith c3 c c3' n r q ≠ 0 := by
+  unfold ruleWith
+  repeat (refine ite_mono (by decide) ?_)
+  simp only [ShapeClimbAt3.WindowGWith, ShapeClimbAt.WindowGWith]
+  intro cell
+  split_ifs at cell ⊢ <;> omega
+
+/-- `rule` with the climb bounds computed by the pruned evaluations of `ShapeClimbFast` and
+`ShapeClimbMono`. A kernel check of many cells should go through this form. -/
+def ruleFast (n r q : ℕ) : Nat :=
+  ruleWith (ShapeClimbMono.guardedBoundMF q r projectionFloor 1)
+    (ShapeClimbFast.guardedBoundAtF q r projectionFloor 2)
+    (if q + 8 ≤ 2*r then ShapeClimbMono.guardedBoundMF q r projectionFloor 7 else 0) n r q
+
+theorem rule_eq_fast (n r q : ℕ) : rule n r q = ruleFast n r q := by
+  simp only [rule, ruleFast, reachBound32, ShapeClimbMono.guardedBoundMF_eq,
+    ShapeClimbFast.guardedBoundAtF_eq]
+
 #print axioms zero_on_bad
 #print axioms ch_of_rule
+#print axioms rule_eq_fast
+#print axioms ruleWith_mono
 end LeanCH.BR.CoverageRules

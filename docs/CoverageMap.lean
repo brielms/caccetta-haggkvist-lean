@@ -1,5 +1,5 @@
 import checkpoints.shen_extension.CoverageRules
-import checkpoints.shen_extension.ShapeClimbFast
+import checkpoints.shen_extension.ShapeClimbMono
 
 namespace LeanCH.BR.CoverageMapPreview
 open CoverageRules ProjectedQuotaTransfer
@@ -8,7 +8,7 @@ open CoverageRules ProjectedQuotaTransfer
 example : rule 34 9 (CH.ceilDiv 34 9) ≠ 0 ∧ rule 35 9 (CH.ceilDiv 35 9) ≠ 0 := by decide
 
 /-- The three climb bounds of one cutoff, computed once per row by the fast evaluation
-`ShapeClimbFast` (proved equal to `ShapeClimbAt3.guardedBoundAt3` and
+`ShapeClimbFast` and `ShapeClimbMono` (proved equal to `ShapeClimbMono.guardedBoundM` and
 `ShapeClimbAt.guardedBoundAt`). The reach bound is computed once and serves rules 28 and 32.
 Where an earlier rule (degree at most eight, cutoff below two, or the top strip and above)
 already decides every cell of the row, or neither reach rule applies, it is not computed. -/
@@ -16,7 +16,7 @@ def rowBounds (r q : ℕ) : ℕ × ℕ × ℕ :=
   if r ≤ 8 ∨ q < 2 ∨ 2*r-6 ≤ q then (0, 0, 0)
   else
     let b3 := if r ≤ projectionFloor + 1 ∨ q + 8 ≤ 2*r then
-      ShapeClimbFast.guardedBoundAt3F q r projectionFloor 7 else 0
+      ShapeClimbMono.guardedBoundMF q r projectionFloor 7 else 0
     (if r ≤ projectionFloor + 1 then b3 else 0,
       ShapeClimbFast.guardedBoundAtF q r projectionFloor 2, if q + 8 ≤ 2*r then b3 else 0)
 
@@ -41,15 +41,15 @@ theorem cell_eq (n r q : ℕ) (hn : n ≤ q*r) :
   next =>
     have e1 : (if r ≤ projectionFloor + 1 then
         (if r ≤ projectionFloor + 1 ∨ q + 8 ≤ 2*r then
-          ShapeClimbFast.guardedBoundAt3F q r projectionFloor 7 else 0) else 0) =
-        ShapeClimbAt3.guardedBoundAt3 q r projectionFloor 1 := by
-      simp only [ShapeClimbFast.guardedBoundAt3F_eq, ShapeClimbAt3.guardedBoundAt3]
+          ShapeClimbMono.guardedBoundMF q r projectionFloor 7 else 0) else 0) =
+        ShapeClimbMono.guardedBoundM q r projectionFloor 1 := by
+      simp only [ShapeClimbMono.guardedBoundMF_eq, ShapeClimbMono.guardedBoundM]
       split_ifs <;> first | rfl | omega
     have e2 : (if q + 8 ≤ 2*r then
         (if r ≤ projectionFloor + 1 ∨ q + 8 ≤ 2*r then
-          ShapeClimbFast.guardedBoundAt3F q r projectionFloor 7 else 0) else 0) =
+          ShapeClimbMono.guardedBoundMF q r projectionFloor 7 else 0) else 0) =
         reachBound32 q r := by
-      simp only [reachBound32, ShapeClimbFast.guardedBoundAt3F_eq]
+      simp only [reachBound32, ShapeClimbMono.guardedBoundMF_eq]
       split_ifs <;> first | rfl | omega
     simp only [e1, e2, ShapeClimbFast.guardedBoundAtF_eq]
 

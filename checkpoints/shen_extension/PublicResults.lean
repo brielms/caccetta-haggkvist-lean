@@ -1,6 +1,8 @@
 import checkpoints.shen_extension.CoverageRules
+import checkpoints.shen_extension.DegreeNineReach
 import checkpoints.shen_extension.FifthStripAllEven
 import checkpoints.shen_extension.WindowSchedule
+import checkpoints.shen_extension.TightWindow
 import checkpoints.shen_extension.CumulativeDeficitSharp
 import checkpoints.shen_extension.SixthStripSharp
 
@@ -117,19 +119,43 @@ theorem strip_window_eighth {n r q g : ℕ} (D : CH.Digraph) (order : 0 < n)
     CH.HasDirectedCycleAtMost D n q :=
   Window.variable_window_rec gap small square order room loopless degree
 
+/-- Strip windows with the tight pair. For any gap `g` with `3g ≤ 2r`, a digraph of
+order at most `(2r - g)·r - g(g-3)/2` has a cycle of length at most `2r - g`; for even
+`g ≥ 4` order `(2r - g)·r + 1 - (g-2)²/2` suffices. -/
+theorem strip_window_tight {n r q g : ℕ} (D : CH.Digraph) (order : 0 < n)
+    (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n r)
+    (gap : q+g = 2*r) (one : 1 ≤ g) (small : 3*g ≤ 2*r)
+    (room : 2*n+g*(g-3) ≤ 2*(q*r) ∨ (g%2 = 0 ∧ 4 ≤ g ∧ 2*n+(g-2)*(g-2) ≤ 2*(q*r)+2)) :
+    CH.HasDirectedCycleAtMost D n q :=
+  TightWindow.variable_window_tight gap one small order room loopless degree
+
+/-- The recursive window with the tight pair: slack `g(g+4)/8`, for gaps with
+`2g + 2 ≤ r` and `g² ≤ 8r`. -/
+theorem strip_window_eighth_tight {n r q g : ℕ} (D : CH.Digraph) (order : 0 < n)
+    (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n r)
+    (gap : q+g = 2*r) (small : 2*g+2 ≤ r) (square : g*g ≤ 8*r)
+    (room : 8*n+g*(g+4) ≤ 8*(q*r)+7) :
+    CH.HasDirectedCycleAtMost D n q :=
+  TightWindow.variable_window_rec_tight gap small square order room loopless degree
+
 set_option maxRecDepth 100000 in
 set_option maxHeartbeats 0 in
-/-- Outdegree nine, every order except the 20 listed ones: one instantiation of
-`of_covered_cell` (orders up to 108, checked cell by cell) and `above_top_strip`. -/
+/-- Outdegree nine, every order except the 17 listed ones: one instantiation of
+`of_covered_cell` (orders up to 108, checked cell by cell) and `above_top_strip`. The seeded
+reach bound enters the cell check as the literal `DegreeNineReach.nineReach`, a proved lower
+bound (`CoverageRules.ruleWith_mono`). -/
 theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
     (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n 9)
-    (known : n ∉ [36,44,45,54,59,60,61,62,63,68,69,70,71,72,78,79,80,81,98,99]) :
+    (known : n ∉ [36,44,45,54,60,61,62,63,68,69,70,71,72,78,79,80,81]) :
     CH.HasDirectedCycleAtMost D n (CH.ceilDiv n 9) := by
   by_cases small : n < 109
   · have cells : ∀ m < 109, 0 < m →
-        m ∉ [36,44,45,54,59,60,61,62,63,68,69,70,71,72,78,79,80,81,98,99] →
-        CoverageRules.rule m 9 (CH.ceilDiv m 9) ≠ 0 := by decide +kernel
-    exact of_covered_cell D order (by decide) loopless degree (cells n small order known)
+        m ∉ [36,44,45,54,60,61,62,63,68,69,70,71,72,78,79,80,81] →
+        CoverageRules.ruleWith (DegreeNineReach.nineReach (CH.ceilDiv m 9)) 0 0 m 9
+          (CH.ceilDiv m 9) ≠ 0 := by decide +kernel
+    exact of_covered_cell D order (by decide) loopless degree
+      (CoverageRules.ruleWith_mono (DegreeNineReach.nineReach_le _) (Nat.zero_le _)
+        (Nat.zero_le _) (cells n small order known))
   · exact above_top_strip D order (by decide) loopless degree (by unfold CH.ceilDiv; omega)
 
 /-- info: 'LeanCH.Results.beyond_shen' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -141,6 +167,12 @@ theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
 /-- info: 'LeanCH.Results.strip_window_eighth' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms strip_window_eighth
+/-- info: 'LeanCH.Results.strip_window_tight' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms strip_window_tight
+/-- info: 'LeanCH.Results.strip_window_eighth_tight' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms strip_window_eighth_tight
 /-- info: 'LeanCH.Results.above_top_strip' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms above_top_strip
