@@ -2,6 +2,8 @@ import checkpoints.shen_extension.CoverageRules
 import checkpoints.shen_extension.ShapeClimbMono
 import checkpoints.shen_extension.CollarRule
 import checkpoints.shen_extension.FlatRule
+import checkpoints.shen_extension.TightRule2
+import checkpoints.shen_extension.ThinRule
 
 namespace LeanCH.BR.CoverageMapPreview
 open CoverageRules ProjectedQuotaTransfer
@@ -28,12 +30,15 @@ def rowCollar (r q : ℕ) : ℕ := if r = q + 1 then CollarRule.collarBoundF q e
 /-- The flat bound of one cutoff, computed once per row; only the row `r = q` uses it. -/
 def rowFlat (r q : ℕ) : ℕ := if r = q then FlatRule.flatBoundF q else 0
 
-/-- A printed cell: rules 1–32 with the row's climb bounds, else the collar rule, else the
-flat rule. -/
-def cellWith (b3 b b3' b4 b5 n r q : ℕ) : ℕ :=
-  if ruleWith b3 b b3' n r q ≠ 0 then ruleWith b3 b b3' n r q
-  else if collarCell b4 n r q ≠ 0 then collarCell b4 n r q
-  else flatCell b5 n r q
+/-- The tight bound of one cutoff, computed once per row; only the row `r = q + 2` uses it, and
+only up to the cutoff 9 (`CoverageRules.tightCell`, an evaluation-cost cap). -/
+def rowTight (r q : ℕ) : ℕ := if r = q + 2 ∧ q ≤ 9 then TightRule2.tightBound2F q else 0
+
+/-- The thin bound of one cutoff, computed once per row. Outside `9 ≤ r`, `q < 2r - 6` rules
+1–32 already decide every printed cell (`base_ne_zero`), and above `q = 12` the thin cell is off
+(`CoverageRules.thinCell`, an evaluation-cost cap), so it is not computed there. -/
+def rowThin (r q : ℕ) : ℕ :=
+  if 9 ≤ r ∧ q + 6 < 2*r ∧ q ≤ 12 then ThinRule.thinBoundF q r else 0
 
 /-- Rules 1–32 of a printed cell are those of the rule (the map has `q = ⌈n/r⌉`, so
 `n ≤ q·r`). -/
@@ -69,11 +74,37 @@ theorem base_eq (n r q : ℕ) (hn : n ≤ q*r) :
       split_ifs <;> first | rfl | omega
     simp only [e1, e2, ShapeClimbFast.guardedBoundAtF_eq]
 
+private theorem ite_ne {c : Prop} [Decidable c] {k a : ℕ} (hk : k ≠ 0) (h : a ≠ 0) :
+    (if c then k else a) ≠ 0 := by
+  split
+  · exact hk
+  · exact h
+
+/-- Outside `9 ≤ r`, `q < 2r - 6`, rules 1–32 decide every printed cell. -/
+theorem base_ne_zero (n r q : ℕ) (hn : n ≤ q*r) (h : ¬(9 ≤ r ∧ q + 6 < 2*r)) :
+    ruleBase n r q ≠ 0 := by
+  unfold ruleBase ruleWith
+  by_cases r8 : r ≤ 8
+  · rw [ite_eq_left r8]
+    decide
+  have pos : 0 < q*r := Nat.mul_pos (by omega) (by omega)
+  have top : (2*r-6 < q ∨ (q = 2*r-6 ∧ (11 < r ∨ n < q*r))) ∨
+      (9 ≤ r ∧ q = 2*r-6 ∧ 0 < n ∧ n ≤ q*r) := by
+    generalize q*r = m at *
+    omega
+  refine ite_ne (by decide) (ite_ne (by decide) (ite_ne (by decide) ?_))
+  rcases top with t | t
+  · rw [ite_eq_left t]
+    decide
+  · refine ite_ne (by decide) (ite_ne (by decide) ?_)
+    rw [ite_eq_left t]
+    decide
+
 /-- Each printed cell is the rule itself. -/
 theorem cell_eq (n r q : ℕ) (hn : n ≤ q*r) :
     cellWith (rowBounds r q).1 (rowBounds r q).2.1 (rowBounds r q).2.2 (rowCollar r q)
-      (rowFlat r q) n r q = rule n r q := by
-  unfold cellWith rule
+      (rowFlat r q) (rowTight r q) (rowThin r q) n r q = rule n r q := by
+  unfold cellWith cellsWith rule
   rw [base_eq n r q hn]
   have collar : collarCell (rowCollar r q) n r q = collarCell (CollarRule.collarBound q) n r q := by
     unfold rowCollar collarCell
@@ -85,17 +116,29 @@ theorem cell_eq (n r q : ℕ) (hn : n ≤ q*r) :
     by_cases row : r = q
     · simp only [row, ↓reduceIte, FlatRule.flatBoundF_eq]
     · simp only [row, false_and, ↓reduceIte]
-  rw [collar, flat]
+  have tight : tightCell (rowTight r q) n r q = tightCell (TightRule2.tightBound2 q) n r q := by
+    unfold rowTight tightCell
+    rw [TightRule2.tightBound2F_eq]
+    split_ifs <;> first | rfl | omega
+  rw [collar, flat, tight]
+  by_cases w : 9 ≤ r ∧ q + 6 < 2*r
+  · have thin : thinCell (rowThin r q) n r q = thinCell (ThinRule.thinBound q r) n r q := by
+      unfold rowThin thinCell
+      rw [ThinRule.thinBoundF_eq]
+      split_ifs <;> first | rfl | omega
+    rw [thin]
+  · exact firstNZ_cons_of_ne (base_ne_zero n r q hn w) _ _
 
 #print axioms zero_on_bad
 #print axioms cell_eq
 #eval do
   for r in [1:13] do
-    let bounds := (List.range (CH.ceilDiv 275 r + 1)).map (fun q => (rowBounds r q, rowCollar r q, rowFlat r q))
+    let bounds := (List.range (CH.ceilDiv 275 r + 1)).map (fun q =>
+      (rowBounds r q, rowCollar r q, rowFlat r q, rowTight r q, rowThin r q))
     let cells := (List.range 275).map fun i =>
       let q := CH.ceilDiv (i+1) r
-      let ((b3, b, b3'), b4, b5) := bounds.getD q ((0, 0, 0), 0, 0)
-      let id := cellWith b3 b b3' b4 b5 (i+1) r q
-      Char.ofNat (if id < 10 then 48 + id else 55 + id)
+      let ((b3, b, b3'), bc, bf, bt, bh) := bounds.getD q ((0, 0, 0), 0, 0, 0, 0)
+      let id := cellWith b3 b b3' bc bf bt bh (i+1) r q
+      Char.ofNat (if id < 10 then 48 + id else if id < 36 then 55 + id else 61 + id)
     IO.println s!"ROW {r} {String.ofList cells}"
 end LeanCH.BR.CoverageMapPreview

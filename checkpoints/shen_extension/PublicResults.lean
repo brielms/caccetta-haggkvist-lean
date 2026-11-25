@@ -164,30 +164,68 @@ theorem flat_row {n q : ℕ} (D : CH.Digraph) (order : 0 < n) (loopless : CH.Loo
   rw [Finset.card_range] at this
   omega
 
+/-- The tight rule on the row `r = q + 2`: a directed cycle of length at most `q` whenever
+`n ≤ TightRule2.tightBound2 q` (the second collar with the floors of tight and loose roots). -/
+theorem tight_row {n q : ℕ} (D : CH.Digraph) (order : 0 < n) (loopless : CH.Loopless D n)
+    (degree : CH.MinOutdegreeAtLeast D n (q+2)) (small : n ≤ TightRule2.tightBound2 q) :
+    CH.HasDirectedCycleAtMost D n q := by
+  by_contra missing
+  have free : BRq2.QFree D (Finset.range n) q := BRq2.qfree_of_noShort loopless missing
+  have deg : ∀ v ∈ Finset.range n, q + 2 ≤ (BRq3.outN D (Finset.range n) v).card :=
+    fun v hv => Compose.FloorSix.out_card degree (Finset.mem_range.mp hv)
+  have := TightRule2.tightBound2_sound free ⟨0, Finset.mem_range.mpr order⟩ deg
+  rw [Finset.card_range] at this
+  omega
+
+/-- The thin-root count at any degree `r`: a directed cycle of length at most `q` whenever
+`n ≤ ThinRule.thinBound q r` (zero unless `4 ≤ q` and `r ≤ 2q - 1`). -/
+theorem thin_row {n q r : ℕ} (D : CH.Digraph) (order : 0 < n) (loopless : CH.Loopless D n)
+    (degree : CH.MinOutdegreeAtLeast D n r) (small : n ≤ ThinRule.thinBound q r) :
+    CH.HasDirectedCycleAtMost D n q := by
+  by_contra missing
+  have free : BRq2.QFree D (Finset.range n) q := BRq2.qfree_of_noShort loopless missing
+  have deg : ∀ v ∈ Finset.range n, r ≤ (BRq3.outN D (Finset.range n) v).card :=
+    fun v hv => Compose.FloorSix.out_card degree (Finset.mem_range.mp hv)
+  have := ThinRule.thinBound_sound free ⟨0, Finset.mem_range.mpr order⟩ deg
+  rw [Finset.card_range] at this
+  omega
+
 set_option maxRecDepth 100000 in
 set_option maxHeartbeats 0 in
-/-- Outdegree nine, every order except the 13 listed ones: one instantiation of
+set_option synthInstance.maxSize 4096 in
+set_option synthInstance.maxHeartbeats 0 in
+/-- Outdegree nine, every order except the 5 listed ones: one instantiation of
 `of_covered_cell` (orders up to 108, checked cell by cell) and `above_top_strip`. The seeded
-reach bound, the collar bound and the flat bound enter the cell check as the literals
-`DegreeNineReach.nineReach`, `DegreeNineReach.nineCollar`, `DegreeNineReach.nineFlat`, proved lower bounds
+reach bound and the collar, flat, tight and thin bounds enter the cell check as the literals
+`DegreeNineReach.nineReach`, `DegreeNineReach.nineCollar`, `DegreeNineReach.nineFlat`,
+`DegreeNineReach.nineTight`, `DegreeNineReach.nineThin`, proved lower bounds
 (`CoverageRules.rule_ne_zero`). -/
 theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
     (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n 9)
-    (known : n ∉ [36,44,45,54,60,61,62,63,70,71,72,80,81]) :
+    (known : n ∉ [36,54,62,63,72]) :
     CH.HasDirectedCycleAtMost D n (CH.ceilDiv n 9) := by
   by_cases small : n < 109
-  · have cells : ∀ m < 109, 0 < m →
-        m ∉ [36,44,45,54,60,61,62,63,70,71,72,80,81] →
-        CoverageRules.ruleWith (DegreeNineReach.nineReach (CH.ceilDiv m 9)) 0 0 m 9
-            (CH.ceilDiv m 9) ≠ 0 ∨
-          CoverageRules.collarCell (DegreeNineReach.nineCollar (CH.ceilDiv m 9)) m 9
+  · -- The cheap cells first, so that rules 1–32 are evaluated only where none of them applies.
+    have cells : ∀ m < 109, 0 < m → m ∉ [36,54,62,63,72] →
+        CoverageRules.collarCell (DegreeNineReach.nineCollar (CH.ceilDiv m 9)) m 9
             (CH.ceilDiv m 9) ≠ 0 ∨
           CoverageRules.flatCell (DegreeNineReach.nineFlat (CH.ceilDiv m 9)) m 9
+            (CH.ceilDiv m 9) ≠ 0 ∨
+          CoverageRules.tightCell (DegreeNineReach.nineTight (CH.ceilDiv m 9)) m 9
+            (CH.ceilDiv m 9) ≠ 0 ∨
+          CoverageRules.thinCell (DegreeNineReach.nineThin (CH.ceilDiv m 9)) m 9
+            (CH.ceilDiv m 9) ≠ 0 ∨
+          CoverageRules.nineFiveCell m 9 (CH.ceilDiv m 9) ≠ 0 ∨
+          CoverageRules.ruleWith (DegreeNineReach.nineReach (CH.ceilDiv m 9)) 0 0 m 9
             (CH.ceilDiv m 9) ≠ 0 := by decide +kernel
     exact of_covered_cell D order (by decide) loopless degree
       (CoverageRules.rule_ne_zero (DegreeNineReach.nineReach_le _) (Nat.zero_le _)
         (Nat.zero_le _) (DegreeNineReach.nineCollar_le _) (DegreeNineReach.nineFlat_le _)
-        (cells n small order known))
+        (DegreeNineReach.nineTight_le _) (DegreeNineReach.nineThin_le _)
+        (by
+          rcases cells n small order known with c | c | c | c | c | c
+          exacts [.inr (.inl c), .inr (.inr (.inl c)), .inr (.inr (.inr (.inl c))),
+            .inr (.inr (.inr (.inr (.inl c)))), .inr (.inr (.inr (.inr (.inr c)))), .inl c]))
   · exact above_top_strip D order (by decide) loopless degree (by unfold CH.ceilDiv; omega)
 
 /-- info: 'LeanCH.Results.beyond_shen' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -214,6 +252,12 @@ theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
 /-- info: 'LeanCH.Results.flat_row' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms flat_row
+/-- info: 'LeanCH.Results.tight_row' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms tight_row
+/-- info: 'LeanCH.Results.thin_row' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms thin_row
 /-- info: 'LeanCH.Results.degree_nine_except' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms degree_nine_except

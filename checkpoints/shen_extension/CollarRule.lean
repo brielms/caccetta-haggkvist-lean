@@ -1,15 +1,19 @@
 import checkpoints.shen_extension.ShapeClimbX
 import checkpoints.shen_extension.ShapeClimbFat
+import checkpoints.shen_extension.ShapeClimbAvoid
 import checkpoints.shen_extension.CollarBound
+import checkpoints.shen_extension.CollarRowDips3
 
 /-!
 # The collar rule: an order bound on the row `r = q + 1`
 
 At degree `r = q + 1` the heads of a root are exactly enough for one loop of length `q + 1`.
 
-* `floorsC q`: the seeded reach climb at degree `q + 1` with the collar dip
-  (`ShapeClimbX.collarDip`) added to the checker.
-* `fatC q`: the climb for fat roots (`ShapeClimbFat.layersFat`) over those floors.
+* `floorsC q`: the seeded reach climb at degree `q + 1` with the proved row patterns
+  (`CollarRowDips.collarRowX2`: collar dip, B1 and B2) added to the checker.
+* `fatC q`: the climb for roots that avoid `ShapeClimbAvoid.thinA (q+1)`, with the same patterns,
+  over those floors (`ShapeClimbAvoid.layersA`); fat roots avoid `thinA`
+  (`ShapeClimbAvoid.fat_avoids_thin`), so these are fat-root floors.
 * `collarBound q`: the larger of the order bound of `floorsC q` and the largest order `m`,
   at most the order bound of `fatC q`, that passes the ledger test `CollarBound.CollarOK`.
 * `collarBound_sound`: every `q`-free digraph of minimum out-degree `q + 1` has more than
@@ -31,12 +35,13 @@ def bankDegree (q : ℕ) : ℕ := min q (projectionFloor - 1)
 
 /-- Floors of every root at degree `q + 1`, radii `0 … q/2 + 2`. -/
 def floorsC (q : ℕ) : List ℕ :=
-  ShapeClimbX.layersX (ShapeClimbX.collarDip q (q+1)) q (q+1) (library q (bankDegree q))
+  ShapeClimbX.layersX (CollarRowDips.collarRowX2 q (q+1)) q (q+1) (library q (bankDegree q))
     (ShapeClimbMono.seedAt q (q+1) (bankDegree q) (q/2+1)) (q/2+1)
 
-/-- Floors of fat roots at degree `q + 1`. -/
+/-- Floors of fat roots at degree `q + 1` (roots that avoid `thinA (q+1)`). -/
 def fatC (q : ℕ) : List ℕ :=
-  ShapeClimbFat.layersFat q (q+1) (library q (bankDegree q)) (floorsC q) (q/2+1)
+  ShapeClimbAvoid.layersA (ShapeClimbAvoid.thinA (q+1)) (CollarRowDips.collarRowX2 q (q+1)) q (q+1)
+    (library q (bankDegree q)) (floorsC q) (q/2+1)
 
 /-- The order bound of the collar rule at cutoff `q`, degree `q + 1`. -/
 def collarBound (q : ℕ) : ℕ :=
@@ -60,10 +65,12 @@ theorem collarBound_sound {q : ℕ} {D : CH.Digraph} {V : Finset ℕ} (free : QF
     have bank := library_bankAt (r := q+1) (by omega : 2 ≤ q) cr (known q)
     have seeds := ShapeClimbMono.seedAt_sound (q := q) (K := q/2+1) cr known
     have floors : ∀ i, Floor q (q+1) i ((floorsC q).getD i 0) :=
-      (ShapeClimbX.layersX_sound (ShapeClimbX.collarDip_sound q (q+1)) (by omega) bank seeds
+      (ShapeClimbX.layersX_sound (CollarRowDips.collarRowX2_sound q (q+1)) (by omega) bank seeds
         (q/2+1) (by omega)).2
-    have fats : ∀ i, ShapeClimbFat.FatFloor q (q+1) i ((fatC q).getD i 0) :=
-      (ShapeClimbFat.layersFat_sound (by omega) bank floors (q/2+1) (by omega)).2
+    have fats : ∀ i, ShapeClimbFat.FatFloor q (q+1) i ((fatC q).getD i 0) := fun i =>
+      ShapeClimbAvoid.fatFloor_of_thin
+        ((ShapeClimbAvoid.layersA_sound (CollarRowDips.collarRowX2_sound q (q+1)) (by omega) bank
+          floors (q/2+1) (by omega)).2 i)
     refine max_lt (ShapeClimbMono.boundOf_sound (by omega) floors free ne deg) ?_
     by_cases zero : Nat.findGreatest (fun m => CollarBound.CollarOK q (floorsC q) (fatC q) m)
         (ShapeClimbMono.boundOf q (q+1) (fatC q)) = 0
@@ -89,11 +96,12 @@ theorem collar_excluded {p : Input} (bad : Bad p) (row : p.s = cutoff p + 1) :
 /-! ### The same number over the pruned evaluations -/
 
 def floorsCF (q : ℕ) : List ℕ :=
-  ShapeClimbX.layersXF (ShapeClimbX.collarDip q (q+1)) q (q+1) (library q (bankDegree q))
+  ShapeClimbX.layersXF (CollarRowDips.collarRowX2 q (q+1)) q (q+1) (library q (bankDegree q))
     (ShapeClimbMono.seedAtF q (q+1) (bankDegree q) (q/2+1)) (q/2+1)
 
 def fatCF (q : ℕ) : List ℕ :=
-  ShapeClimbFat.layersFatF q (q+1) (library q (bankDegree q)) (floorsCF q) (q/2+1)
+  ShapeClimbAvoid.layersAF (ShapeClimbAvoid.thinA (q+1)) (CollarRowDips.collarRowX2 q (q+1)) q (q+1)
+    (library q (bankDegree q)) (floorsCF q) (q/2+1)
 
 def collarBoundF (q : ℕ) : ℕ :=
   if 4 ≤ q then
@@ -107,7 +115,7 @@ theorem floorsCF_eq (q : ℕ) : floorsCF q = floorsC q := by
     ShapeClimbMono.seedAt, ShapeClimbFast.layers3F_eq]
 
 theorem fatCF_eq (q : ℕ) : fatCF q = fatC q := by
-  simp only [fatCF, fatC, ShapeClimbFat.layersFatF_eq, floorsCF_eq]
+  simp only [fatCF, fatC, ShapeClimbAvoid.layersAF_eq, floorsCF_eq]
 
 theorem collarBoundF_eq (q : ℕ) : collarBoundF q = collarBound q := by
   simp only [collarBoundF, collarBound, floorsCF_eq, fatCF_eq]

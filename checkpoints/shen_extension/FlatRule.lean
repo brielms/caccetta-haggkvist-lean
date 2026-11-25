@@ -1,5 +1,6 @@
 import checkpoints.shen_extension.ShapeClimbX
 import checkpoints.shen_extension.FlatAtCutoff
+import checkpoints.shen_extension.TubeAtCutoff
 
 /-!
 # The flat rule: an order bound on the row `r = q`
@@ -7,8 +8,8 @@ import checkpoints.shen_extension.FlatAtCutoff
 At degree `r = q` a root with exactly `q` heads and exactly `q` labels in its second layer has at
 least `q` labels in its third layer (`FlatAtCutoff.flat_third`).
 
-* `floorsQ q`: the seeded reach climb at degree `q` with the flat pattern
-  (`FlatAtCutoff.flatQ`) added to the checker.
+* `floorsQ q`: the seeded reach climb at degree `q` with the tube pattern
+  (`TubeAtCutoff.tubeQ`: the flat pattern, the flat run and the loop dip) added to the checker.
 * `flatBound q`: the order bound of `floorsQ q`.
 * `flatBound_sound`: every `q`-free digraph of minimum out-degree `q` has more than
   `flatBound q` labels. `flat_excluded`: so no counterexample at degree `cutoff` has
@@ -29,7 +30,7 @@ def bankDegree (q : ℕ) : ℕ := min (q - 1) (projectionFloor - 1)
 
 /-- Floors of every root at degree `q`, radii `0 … q/2 + 2`. -/
 def floorsQ (q : ℕ) : List ℕ :=
-  ShapeClimbX.layersX (FlatAtCutoff.flatQ q q) q q (library q (bankDegree q))
+  ShapeClimbX.layersX (TubeAtCutoff.tubeQ q q) q q (library q (bankDegree q))
     (ShapeClimbMono.seedAt q q (bankDegree q) (q/2+1)) (q/2+1)
 
 /-- The order bound of the flat rule at cutoff `q`, degree `q`. -/
@@ -50,7 +51,7 @@ theorem flatBound_sound {q : ℕ} {D : CH.Digraph} {V : Finset ℕ} (free : QFre
     have bank := library_bankAt (r := q) (by omega : 2 ≤ q) cr (known q)
     have seeds := ShapeClimbMono.seedAt_sound (q := q) (K := q/2+1) cr known
     have floors : ∀ i, Floor q q i ((floorsQ q).getD i 0) :=
-      (ShapeClimbX.layersX_sound (FlatAtCutoff.flatQ_sound q q) (by omega) bank seeds
+      (ShapeClimbX.layersX_sound (TubeAtCutoff.tubeQ_sound q q) (by omega) bank seeds
         (q/2+1) (by omega)).2
     exact ShapeClimbMono.boundOf_sound (by omega) floors free ne deg
   next => exact card_pos.mpr ne
@@ -71,7 +72,7 @@ theorem flat_excluded {p : Input} (bad : Bad p) (row : p.s = cutoff p) :
 /-! ### The same number over the pruned evaluation -/
 
 def floorsQF (q : ℕ) : List ℕ :=
-  ShapeClimbX.layersXF (FlatAtCutoff.flatQ q q) q q (library q (bankDegree q))
+  ShapeClimbX.layersXF (TubeAtCutoff.tubeQ q q) q q (library q (bankDegree q))
     (ShapeClimbMono.seedAtF q q (bankDegree q) (q/2+1)) (q/2+1)
 
 def flatBoundF (q : ℕ) : ℕ :=

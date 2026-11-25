@@ -14,6 +14,9 @@ import checkpoints.shen_extension.ShapeClimbAt3
 import checkpoints.shen_extension.ShapeClimbMono
 import checkpoints.shen_extension.CollarRule
 import checkpoints.shen_extension.FlatRule
+import checkpoints.shen_extension.TightRule2
+import checkpoints.shen_extension.ThinRule
+import checkpoints.shen_extension.NineFive
 import checkpoints.shen_extension.FourthStripTopAll
 import checkpoints.shen_extension.FifthStripAll
 
@@ -89,14 +92,60 @@ def collarCell (b n r q : ℕ) : Nat := if r = q + 1 ∧ 0 < n ∧ n ≤ b then 
 /-- The flat rule on the row `r = q` (rule 34), with its order bound as an argument. -/
 def flatCell (b n r q : ℕ) : Nat := if r = q ∧ 0 < n ∧ n ≤ b then 34 else 0
 
+/-- The tight rule on the row `r = q + 2` (rule 35), with its order bound as an argument.
+The guard `q ≤ 9` is an evaluation-cost cap, not a mathematical one: `tight2_excluded` holds at
+every cutoff, but `TightRule2.tightBound2F 10` did not finish in 30 minutes. -/
+def tightCell (b n r q : ℕ) : Nat := if r = q + 2 ∧ q ≤ 9 ∧ 0 < n ∧ n ≤ b then 35 else 0
+
+/-- The thin-root count (rule 36), with its order bound as an argument; the bound
+`ThinRule.thinBound q r` is zero outside `4 ≤ q`, `r ≤ 2q - 1`. The guard `q ≤ 12` is an
+evaluation-cost cap, not a mathematical one: `thin_excluded` holds at every cutoff, but one
+evaluation of `ThinRule.thinBoundF` takes about 2 minutes at `q = 13` and 10 minutes at
+`q = 15`. -/
+def thinCell (b n _r q : ℕ) : Nat := if q ≤ 12 ∧ 0 < n ∧ n ≤ b then 36 else 0
+
+/-- Order 45 at degree nine, cutoff five (rule 37). -/
+def nineFiveCell (n r q : ℕ) : Nat := if r = 9 ∧ q = 5 ∧ n = 45 then 37 else 0
+
+/-- The first nonzero entry of a list, else `0`. -/
+def firstNZ : List ℕ → ℕ
+  | [] => 0
+  | a :: l => if a ≠ 0 then a else firstNZ l
+
+theorem firstNZ_eq_zero : ∀ {l : List ℕ}, firstNZ l = 0 ↔ ∀ a ∈ l, a = 0
+  | [] => by simp [firstNZ]
+  | a :: l => by
+    by_cases h : a = 0
+    · simp [firstNZ, h, firstNZ_eq_zero (l := l)]
+    · simp [firstNZ, h]
+
+theorem firstNZ_ne_zero {l : List ℕ} : firstNZ l ≠ 0 ↔ ∃ a ∈ l, a ≠ 0 := by
+  rw [Ne, firstNZ_eq_zero]
+  simp
+
+/-- Two lists with the same nonzero head have the same first nonzero entry. -/
+theorem firstNZ_cons_of_ne {a : ℕ} (h : a ≠ 0) (l l' : List ℕ) :
+    firstNZ (a :: l) = firstNZ (a :: l') := by
+  simp [firstNZ, h]
+
+/-- The cells of the rule with every order bound as an argument: rules 1–32, then the collar,
+flat, tight and thin rules, then rule 37. -/
+def cellsWith (b3 b b3' bc bf bt bh n r q : ℕ) : List ℕ :=
+  [ruleWith b3 b b3' n r q, collarCell bc n r q, flatCell bf n r q, tightCell bt n r q,
+    thinCell bh n r q, nineFiveCell n r q]
+
+/-- The first rule that applies, with every order bound as an argument. -/
+def cellWith (b3 b b3' bc bf bt bh n r q : ℕ) : Nat :=
+  firstNZ (cellsWith b3 b b3' bc bf bt bh n r q)
+
 /-- The coverage rule: the first of rules 1–32 that applies, else the collar rule
-(`CollarRule.collar_excluded`: loop collar, collar dip and thin-root ledger at `r = q + 1`),
-else the flat rule (`FlatRule.flat_excluded`: the flat dip at the cutoff, `r = q`). -/
+(`CollarRule.collar_excluded`, `r = q + 1`), the flat rule (`FlatRule.flat_excluded`, `r = q`),
+the tight rule (`TightRule2.tight2_excluded`, `r = q + 2`, `q ≤ 9`), the thin-root count
+(`ThinRule.thin_excluded`, `q ≤ 12`) and order 45 at degree nine (`NineFive.excluded_45`). -/
 def rule (n r q : ℕ) : Nat :=
-  if ruleBase n r q ≠ 0 then ruleBase n r q
-  else if collarCell (CollarRule.collarBound q) n r q ≠ 0 then
-    collarCell (CollarRule.collarBound q) n r q
-  else flatCell (FlatRule.flatBound q) n r q
+  firstNZ [ruleBase n r q, collarCell (CollarRule.collarBound q) n r q,
+    flatCell (FlatRule.flatBound q) n r q, tightCell (TightRule2.tightBound2 q) n r q,
+    thinCell (ThinRule.thinBound q r) n r q, nineFiveCell n r q]
 
 theorem base_zero_on_bad (p : Input) (bad : Bad p) : ruleBase p.n p.s (cutoff p) = 0 := by
   have floor : 9 ≤ p.s := replay_completed_floor bad
@@ -151,9 +200,26 @@ theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := b
     split_ifs with h
     · exact (FlatRule.flat_excluded bad h.1 h.2).elim
     · rfl
+  have tight : tightCell (TightRule2.tightBound2 (cutoff p)) p.n p.s (cutoff p) = 0 := by
+    unfold tightCell
+    split_ifs with h
+    · exact (TightRule2.tight2_excluded bad h.1 h.2.2).elim
+    · rfl
+  have thin : thinCell (ThinRule.thinBound (cutoff p) p.s) p.n p.s (cutoff p) = 0 := by
+    unfold thinCell
+    split_ifs with h
+    · exact (ThinRule.thin_excluded bad h.2).elim
+    · rfl
+  have nineFive : nineFiveCell p.n p.s (cutoff p) = 0 := by
+    unfold nineFiveCell
+    split_ifs with h
+    · exact (NineFive.excluded_45 bad h.1 h.2.1 h.2.2).elim
+    · rfl
   unfold rule
-  rw [base_zero_on_bad p bad, collar, flat]
-  simp
+  rw [firstNZ_eq_zero]
+  simp only [List.mem_cons, List.not_mem_nil, or_false]
+  rintro a (rfl | rfl | rfl | rfl | rfl | rfl)
+  exacts [base_zero_on_bad p bad, collar, flat, tight, thin, nineFive]
 
 /-- A nonzero cell of the map is a Caccetta–Häggkvist bound at that order and degree. -/
 theorem ch_of_rule {n r : ℕ} (D : CH.Digraph) (order : 0 < n) (positive : 0 < r)
@@ -193,26 +259,41 @@ theorem flatCell_mono {b c n r q : ℕ} (h : b ≤ c) :
   intro cell
   split_ifs at cell ⊢ <;> omega
 
-/-- A cell is covered as soon as rules 1–32, the collar rule or the flat rule cover it with
-lower bounds in place of the five climb bounds. A kernel check of many cells should go through
-this form, with the bounds as literals proved once per cutoff. -/
-theorem rule_ne_zero {b3 b b3' b4 b5 n r q : ℕ}
+/-- A covered cell stays covered when the tight bound grows. -/
+theorem tightCell_mono {b c n r q : ℕ} (h : b ≤ c) :
+    tightCell b n r q ≠ 0 → tightCell c n r q ≠ 0 := by
+  unfold tightCell
+  intro cell
+  split_ifs at cell ⊢ <;> omega
+
+/-- A covered cell stays covered when the thin bound grows. -/
+theorem thinCell_mono {b c n r q : ℕ} (h : b ≤ c) :
+    thinCell b n r q ≠ 0 → thinCell c n r q ≠ 0 := by
+  unfold thinCell
+  intro cell
+  split_ifs at cell ⊢ <;> omega
+
+/-- A cell is covered as soon as some rule covers it with lower bounds in place of the climb
+bounds (the three of rules 28, 29 and 32, then the collar, flat, tight and thin bounds). A kernel
+check of many cells should go through this form, with the bounds as literals proved once per
+cutoff. -/
+theorem rule_ne_zero {b3 b b3' bc bf bt bh n r q : ℕ}
     (h3 : b3 ≤ ShapeClimbMono.guardedBoundM q r projectionFloor 1)
     (h : b ≤ ShapeClimbAt.guardedBoundAt q r projectionFloor 2) (h3' : b3' ≤ reachBound32 q r)
-    (h4 : b4 ≤ CollarRule.collarBound q) (h5 : b5 ≤ FlatRule.flatBound q)
-    (cell : ruleWith b3 b b3' n r q ≠ 0 ∨ collarCell b4 n r q ≠ 0 ∨ flatCell b5 n r q ≠ 0) :
+    (hc : bc ≤ CollarRule.collarBound q) (hf : bf ≤ FlatRule.flatBound q)
+    (ht : bt ≤ TightRule2.tightBound2 q) (hh : bh ≤ ThinRule.thinBound q r)
+    (cell : ruleWith b3 b b3' n r q ≠ 0 ∨ collarCell bc n r q ≠ 0 ∨ flatCell bf n r q ≠ 0 ∨
+      tightCell bt n r q ≠ 0 ∨ thinCell bh n r q ≠ 0 ∨ nineFiveCell n r q ≠ 0) :
     rule n r q ≠ 0 := by
   unfold rule
-  split
-  next base => exact base
-  next nobase =>
-    split
-    next collar => exact collar
-    next nocollar =>
-      rcases cell with c | c | c
-      · exact absurd (ruleWith_mono h3 h h3' c) nobase
-      · exact absurd (collarCell_mono h4 c) nocollar
-      · exact flatCell_mono h5 c
+  rw [firstNZ_ne_zero]
+  rcases cell with ne | ne | ne | ne | ne | ne
+  · exact ⟨ruleBase n r q, by simp, ruleWith_mono h3 h h3' ne⟩
+  · exact ⟨_, by simp, collarCell_mono hc ne⟩
+  · exact ⟨_, by simp, flatCell_mono hf ne⟩
+  · exact ⟨_, by simp, tightCell_mono ht ne⟩
+  · exact ⟨_, by simp, thinCell_mono hh ne⟩
+  · exact ⟨_, by simp, ne⟩
 
 /-- Rules 1–32 with the climb bounds computed by the pruned evaluations of `ShapeClimbFast`
 and `ShapeClimbMono`. -/
@@ -227,14 +308,14 @@ theorem ruleBase_eq_fast (n r q : ℕ) : ruleBase n r q = ruleBaseFast n r q := 
 
 /-- `rule` with every climb bound computed by its pruned evaluation. -/
 def ruleFast (n r q : ℕ) : Nat :=
-  if ruleBaseFast n r q ≠ 0 then ruleBaseFast n r q
-  else if collarCell (CollarRule.collarBoundF q) n r q ≠ 0 then
-    collarCell (CollarRule.collarBoundF q) n r q
-  else flatCell (FlatRule.flatBoundF q) n r q
+  firstNZ [ruleBaseFast n r q, collarCell (CollarRule.collarBoundF q) n r q,
+    flatCell (FlatRule.flatBoundF q) n r q, tightCell (TightRule2.tightBound2F q) n r q,
+    thinCell (ThinRule.thinBoundF q r) n r q, nineFiveCell n r q]
 
 theorem rule_eq_fast (n r q : ℕ) : rule n r q = ruleFast n r q := by
   unfold rule ruleFast
-  rw [ruleBase_eq_fast, CollarRule.collarBoundF_eq, FlatRule.flatBoundF_eq]
+  rw [ruleBase_eq_fast, CollarRule.collarBoundF_eq, FlatRule.flatBoundF_eq,
+    TightRule2.tightBound2F_eq, ThinRule.thinBoundF_eq]
 
 #print axioms zero_on_bad
 #print axioms ch_of_rule
@@ -242,4 +323,5 @@ theorem rule_eq_fast (n r q : ℕ) : rule n r q = ruleFast n r q := by
 #print axioms ruleWith_mono
 #print axioms rule_ne_zero
 #print axioms flatCell_mono
+#print axioms thinCell_mono
 end LeanCH.BR.CoverageRules
