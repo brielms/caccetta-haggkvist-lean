@@ -12,7 +12,7 @@ Goal: every loopless digraph on n vertices with minimum outdegree r has a direct
 |---|---|---|
 | Shen | every r | n ≥ 2r² − 3r + 1 |
 | Lean | every r | n ≥ 2r² − 7r + 1 |
-| Lean | r ≥ 43, or odd r ≥ 13 | n ≥ 2r² − 8r + 1 |
+| Lean | r ≥ 13 | n ≥ 2r² − 8r + 1 |
 | Lean | r ≥ 6276 | n ≥ 2r² − 9r + 1 |
 | Lean | r ≥ 424·G² | n ≥ 2r² − G·r + 1 |
 

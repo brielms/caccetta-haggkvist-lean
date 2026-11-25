@@ -28,10 +28,10 @@ Caccetta–Häggkvist bound (`ch_of_rule`).
 namespace LeanCH.BR.CoverageRules
 open CHRuleCatalog ProjectedQuotaTransfer
 
-/-- Each nonzero output names a particular checked exclusion on this input. The two
+/-- Each nonzero output names a particular checked exclusion on this input. The three
 climb bounds at the true degree are arguments, so a caller can compute them once per
 `(q, r)`; `rule` supplies them. -/
-def ruleWith (b3 b : ℕ) (n r q : ℕ) : Nat :=
+def ruleWith (b3 b b3' : ℕ) (n r q : ℕ) : Nat :=
   if r ≤ 8 then 1
   else if q = 3 ∧ r ≤ 9 then 2
   else if QuotaWindow n r q 8 then 3
@@ -63,13 +63,20 @@ def ruleWith (b3 b : ℕ) (n r q : ℕ) : Nat :=
   else if ShapeClimb.Window n r q projectionFloor then 27
   else if ShapeClimbAt3.WindowGWith b3 n r q projectionFloor then 28
   else if ShapeClimbAt.WindowGWith b n r q projectionFloor then 29
+  else if ShapeClimbAt3.WindowGWith b3' n r q projectionFloor then 32
   else 0
 
+/-- The reach climb up to seven degrees above the closed prefix, used by rule 32 below the
+fifth strip (`q ≤ 2r - 8`). -/
+def reachBound32 (q r : ℕ) : ℕ :=
+  if q + 8 ≤ 2*r then ShapeClimbAt3.guardedBoundAt3 q r projectionFloor 7 else 0
+
 /-- The reach climb up to one degree above the closed prefix, the committed-checker climb
-up to two above it. -/
+up to two above it, and the reach climb again up to seven above it below the fifth strip
+(rule 32; the map evaluates it with `ShapeClimbFast.guardedBoundAt3F`, proved equal). -/
 def rule (n r q : ℕ) : Nat :=
   ruleWith (ShapeClimbAt3.guardedBoundAt3 q r projectionFloor 1)
-    (ShapeClimbAt.guardedBoundAt q r projectionFloor 2) n r q
+    (ShapeClimbAt.guardedBoundAt q r projectionFloor 2) (reachBound32 q r) n r q
 
 theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := by
   have floor : 9 ≤ p.s := replay_completed_floor bad
@@ -86,13 +93,19 @@ theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := b
       projectionFloor 1) p.n p.s (cutoff p) projectionFloor := ShapeClimbAt3.at_completedG bad 1
   have climb : ¬ShapeClimbAt.WindowGWith (ShapeClimbAt.guardedBoundAt (cutoff p) p.s
       projectionFloor 2) p.n p.s (cutoff p) projectionFloor := ShapeClimbAt.at_completedG bad 2
+  have reach3 : ¬ShapeClimbAt3.WindowGWith (reachBound32 (cutoff p) p.s) p.n p.s (cutoff p)
+      projectionFloor := by
+    unfold reachBound32
+    split
+    · exact ShapeClimbAt3.at_completedG bad 7
+    · exact fun ⟨_, _, _, pos, le⟩ => by omega
   have fourth : ¬(9 ≤ p.s ∧ cutoff p = 2*p.s-6 ∧ 0 < p.n ∧ p.n ≤ cutoff p*p.s) :=
     fun ⟨hs, hq, hn, hnq⟩ => bad.missing
       (FourthStripTopAll.cycle_fourth_strip_closed_all hs hq hn hnq bad.loopless bad.degree)
   have fifthTop : ¬(11 ≤ p.s ∧ cutoff p = 2*p.s-7 ∧ 0 < p.n ∧ p.n < cutoff p*p.s) :=
     fun ⟨hs, hq, hn, hnq⟩ => bad.missing
       (FifthStripAll.cycle_fifth_strip_below_top_all hs hq hn hnq bad.loopless bad.degree)
-  simp [rule, ruleWith, reach, climb, fourth, fifthTop, show ¬p.s ≤ 8 by omega, show ¬(cutoff p = 3 ∧ p.s ≤ 9) by
+  simp [rule, ruleWith, reach, climb, reach3, fourth, fifthTop, show ¬p.s ≤ 8 by omega, show ¬(cutoff p = 3 ∧ p.s ≤ 9) by
     rintro ⟨h,le⟩; exact (triangle h).not_gt (by omega), quota, strip, fifth,
     Nat.not_lt_of_ge (ShellBankFrontier.native_order p bad),
     SinkDepthCover.exclude bad, LowShellCycleSelection.outside_search bad,
