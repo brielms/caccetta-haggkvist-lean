@@ -194,7 +194,7 @@ set_option maxRecDepth 100000 in
 set_option maxHeartbeats 0 in
 set_option synthInstance.maxSize 4096 in
 set_option synthInstance.maxHeartbeats 0 in
-/-- Outdegree nine, every order except the 3 listed ones: one instantiation of
+/-- Outdegree nine, every order except the one listed: one instantiation of
 `of_covered_cell` (orders up to 108, checked cell by cell) and `above_top_strip`. The seeded
 reach bound and the collar, flat, tight and thin bounds enter the cell check as the literals
 `DegreeNineReach.nineReach`, `DegreeNineReach.nineCollar`, `DegreeNineReach.nineFlat`,
@@ -202,11 +202,11 @@ reach bound and the collar, flat, tight and thin bounds enter the cell check as 
 (`CoverageRules.rule_ne_zero`). -/
 theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
     (loopless : CH.Loopless D n) (degree : CH.MinOutdegreeAtLeast D n 9)
-    (known : n ∉ [62,63,72]) :
+    (known : n ∉ [63]) :
     CH.HasDirectedCycleAtMost D n (CH.ceilDiv n 9) := by
   by_cases small : n < 109
   · -- The cheap cells first, so that rules 1–32 are evaluated only where none of them applies.
-    have cells : ∀ m < 109, 0 < m → m ∉ [62,63,72] →
+    have cells : ∀ m < 109, 0 < m → m ∉ [63] →
         CoverageRules.collarCell (DegreeNineReach.nineCollar (CH.ceilDiv m 9)) m 9
             (CH.ceilDiv m 9) ≠ 0 ∨
           CoverageRules.flatCell (DegreeNineReach.nineFlat (CH.ceilDiv m 9)) m 9
@@ -218,6 +218,8 @@ theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
           CoverageRules.nineFiveCell m 9 (CH.ceilDiv m 9) ≠ 0 ∨
           CoverageRules.nineSixCell m 9 (CH.ceilDiv m 9) ≠ 0 ∨
           CoverageRules.nineFiftyFourCell m 9 (CH.ceilDiv m 9) ≠ 0 ∨
+          CoverageRules.nineSixtyTwoCell m 9 (CH.ceilDiv m 9) ≠ 0 ∨
+          CoverageRules.nineSeventyTwoCell m 9 (CH.ceilDiv m 9) ≠ 0 ∨
           CoverageRules.ruleWith (DegreeNineReach.nineReach (CH.ceilDiv m 9)) 0 0 m 9
             (CH.ceilDiv m 9) ≠ 0 := by decide +kernel
     exact of_covered_cell D order (by decide) loopless degree
@@ -225,11 +227,13 @@ theorem degree_nine_except {n : ℕ} (D : CH.Digraph) (order : 0 < n)
         (Nat.zero_le _) (DegreeNineReach.nineCollar_le _) (DegreeNineReach.nineFlat_le _)
         (DegreeNineReach.nineTight_le _) (DegreeNineReach.nineThin_le _)
         (by
-          rcases cells n small order known with c | c | c | c | c | c | c | c
+          rcases cells n small order known with c | c | c | c | c | c | c | c | c | c
           exacts [.inr (.inl c), .inr (.inr (.inl c)), .inr (.inr (.inr (.inl c))),
             .inr (.inr (.inr (.inr (.inl c)))), .inr (.inr (.inr (.inr (.inr (.inl c))))),
             .inr (.inr (.inr (.inr (.inr (.inr (.inl c)))))),
-            .inr (.inr (.inr (.inr (.inr (.inr (.inr c)))))), .inl c]))
+            .inr (.inr (.inr (.inr (.inr (.inr (.inr (.inl c))))))),
+            .inr (.inr (.inr (.inr (.inr (.inr (.inr (.inr (.inl c)))))))),
+            .inr (.inr (.inr (.inr (.inr (.inr (.inr (.inr (.inr c)))))))), .inl c]))
   · exact above_top_strip D order (by decide) loopless degree (by unfold CH.ceilDiv; omega)
 
 /-- info: 'LeanCH.Results.beyond_shen' depends on axioms: [propext, Classical.choice, Quot.sound] -/
