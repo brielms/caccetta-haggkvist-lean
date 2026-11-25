@@ -31,7 +31,7 @@ Also proved (every theorem named here uses the standard axioms only):
 - Degree equal to the cutoff. A loopless digraph with minimum outdegree q and 1 ≤ n ≤ `FlatRule.flatBound q` has a directed cycle of length at most q (`flat_row`).
 - Degree two above the cutoff. A loopless digraph with minimum outdegree q + 2 and 1 ≤ n ≤ `TightRule2.tightBound2 q` has a directed cycle of length at most q (`tight_row`).
 - Thin roots. A loopless digraph with minimum outdegree r and 1 ≤ n ≤ `ThinRule.thinBound q r` has a directed cycle of length at most q (`thin_row`).
-- Degree nine. CH holds for r = 9 at every n except 54, 62, 63 and 72 (`degree_nine_except`).
+- Degree nine. CH holds for r = 9 at every n except 62, 63 and 72 (`degree_nine_except`).
 - The coverage map. CH holds at every (n, r) whose cell in the map is nonzero (`of_covered_cell`).
 
 ![Who closes each order n and degree r](docs/attribution-n-r.svg)
