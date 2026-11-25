@@ -17,6 +17,7 @@ import checkpoints.shen_extension.FlatRule
 import checkpoints.shen_extension.TightRule2
 import checkpoints.shen_extension.ThinRule
 import checkpoints.shen_extension.NineFive
+import checkpoints.shen_extension.ThirtySixClose
 import checkpoints.shen_extension.FourthStripTopAll
 import checkpoints.shen_extension.FifthStripAll
 
@@ -107,6 +108,9 @@ def thinCell (b n _r q : ℕ) : Nat := if q ≤ 12 ∧ 0 < n ∧ n ≤ b then 36
 /-- Order 45 at degree nine, cutoff five (rule 37). -/
 def nineFiveCell (n r q : ℕ) : Nat := if r = 9 ∧ q = 5 ∧ n = 45 then 37 else 0
 
+/-- Order 36 at degree nine, cutoff four (rule 38). -/
+def nineSixCell (n r q : ℕ) : Nat := if r = 9 ∧ q = 4 ∧ n = 36 then 38 else 0
+
 /-- The first nonzero entry of a list, else `0`. -/
 def firstNZ : List ℕ → ℕ
   | [] => 0
@@ -129,10 +133,10 @@ theorem firstNZ_cons_of_ne {a : ℕ} (h : a ≠ 0) (l l' : List ℕ) :
   simp [firstNZ, h]
 
 /-- The cells of the rule with every order bound as an argument: rules 1–32, then the collar,
-flat, tight and thin rules, then rule 37. -/
+flat, tight and thin rules, then rules 37 and 38. -/
 def cellsWith (b3 b b3' bc bf bt bh n r q : ℕ) : List ℕ :=
   [ruleWith b3 b b3' n r q, collarCell bc n r q, flatCell bf n r q, tightCell bt n r q,
-    thinCell bh n r q, nineFiveCell n r q]
+    thinCell bh n r q, nineFiveCell n r q, nineSixCell n r q]
 
 /-- The first rule that applies, with every order bound as an argument. -/
 def cellWith (b3 b b3' bc bf bt bh n r q : ℕ) : Nat :=
@@ -141,11 +145,12 @@ def cellWith (b3 b b3' bc bf bt bh n r q : ℕ) : Nat :=
 /-- The coverage rule: the first of rules 1–32 that applies, else the collar rule
 (`CollarRule.collar_excluded`, `r = q + 1`), the flat rule (`FlatRule.flat_excluded`, `r = q`),
 the tight rule (`TightRule2.tight2_excluded`, `r = q + 2`, `q ≤ 9`), the thin-root count
-(`ThinRule.thin_excluded`, `q ≤ 12`) and order 45 at degree nine (`NineFive.excluded_45`). -/
+(`ThinRule.thin_excluded`, `q ≤ 12`), order 45 at degree nine (`NineFive.excluded_45`) and
+order 36 at degree nine (`ThirtySixClose.excluded_36`). -/
 def rule (n r q : ℕ) : Nat :=
   firstNZ [ruleBase n r q, collarCell (CollarRule.collarBound q) n r q,
     flatCell (FlatRule.flatBound q) n r q, tightCell (TightRule2.tightBound2 q) n r q,
-    thinCell (ThinRule.thinBound q r) n r q, nineFiveCell n r q]
+    thinCell (ThinRule.thinBound q r) n r q, nineFiveCell n r q, nineSixCell n r q]
 
 theorem base_zero_on_bad (p : Input) (bad : Bad p) : ruleBase p.n p.s (cutoff p) = 0 := by
   have floor : 9 ≤ p.s := replay_completed_floor bad
@@ -215,11 +220,16 @@ theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := b
     split_ifs with h
     · exact (NineFive.excluded_45 bad h.1 h.2.1 h.2.2).elim
     · rfl
+  have nineSix : nineSixCell p.n p.s (cutoff p) = 0 := by
+    unfold nineSixCell
+    split_ifs with h
+    · exact (ThirtySixClose.excluded_36 bad h.1 h.2.1 h.2.2).elim
+    · rfl
   unfold rule
   rw [firstNZ_eq_zero]
   simp only [List.mem_cons, List.not_mem_nil, or_false]
-  rintro a (rfl | rfl | rfl | rfl | rfl | rfl)
-  exacts [base_zero_on_bad p bad, collar, flat, tight, thin, nineFive]
+  rintro a (rfl | rfl | rfl | rfl | rfl | rfl | rfl)
+  exacts [base_zero_on_bad p bad, collar, flat, tight, thin, nineFive, nineSix]
 
 /-- A nonzero cell of the map is a Caccetta–Häggkvist bound at that order and degree. -/
 theorem ch_of_rule {n r : ℕ} (D : CH.Digraph) (order : 0 < n) (positive : 0 < r)
@@ -283,16 +293,18 @@ theorem rule_ne_zero {b3 b b3' bc bf bt bh n r q : ℕ}
     (hc : bc ≤ CollarRule.collarBound q) (hf : bf ≤ FlatRule.flatBound q)
     (ht : bt ≤ TightRule2.tightBound2 q) (hh : bh ≤ ThinRule.thinBound q r)
     (cell : ruleWith b3 b b3' n r q ≠ 0 ∨ collarCell bc n r q ≠ 0 ∨ flatCell bf n r q ≠ 0 ∨
-      tightCell bt n r q ≠ 0 ∨ thinCell bh n r q ≠ 0 ∨ nineFiveCell n r q ≠ 0) :
+      tightCell bt n r q ≠ 0 ∨ thinCell bh n r q ≠ 0 ∨ nineFiveCell n r q ≠ 0 ∨
+      nineSixCell n r q ≠ 0) :
     rule n r q ≠ 0 := by
   unfold rule
   rw [firstNZ_ne_zero]
-  rcases cell with ne | ne | ne | ne | ne | ne
+  rcases cell with ne | ne | ne | ne | ne | ne | ne
   · exact ⟨ruleBase n r q, by simp, ruleWith_mono h3 h h3' ne⟩
   · exact ⟨_, by simp, collarCell_mono hc ne⟩
   · exact ⟨_, by simp, flatCell_mono hf ne⟩
   · exact ⟨_, by simp, tightCell_mono ht ne⟩
   · exact ⟨_, by simp, thinCell_mono hh ne⟩
+  · exact ⟨_, by simp, ne⟩
   · exact ⟨_, by simp, ne⟩
 
 /-- Rules 1–32 with the climb bounds computed by the pruned evaluations of `ShapeClimbFast`
@@ -310,7 +322,7 @@ theorem ruleBase_eq_fast (n r q : ℕ) : ruleBase n r q = ruleBaseFast n r q := 
 def ruleFast (n r q : ℕ) : Nat :=
   firstNZ [ruleBaseFast n r q, collarCell (CollarRule.collarBoundF q) n r q,
     flatCell (FlatRule.flatBoundF q) n r q, tightCell (TightRule2.tightBound2F q) n r q,
-    thinCell (ThinRule.thinBoundF q r) n r q, nineFiveCell n r q]
+    thinCell (ThinRule.thinBoundF q r) n r q, nineFiveCell n r q, nineSixCell n r q]
 
 theorem rule_eq_fast (n r q : ℕ) : rule n r q = ruleFast n r q := by
   unfold rule ruleFast
