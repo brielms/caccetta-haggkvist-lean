@@ -1,4 +1,6 @@
 import checkpoints.shen_extension.ShapeClimbMono
+import checkpoints.shen_extension.CollarRule
+import checkpoints.shen_extension.FlatRule
 
 /-!
 # The seeded reach bound at degree nine, as literals
@@ -7,6 +9,8 @@ import checkpoints.shen_extension.ShapeClimbMono
 `ShapeClimbMono.guardedBoundM q 9 projectionFloor 1` is the same number for every order of one
 cutoff, so it is checked here once per cutoff, through the pruned evaluation, and handed on as
 the literal `nineReach q`. Only the cutoffs 7 to 11 have a cell that needs it.
+The collar bound `CollarRule.collarBound` is needed at cutoff 8 only (`nineCollar`), the flat
+bound `FlatRule.flatBound` at cutoff 9 only (`nineFlat`).
 -/
 
 namespace LeanCH.BR.DegreeNineReach
@@ -53,5 +57,39 @@ theorem nineReach_le (q : ℕ) :
   · exact reach_11
   · exact Nat.zero_le _
 
+/-- A lower bound for the collar bound at degree nine; zero where no cell needs it. -/
+def nineCollar : ℕ → ℕ
+  | 8 => 69
+  | _ => 0
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+theorem collar_8 : 69 ≤ CollarRule.collarBoundF 8 := by decide +kernel
+
+theorem nineCollar_le (q : ℕ) : nineCollar q ≤ CollarRule.collarBound q := by
+  rw [← CollarRule.collarBoundF_eq]
+  unfold nineCollar
+  split
+  · exact collar_8
+  · exact Nat.zero_le _
+
+/-- A lower bound for the flat bound at degree nine; zero where no cell needs it. -/
+def nineFlat : ℕ → ℕ
+  | 9 => 79
+  | _ => 0
+
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 0 in
+theorem flat_9 : 79 ≤ FlatRule.flatBoundF 9 := by decide +kernel
+
+theorem nineFlat_le (q : ℕ) : nineFlat q ≤ FlatRule.flatBound q := by
+  rw [← FlatRule.flatBoundF_eq]
+  unfold nineFlat
+  split
+  · exact flat_9
+  · exact Nat.zero_le _
+
 #print axioms nineReach_le
+#print axioms nineCollar_le
+#print axioms nineFlat_le
 end LeanCH.BR.DegreeNineReach

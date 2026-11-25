@@ -16,7 +16,21 @@ Goal: every loopless digraph on n vertices with minimum outdegree r has a direct
 | Lean | r ≥ 6276 | n ≥ 2r² − 9r + 1 |
 | Lean | r ≥ 424·G² | n ≥ 2r² − G·r + 1 |
 
-Also proved: below those thresholds, for q = 2r − g a cycle of length at most q whenever n ≤ q·r − (g − 1)²/2 and 3g ≤ 2r (`strip_window`), or n ≤ q·r − ((g + 2)² + 1)/8 with 2g + 2 ≤ r and g² ≤ 8r (`strip_window_eighth`); with a tight pair of ball floors the same windows reach n ≤ q·r − g(g − 3)/2, or n ≤ q·r + 1 − (g − 2)²/2 for even g ≥ 4 (`strip_window_tight`), and n ≤ q·r − (g(g + 4) − 7)/8 (`strip_window_eighth_tight`); r = 9 for every n except 36, 44, 45, 54, 60–63, 68–72 and 78–81 (`degree_nine_except`); every (n, r) with a nonzero cell in the coverage map (`of_covered_cell`). Every theorem named here uses the standard axioms only.
+Also proved (every theorem named here uses the standard axioms only):
+
+- Strip windows. Write q = 2r − g. A loopless digraph with minimum outdegree r and 1 ≤ n ≤ the bound in this table has a directed cycle of length at most q (fractions rounded down):
+
+  | Theorem | Condition on g | Largest order n covered |
+  |---|---|---|
+  | `strip_window` | 1 ≤ g, 3g ≤ 2r | q·r − (g − 1)²/2 |
+  | `strip_window_eighth` | 2g + 2 ≤ r, g² ≤ 8r | q·r − ((g + 2)² + 1)/8 |
+  | `strip_window_tight` | 1 ≤ g, 3g ≤ 2r | q·r − g(g − 3)/2 for g ≥ 3, q·r for g ≤ 2; for even g ≥ 4 also q·r + 1 − (g − 2)²/2 |
+  | `strip_window_eighth_tight` | 2g + 2 ≤ r, g² ≤ 8r | q·r − (g(g + 4) − 7)/8 |
+
+- Degree one above the cutoff. A loopless digraph with minimum outdegree q + 1 and 1 ≤ n ≤ `CollarRule.collarBound q` has a directed cycle of length at most q (`collar_row`).
+- Degree equal to the cutoff. A loopless digraph with minimum outdegree q and 1 ≤ n ≤ `FlatRule.flatBound q` has a directed cycle of length at most q (`flat_row`).
+- Degree nine. CH holds for r = 9 at every n except 36, 44, 45, 54, 60–63, 70–72, 80 and 81 (`degree_nine_except`).
+- The coverage map. CH holds at every (n, r) whose cell in the map is nonzero (`of_covered_cell`).
 
 ![Who closes each order n and degree r](docs/attribution-n-r.svg)
 

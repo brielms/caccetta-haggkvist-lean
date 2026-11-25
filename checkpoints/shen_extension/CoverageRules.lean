@@ -12,6 +12,8 @@ import checkpoints.shen_extension.ShapeClimb
 import checkpoints.shen_extension.ShapeClimbAt
 import checkpoints.shen_extension.ShapeClimbAt3
 import checkpoints.shen_extension.ShapeClimbMono
+import checkpoints.shen_extension.CollarRule
+import checkpoints.shen_extension.FlatRule
 import checkpoints.shen_extension.FourthStripTopAll
 import checkpoints.shen_extension.FifthStripAll
 
@@ -77,11 +79,26 @@ up to two above it, and the reach climb again up to seven above it below the fif
 (rule 32). Both reach bounds are the seeded climb of `ShapeClimbMono` (floors of the cutoff
 below as starting values, strict and tight-pair gains at the middle); the map
 evaluates them with `ShapeClimbMono.guardedBoundMF`, proved equal. -/
-def rule (n r q : ℕ) : Nat :=
+def ruleBase (n r q : ℕ) : Nat :=
   ruleWith (ShapeClimbMono.guardedBoundM q r projectionFloor 1)
     (ShapeClimbAt.guardedBoundAt q r projectionFloor 2) (reachBound32 q r) n r q
 
-theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := by
+/-- The collar rule on the row `r = q + 1` (rule 33), with its order bound as an argument. -/
+def collarCell (b n r q : ℕ) : Nat := if r = q + 1 ∧ 0 < n ∧ n ≤ b then 33 else 0
+
+/-- The flat rule on the row `r = q` (rule 34), with its order bound as an argument. -/
+def flatCell (b n r q : ℕ) : Nat := if r = q ∧ 0 < n ∧ n ≤ b then 34 else 0
+
+/-- The coverage rule: the first of rules 1–32 that applies, else the collar rule
+(`CollarRule.collar_excluded`: loop collar, collar dip and thin-root ledger at `r = q + 1`),
+else the flat rule (`FlatRule.flat_excluded`: the flat dip at the cutoff, `r = q`). -/
+def rule (n r q : ℕ) : Nat :=
+  if ruleBase n r q ≠ 0 then ruleBase n r q
+  else if collarCell (CollarRule.collarBound q) n r q ≠ 0 then
+    collarCell (CollarRule.collarBound q) n r q
+  else flatCell (FlatRule.flatBound q) n r q
+
+theorem base_zero_on_bad (p : Input) (bad : Bad p) : ruleBase p.n p.s (cutoff p) = 0 := by
   have floor : 9 ≤ p.s := replay_completed_floor bad
   have triangle : cutoff p = 3 → 10 ≤ p.s := CompromiseQuotaTransfer.any_triangle_degree bad
   have quota : ¬QuotaWindow p.n p.s (cutoff p) 8 := replay_completed_window bad
@@ -108,7 +125,7 @@ theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := b
   have fifthTop : ¬(11 ≤ p.s ∧ cutoff p = 2*p.s-7 ∧ 0 < p.n ∧ p.n < cutoff p*p.s) :=
     fun ⟨hs, hq, hn, hnq⟩ => bad.missing
       (FifthStripAll.cycle_fifth_strip_below_top_all hs hq hn hnq bad.loopless bad.degree)
-  simp [rule, ruleWith, reach, climb, reach3, fourth, fifthTop, show ¬p.s ≤ 8 by omega, show ¬(cutoff p = 3 ∧ p.s ≤ 9) by
+  simp [ruleBase, ruleWith, reach, climb, reach3, fourth, fifthTop, show ¬p.s ≤ 8 by omega, show ¬(cutoff p = 3 ∧ p.s ≤ 9) by
     rintro ⟨h,le⟩; exact (triangle h).not_gt (by omega), quota, strip, fifth,
     Nat.not_lt_of_ge (ShellBankFrontier.native_order p bad),
     SinkDepthCover.exclude bad, LowShellCycleSelection.outside_search bad,
@@ -122,6 +139,21 @@ theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := b
     SymbolicQuotaSweep.replay_outside bad, SingleExitProfile.at_completed bad,
     RecursivePrefixBudget.at_completed bad, RenewedPrefixWitness.at_completed bad,
     WideQuotaWindow.from_prefix bad, ShapeClimb.at_completed bad]
+
+theorem zero_on_bad (p : Input) (bad : Bad p) : rule p.n p.s (cutoff p) = 0 := by
+  have collar : collarCell (CollarRule.collarBound (cutoff p)) p.n p.s (cutoff p) = 0 := by
+    unfold collarCell
+    split_ifs with h
+    · exact (CollarRule.collar_excluded bad h.1 h.2).elim
+    · rfl
+  have flat : flatCell (FlatRule.flatBound (cutoff p)) p.n p.s (cutoff p) = 0 := by
+    unfold flatCell
+    split_ifs with h
+    · exact (FlatRule.flat_excluded bad h.1 h.2).elim
+    · rfl
+  unfold rule
+  rw [base_zero_on_bad p bad, collar, flat]
+  simp
 
 /-- A nonzero cell of the map is a Caccetta–Häggkvist bound at that order and degree. -/
 theorem ch_of_rule {n r : ℕ} (D : CH.Digraph) (order : 0 < n) (positive : 0 < r)
@@ -147,19 +179,67 @@ theorem ruleWith_mono {b3 b b3' c3 c c3' n r q : ℕ} (h3 : b3 ≤ c3) (h : b �
   intro cell
   split_ifs at cell ⊢ <;> omega
 
-/-- `rule` with the climb bounds computed by the pruned evaluations of `ShapeClimbFast` and
-`ShapeClimbMono`. A kernel check of many cells should go through this form. -/
-def ruleFast (n r q : ℕ) : Nat :=
+/-- A covered cell stays covered when the collar bound grows. -/
+theorem collarCell_mono {b c n r q : ℕ} (h : b ≤ c) :
+    collarCell b n r q ≠ 0 → collarCell c n r q ≠ 0 := by
+  unfold collarCell
+  intro cell
+  split_ifs at cell ⊢ <;> omega
+
+/-- A covered cell stays covered when the flat bound grows. -/
+theorem flatCell_mono {b c n r q : ℕ} (h : b ≤ c) :
+    flatCell b n r q ≠ 0 → flatCell c n r q ≠ 0 := by
+  unfold flatCell
+  intro cell
+  split_ifs at cell ⊢ <;> omega
+
+/-- A cell is covered as soon as rules 1–32, the collar rule or the flat rule cover it with
+lower bounds in place of the five climb bounds. A kernel check of many cells should go through
+this form, with the bounds as literals proved once per cutoff. -/
+theorem rule_ne_zero {b3 b b3' b4 b5 n r q : ℕ}
+    (h3 : b3 ≤ ShapeClimbMono.guardedBoundM q r projectionFloor 1)
+    (h : b ≤ ShapeClimbAt.guardedBoundAt q r projectionFloor 2) (h3' : b3' ≤ reachBound32 q r)
+    (h4 : b4 ≤ CollarRule.collarBound q) (h5 : b5 ≤ FlatRule.flatBound q)
+    (cell : ruleWith b3 b b3' n r q ≠ 0 ∨ collarCell b4 n r q ≠ 0 ∨ flatCell b5 n r q ≠ 0) :
+    rule n r q ≠ 0 := by
+  unfold rule
+  split
+  next base => exact base
+  next nobase =>
+    split
+    next collar => exact collar
+    next nocollar =>
+      rcases cell with c | c | c
+      · exact absurd (ruleWith_mono h3 h h3' c) nobase
+      · exact absurd (collarCell_mono h4 c) nocollar
+      · exact flatCell_mono h5 c
+
+/-- Rules 1–32 with the climb bounds computed by the pruned evaluations of `ShapeClimbFast`
+and `ShapeClimbMono`. -/
+def ruleBaseFast (n r q : ℕ) : Nat :=
   ruleWith (ShapeClimbMono.guardedBoundMF q r projectionFloor 1)
     (ShapeClimbFast.guardedBoundAtF q r projectionFloor 2)
     (if q + 8 ≤ 2*r then ShapeClimbMono.guardedBoundMF q r projectionFloor 7 else 0) n r q
 
-theorem rule_eq_fast (n r q : ℕ) : rule n r q = ruleFast n r q := by
-  simp only [rule, ruleFast, reachBound32, ShapeClimbMono.guardedBoundMF_eq,
+theorem ruleBase_eq_fast (n r q : ℕ) : ruleBase n r q = ruleBaseFast n r q := by
+  simp only [ruleBase, ruleBaseFast, reachBound32, ShapeClimbMono.guardedBoundMF_eq,
     ShapeClimbFast.guardedBoundAtF_eq]
+
+/-- `rule` with every climb bound computed by its pruned evaluation. -/
+def ruleFast (n r q : ℕ) : Nat :=
+  if ruleBaseFast n r q ≠ 0 then ruleBaseFast n r q
+  else if collarCell (CollarRule.collarBoundF q) n r q ≠ 0 then
+    collarCell (CollarRule.collarBoundF q) n r q
+  else flatCell (FlatRule.flatBoundF q) n r q
+
+theorem rule_eq_fast (n r q : ℕ) : rule n r q = ruleFast n r q := by
+  unfold rule ruleFast
+  rw [ruleBase_eq_fast, CollarRule.collarBoundF_eq, FlatRule.flatBoundF_eq]
 
 #print axioms zero_on_bad
 #print axioms ch_of_rule
 #print axioms rule_eq_fast
 #print axioms ruleWith_mono
+#print axioms rule_ne_zero
+#print axioms flatCell_mono
 end LeanCH.BR.CoverageRules
