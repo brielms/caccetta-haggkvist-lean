@@ -1,0 +1,1529 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 782 496" width="782" height="496" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12">
+<title>Caccetta–Häggkvist: who closes each order, by cutoff and degree</title>
+<style>.t{fill:#57606a}.o{fill:none;stroke:#8c959f;stroke-width:.7}@media (prefers-color-scheme:dark){.t{fill:#9198a1}.o{stroke:#6e7681}}</style>
+<rect x="46" y="8" width="11" height="11" rx="2" fill="#8a8f94"/><text class="t" x="62" y="18">Elementary: r = 1 or n ≤ 2r</text>
+<rect x="248.1" y="8" width="11" height="11" rx="2" fill="#397aba"/><text class="t" x="264.1" y="18">Caccetta–Häggkvist 1978</text>
+<rect x="425.0" y="8" width="11" height="11" rx="2" fill="#cf7034"/><text class="t" x="441.0" y="18">Hamidoune 1987</text>
+<rect x="545.2" y="8" width="11" height="11" rx="2" fill="#8158ac"/><text class="t" x="561.2" y="18">Hoàng–Reed 1987</text>
+<rect x="46" y="28" width="11" height="11" rx="2" fill="#c95b8b"/><text class="t" x="62" y="38">Hladký–Král’–Norin</text>
+<rect x="191.39999999999998" y="28" width="11" height="11" rx="2" fill="#e0ad43"/><text class="t" x="207.39999999999998" y="38">Josh P., unpublished manuscript</text>
+<rect x="418.69999999999993" y="28" width="11" height="11" rx="2" fill="#3fa9b5"/><text class="t" x="434.69999999999993" y="38">Shen 2000</text>
+<rect x="507.3999999999999" y="28" width="11" height="11" rx="2" fill="#188256"/><text class="t" x="523.3999999999999" y="38">briel (Lean)</text>
+<rect x="614.9999999999999" y="28" width="11" height="11" rx="2" class="o"/><text class="t" x="630.9999999999999" y="38">Open</text>
+<text class="t" x="38" y="427.0" text-anchor="end">1</text>
+<rect x="82.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 2, n = 2: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="118.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 3, n = 3: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="154.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 4, n = 4: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="190.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 5, n = 5: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="226.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 6, n = 6: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="262.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 7, n = 7: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="298.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 8, n = 8: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="334.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 9, n = 9: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="370.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 10, n = 10: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="406.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 11, n = 11: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="442.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 12, n = 12: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="478.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 13, n = 13: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="514.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 14, n = 14: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="550.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 15, n = 15: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="586.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 16, n = 16: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="622.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 17, n = 17: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="658.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 18, n = 18: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="694.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 19, n = 19: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="730.00" y="409" width="32.50" height="26" fill="#8a8f94"><title>r = 1, q = 20, n = 20: Elementary: r = 1 or n ≤ 2r</title></rect>
+<text class="t" x="38" y="397.0" text-anchor="end">2</text>
+<rect x="82.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 2, n = 3: Caccetta–Häggkvist 1978</title></rect>
+<rect x="98.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 2, n = 4: Caccetta–Häggkvist 1978</title></rect>
+<rect x="118.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 3, n = 5: Caccetta–Häggkvist 1978</title></rect>
+<rect x="134.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 3, n = 6: Caccetta–Häggkvist 1978</title></rect>
+<rect x="154.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 4, n = 7: Caccetta–Häggkvist 1978</title></rect>
+<rect x="170.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 4, n = 8: Caccetta–Häggkvist 1978</title></rect>
+<rect x="190.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 5, n = 9: Caccetta–Häggkvist 1978</title></rect>
+<rect x="206.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 5, n = 10: Caccetta–Häggkvist 1978</title></rect>
+<rect x="226.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 6, n = 11: Caccetta–Häggkvist 1978</title></rect>
+<rect x="242.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 6, n = 12: Caccetta–Häggkvist 1978</title></rect>
+<rect x="262.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 7, n = 13: Caccetta–Häggkvist 1978</title></rect>
+<rect x="278.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 7, n = 14: Caccetta–Häggkvist 1978</title></rect>
+<rect x="298.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 8, n = 15: Caccetta–Häggkvist 1978</title></rect>
+<rect x="314.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 8, n = 16: Caccetta–Häggkvist 1978</title></rect>
+<rect x="334.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 9, n = 17: Caccetta–Häggkvist 1978</title></rect>
+<rect x="350.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 9, n = 18: Caccetta–Häggkvist 1978</title></rect>
+<rect x="370.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 10, n = 19: Caccetta–Häggkvist 1978</title></rect>
+<rect x="386.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 10, n = 20: Caccetta–Häggkvist 1978</title></rect>
+<rect x="406.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 11, n = 21: Caccetta–Häggkvist 1978</title></rect>
+<rect x="422.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 11, n = 22: Caccetta–Häggkvist 1978</title></rect>
+<rect x="442.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 12, n = 23: Caccetta–Häggkvist 1978</title></rect>
+<rect x="458.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 12, n = 24: Caccetta–Häggkvist 1978</title></rect>
+<rect x="478.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 13, n = 25: Caccetta–Häggkvist 1978</title></rect>
+<rect x="494.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 13, n = 26: Caccetta–Häggkvist 1978</title></rect>
+<rect x="514.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 14, n = 27: Caccetta–Häggkvist 1978</title></rect>
+<rect x="530.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 14, n = 28: Caccetta–Häggkvist 1978</title></rect>
+<rect x="550.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 15, n = 29: Caccetta–Häggkvist 1978</title></rect>
+<rect x="566.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 15, n = 30: Caccetta–Häggkvist 1978</title></rect>
+<rect x="586.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 16, n = 31: Caccetta–Häggkvist 1978</title></rect>
+<rect x="602.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 16, n = 32: Caccetta–Häggkvist 1978</title></rect>
+<rect x="622.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 17, n = 33: Caccetta–Häggkvist 1978</title></rect>
+<rect x="638.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 17, n = 34: Caccetta–Häggkvist 1978</title></rect>
+<rect x="658.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 18, n = 35: Caccetta–Häggkvist 1978</title></rect>
+<rect x="674.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 18, n = 36: Caccetta–Häggkvist 1978</title></rect>
+<rect x="694.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 19, n = 37: Caccetta–Häggkvist 1978</title></rect>
+<rect x="710.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 19, n = 38: Caccetta–Häggkvist 1978</title></rect>
+<rect x="730.00" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 20, n = 39: Caccetta–Häggkvist 1978</title></rect>
+<rect x="746.50" y="379" width="16.00" height="26" fill="#397aba"><title>r = 2, q = 20, n = 40: Caccetta–Häggkvist 1978</title></rect>
+<text class="t" x="38" y="367.0" text-anchor="end">3</text>
+<rect x="82.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 2, n = 4: Hamidoune 1987</title></rect>
+<rect x="93.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 2, n = 5: Hamidoune 1987</title></rect>
+<rect x="104.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 2, n = 6: Hamidoune 1987</title></rect>
+<rect x="118.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 3, n = 7: Hamidoune 1987</title></rect>
+<rect x="129.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 3, n = 8: Hamidoune 1987</title></rect>
+<rect x="140.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 3, n = 9: Hamidoune 1987</title></rect>
+<rect x="154.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 4, n = 10: Hamidoune 1987</title></rect>
+<rect x="165.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 4, n = 11: Hamidoune 1987</title></rect>
+<rect x="176.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 4, n = 12: Hamidoune 1987</title></rect>
+<rect x="190.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 5, n = 13: Hamidoune 1987</title></rect>
+<rect x="201.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 5, n = 14: Hamidoune 1987</title></rect>
+<rect x="212.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 5, n = 15: Hamidoune 1987</title></rect>
+<rect x="226.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 6, n = 16: Hamidoune 1987</title></rect>
+<rect x="237.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 6, n = 17: Hamidoune 1987</title></rect>
+<rect x="248.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 6, n = 18: Hamidoune 1987</title></rect>
+<rect x="262.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 7, n = 19: Hamidoune 1987</title></rect>
+<rect x="273.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 7, n = 20: Hamidoune 1987</title></rect>
+<rect x="284.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 7, n = 21: Hamidoune 1987</title></rect>
+<rect x="298.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 8, n = 22: Hamidoune 1987</title></rect>
+<rect x="309.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 8, n = 23: Hamidoune 1987</title></rect>
+<rect x="320.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 8, n = 24: Hamidoune 1987</title></rect>
+<rect x="334.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 9, n = 25: Hamidoune 1987</title></rect>
+<rect x="345.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 9, n = 26: Hamidoune 1987</title></rect>
+<rect x="356.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 9, n = 27: Hamidoune 1987</title></rect>
+<rect x="370.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 10, n = 28: Hamidoune 1987</title></rect>
+<rect x="381.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 10, n = 29: Hamidoune 1987</title></rect>
+<rect x="392.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 10, n = 30: Hamidoune 1987</title></rect>
+<rect x="406.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 11, n = 31: Hamidoune 1987</title></rect>
+<rect x="417.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 11, n = 32: Hamidoune 1987</title></rect>
+<rect x="428.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 11, n = 33: Hamidoune 1987</title></rect>
+<rect x="442.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 12, n = 34: Hamidoune 1987</title></rect>
+<rect x="453.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 12, n = 35: Hamidoune 1987</title></rect>
+<rect x="464.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 12, n = 36: Hamidoune 1987</title></rect>
+<rect x="478.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 13, n = 37: Hamidoune 1987</title></rect>
+<rect x="489.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 13, n = 38: Hamidoune 1987</title></rect>
+<rect x="500.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 13, n = 39: Hamidoune 1987</title></rect>
+<rect x="514.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 14, n = 40: Hamidoune 1987</title></rect>
+<rect x="525.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 14, n = 41: Hamidoune 1987</title></rect>
+<rect x="536.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 14, n = 42: Hamidoune 1987</title></rect>
+<rect x="550.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 15, n = 43: Hamidoune 1987</title></rect>
+<rect x="561.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 15, n = 44: Hamidoune 1987</title></rect>
+<rect x="572.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 15, n = 45: Hamidoune 1987</title></rect>
+<rect x="586.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 16, n = 46: Hamidoune 1987</title></rect>
+<rect x="597.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 16, n = 47: Hamidoune 1987</title></rect>
+<rect x="608.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 16, n = 48: Hamidoune 1987</title></rect>
+<rect x="622.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 17, n = 49: Hamidoune 1987</title></rect>
+<rect x="633.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 17, n = 50: Hamidoune 1987</title></rect>
+<rect x="644.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 17, n = 51: Hamidoune 1987</title></rect>
+<rect x="658.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 18, n = 52: Hamidoune 1987</title></rect>
+<rect x="669.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 18, n = 53: Hamidoune 1987</title></rect>
+<rect x="680.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 18, n = 54: Hamidoune 1987</title></rect>
+<rect x="694.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 19, n = 55: Hamidoune 1987</title></rect>
+<rect x="705.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 19, n = 56: Hamidoune 1987</title></rect>
+<rect x="716.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 19, n = 57: Hamidoune 1987</title></rect>
+<rect x="730.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 20, n = 58: Hamidoune 1987</title></rect>
+<rect x="741.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 20, n = 59: Hamidoune 1987</title></rect>
+<rect x="752.00" y="349" width="10.50" height="26" fill="#cf7034"><title>r = 3, q = 20, n = 60: Hamidoune 1987</title></rect>
+<text class="t" x="38" y="337.0" text-anchor="end">4</text>
+<rect x="82.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 2, n = 5: Hoàng–Reed 1987</title></rect>
+<rect x="90.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 2, n = 6: Hoàng–Reed 1987</title></rect>
+<rect x="98.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 2, n = 7: Hoàng–Reed 1987</title></rect>
+<rect x="106.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 2, n = 8: Hoàng–Reed 1987</title></rect>
+<rect x="118.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 3, n = 9: Hoàng–Reed 1987</title></rect>
+<rect x="126.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 3, n = 10: Hoàng–Reed 1987</title></rect>
+<rect x="134.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 3, n = 11: Hoàng–Reed 1987</title></rect>
+<rect x="142.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 3, n = 12: Hoàng–Reed 1987</title></rect>
+<rect x="154.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 4, n = 13: Hoàng–Reed 1987</title></rect>
+<rect x="162.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 4, n = 14: Hoàng–Reed 1987</title></rect>
+<rect x="170.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 4, n = 15: Hoàng–Reed 1987</title></rect>
+<rect x="178.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 4, n = 16: Hoàng–Reed 1987</title></rect>
+<rect x="190.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 5, n = 17: Hoàng–Reed 1987</title></rect>
+<rect x="198.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 5, n = 18: Hoàng–Reed 1987</title></rect>
+<rect x="206.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 5, n = 19: Hoàng–Reed 1987</title></rect>
+<rect x="214.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 5, n = 20: Hoàng–Reed 1987</title></rect>
+<rect x="226.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 6, n = 21: Hoàng–Reed 1987</title></rect>
+<rect x="234.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 6, n = 22: Hoàng–Reed 1987</title></rect>
+<rect x="242.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 6, n = 23: Hoàng–Reed 1987</title></rect>
+<rect x="250.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 6, n = 24: Hoàng–Reed 1987</title></rect>
+<rect x="262.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 7, n = 25: Hoàng–Reed 1987</title></rect>
+<rect x="270.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 7, n = 26: Hoàng–Reed 1987</title></rect>
+<rect x="278.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 7, n = 27: Hoàng–Reed 1987</title></rect>
+<rect x="286.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 7, n = 28: Hoàng–Reed 1987</title></rect>
+<rect x="298.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 8, n = 29: Hoàng–Reed 1987</title></rect>
+<rect x="306.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 8, n = 30: Hoàng–Reed 1987</title></rect>
+<rect x="314.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 8, n = 31: Hoàng–Reed 1987</title></rect>
+<rect x="322.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 8, n = 32: Hoàng–Reed 1987</title></rect>
+<rect x="334.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 9, n = 33: Hoàng–Reed 1987</title></rect>
+<rect x="342.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 9, n = 34: Hoàng–Reed 1987</title></rect>
+<rect x="350.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 9, n = 35: Hoàng–Reed 1987</title></rect>
+<rect x="358.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 9, n = 36: Hoàng–Reed 1987</title></rect>
+<rect x="370.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 10, n = 37: Hoàng–Reed 1987</title></rect>
+<rect x="378.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 10, n = 38: Hoàng–Reed 1987</title></rect>
+<rect x="386.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 10, n = 39: Hoàng–Reed 1987</title></rect>
+<rect x="394.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 10, n = 40: Hoàng–Reed 1987</title></rect>
+<rect x="406.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 11, n = 41: Hoàng–Reed 1987</title></rect>
+<rect x="414.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 11, n = 42: Hoàng–Reed 1987</title></rect>
+<rect x="422.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 11, n = 43: Hoàng–Reed 1987</title></rect>
+<rect x="430.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 11, n = 44: Hoàng–Reed 1987</title></rect>
+<rect x="442.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 12, n = 45: Hoàng–Reed 1987</title></rect>
+<rect x="450.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 12, n = 46: Hoàng–Reed 1987</title></rect>
+<rect x="458.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 12, n = 47: Hoàng–Reed 1987</title></rect>
+<rect x="466.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 12, n = 48: Hoàng–Reed 1987</title></rect>
+<rect x="478.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 13, n = 49: Hoàng–Reed 1987</title></rect>
+<rect x="486.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 13, n = 50: Hoàng–Reed 1987</title></rect>
+<rect x="494.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 13, n = 51: Hoàng–Reed 1987</title></rect>
+<rect x="502.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 13, n = 52: Hoàng–Reed 1987</title></rect>
+<rect x="514.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 14, n = 53: Hoàng–Reed 1987</title></rect>
+<rect x="522.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 14, n = 54: Hoàng–Reed 1987</title></rect>
+<rect x="530.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 14, n = 55: Hoàng–Reed 1987</title></rect>
+<rect x="538.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 14, n = 56: Hoàng–Reed 1987</title></rect>
+<rect x="550.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 15, n = 57: Hoàng–Reed 1987</title></rect>
+<rect x="558.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 15, n = 58: Hoàng–Reed 1987</title></rect>
+<rect x="566.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 15, n = 59: Hoàng–Reed 1987</title></rect>
+<rect x="574.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 15, n = 60: Hoàng–Reed 1987</title></rect>
+<rect x="586.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 16, n = 61: Hoàng–Reed 1987</title></rect>
+<rect x="594.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 16, n = 62: Hoàng–Reed 1987</title></rect>
+<rect x="602.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 16, n = 63: Hoàng–Reed 1987</title></rect>
+<rect x="610.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 16, n = 64: Hoàng–Reed 1987</title></rect>
+<rect x="622.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 17, n = 65: Hoàng–Reed 1987</title></rect>
+<rect x="630.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 17, n = 66: Hoàng–Reed 1987</title></rect>
+<rect x="638.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 17, n = 67: Hoàng–Reed 1987</title></rect>
+<rect x="646.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 17, n = 68: Hoàng–Reed 1987</title></rect>
+<rect x="658.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 18, n = 69: Hoàng–Reed 1987</title></rect>
+<rect x="666.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 18, n = 70: Hoàng–Reed 1987</title></rect>
+<rect x="674.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 18, n = 71: Hoàng–Reed 1987</title></rect>
+<rect x="682.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 18, n = 72: Hoàng–Reed 1987</title></rect>
+<rect x="694.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 19, n = 73: Hoàng–Reed 1987</title></rect>
+<rect x="702.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 19, n = 74: Hoàng–Reed 1987</title></rect>
+<rect x="710.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 19, n = 75: Hoàng–Reed 1987</title></rect>
+<rect x="718.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 19, n = 76: Hoàng–Reed 1987</title></rect>
+<rect x="730.00" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 20, n = 77: Hoàng–Reed 1987</title></rect>
+<rect x="738.25" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 20, n = 78: Hoàng–Reed 1987</title></rect>
+<rect x="746.50" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 20, n = 79: Hoàng–Reed 1987</title></rect>
+<rect x="754.75" y="319" width="7.75" height="26" fill="#8158ac"><title>r = 4, q = 20, n = 80: Hoàng–Reed 1987</title></rect>
+<text class="t" x="38" y="307.0" text-anchor="end">5</text>
+<rect x="82.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 2, n = 6: Hoàng–Reed 1987</title></rect>
+<rect x="88.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 2, n = 7: Hoàng–Reed 1987</title></rect>
+<rect x="95.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 2, n = 8: Hoàng–Reed 1987</title></rect>
+<rect x="101.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 2, n = 9: Hoàng–Reed 1987</title></rect>
+<rect x="108.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 2, n = 10: Hoàng–Reed 1987</title></rect>
+<rect x="118.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 3, n = 11: Hoàng–Reed 1987</title></rect>
+<rect x="124.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 3, n = 12: Hoàng–Reed 1987</title></rect>
+<rect x="131.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 3, n = 13: Hoàng–Reed 1987</title></rect>
+<rect x="137.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 3, n = 14: Hoàng–Reed 1987</title></rect>
+<rect x="144.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 3, n = 15: Hoàng–Reed 1987</title></rect>
+<rect x="154.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 4, n = 16: Hoàng–Reed 1987</title></rect>
+<rect x="160.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 4, n = 17: Hoàng–Reed 1987</title></rect>
+<rect x="167.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 4, n = 18: Hoàng–Reed 1987</title></rect>
+<rect x="173.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 4, n = 19: Hoàng–Reed 1987</title></rect>
+<rect x="180.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 4, n = 20: Hoàng–Reed 1987</title></rect>
+<rect x="190.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 5, n = 21: Hoàng–Reed 1987</title></rect>
+<rect x="196.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 5, n = 22: Hoàng–Reed 1987</title></rect>
+<rect x="203.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 5, n = 23: Hoàng–Reed 1987</title></rect>
+<rect x="209.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 5, n = 24: Hoàng–Reed 1987</title></rect>
+<rect x="216.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 5, n = 25: Hoàng–Reed 1987</title></rect>
+<rect x="226.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 6, n = 26: Hoàng–Reed 1987</title></rect>
+<rect x="232.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 6, n = 27: Hoàng–Reed 1987</title></rect>
+<rect x="239.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 6, n = 28: Hoàng–Reed 1987</title></rect>
+<rect x="245.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 6, n = 29: Hoàng–Reed 1987</title></rect>
+<rect x="252.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 6, n = 30: Hoàng–Reed 1987</title></rect>
+<rect x="262.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 7, n = 31: Hoàng–Reed 1987</title></rect>
+<rect x="268.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 7, n = 32: Hoàng–Reed 1987</title></rect>
+<rect x="275.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 7, n = 33: Hoàng–Reed 1987</title></rect>
+<rect x="281.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 7, n = 34: Hoàng–Reed 1987</title></rect>
+<rect x="288.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 7, n = 35: Hoàng–Reed 1987</title></rect>
+<rect x="298.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 8, n = 36: Hoàng–Reed 1987</title></rect>
+<rect x="304.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 8, n = 37: Hoàng–Reed 1987</title></rect>
+<rect x="311.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 8, n = 38: Hoàng–Reed 1987</title></rect>
+<rect x="317.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 8, n = 39: Hoàng–Reed 1987</title></rect>
+<rect x="324.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 8, n = 40: Hoàng–Reed 1987</title></rect>
+<rect x="334.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 9, n = 41: Hoàng–Reed 1987</title></rect>
+<rect x="340.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 9, n = 42: Hoàng–Reed 1987</title></rect>
+<rect x="347.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 9, n = 43: Hoàng–Reed 1987</title></rect>
+<rect x="353.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 9, n = 44: Hoàng–Reed 1987</title></rect>
+<rect x="360.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 9, n = 45: Hoàng–Reed 1987</title></rect>
+<rect x="370.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 10, n = 46: Hoàng–Reed 1987</title></rect>
+<rect x="376.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 10, n = 47: Hoàng–Reed 1987</title></rect>
+<rect x="383.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 10, n = 48: Hoàng–Reed 1987</title></rect>
+<rect x="389.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 10, n = 49: Hoàng–Reed 1987</title></rect>
+<rect x="396.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 10, n = 50: Hoàng–Reed 1987</title></rect>
+<rect x="406.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 11, n = 51: Hoàng–Reed 1987</title></rect>
+<rect x="412.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 11, n = 52: Hoàng–Reed 1987</title></rect>
+<rect x="419.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 11, n = 53: Hoàng–Reed 1987</title></rect>
+<rect x="425.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 11, n = 54: Hoàng–Reed 1987</title></rect>
+<rect x="432.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 11, n = 55: Hoàng–Reed 1987</title></rect>
+<rect x="442.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 12, n = 56: Hoàng–Reed 1987</title></rect>
+<rect x="448.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 12, n = 57: Hoàng–Reed 1987</title></rect>
+<rect x="455.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 12, n = 58: Hoàng–Reed 1987</title></rect>
+<rect x="461.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 12, n = 59: Hoàng–Reed 1987</title></rect>
+<rect x="468.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 12, n = 60: Hoàng–Reed 1987</title></rect>
+<rect x="478.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 13, n = 61: Hoàng–Reed 1987</title></rect>
+<rect x="484.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 13, n = 62: Hoàng–Reed 1987</title></rect>
+<rect x="491.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 13, n = 63: Hoàng–Reed 1987</title></rect>
+<rect x="497.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 13, n = 64: Hoàng–Reed 1987</title></rect>
+<rect x="504.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 13, n = 65: Hoàng–Reed 1987</title></rect>
+<rect x="514.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 14, n = 66: Hoàng–Reed 1987</title></rect>
+<rect x="520.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 14, n = 67: Hoàng–Reed 1987</title></rect>
+<rect x="527.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 14, n = 68: Hoàng–Reed 1987</title></rect>
+<rect x="533.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 14, n = 69: Hoàng–Reed 1987</title></rect>
+<rect x="540.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 14, n = 70: Hoàng–Reed 1987</title></rect>
+<rect x="550.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 15, n = 71: Hoàng–Reed 1987</title></rect>
+<rect x="556.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 15, n = 72: Hoàng–Reed 1987</title></rect>
+<rect x="563.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 15, n = 73: Hoàng–Reed 1987</title></rect>
+<rect x="569.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 15, n = 74: Hoàng–Reed 1987</title></rect>
+<rect x="576.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 15, n = 75: Hoàng–Reed 1987</title></rect>
+<rect x="586.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 16, n = 76: Hoàng–Reed 1987</title></rect>
+<rect x="592.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 16, n = 77: Hoàng–Reed 1987</title></rect>
+<rect x="599.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 16, n = 78: Hoàng–Reed 1987</title></rect>
+<rect x="605.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 16, n = 79: Hoàng–Reed 1987</title></rect>
+<rect x="612.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 16, n = 80: Hoàng–Reed 1987</title></rect>
+<rect x="622.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 17, n = 81: Hoàng–Reed 1987</title></rect>
+<rect x="628.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 17, n = 82: Hoàng–Reed 1987</title></rect>
+<rect x="635.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 17, n = 83: Hoàng–Reed 1987</title></rect>
+<rect x="641.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 17, n = 84: Hoàng–Reed 1987</title></rect>
+<rect x="648.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 17, n = 85: Hoàng–Reed 1987</title></rect>
+<rect x="658.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 18, n = 86: Hoàng–Reed 1987</title></rect>
+<rect x="664.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 18, n = 87: Hoàng–Reed 1987</title></rect>
+<rect x="671.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 18, n = 88: Hoàng–Reed 1987</title></rect>
+<rect x="677.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 18, n = 89: Hoàng–Reed 1987</title></rect>
+<rect x="684.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 18, n = 90: Hoàng–Reed 1987</title></rect>
+<rect x="694.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 19, n = 91: Hoàng–Reed 1987</title></rect>
+<rect x="700.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 19, n = 92: Hoàng–Reed 1987</title></rect>
+<rect x="707.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 19, n = 93: Hoàng–Reed 1987</title></rect>
+<rect x="713.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 19, n = 94: Hoàng–Reed 1987</title></rect>
+<rect x="720.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 19, n = 95: Hoàng–Reed 1987</title></rect>
+<rect x="730.00" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 20, n = 96: Hoàng–Reed 1987</title></rect>
+<rect x="736.60" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 20, n = 97: Hoàng–Reed 1987</title></rect>
+<rect x="743.20" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 20, n = 98: Hoàng–Reed 1987</title></rect>
+<rect x="749.80" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 20, n = 99: Hoàng–Reed 1987</title></rect>
+<rect x="756.40" y="289" width="6.10" height="26" fill="#8158ac"><title>r = 5, q = 20, n = 100: Hoàng–Reed 1987</title></rect>
+<text class="t" x="38" y="277.0" text-anchor="end">6</text>
+<rect x="82.00" y="259" width="5.00" height="26" fill="#8a8f94"><title>r = 6, q = 2, n = 7: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="87.50" y="259" width="5.00" height="26" fill="#8a8f94"><title>r = 6, q = 2, n = 8: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="93.00" y="259" width="5.00" height="26" fill="#8a8f94"><title>r = 6, q = 2, n = 9: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="98.50" y="259" width="5.00" height="26" fill="#8a8f94"><title>r = 6, q = 2, n = 10: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="104.00" y="259" width="5.00" height="26" fill="#8a8f94"><title>r = 6, q = 2, n = 11: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="109.50" y="259" width="5.00" height="26" fill="#8a8f94"><title>r = 6, q = 2, n = 12: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="118.00" y="259" width="5.00" height="26" fill="#c95b8b"><title>r = 6, q = 3, n = 13: Hladký–Král’–Norin</title></rect>
+<rect x="123.50" y="259" width="5.00" height="26" fill="#c95b8b"><title>r = 6, q = 3, n = 14: Hladký–Král’–Norin</title></rect>
+<rect x="129.00" y="259" width="5.00" height="26" fill="#c95b8b"><title>r = 6, q = 3, n = 15: Hladký–Král’–Norin</title></rect>
+<rect x="134.50" y="259" width="5.00" height="26" fill="#c95b8b"><title>r = 6, q = 3, n = 16: Hladký–Král’–Norin</title></rect>
+<rect x="140.00" y="259" width="5.00" height="26" fill="#c95b8b"><title>r = 6, q = 3, n = 17: Hladký–Král’–Norin</title></rect>
+<rect x="145.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 3, n = 18: Josh P., unpublished manuscript</title></rect>
+<rect x="154.00" y="259" width="5.00" height="26" fill="#8158ac"><title>r = 6, q = 4, n = 19: Hoàng–Reed 1987</title></rect>
+<rect x="159.50" y="259" width="5.00" height="26" fill="#8158ac"><title>r = 6, q = 4, n = 20: Hoàng–Reed 1987</title></rect>
+<rect x="165.00" y="259" width="5.00" height="26" fill="#8158ac"><title>r = 6, q = 4, n = 21: Hoàng–Reed 1987</title></rect>
+<rect x="170.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 4, n = 22: Josh P., unpublished manuscript</title></rect>
+<rect x="176.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 4, n = 23: Josh P., unpublished manuscript</title></rect>
+<rect x="181.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 4, n = 24: Josh P., unpublished manuscript</title></rect>
+<rect x="190.00" y="259" width="5.00" height="26" fill="#8158ac"><title>r = 6, q = 5, n = 25: Hoàng–Reed 1987</title></rect>
+<rect x="195.50" y="259" width="5.00" height="26" fill="#8158ac"><title>r = 6, q = 5, n = 26: Hoàng–Reed 1987</title></rect>
+<rect x="201.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 5, n = 27: Josh P., unpublished manuscript</title></rect>
+<rect x="206.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 5, n = 28: Josh P., unpublished manuscript</title></rect>
+<rect x="212.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 5, n = 29: Josh P., unpublished manuscript</title></rect>
+<rect x="217.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 5, n = 30: Josh P., unpublished manuscript</title></rect>
+<rect x="226.00" y="259" width="5.00" height="26" fill="#8158ac"><title>r = 6, q = 6, n = 31: Hoàng–Reed 1987</title></rect>
+<rect x="231.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 6, n = 32: Josh P., unpublished manuscript</title></rect>
+<rect x="237.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 6, n = 33: Josh P., unpublished manuscript</title></rect>
+<rect x="242.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 6, n = 34: Josh P., unpublished manuscript</title></rect>
+<rect x="248.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 6, n = 35: Josh P., unpublished manuscript</title></rect>
+<rect x="253.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 6, n = 36: Josh P., unpublished manuscript</title></rect>
+<rect x="262.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 7, n = 37: Josh P., unpublished manuscript</title></rect>
+<rect x="267.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 7, n = 38: Josh P., unpublished manuscript</title></rect>
+<rect x="273.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 7, n = 39: Josh P., unpublished manuscript</title></rect>
+<rect x="278.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 7, n = 40: Josh P., unpublished manuscript</title></rect>
+<rect x="284.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 7, n = 41: Josh P., unpublished manuscript</title></rect>
+<rect x="289.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 7, n = 42: Josh P., unpublished manuscript</title></rect>
+<rect x="298.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 8, n = 43: Josh P., unpublished manuscript</title></rect>
+<rect x="303.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 8, n = 44: Josh P., unpublished manuscript</title></rect>
+<rect x="309.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 8, n = 45: Josh P., unpublished manuscript</title></rect>
+<rect x="314.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 8, n = 46: Josh P., unpublished manuscript</title></rect>
+<rect x="320.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 8, n = 47: Josh P., unpublished manuscript</title></rect>
+<rect x="325.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 8, n = 48: Josh P., unpublished manuscript</title></rect>
+<rect x="334.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 9, n = 49: Josh P., unpublished manuscript</title></rect>
+<rect x="339.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 9, n = 50: Josh P., unpublished manuscript</title></rect>
+<rect x="345.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 9, n = 51: Josh P., unpublished manuscript</title></rect>
+<rect x="350.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 9, n = 52: Josh P., unpublished manuscript</title></rect>
+<rect x="356.00" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 9, n = 53: Josh P., unpublished manuscript</title></rect>
+<rect x="361.50" y="259" width="5.00" height="26" fill="#e0ad43"><title>r = 6, q = 9, n = 54: Josh P., unpublished manuscript</title></rect>
+<rect x="370.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 10, n = 55: Shen 2000</title></rect>
+<rect x="375.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 10, n = 56: Shen 2000</title></rect>
+<rect x="381.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 10, n = 57: Shen 2000</title></rect>
+<rect x="386.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 10, n = 58: Shen 2000</title></rect>
+<rect x="392.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 10, n = 59: Shen 2000</title></rect>
+<rect x="397.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 10, n = 60: Shen 2000</title></rect>
+<rect x="406.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 11, n = 61: Shen 2000</title></rect>
+<rect x="411.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 11, n = 62: Shen 2000</title></rect>
+<rect x="417.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 11, n = 63: Shen 2000</title></rect>
+<rect x="422.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 11, n = 64: Shen 2000</title></rect>
+<rect x="428.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 11, n = 65: Shen 2000</title></rect>
+<rect x="433.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 11, n = 66: Shen 2000</title></rect>
+<rect x="442.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 12, n = 67: Shen 2000</title></rect>
+<rect x="447.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 12, n = 68: Shen 2000</title></rect>
+<rect x="453.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 12, n = 69: Shen 2000</title></rect>
+<rect x="458.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 12, n = 70: Shen 2000</title></rect>
+<rect x="464.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 12, n = 71: Shen 2000</title></rect>
+<rect x="469.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 12, n = 72: Shen 2000</title></rect>
+<rect x="478.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 13, n = 73: Shen 2000</title></rect>
+<rect x="483.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 13, n = 74: Shen 2000</title></rect>
+<rect x="489.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 13, n = 75: Shen 2000</title></rect>
+<rect x="494.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 13, n = 76: Shen 2000</title></rect>
+<rect x="500.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 13, n = 77: Shen 2000</title></rect>
+<rect x="505.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 13, n = 78: Shen 2000</title></rect>
+<rect x="514.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 14, n = 79: Shen 2000</title></rect>
+<rect x="519.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 14, n = 80: Shen 2000</title></rect>
+<rect x="525.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 14, n = 81: Shen 2000</title></rect>
+<rect x="530.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 14, n = 82: Shen 2000</title></rect>
+<rect x="536.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 14, n = 83: Shen 2000</title></rect>
+<rect x="541.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 14, n = 84: Shen 2000</title></rect>
+<rect x="550.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 15, n = 85: Shen 2000</title></rect>
+<rect x="555.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 15, n = 86: Shen 2000</title></rect>
+<rect x="561.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 15, n = 87: Shen 2000</title></rect>
+<rect x="566.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 15, n = 88: Shen 2000</title></rect>
+<rect x="572.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 15, n = 89: Shen 2000</title></rect>
+<rect x="577.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 15, n = 90: Shen 2000</title></rect>
+<rect x="586.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 16, n = 91: Shen 2000</title></rect>
+<rect x="591.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 16, n = 92: Shen 2000</title></rect>
+<rect x="597.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 16, n = 93: Shen 2000</title></rect>
+<rect x="602.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 16, n = 94: Shen 2000</title></rect>
+<rect x="608.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 16, n = 95: Shen 2000</title></rect>
+<rect x="613.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 16, n = 96: Shen 2000</title></rect>
+<rect x="622.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 17, n = 97: Shen 2000</title></rect>
+<rect x="627.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 17, n = 98: Shen 2000</title></rect>
+<rect x="633.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 17, n = 99: Shen 2000</title></rect>
+<rect x="638.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 17, n = 100: Shen 2000</title></rect>
+<rect x="644.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 17, n = 101: Shen 2000</title></rect>
+<rect x="649.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 17, n = 102: Shen 2000</title></rect>
+<rect x="658.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 18, n = 103: Shen 2000</title></rect>
+<rect x="663.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 18, n = 104: Shen 2000</title></rect>
+<rect x="669.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 18, n = 105: Shen 2000</title></rect>
+<rect x="674.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 18, n = 106: Shen 2000</title></rect>
+<rect x="680.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 18, n = 107: Shen 2000</title></rect>
+<rect x="685.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 18, n = 108: Shen 2000</title></rect>
+<rect x="694.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 19, n = 109: Shen 2000</title></rect>
+<rect x="699.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 19, n = 110: Shen 2000</title></rect>
+<rect x="705.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 19, n = 111: Shen 2000</title></rect>
+<rect x="710.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 19, n = 112: Shen 2000</title></rect>
+<rect x="716.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 19, n = 113: Shen 2000</title></rect>
+<rect x="721.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 19, n = 114: Shen 2000</title></rect>
+<rect x="730.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 20, n = 115: Shen 2000</title></rect>
+<rect x="735.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 20, n = 116: Shen 2000</title></rect>
+<rect x="741.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 20, n = 117: Shen 2000</title></rect>
+<rect x="746.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 20, n = 118: Shen 2000</title></rect>
+<rect x="752.00" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 20, n = 119: Shen 2000</title></rect>
+<rect x="757.50" y="259" width="5.00" height="26" fill="#3fa9b5"><title>r = 6, q = 20, n = 120: Shen 2000</title></rect>
+<text class="t" x="38" y="247.0" text-anchor="end">7</text>
+<rect x="82.00" y="229" width="4.21" height="26" fill="#8a8f94"><title>r = 7, q = 2, n = 8: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="86.71" y="229" width="4.21" height="26" fill="#8a8f94"><title>r = 7, q = 2, n = 9: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="91.43" y="229" width="4.21" height="26" fill="#8a8f94"><title>r = 7, q = 2, n = 10: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="96.14" y="229" width="4.21" height="26" fill="#8a8f94"><title>r = 7, q = 2, n = 11: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="100.86" y="229" width="4.21" height="26" fill="#8a8f94"><title>r = 7, q = 2, n = 12: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="105.57" y="229" width="4.21" height="26" fill="#8a8f94"><title>r = 7, q = 2, n = 13: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="110.29" y="229" width="4.21" height="26" fill="#8a8f94"><title>r = 7, q = 2, n = 14: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="118.00" y="229" width="4.21" height="26" fill="#c95b8b"><title>r = 7, q = 3, n = 15: Hladký–Král’–Norin</title></rect>
+<rect x="122.71" y="229" width="4.21" height="26" fill="#c95b8b"><title>r = 7, q = 3, n = 16: Hladký–Král’–Norin</title></rect>
+<rect x="127.43" y="229" width="4.21" height="26" fill="#c95b8b"><title>r = 7, q = 3, n = 17: Hladký–Král’–Norin</title></rect>
+<rect x="132.14" y="229" width="4.21" height="26" fill="#c95b8b"><title>r = 7, q = 3, n = 18: Hladký–Král’–Norin</title></rect>
+<rect x="136.86" y="229" width="4.21" height="26" fill="#c95b8b"><title>r = 7, q = 3, n = 19: Hladký–Král’–Norin</title></rect>
+<rect x="141.57" y="229" width="4.21" height="26" fill="#c95b8b"><title>r = 7, q = 3, n = 20: Hladký–Král’–Norin</title></rect>
+<rect x="146.29" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 3, n = 21: briel (Lean)</title></rect>
+<rect x="154.00" y="229" width="4.21" height="26" fill="#8158ac"><title>r = 7, q = 4, n = 22: Hoàng–Reed 1987</title></rect>
+<rect x="158.71" y="229" width="4.21" height="26" fill="#e0ad43"><title>r = 7, q = 4, n = 23: Josh P., unpublished manuscript</title></rect>
+<rect x="163.43" y="229" width="4.21" height="26" fill="#e0ad43"><title>r = 7, q = 4, n = 24: Josh P., unpublished manuscript</title></rect>
+<rect x="168.14" y="229" width="4.21" height="26" fill="#e0ad43"><title>r = 7, q = 4, n = 25: Josh P., unpublished manuscript</title></rect>
+<rect x="172.86" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 4, n = 26: briel (Lean)</title></rect>
+<rect x="177.57" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 4, n = 27: briel (Lean)</title></rect>
+<rect x="182.29" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 4, n = 28: briel (Lean)</title></rect>
+<rect x="190.00" y="229" width="4.21" height="26" fill="#e0ad43"><title>r = 7, q = 5, n = 29: Josh P., unpublished manuscript</title></rect>
+<rect x="194.71" y="229" width="4.21" height="26" fill="#e0ad43"><title>r = 7, q = 5, n = 30: Josh P., unpublished manuscript</title></rect>
+<rect x="199.43" y="229" width="4.21" height="26" fill="#e0ad43"><title>r = 7, q = 5, n = 31: Josh P., unpublished manuscript</title></rect>
+<rect x="204.14" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 5, n = 32: briel (Lean)</title></rect>
+<rect x="208.86" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 5, n = 33: briel (Lean)</title></rect>
+<rect x="213.57" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 5, n = 34: briel (Lean)</title></rect>
+<rect x="218.29" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 5, n = 35: briel (Lean)</title></rect>
+<rect x="226.00" y="229" width="4.21" height="26" fill="#e0ad43"><title>r = 7, q = 6, n = 36: Josh P., unpublished manuscript</title></rect>
+<rect x="230.71" y="229" width="4.21" height="26" fill="#e0ad43"><title>r = 7, q = 6, n = 37: Josh P., unpublished manuscript</title></rect>
+<rect x="235.43" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 6, n = 38: briel (Lean)</title></rect>
+<rect x="240.14" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 6, n = 39: briel (Lean)</title></rect>
+<rect x="244.86" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 6, n = 40: briel (Lean)</title></rect>
+<rect x="249.57" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 6, n = 41: briel (Lean)</title></rect>
+<rect x="254.29" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 6, n = 42: briel (Lean)</title></rect>
+<rect x="262.00" y="229" width="4.21" height="26" fill="#e0ad43"><title>r = 7, q = 7, n = 43: Josh P., unpublished manuscript</title></rect>
+<rect x="266.71" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 7, n = 44: briel (Lean)</title></rect>
+<rect x="271.43" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 7, n = 45: briel (Lean)</title></rect>
+<rect x="276.14" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 7, n = 46: briel (Lean)</title></rect>
+<rect x="280.86" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 7, n = 47: briel (Lean)</title></rect>
+<rect x="285.57" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 7, n = 48: briel (Lean)</title></rect>
+<rect x="290.29" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 7, n = 49: briel (Lean)</title></rect>
+<rect x="298.00" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 8, n = 50: briel (Lean)</title></rect>
+<rect x="302.71" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 8, n = 51: briel (Lean)</title></rect>
+<rect x="307.43" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 8, n = 52: briel (Lean)</title></rect>
+<rect x="312.14" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 8, n = 53: briel (Lean)</title></rect>
+<rect x="316.86" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 8, n = 54: briel (Lean)</title></rect>
+<rect x="321.57" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 8, n = 55: briel (Lean)</title></rect>
+<rect x="326.29" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 8, n = 56: briel (Lean)</title></rect>
+<rect x="334.00" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 9, n = 57: briel (Lean)</title></rect>
+<rect x="338.71" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 9, n = 58: briel (Lean)</title></rect>
+<rect x="343.43" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 9, n = 59: briel (Lean)</title></rect>
+<rect x="348.14" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 9, n = 60: briel (Lean)</title></rect>
+<rect x="352.86" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 9, n = 61: briel (Lean)</title></rect>
+<rect x="357.57" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 9, n = 62: briel (Lean)</title></rect>
+<rect x="362.29" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 9, n = 63: briel (Lean)</title></rect>
+<rect x="370.00" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 10, n = 64: briel (Lean)</title></rect>
+<rect x="374.71" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 10, n = 65: briel (Lean)</title></rect>
+<rect x="379.43" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 10, n = 66: briel (Lean)</title></rect>
+<rect x="384.14" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 10, n = 67: briel (Lean)</title></rect>
+<rect x="388.86" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 10, n = 68: briel (Lean)</title></rect>
+<rect x="393.57" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 10, n = 69: briel (Lean)</title></rect>
+<rect x="398.29" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 10, n = 70: briel (Lean)</title></rect>
+<rect x="406.00" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 11, n = 71: briel (Lean)</title></rect>
+<rect x="410.71" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 11, n = 72: briel (Lean)</title></rect>
+<rect x="415.43" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 11, n = 73: briel (Lean)</title></rect>
+<rect x="420.14" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 11, n = 74: briel (Lean)</title></rect>
+<rect x="424.86" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 11, n = 75: briel (Lean)</title></rect>
+<rect x="429.57" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 11, n = 76: briel (Lean)</title></rect>
+<rect x="434.29" y="229" width="4.21" height="26" fill="#188256"><title>r = 7, q = 11, n = 77: briel (Lean)</title></rect>
+<rect x="442.00" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 12, n = 78: Shen 2000</title></rect>
+<rect x="446.71" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 12, n = 79: Shen 2000</title></rect>
+<rect x="451.43" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 12, n = 80: Shen 2000</title></rect>
+<rect x="456.14" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 12, n = 81: Shen 2000</title></rect>
+<rect x="460.86" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 12, n = 82: Shen 2000</title></rect>
+<rect x="465.57" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 12, n = 83: Shen 2000</title></rect>
+<rect x="470.29" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 12, n = 84: Shen 2000</title></rect>
+<rect x="478.00" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 13, n = 85: Shen 2000</title></rect>
+<rect x="482.71" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 13, n = 86: Shen 2000</title></rect>
+<rect x="487.43" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 13, n = 87: Shen 2000</title></rect>
+<rect x="492.14" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 13, n = 88: Shen 2000</title></rect>
+<rect x="496.86" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 13, n = 89: Shen 2000</title></rect>
+<rect x="501.57" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 13, n = 90: Shen 2000</title></rect>
+<rect x="506.29" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 13, n = 91: Shen 2000</title></rect>
+<rect x="514.00" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 14, n = 92: Shen 2000</title></rect>
+<rect x="518.71" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 14, n = 93: Shen 2000</title></rect>
+<rect x="523.43" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 14, n = 94: Shen 2000</title></rect>
+<rect x="528.14" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 14, n = 95: Shen 2000</title></rect>
+<rect x="532.86" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 14, n = 96: Shen 2000</title></rect>
+<rect x="537.57" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 14, n = 97: Shen 2000</title></rect>
+<rect x="542.29" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 14, n = 98: Shen 2000</title></rect>
+<rect x="550.00" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 15, n = 99: Shen 2000</title></rect>
+<rect x="554.71" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 15, n = 100: Shen 2000</title></rect>
+<rect x="559.43" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 15, n = 101: Shen 2000</title></rect>
+<rect x="564.14" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 15, n = 102: Shen 2000</title></rect>
+<rect x="568.86" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 15, n = 103: Shen 2000</title></rect>
+<rect x="573.57" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 15, n = 104: Shen 2000</title></rect>
+<rect x="578.29" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 15, n = 105: Shen 2000</title></rect>
+<rect x="586.00" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 16, n = 106: Shen 2000</title></rect>
+<rect x="590.71" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 16, n = 107: Shen 2000</title></rect>
+<rect x="595.43" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 16, n = 108: Shen 2000</title></rect>
+<rect x="600.14" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 16, n = 109: Shen 2000</title></rect>
+<rect x="604.86" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 16, n = 110: Shen 2000</title></rect>
+<rect x="609.57" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 16, n = 111: Shen 2000</title></rect>
+<rect x="614.29" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 16, n = 112: Shen 2000</title></rect>
+<rect x="622.00" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 17, n = 113: Shen 2000</title></rect>
+<rect x="626.71" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 17, n = 114: Shen 2000</title></rect>
+<rect x="631.43" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 17, n = 115: Shen 2000</title></rect>
+<rect x="636.14" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 17, n = 116: Shen 2000</title></rect>
+<rect x="640.86" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 17, n = 117: Shen 2000</title></rect>
+<rect x="645.57" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 17, n = 118: Shen 2000</title></rect>
+<rect x="650.29" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 17, n = 119: Shen 2000</title></rect>
+<rect x="658.00" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 18, n = 120: Shen 2000</title></rect>
+<rect x="662.71" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 18, n = 121: Shen 2000</title></rect>
+<rect x="667.43" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 18, n = 122: Shen 2000</title></rect>
+<rect x="672.14" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 18, n = 123: Shen 2000</title></rect>
+<rect x="676.86" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 18, n = 124: Shen 2000</title></rect>
+<rect x="681.57" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 18, n = 125: Shen 2000</title></rect>
+<rect x="686.29" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 18, n = 126: Shen 2000</title></rect>
+<rect x="694.00" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 19, n = 127: Shen 2000</title></rect>
+<rect x="698.71" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 19, n = 128: Shen 2000</title></rect>
+<rect x="703.43" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 19, n = 129: Shen 2000</title></rect>
+<rect x="708.14" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 19, n = 130: Shen 2000</title></rect>
+<rect x="712.86" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 19, n = 131: Shen 2000</title></rect>
+<rect x="717.57" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 19, n = 132: Shen 2000</title></rect>
+<rect x="722.29" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 19, n = 133: Shen 2000</title></rect>
+<rect x="730.00" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 20, n = 134: Shen 2000</title></rect>
+<rect x="734.71" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 20, n = 135: Shen 2000</title></rect>
+<rect x="739.43" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 20, n = 136: Shen 2000</title></rect>
+<rect x="744.14" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 20, n = 137: Shen 2000</title></rect>
+<rect x="748.86" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 20, n = 138: Shen 2000</title></rect>
+<rect x="753.57" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 20, n = 139: Shen 2000</title></rect>
+<rect x="758.29" y="229" width="4.21" height="26" fill="#3fa9b5"><title>r = 7, q = 20, n = 140: Shen 2000</title></rect>
+<text class="t" x="38" y="217.0" text-anchor="end">8</text>
+<rect x="82.00" y="199" width="3.62" height="26" fill="#8a8f94"><title>r = 8, q = 2, n = 9: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="86.12" y="199" width="3.62" height="26" fill="#8a8f94"><title>r = 8, q = 2, n = 10: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="90.25" y="199" width="3.62" height="26" fill="#8a8f94"><title>r = 8, q = 2, n = 11: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="94.38" y="199" width="3.62" height="26" fill="#8a8f94"><title>r = 8, q = 2, n = 12: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="98.50" y="199" width="3.62" height="26" fill="#8a8f94"><title>r = 8, q = 2, n = 13: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="102.62" y="199" width="3.62" height="26" fill="#8a8f94"><title>r = 8, q = 2, n = 14: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="106.75" y="199" width="3.62" height="26" fill="#8a8f94"><title>r = 8, q = 2, n = 15: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="110.88" y="199" width="3.62" height="26" fill="#8a8f94"><title>r = 8, q = 2, n = 16: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="118.00" y="199" width="3.62" height="26" fill="#c95b8b"><title>r = 8, q = 3, n = 17: Hladký–Král’–Norin</title></rect>
+<rect x="122.12" y="199" width="3.62" height="26" fill="#c95b8b"><title>r = 8, q = 3, n = 18: Hladký–Král’–Norin</title></rect>
+<rect x="126.25" y="199" width="3.62" height="26" fill="#c95b8b"><title>r = 8, q = 3, n = 19: Hladký–Král’–Norin</title></rect>
+<rect x="130.38" y="199" width="3.62" height="26" fill="#c95b8b"><title>r = 8, q = 3, n = 20: Hladký–Král’–Norin</title></rect>
+<rect x="134.50" y="199" width="3.62" height="26" fill="#c95b8b"><title>r = 8, q = 3, n = 21: Hladký–Král’–Norin</title></rect>
+<rect x="138.62" y="199" width="3.62" height="26" fill="#c95b8b"><title>r = 8, q = 3, n = 22: Hladký–Král’–Norin</title></rect>
+<rect x="142.75" y="199" width="3.62" height="26" fill="#c95b8b"><title>r = 8, q = 3, n = 23: Hladký–Král’–Norin</title></rect>
+<rect x="146.88" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 3, n = 24: briel (Lean)</title></rect>
+<rect x="154.00" y="199" width="3.62" height="26" fill="#e0ad43"><title>r = 8, q = 4, n = 25: Josh P., unpublished manuscript</title></rect>
+<rect x="158.12" y="199" width="3.62" height="26" fill="#e0ad43"><title>r = 8, q = 4, n = 26: Josh P., unpublished manuscript</title></rect>
+<rect x="162.25" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 4, n = 27: briel (Lean)</title></rect>
+<rect x="166.38" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 4, n = 28: briel (Lean)</title></rect>
+<rect x="170.50" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 4, n = 29: briel (Lean)</title></rect>
+<rect x="174.62" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 4, n = 30: briel (Lean)</title></rect>
+<rect x="178.75" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 4, n = 31: briel (Lean)</title></rect>
+<rect x="182.88" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 4, n = 32: briel (Lean)</title></rect>
+<rect x="190.00" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 5, n = 33: briel (Lean)</title></rect>
+<rect x="194.12" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 5, n = 34: briel (Lean)</title></rect>
+<rect x="198.25" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 5, n = 35: briel (Lean)</title></rect>
+<rect x="202.38" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 5, n = 36: briel (Lean)</title></rect>
+<rect x="206.50" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 5, n = 37: briel (Lean)</title></rect>
+<rect x="210.62" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 5, n = 38: briel (Lean)</title></rect>
+<rect x="214.75" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 5, n = 39: briel (Lean)</title></rect>
+<rect x="218.88" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 5, n = 40: briel (Lean)</title></rect>
+<rect x="226.00" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 6, n = 41: briel (Lean)</title></rect>
+<rect x="230.12" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 6, n = 42: briel (Lean)</title></rect>
+<rect x="234.25" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 6, n = 43: briel (Lean)</title></rect>
+<rect x="238.38" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 6, n = 44: briel (Lean)</title></rect>
+<rect x="242.50" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 6, n = 45: briel (Lean)</title></rect>
+<rect x="246.62" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 6, n = 46: briel (Lean)</title></rect>
+<rect x="250.75" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 6, n = 47: briel (Lean)</title></rect>
+<rect x="254.88" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 6, n = 48: briel (Lean)</title></rect>
+<rect x="262.00" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 7, n = 49: briel (Lean)</title></rect>
+<rect x="266.12" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 7, n = 50: briel (Lean)</title></rect>
+<rect x="270.25" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 7, n = 51: briel (Lean)</title></rect>
+<rect x="274.38" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 7, n = 52: briel (Lean)</title></rect>
+<rect x="278.50" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 7, n = 53: briel (Lean)</title></rect>
+<rect x="282.62" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 7, n = 54: briel (Lean)</title></rect>
+<rect x="286.75" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 7, n = 55: briel (Lean)</title></rect>
+<rect x="290.88" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 7, n = 56: briel (Lean)</title></rect>
+<rect x="298.00" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 8, n = 57: briel (Lean)</title></rect>
+<rect x="302.12" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 8, n = 58: briel (Lean)</title></rect>
+<rect x="306.25" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 8, n = 59: briel (Lean)</title></rect>
+<rect x="310.38" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 8, n = 60: briel (Lean)</title></rect>
+<rect x="314.50" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 8, n = 61: briel (Lean)</title></rect>
+<rect x="318.62" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 8, n = 62: briel (Lean)</title></rect>
+<rect x="322.75" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 8, n = 63: briel (Lean)</title></rect>
+<rect x="326.88" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 8, n = 64: briel (Lean)</title></rect>
+<rect x="334.00" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 9, n = 65: briel (Lean)</title></rect>
+<rect x="338.12" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 9, n = 66: briel (Lean)</title></rect>
+<rect x="342.25" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 9, n = 67: briel (Lean)</title></rect>
+<rect x="346.38" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 9, n = 68: briel (Lean)</title></rect>
+<rect x="350.50" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 9, n = 69: briel (Lean)</title></rect>
+<rect x="354.62" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 9, n = 70: briel (Lean)</title></rect>
+<rect x="358.75" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 9, n = 71: briel (Lean)</title></rect>
+<rect x="362.88" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 9, n = 72: briel (Lean)</title></rect>
+<rect x="370.00" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 10, n = 73: briel (Lean)</title></rect>
+<rect x="374.12" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 10, n = 74: briel (Lean)</title></rect>
+<rect x="378.25" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 10, n = 75: briel (Lean)</title></rect>
+<rect x="382.38" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 10, n = 76: briel (Lean)</title></rect>
+<rect x="386.50" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 10, n = 77: briel (Lean)</title></rect>
+<rect x="390.62" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 10, n = 78: briel (Lean)</title></rect>
+<rect x="394.75" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 10, n = 79: briel (Lean)</title></rect>
+<rect x="398.88" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 10, n = 80: briel (Lean)</title></rect>
+<rect x="406.00" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 11, n = 81: briel (Lean)</title></rect>
+<rect x="410.12" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 11, n = 82: briel (Lean)</title></rect>
+<rect x="414.25" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 11, n = 83: briel (Lean)</title></rect>
+<rect x="418.38" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 11, n = 84: briel (Lean)</title></rect>
+<rect x="422.50" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 11, n = 85: briel (Lean)</title></rect>
+<rect x="426.62" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 11, n = 86: briel (Lean)</title></rect>
+<rect x="430.75" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 11, n = 87: briel (Lean)</title></rect>
+<rect x="434.88" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 11, n = 88: briel (Lean)</title></rect>
+<rect x="442.00" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 12, n = 89: briel (Lean)</title></rect>
+<rect x="446.12" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 12, n = 90: briel (Lean)</title></rect>
+<rect x="450.25" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 12, n = 91: briel (Lean)</title></rect>
+<rect x="454.38" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 12, n = 92: briel (Lean)</title></rect>
+<rect x="458.50" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 12, n = 93: briel (Lean)</title></rect>
+<rect x="462.62" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 12, n = 94: briel (Lean)</title></rect>
+<rect x="466.75" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 12, n = 95: briel (Lean)</title></rect>
+<rect x="470.88" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 12, n = 96: briel (Lean)</title></rect>
+<rect x="478.00" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 13, n = 97: briel (Lean)</title></rect>
+<rect x="482.12" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 13, n = 98: briel (Lean)</title></rect>
+<rect x="486.25" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 13, n = 99: briel (Lean)</title></rect>
+<rect x="490.38" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 13, n = 100: briel (Lean)</title></rect>
+<rect x="494.50" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 13, n = 101: briel (Lean)</title></rect>
+<rect x="498.62" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 13, n = 102: briel (Lean)</title></rect>
+<rect x="502.75" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 13, n = 103: briel (Lean)</title></rect>
+<rect x="506.88" y="199" width="3.62" height="26" fill="#188256"><title>r = 8, q = 13, n = 104: briel (Lean)</title></rect>
+<rect x="514.00" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 14, n = 105: Shen 2000</title></rect>
+<rect x="518.12" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 14, n = 106: Shen 2000</title></rect>
+<rect x="522.25" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 14, n = 107: Shen 2000</title></rect>
+<rect x="526.38" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 14, n = 108: Shen 2000</title></rect>
+<rect x="530.50" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 14, n = 109: Shen 2000</title></rect>
+<rect x="534.62" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 14, n = 110: Shen 2000</title></rect>
+<rect x="538.75" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 14, n = 111: Shen 2000</title></rect>
+<rect x="542.88" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 14, n = 112: Shen 2000</title></rect>
+<rect x="550.00" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 15, n = 113: Shen 2000</title></rect>
+<rect x="554.12" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 15, n = 114: Shen 2000</title></rect>
+<rect x="558.25" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 15, n = 115: Shen 2000</title></rect>
+<rect x="562.38" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 15, n = 116: Shen 2000</title></rect>
+<rect x="566.50" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 15, n = 117: Shen 2000</title></rect>
+<rect x="570.62" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 15, n = 118: Shen 2000</title></rect>
+<rect x="574.75" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 15, n = 119: Shen 2000</title></rect>
+<rect x="578.88" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 15, n = 120: Shen 2000</title></rect>
+<rect x="586.00" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 16, n = 121: Shen 2000</title></rect>
+<rect x="590.12" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 16, n = 122: Shen 2000</title></rect>
+<rect x="594.25" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 16, n = 123: Shen 2000</title></rect>
+<rect x="598.38" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 16, n = 124: Shen 2000</title></rect>
+<rect x="602.50" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 16, n = 125: Shen 2000</title></rect>
+<rect x="606.62" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 16, n = 126: Shen 2000</title></rect>
+<rect x="610.75" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 16, n = 127: Shen 2000</title></rect>
+<rect x="614.88" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 16, n = 128: Shen 2000</title></rect>
+<rect x="622.00" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 17, n = 129: Shen 2000</title></rect>
+<rect x="626.12" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 17, n = 130: Shen 2000</title></rect>
+<rect x="630.25" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 17, n = 131: Shen 2000</title></rect>
+<rect x="634.38" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 17, n = 132: Shen 2000</title></rect>
+<rect x="638.50" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 17, n = 133: Shen 2000</title></rect>
+<rect x="642.62" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 17, n = 134: Shen 2000</title></rect>
+<rect x="646.75" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 17, n = 135: Shen 2000</title></rect>
+<rect x="650.88" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 17, n = 136: Shen 2000</title></rect>
+<rect x="658.00" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 18, n = 137: Shen 2000</title></rect>
+<rect x="662.12" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 18, n = 138: Shen 2000</title></rect>
+<rect x="666.25" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 18, n = 139: Shen 2000</title></rect>
+<rect x="670.38" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 18, n = 140: Shen 2000</title></rect>
+<rect x="674.50" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 18, n = 141: Shen 2000</title></rect>
+<rect x="678.62" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 18, n = 142: Shen 2000</title></rect>
+<rect x="682.75" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 18, n = 143: Shen 2000</title></rect>
+<rect x="686.88" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 18, n = 144: Shen 2000</title></rect>
+<rect x="694.00" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 19, n = 145: Shen 2000</title></rect>
+<rect x="698.12" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 19, n = 146: Shen 2000</title></rect>
+<rect x="702.25" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 19, n = 147: Shen 2000</title></rect>
+<rect x="706.38" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 19, n = 148: Shen 2000</title></rect>
+<rect x="710.50" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 19, n = 149: Shen 2000</title></rect>
+<rect x="714.62" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 19, n = 150: Shen 2000</title></rect>
+<rect x="718.75" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 19, n = 151: Shen 2000</title></rect>
+<rect x="722.88" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 19, n = 152: Shen 2000</title></rect>
+<rect x="730.00" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 20, n = 153: Shen 2000</title></rect>
+<rect x="734.12" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 20, n = 154: Shen 2000</title></rect>
+<rect x="738.25" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 20, n = 155: Shen 2000</title></rect>
+<rect x="742.38" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 20, n = 156: Shen 2000</title></rect>
+<rect x="746.50" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 20, n = 157: Shen 2000</title></rect>
+<rect x="750.62" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 20, n = 158: Shen 2000</title></rect>
+<rect x="754.75" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 20, n = 159: Shen 2000</title></rect>
+<rect x="758.88" y="199" width="3.62" height="26" fill="#3fa9b5"><title>r = 8, q = 20, n = 160: Shen 2000</title></rect>
+<text class="t" x="38" y="187.0" text-anchor="end">9</text>
+<rect x="82.00" y="169" width="3.17" height="26" fill="#8a8f94"><title>r = 9, q = 2, n = 10: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="85.67" y="169" width="3.17" height="26" fill="#8a8f94"><title>r = 9, q = 2, n = 11: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="89.33" y="169" width="3.17" height="26" fill="#8a8f94"><title>r = 9, q = 2, n = 12: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="93.00" y="169" width="3.17" height="26" fill="#8a8f94"><title>r = 9, q = 2, n = 13: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="96.67" y="169" width="3.17" height="26" fill="#8a8f94"><title>r = 9, q = 2, n = 14: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="100.33" y="169" width="3.17" height="26" fill="#8a8f94"><title>r = 9, q = 2, n = 15: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="104.00" y="169" width="3.17" height="26" fill="#8a8f94"><title>r = 9, q = 2, n = 16: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="107.67" y="169" width="3.17" height="26" fill="#8a8f94"><title>r = 9, q = 2, n = 17: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="111.33" y="169" width="3.17" height="26" fill="#8a8f94"><title>r = 9, q = 2, n = 18: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="118.00" y="169" width="3.17" height="26" fill="#c95b8b"><title>r = 9, q = 3, n = 19: Hladký–Král’–Norin</title></rect>
+<rect x="121.67" y="169" width="3.17" height="26" fill="#c95b8b"><title>r = 9, q = 3, n = 20: Hladký–Král’–Norin</title></rect>
+<rect x="125.33" y="169" width="3.17" height="26" fill="#c95b8b"><title>r = 9, q = 3, n = 21: Hladký–Král’–Norin</title></rect>
+<rect x="129.00" y="169" width="3.17" height="26" fill="#c95b8b"><title>r = 9, q = 3, n = 22: Hladký–Král’–Norin</title></rect>
+<rect x="132.67" y="169" width="3.17" height="26" fill="#c95b8b"><title>r = 9, q = 3, n = 23: Hladký–Král’–Norin</title></rect>
+<rect x="136.33" y="169" width="3.17" height="26" fill="#c95b8b"><title>r = 9, q = 3, n = 24: Hladký–Král’–Norin</title></rect>
+<rect x="140.00" y="169" width="3.17" height="26" fill="#c95b8b"><title>r = 9, q = 3, n = 25: Hladký–Král’–Norin</title></rect>
+<rect x="143.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 3, n = 26: briel (Lean)</title></rect>
+<rect x="147.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 3, n = 27: briel (Lean)</title></rect>
+<rect x="154.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 4, n = 28: briel (Lean)</title></rect>
+<rect x="157.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 4, n = 29: briel (Lean)</title></rect>
+<rect x="161.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 4, n = 30: briel (Lean)</title></rect>
+<rect x="165.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 4, n = 31: briel (Lean)</title></rect>
+<rect x="168.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 4, n = 32: briel (Lean)</title></rect>
+<rect x="172.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 4, n = 33: briel (Lean)</title></rect>
+<rect x="176.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 4, n = 34: briel (Lean)</title></rect>
+<rect x="179.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 4, n = 35: briel (Lean)</title></rect>
+<rect x="183.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 4, n = 36: briel (Lean)</title></rect>
+<rect x="190.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 5, n = 37: briel (Lean)</title></rect>
+<rect x="193.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 5, n = 38: briel (Lean)</title></rect>
+<rect x="197.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 5, n = 39: briel (Lean)</title></rect>
+<rect x="201.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 5, n = 40: briel (Lean)</title></rect>
+<rect x="204.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 5, n = 41: briel (Lean)</title></rect>
+<rect x="208.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 5, n = 42: briel (Lean)</title></rect>
+<rect x="212.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 5, n = 43: briel (Lean)</title></rect>
+<rect x="215.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 5, n = 44: briel (Lean)</title></rect>
+<rect x="219.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 5, n = 45: briel (Lean)</title></rect>
+<rect x="226.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 6, n = 46: briel (Lean)</title></rect>
+<rect x="229.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 6, n = 47: briel (Lean)</title></rect>
+<rect x="233.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 6, n = 48: briel (Lean)</title></rect>
+<rect x="237.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 6, n = 49: briel (Lean)</title></rect>
+<rect x="240.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 6, n = 50: briel (Lean)</title></rect>
+<rect x="244.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 6, n = 51: briel (Lean)</title></rect>
+<rect x="248.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 6, n = 52: briel (Lean)</title></rect>
+<rect x="251.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 6, n = 53: briel (Lean)</title></rect>
+<rect x="255.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 6, n = 54: briel (Lean)</title></rect>
+<rect x="262.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 7, n = 55: briel (Lean)</title></rect>
+<rect x="265.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 7, n = 56: briel (Lean)</title></rect>
+<rect x="269.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 7, n = 57: briel (Lean)</title></rect>
+<rect x="273.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 7, n = 58: briel (Lean)</title></rect>
+<rect x="276.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 7, n = 59: briel (Lean)</title></rect>
+<rect x="280.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 7, n = 60: briel (Lean)</title></rect>
+<rect x="284.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 7, n = 61: briel (Lean)</title></rect>
+<rect x="287.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 7, n = 62: briel (Lean)</title></rect>
+<rect x="291.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 7, n = 63: briel (Lean)</title></rect>
+<rect x="298.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 8, n = 64: briel (Lean)</title></rect>
+<rect x="301.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 8, n = 65: briel (Lean)</title></rect>
+<rect x="305.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 8, n = 66: briel (Lean)</title></rect>
+<rect x="309.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 8, n = 67: briel (Lean)</title></rect>
+<rect x="312.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 8, n = 68: briel (Lean)</title></rect>
+<rect x="316.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 8, n = 69: briel (Lean)</title></rect>
+<rect x="320.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 8, n = 70: briel (Lean)</title></rect>
+<rect x="323.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 8, n = 71: briel (Lean)</title></rect>
+<rect x="327.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 8, n = 72: briel (Lean)</title></rect>
+<rect x="334.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 9, n = 73: briel (Lean)</title></rect>
+<rect x="337.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 9, n = 74: briel (Lean)</title></rect>
+<rect x="341.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 9, n = 75: briel (Lean)</title></rect>
+<rect x="345.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 9, n = 76: briel (Lean)</title></rect>
+<rect x="348.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 9, n = 77: briel (Lean)</title></rect>
+<rect x="352.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 9, n = 78: briel (Lean)</title></rect>
+<rect x="356.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 9, n = 79: briel (Lean)</title></rect>
+<rect x="359.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 9, n = 80: briel (Lean)</title></rect>
+<rect x="363.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 9, n = 81: briel (Lean)</title></rect>
+<rect x="370.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 10, n = 82: briel (Lean)</title></rect>
+<rect x="373.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 10, n = 83: briel (Lean)</title></rect>
+<rect x="377.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 10, n = 84: briel (Lean)</title></rect>
+<rect x="381.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 10, n = 85: briel (Lean)</title></rect>
+<rect x="384.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 10, n = 86: briel (Lean)</title></rect>
+<rect x="388.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 10, n = 87: briel (Lean)</title></rect>
+<rect x="392.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 10, n = 88: briel (Lean)</title></rect>
+<rect x="395.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 10, n = 89: briel (Lean)</title></rect>
+<rect x="399.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 10, n = 90: briel (Lean)</title></rect>
+<rect x="406.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 11, n = 91: briel (Lean)</title></rect>
+<rect x="409.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 11, n = 92: briel (Lean)</title></rect>
+<rect x="413.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 11, n = 93: briel (Lean)</title></rect>
+<rect x="417.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 11, n = 94: briel (Lean)</title></rect>
+<rect x="420.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 11, n = 95: briel (Lean)</title></rect>
+<rect x="424.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 11, n = 96: briel (Lean)</title></rect>
+<rect x="428.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 11, n = 97: briel (Lean)</title></rect>
+<rect x="431.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 11, n = 98: briel (Lean)</title></rect>
+<rect x="435.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 11, n = 99: briel (Lean)</title></rect>
+<rect x="442.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 12, n = 100: briel (Lean)</title></rect>
+<rect x="445.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 12, n = 101: briel (Lean)</title></rect>
+<rect x="449.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 12, n = 102: briel (Lean)</title></rect>
+<rect x="453.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 12, n = 103: briel (Lean)</title></rect>
+<rect x="456.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 12, n = 104: briel (Lean)</title></rect>
+<rect x="460.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 12, n = 105: briel (Lean)</title></rect>
+<rect x="464.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 12, n = 106: briel (Lean)</title></rect>
+<rect x="467.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 12, n = 107: briel (Lean)</title></rect>
+<rect x="471.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 12, n = 108: briel (Lean)</title></rect>
+<rect x="478.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 13, n = 109: briel (Lean)</title></rect>
+<rect x="481.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 13, n = 110: briel (Lean)</title></rect>
+<rect x="485.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 13, n = 111: briel (Lean)</title></rect>
+<rect x="489.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 13, n = 112: briel (Lean)</title></rect>
+<rect x="492.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 13, n = 113: briel (Lean)</title></rect>
+<rect x="496.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 13, n = 114: briel (Lean)</title></rect>
+<rect x="500.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 13, n = 115: briel (Lean)</title></rect>
+<rect x="503.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 13, n = 116: briel (Lean)</title></rect>
+<rect x="507.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 13, n = 117: briel (Lean)</title></rect>
+<rect x="514.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 14, n = 118: briel (Lean)</title></rect>
+<rect x="517.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 14, n = 119: briel (Lean)</title></rect>
+<rect x="521.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 14, n = 120: briel (Lean)</title></rect>
+<rect x="525.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 14, n = 121: briel (Lean)</title></rect>
+<rect x="528.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 14, n = 122: briel (Lean)</title></rect>
+<rect x="532.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 14, n = 123: briel (Lean)</title></rect>
+<rect x="536.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 14, n = 124: briel (Lean)</title></rect>
+<rect x="539.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 14, n = 125: briel (Lean)</title></rect>
+<rect x="543.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 14, n = 126: briel (Lean)</title></rect>
+<rect x="550.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 15, n = 127: briel (Lean)</title></rect>
+<rect x="553.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 15, n = 128: briel (Lean)</title></rect>
+<rect x="557.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 15, n = 129: briel (Lean)</title></rect>
+<rect x="561.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 15, n = 130: briel (Lean)</title></rect>
+<rect x="564.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 15, n = 131: briel (Lean)</title></rect>
+<rect x="568.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 15, n = 132: briel (Lean)</title></rect>
+<rect x="572.00" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 15, n = 133: briel (Lean)</title></rect>
+<rect x="575.67" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 15, n = 134: briel (Lean)</title></rect>
+<rect x="579.33" y="169" width="3.17" height="26" fill="#188256"><title>r = 9, q = 15, n = 135: briel (Lean)</title></rect>
+<rect x="586.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 16, n = 136: Shen 2000</title></rect>
+<rect x="589.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 16, n = 137: Shen 2000</title></rect>
+<rect x="593.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 16, n = 138: Shen 2000</title></rect>
+<rect x="597.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 16, n = 139: Shen 2000</title></rect>
+<rect x="600.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 16, n = 140: Shen 2000</title></rect>
+<rect x="604.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 16, n = 141: Shen 2000</title></rect>
+<rect x="608.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 16, n = 142: Shen 2000</title></rect>
+<rect x="611.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 16, n = 143: Shen 2000</title></rect>
+<rect x="615.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 16, n = 144: Shen 2000</title></rect>
+<rect x="622.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 17, n = 145: Shen 2000</title></rect>
+<rect x="625.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 17, n = 146: Shen 2000</title></rect>
+<rect x="629.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 17, n = 147: Shen 2000</title></rect>
+<rect x="633.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 17, n = 148: Shen 2000</title></rect>
+<rect x="636.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 17, n = 149: Shen 2000</title></rect>
+<rect x="640.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 17, n = 150: Shen 2000</title></rect>
+<rect x="644.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 17, n = 151: Shen 2000</title></rect>
+<rect x="647.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 17, n = 152: Shen 2000</title></rect>
+<rect x="651.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 17, n = 153: Shen 2000</title></rect>
+<rect x="658.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 18, n = 154: Shen 2000</title></rect>
+<rect x="661.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 18, n = 155: Shen 2000</title></rect>
+<rect x="665.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 18, n = 156: Shen 2000</title></rect>
+<rect x="669.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 18, n = 157: Shen 2000</title></rect>
+<rect x="672.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 18, n = 158: Shen 2000</title></rect>
+<rect x="676.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 18, n = 159: Shen 2000</title></rect>
+<rect x="680.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 18, n = 160: Shen 2000</title></rect>
+<rect x="683.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 18, n = 161: Shen 2000</title></rect>
+<rect x="687.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 18, n = 162: Shen 2000</title></rect>
+<rect x="694.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 19, n = 163: Shen 2000</title></rect>
+<rect x="697.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 19, n = 164: Shen 2000</title></rect>
+<rect x="701.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 19, n = 165: Shen 2000</title></rect>
+<rect x="705.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 19, n = 166: Shen 2000</title></rect>
+<rect x="708.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 19, n = 167: Shen 2000</title></rect>
+<rect x="712.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 19, n = 168: Shen 2000</title></rect>
+<rect x="716.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 19, n = 169: Shen 2000</title></rect>
+<rect x="719.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 19, n = 170: Shen 2000</title></rect>
+<rect x="723.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 19, n = 171: Shen 2000</title></rect>
+<rect x="730.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 20, n = 172: Shen 2000</title></rect>
+<rect x="733.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 20, n = 173: Shen 2000</title></rect>
+<rect x="737.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 20, n = 174: Shen 2000</title></rect>
+<rect x="741.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 20, n = 175: Shen 2000</title></rect>
+<rect x="744.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 20, n = 176: Shen 2000</title></rect>
+<rect x="748.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 20, n = 177: Shen 2000</title></rect>
+<rect x="752.00" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 20, n = 178: Shen 2000</title></rect>
+<rect x="755.67" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 20, n = 179: Shen 2000</title></rect>
+<rect x="759.33" y="169" width="3.17" height="26" fill="#3fa9b5"><title>r = 9, q = 20, n = 180: Shen 2000</title></rect>
+<text class="t" x="38" y="157.0" text-anchor="end">10</text>
+<rect x="82.00" y="139" width="2.80" height="26" fill="#8a8f94"><title>r = 10, q = 2, n = 11: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="85.30" y="139" width="2.80" height="26" fill="#8a8f94"><title>r = 10, q = 2, n = 12: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="88.60" y="139" width="2.80" height="26" fill="#8a8f94"><title>r = 10, q = 2, n = 13: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="91.90" y="139" width="2.80" height="26" fill="#8a8f94"><title>r = 10, q = 2, n = 14: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="95.20" y="139" width="2.80" height="26" fill="#8a8f94"><title>r = 10, q = 2, n = 15: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="98.50" y="139" width="2.80" height="26" fill="#8a8f94"><title>r = 10, q = 2, n = 16: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="101.80" y="139" width="2.80" height="26" fill="#8a8f94"><title>r = 10, q = 2, n = 17: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="105.10" y="139" width="2.80" height="26" fill="#8a8f94"><title>r = 10, q = 2, n = 18: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="108.40" y="139" width="2.80" height="26" fill="#8a8f94"><title>r = 10, q = 2, n = 19: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="111.70" y="139" width="2.80" height="26" fill="#8a8f94"><title>r = 10, q = 2, n = 20: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="118.00" y="139" width="2.80" height="26" fill="#c95b8b"><title>r = 10, q = 3, n = 21: Hladký–Král’–Norin</title></rect>
+<rect x="121.30" y="139" width="2.80" height="26" fill="#c95b8b"><title>r = 10, q = 3, n = 22: Hladký–Král’–Norin</title></rect>
+<rect x="124.60" y="139" width="2.80" height="26" fill="#c95b8b"><title>r = 10, q = 3, n = 23: Hladký–Král’–Norin</title></rect>
+<rect x="127.90" y="139" width="2.80" height="26" fill="#c95b8b"><title>r = 10, q = 3, n = 24: Hladký–Král’–Norin</title></rect>
+<rect x="131.20" y="139" width="2.80" height="26" fill="#c95b8b"><title>r = 10, q = 3, n = 25: Hladký–Král’–Norin</title></rect>
+<rect x="134.50" y="139" width="2.80" height="26" fill="#c95b8b"><title>r = 10, q = 3, n = 26: Hladký–Král’–Norin</title></rect>
+<rect x="137.80" y="139" width="2.80" height="26" fill="#c95b8b"><title>r = 10, q = 3, n = 27: Hladký–Král’–Norin</title></rect>
+<rect x="141.10" y="139" width="2.80" height="26" fill="#c95b8b"><title>r = 10, q = 3, n = 28: Hladký–Král’–Norin</title></rect>
+<rect x="144.40" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 3, n = 29: briel (Lean)</title></rect>
+<rect x="147.70" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 3, n = 30: Open</title></rect>
+<rect x="154.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 4, n = 31: briel (Lean)</title></rect>
+<rect x="157.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 4, n = 32: briel (Lean)</title></rect>
+<rect x="160.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 4, n = 33: briel (Lean)</title></rect>
+<rect x="163.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 4, n = 34: briel (Lean)</title></rect>
+<rect x="167.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 4, n = 35: briel (Lean)</title></rect>
+<rect x="170.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 4, n = 36: briel (Lean)</title></rect>
+<rect x="173.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 4, n = 37: briel (Lean)</title></rect>
+<rect x="177.10" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 4, n = 38: Open</title></rect>
+<rect x="180.40" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 4, n = 39: Open</title></rect>
+<rect x="183.70" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 4, n = 40: Open</title></rect>
+<rect x="190.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 5, n = 41: briel (Lean)</title></rect>
+<rect x="193.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 5, n = 42: briel (Lean)</title></rect>
+<rect x="196.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 5, n = 43: briel (Lean)</title></rect>
+<rect x="199.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 5, n = 44: briel (Lean)</title></rect>
+<rect x="203.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 5, n = 45: briel (Lean)</title></rect>
+<rect x="206.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 5, n = 46: briel (Lean)</title></rect>
+<rect x="209.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 5, n = 47: briel (Lean)</title></rect>
+<rect x="213.10" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 5, n = 48: Open</title></rect>
+<rect x="216.40" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 5, n = 49: Open</title></rect>
+<rect x="219.70" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 5, n = 50: Open</title></rect>
+<rect x="226.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 6, n = 51: briel (Lean)</title></rect>
+<rect x="229.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 6, n = 52: briel (Lean)</title></rect>
+<rect x="232.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 6, n = 53: briel (Lean)</title></rect>
+<rect x="235.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 6, n = 54: briel (Lean)</title></rect>
+<rect x="239.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 6, n = 55: briel (Lean)</title></rect>
+<rect x="242.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 6, n = 56: briel (Lean)</title></rect>
+<rect x="245.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 6, n = 57: briel (Lean)</title></rect>
+<rect x="249.10" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 6, n = 58: briel (Lean)</title></rect>
+<rect x="252.40" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 6, n = 59: Open</title></rect>
+<rect x="255.70" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 6, n = 60: Open</title></rect>
+<rect x="262.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 7, n = 61: briel (Lean)</title></rect>
+<rect x="265.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 7, n = 62: briel (Lean)</title></rect>
+<rect x="268.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 7, n = 63: briel (Lean)</title></rect>
+<rect x="271.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 7, n = 64: briel (Lean)</title></rect>
+<rect x="275.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 7, n = 65: briel (Lean)</title></rect>
+<rect x="278.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 7, n = 66: briel (Lean)</title></rect>
+<rect x="281.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 7, n = 67: briel (Lean)</title></rect>
+<rect x="285.10" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 7, n = 68: Open</title></rect>
+<rect x="288.40" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 7, n = 69: Open</title></rect>
+<rect x="291.70" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 7, n = 70: Open</title></rect>
+<rect x="298.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 8, n = 71: briel (Lean)</title></rect>
+<rect x="301.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 8, n = 72: briel (Lean)</title></rect>
+<rect x="304.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 8, n = 73: briel (Lean)</title></rect>
+<rect x="307.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 8, n = 74: briel (Lean)</title></rect>
+<rect x="311.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 8, n = 75: briel (Lean)</title></rect>
+<rect x="314.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 8, n = 76: briel (Lean)</title></rect>
+<rect x="317.80" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 8, n = 77: Open</title></rect>
+<rect x="321.10" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 8, n = 78: Open</title></rect>
+<rect x="324.40" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 8, n = 79: Open</title></rect>
+<rect x="327.70" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 8, n = 80: Open</title></rect>
+<rect x="334.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 9, n = 81: briel (Lean)</title></rect>
+<rect x="337.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 9, n = 82: briel (Lean)</title></rect>
+<rect x="340.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 9, n = 83: briel (Lean)</title></rect>
+<rect x="343.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 9, n = 84: briel (Lean)</title></rect>
+<rect x="347.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 9, n = 85: briel (Lean)</title></rect>
+<rect x="350.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 9, n = 86: briel (Lean)</title></rect>
+<rect x="353.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 9, n = 87: briel (Lean)</title></rect>
+<rect x="357.10" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 9, n = 88: Open</title></rect>
+<rect x="360.40" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 9, n = 89: Open</title></rect>
+<rect x="363.70" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 9, n = 90: Open</title></rect>
+<rect x="370.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 10, n = 91: briel (Lean)</title></rect>
+<rect x="373.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 10, n = 92: briel (Lean)</title></rect>
+<rect x="376.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 10, n = 93: briel (Lean)</title></rect>
+<rect x="379.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 10, n = 94: briel (Lean)</title></rect>
+<rect x="383.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 10, n = 95: briel (Lean)</title></rect>
+<rect x="386.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 10, n = 96: briel (Lean)</title></rect>
+<rect x="389.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 10, n = 97: briel (Lean)</title></rect>
+<rect x="393.10" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 10, n = 98: briel (Lean)</title></rect>
+<rect x="396.40" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 10, n = 99: Open</title></rect>
+<rect x="399.70" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 10, n = 100: Open</title></rect>
+<rect x="406.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 11, n = 101: briel (Lean)</title></rect>
+<rect x="409.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 11, n = 102: briel (Lean)</title></rect>
+<rect x="412.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 11, n = 103: briel (Lean)</title></rect>
+<rect x="415.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 11, n = 104: briel (Lean)</title></rect>
+<rect x="419.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 11, n = 105: briel (Lean)</title></rect>
+<rect x="422.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 11, n = 106: briel (Lean)</title></rect>
+<rect x="425.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 11, n = 107: briel (Lean)</title></rect>
+<rect x="429.10" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 11, n = 108: briel (Lean)</title></rect>
+<rect x="432.40" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 11, n = 109: briel (Lean)</title></rect>
+<rect x="435.70" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 11, n = 110: briel (Lean)</title></rect>
+<rect x="442.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 12, n = 111: briel (Lean)</title></rect>
+<rect x="445.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 12, n = 112: briel (Lean)</title></rect>
+<rect x="448.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 12, n = 113: briel (Lean)</title></rect>
+<rect x="451.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 12, n = 114: briel (Lean)</title></rect>
+<rect x="455.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 12, n = 115: briel (Lean)</title></rect>
+<rect x="458.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 12, n = 116: briel (Lean)</title></rect>
+<rect x="461.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 12, n = 117: briel (Lean)</title></rect>
+<rect x="465.10" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 12, n = 118: briel (Lean)</title></rect>
+<rect x="468.40" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 12, n = 119: briel (Lean)</title></rect>
+<rect x="471.70" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 12, n = 120: Open</title></rect>
+<rect x="478.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 13, n = 121: briel (Lean)</title></rect>
+<rect x="481.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 13, n = 122: briel (Lean)</title></rect>
+<rect x="484.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 13, n = 123: briel (Lean)</title></rect>
+<rect x="487.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 13, n = 124: briel (Lean)</title></rect>
+<rect x="491.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 13, n = 125: briel (Lean)</title></rect>
+<rect x="494.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 13, n = 126: briel (Lean)</title></rect>
+<rect x="497.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 13, n = 127: briel (Lean)</title></rect>
+<rect x="501.10" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 13, n = 128: briel (Lean)</title></rect>
+<rect x="504.40" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 13, n = 129: Open</title></rect>
+<rect x="507.70" y="139" width="2.80" height="26" class="o"><title>r = 10, q = 13, n = 130: Open</title></rect>
+<rect x="514.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 14, n = 131: briel (Lean)</title></rect>
+<rect x="517.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 14, n = 132: briel (Lean)</title></rect>
+<rect x="520.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 14, n = 133: briel (Lean)</title></rect>
+<rect x="523.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 14, n = 134: briel (Lean)</title></rect>
+<rect x="527.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 14, n = 135: briel (Lean)</title></rect>
+<rect x="530.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 14, n = 136: briel (Lean)</title></rect>
+<rect x="533.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 14, n = 137: briel (Lean)</title></rect>
+<rect x="537.10" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 14, n = 138: briel (Lean)</title></rect>
+<rect x="540.40" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 14, n = 139: briel (Lean)</title></rect>
+<rect x="543.70" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 14, n = 140: briel (Lean)</title></rect>
+<rect x="550.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 15, n = 141: briel (Lean)</title></rect>
+<rect x="553.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 15, n = 142: briel (Lean)</title></rect>
+<rect x="556.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 15, n = 143: briel (Lean)</title></rect>
+<rect x="559.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 15, n = 144: briel (Lean)</title></rect>
+<rect x="563.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 15, n = 145: briel (Lean)</title></rect>
+<rect x="566.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 15, n = 146: briel (Lean)</title></rect>
+<rect x="569.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 15, n = 147: briel (Lean)</title></rect>
+<rect x="573.10" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 15, n = 148: briel (Lean)</title></rect>
+<rect x="576.40" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 15, n = 149: briel (Lean)</title></rect>
+<rect x="579.70" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 15, n = 150: briel (Lean)</title></rect>
+<rect x="586.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 16, n = 151: briel (Lean)</title></rect>
+<rect x="589.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 16, n = 152: briel (Lean)</title></rect>
+<rect x="592.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 16, n = 153: briel (Lean)</title></rect>
+<rect x="595.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 16, n = 154: briel (Lean)</title></rect>
+<rect x="599.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 16, n = 155: briel (Lean)</title></rect>
+<rect x="602.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 16, n = 156: briel (Lean)</title></rect>
+<rect x="605.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 16, n = 157: briel (Lean)</title></rect>
+<rect x="609.10" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 16, n = 158: briel (Lean)</title></rect>
+<rect x="612.40" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 16, n = 159: briel (Lean)</title></rect>
+<rect x="615.70" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 16, n = 160: briel (Lean)</title></rect>
+<rect x="622.00" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 17, n = 161: briel (Lean)</title></rect>
+<rect x="625.30" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 17, n = 162: briel (Lean)</title></rect>
+<rect x="628.60" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 17, n = 163: briel (Lean)</title></rect>
+<rect x="631.90" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 17, n = 164: briel (Lean)</title></rect>
+<rect x="635.20" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 17, n = 165: briel (Lean)</title></rect>
+<rect x="638.50" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 17, n = 166: briel (Lean)</title></rect>
+<rect x="641.80" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 17, n = 167: briel (Lean)</title></rect>
+<rect x="645.10" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 17, n = 168: briel (Lean)</title></rect>
+<rect x="648.40" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 17, n = 169: briel (Lean)</title></rect>
+<rect x="651.70" y="139" width="2.80" height="26" fill="#188256"><title>r = 10, q = 17, n = 170: briel (Lean)</title></rect>
+<rect x="658.00" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 18, n = 171: Shen 2000</title></rect>
+<rect x="661.30" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 18, n = 172: Shen 2000</title></rect>
+<rect x="664.60" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 18, n = 173: Shen 2000</title></rect>
+<rect x="667.90" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 18, n = 174: Shen 2000</title></rect>
+<rect x="671.20" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 18, n = 175: Shen 2000</title></rect>
+<rect x="674.50" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 18, n = 176: Shen 2000</title></rect>
+<rect x="677.80" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 18, n = 177: Shen 2000</title></rect>
+<rect x="681.10" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 18, n = 178: Shen 2000</title></rect>
+<rect x="684.40" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 18, n = 179: Shen 2000</title></rect>
+<rect x="687.70" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 18, n = 180: Shen 2000</title></rect>
+<rect x="694.00" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 19, n = 181: Shen 2000</title></rect>
+<rect x="697.30" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 19, n = 182: Shen 2000</title></rect>
+<rect x="700.60" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 19, n = 183: Shen 2000</title></rect>
+<rect x="703.90" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 19, n = 184: Shen 2000</title></rect>
+<rect x="707.20" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 19, n = 185: Shen 2000</title></rect>
+<rect x="710.50" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 19, n = 186: Shen 2000</title></rect>
+<rect x="713.80" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 19, n = 187: Shen 2000</title></rect>
+<rect x="717.10" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 19, n = 188: Shen 2000</title></rect>
+<rect x="720.40" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 19, n = 189: Shen 2000</title></rect>
+<rect x="723.70" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 19, n = 190: Shen 2000</title></rect>
+<rect x="730.00" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 20, n = 191: Shen 2000</title></rect>
+<rect x="733.30" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 20, n = 192: Shen 2000</title></rect>
+<rect x="736.60" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 20, n = 193: Shen 2000</title></rect>
+<rect x="739.90" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 20, n = 194: Shen 2000</title></rect>
+<rect x="743.20" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 20, n = 195: Shen 2000</title></rect>
+<rect x="746.50" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 20, n = 196: Shen 2000</title></rect>
+<rect x="749.80" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 20, n = 197: Shen 2000</title></rect>
+<rect x="753.10" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 20, n = 198: Shen 2000</title></rect>
+<rect x="756.40" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 20, n = 199: Shen 2000</title></rect>
+<rect x="759.70" y="139" width="2.80" height="26" fill="#3fa9b5"><title>r = 10, q = 20, n = 200: Shen 2000</title></rect>
+<text class="t" x="38" y="127.0" text-anchor="end">11</text>
+<rect x="82.00" y="109" width="2.50" height="26" fill="#8a8f94"><title>r = 11, q = 2, n = 12: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="85.00" y="109" width="2.50" height="26" fill="#8a8f94"><title>r = 11, q = 2, n = 13: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="88.00" y="109" width="2.50" height="26" fill="#8a8f94"><title>r = 11, q = 2, n = 14: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="91.00" y="109" width="2.50" height="26" fill="#8a8f94"><title>r = 11, q = 2, n = 15: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="94.00" y="109" width="2.50" height="26" fill="#8a8f94"><title>r = 11, q = 2, n = 16: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="97.00" y="109" width="2.50" height="26" fill="#8a8f94"><title>r = 11, q = 2, n = 17: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="100.00" y="109" width="2.50" height="26" fill="#8a8f94"><title>r = 11, q = 2, n = 18: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="103.00" y="109" width="2.50" height="26" fill="#8a8f94"><title>r = 11, q = 2, n = 19: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="106.00" y="109" width="2.50" height="26" fill="#8a8f94"><title>r = 11, q = 2, n = 20: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="109.00" y="109" width="2.50" height="26" fill="#8a8f94"><title>r = 11, q = 2, n = 21: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="112.00" y="109" width="2.50" height="26" fill="#8a8f94"><title>r = 11, q = 2, n = 22: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="118.00" y="109" width="2.50" height="26" fill="#c95b8b"><title>r = 11, q = 3, n = 23: Hladký–Král’–Norin</title></rect>
+<rect x="121.00" y="109" width="2.50" height="26" fill="#c95b8b"><title>r = 11, q = 3, n = 24: Hladký–Král’–Norin</title></rect>
+<rect x="124.00" y="109" width="2.50" height="26" fill="#c95b8b"><title>r = 11, q = 3, n = 25: Hladký–Král’–Norin</title></rect>
+<rect x="127.00" y="109" width="2.50" height="26" fill="#c95b8b"><title>r = 11, q = 3, n = 26: Hladký–Král’–Norin</title></rect>
+<rect x="130.00" y="109" width="2.50" height="26" fill="#c95b8b"><title>r = 11, q = 3, n = 27: Hladký–Král’–Norin</title></rect>
+<rect x="133.00" y="109" width="2.50" height="26" fill="#c95b8b"><title>r = 11, q = 3, n = 28: Hladký–Král’–Norin</title></rect>
+<rect x="136.00" y="109" width="2.50" height="26" fill="#c95b8b"><title>r = 11, q = 3, n = 29: Hladký–Král’–Norin</title></rect>
+<rect x="139.00" y="109" width="2.50" height="26" fill="#c95b8b"><title>r = 11, q = 3, n = 30: Hladký–Král’–Norin</title></rect>
+<rect x="142.00" y="109" width="2.50" height="26" fill="#c95b8b"><title>r = 11, q = 3, n = 31: Hladký–Král’–Norin</title></rect>
+<rect x="145.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 3, n = 32: Open</title></rect>
+<rect x="148.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 3, n = 33: Open</title></rect>
+<rect x="154.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 4, n = 34: briel (Lean)</title></rect>
+<rect x="157.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 4, n = 35: briel (Lean)</title></rect>
+<rect x="160.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 4, n = 36: briel (Lean)</title></rect>
+<rect x="163.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 4, n = 37: briel (Lean)</title></rect>
+<rect x="166.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 4, n = 38: briel (Lean)</title></rect>
+<rect x="169.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 4, n = 39: briel (Lean)</title></rect>
+<rect x="172.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 4, n = 40: briel (Lean)</title></rect>
+<rect x="175.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 4, n = 41: briel (Lean)</title></rect>
+<rect x="178.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 4, n = 42: Open</title></rect>
+<rect x="181.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 4, n = 43: Open</title></rect>
+<rect x="184.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 4, n = 44: Open</title></rect>
+<rect x="190.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 5, n = 45: briel (Lean)</title></rect>
+<rect x="193.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 5, n = 46: briel (Lean)</title></rect>
+<rect x="196.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 5, n = 47: briel (Lean)</title></rect>
+<rect x="199.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 5, n = 48: briel (Lean)</title></rect>
+<rect x="202.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 5, n = 49: briel (Lean)</title></rect>
+<rect x="205.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 5, n = 50: briel (Lean)</title></rect>
+<rect x="208.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 5, n = 51: Open</title></rect>
+<rect x="211.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 5, n = 52: Open</title></rect>
+<rect x="214.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 5, n = 53: Open</title></rect>
+<rect x="217.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 5, n = 54: Open</title></rect>
+<rect x="220.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 5, n = 55: Open</title></rect>
+<rect x="226.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 6, n = 56: briel (Lean)</title></rect>
+<rect x="229.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 6, n = 57: briel (Lean)</title></rect>
+<rect x="232.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 6, n = 58: briel (Lean)</title></rect>
+<rect x="235.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 6, n = 59: briel (Lean)</title></rect>
+<rect x="238.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 6, n = 60: briel (Lean)</title></rect>
+<rect x="241.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 6, n = 61: briel (Lean)</title></rect>
+<rect x="244.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 6, n = 62: Open</title></rect>
+<rect x="247.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 6, n = 63: Open</title></rect>
+<rect x="250.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 6, n = 64: Open</title></rect>
+<rect x="253.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 6, n = 65: Open</title></rect>
+<rect x="256.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 6, n = 66: Open</title></rect>
+<rect x="262.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 7, n = 67: briel (Lean)</title></rect>
+<rect x="265.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 7, n = 68: briel (Lean)</title></rect>
+<rect x="268.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 7, n = 69: briel (Lean)</title></rect>
+<rect x="271.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 7, n = 70: briel (Lean)</title></rect>
+<rect x="274.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 7, n = 71: briel (Lean)</title></rect>
+<rect x="277.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 7, n = 72: briel (Lean)</title></rect>
+<rect x="280.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 7, n = 73: briel (Lean)</title></rect>
+<rect x="283.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 7, n = 74: briel (Lean)</title></rect>
+<rect x="286.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 7, n = 75: Open</title></rect>
+<rect x="289.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 7, n = 76: Open</title></rect>
+<rect x="292.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 7, n = 77: Open</title></rect>
+<rect x="298.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 8, n = 78: briel (Lean)</title></rect>
+<rect x="301.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 8, n = 79: briel (Lean)</title></rect>
+<rect x="304.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 8, n = 80: briel (Lean)</title></rect>
+<rect x="307.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 8, n = 81: briel (Lean)</title></rect>
+<rect x="310.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 8, n = 82: briel (Lean)</title></rect>
+<rect x="313.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 8, n = 83: Open</title></rect>
+<rect x="316.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 8, n = 84: Open</title></rect>
+<rect x="319.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 8, n = 85: Open</title></rect>
+<rect x="322.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 8, n = 86: Open</title></rect>
+<rect x="325.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 8, n = 87: Open</title></rect>
+<rect x="328.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 8, n = 88: Open</title></rect>
+<rect x="334.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 9, n = 89: briel (Lean)</title></rect>
+<rect x="337.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 9, n = 90: briel (Lean)</title></rect>
+<rect x="340.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 9, n = 91: briel (Lean)</title></rect>
+<rect x="343.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 9, n = 92: briel (Lean)</title></rect>
+<rect x="346.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 9, n = 93: briel (Lean)</title></rect>
+<rect x="349.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 9, n = 94: briel (Lean)</title></rect>
+<rect x="352.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 9, n = 95: Open</title></rect>
+<rect x="355.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 9, n = 96: Open</title></rect>
+<rect x="358.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 9, n = 97: Open</title></rect>
+<rect x="361.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 9, n = 98: Open</title></rect>
+<rect x="364.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 9, n = 99: Open</title></rect>
+<rect x="370.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 10, n = 100: briel (Lean)</title></rect>
+<rect x="373.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 10, n = 101: briel (Lean)</title></rect>
+<rect x="376.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 10, n = 102: briel (Lean)</title></rect>
+<rect x="379.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 10, n = 103: briel (Lean)</title></rect>
+<rect x="382.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 10, n = 104: briel (Lean)</title></rect>
+<rect x="385.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 10, n = 105: Open</title></rect>
+<rect x="388.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 10, n = 106: Open</title></rect>
+<rect x="391.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 10, n = 107: Open</title></rect>
+<rect x="394.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 10, n = 108: Open</title></rect>
+<rect x="397.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 10, n = 109: Open</title></rect>
+<rect x="400.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 10, n = 110: Open</title></rect>
+<rect x="406.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 11, n = 111: briel (Lean)</title></rect>
+<rect x="409.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 11, n = 112: briel (Lean)</title></rect>
+<rect x="412.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 11, n = 113: briel (Lean)</title></rect>
+<rect x="415.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 11, n = 114: briel (Lean)</title></rect>
+<rect x="418.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 11, n = 115: briel (Lean)</title></rect>
+<rect x="421.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 11, n = 116: briel (Lean)</title></rect>
+<rect x="424.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 11, n = 117: briel (Lean)</title></rect>
+<rect x="427.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 11, n = 118: briel (Lean)</title></rect>
+<rect x="430.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 11, n = 119: briel (Lean)</title></rect>
+<rect x="433.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 11, n = 120: Open</title></rect>
+<rect x="436.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 11, n = 121: Open</title></rect>
+<rect x="442.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 12, n = 122: briel (Lean)</title></rect>
+<rect x="445.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 12, n = 123: briel (Lean)</title></rect>
+<rect x="448.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 12, n = 124: briel (Lean)</title></rect>
+<rect x="451.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 12, n = 125: briel (Lean)</title></rect>
+<rect x="454.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 12, n = 126: briel (Lean)</title></rect>
+<rect x="457.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 12, n = 127: briel (Lean)</title></rect>
+<rect x="460.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 12, n = 128: briel (Lean)</title></rect>
+<rect x="463.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 12, n = 129: briel (Lean)</title></rect>
+<rect x="466.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 12, n = 130: briel (Lean)</title></rect>
+<rect x="469.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 12, n = 131: briel (Lean)</title></rect>
+<rect x="472.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 12, n = 132: Open</title></rect>
+<rect x="478.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 13, n = 133: briel (Lean)</title></rect>
+<rect x="481.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 13, n = 134: briel (Lean)</title></rect>
+<rect x="484.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 13, n = 135: briel (Lean)</title></rect>
+<rect x="487.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 13, n = 136: briel (Lean)</title></rect>
+<rect x="490.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 13, n = 137: briel (Lean)</title></rect>
+<rect x="493.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 13, n = 138: briel (Lean)</title></rect>
+<rect x="496.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 13, n = 139: briel (Lean)</title></rect>
+<rect x="499.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 13, n = 140: briel (Lean)</title></rect>
+<rect x="502.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 13, n = 141: briel (Lean)</title></rect>
+<rect x="505.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 13, n = 142: Open</title></rect>
+<rect x="508.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 13, n = 143: Open</title></rect>
+<rect x="514.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 14, n = 144: briel (Lean)</title></rect>
+<rect x="517.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 14, n = 145: briel (Lean)</title></rect>
+<rect x="520.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 14, n = 146: briel (Lean)</title></rect>
+<rect x="523.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 14, n = 147: briel (Lean)</title></rect>
+<rect x="526.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 14, n = 148: briel (Lean)</title></rect>
+<rect x="529.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 14, n = 149: briel (Lean)</title></rect>
+<rect x="532.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 14, n = 150: briel (Lean)</title></rect>
+<rect x="535.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 14, n = 151: Open</title></rect>
+<rect x="538.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 14, n = 152: Open</title></rect>
+<rect x="541.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 14, n = 153: Open</title></rect>
+<rect x="544.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 14, n = 154: Open</title></rect>
+<rect x="550.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 15, n = 155: briel (Lean)</title></rect>
+<rect x="553.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 15, n = 156: briel (Lean)</title></rect>
+<rect x="556.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 15, n = 157: briel (Lean)</title></rect>
+<rect x="559.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 15, n = 158: briel (Lean)</title></rect>
+<rect x="562.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 15, n = 159: briel (Lean)</title></rect>
+<rect x="565.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 15, n = 160: briel (Lean)</title></rect>
+<rect x="568.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 15, n = 161: briel (Lean)</title></rect>
+<rect x="571.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 15, n = 162: briel (Lean)</title></rect>
+<rect x="574.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 15, n = 163: briel (Lean)</title></rect>
+<rect x="577.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 15, n = 164: briel (Lean)</title></rect>
+<rect x="580.00" y="109" width="2.50" height="26" class="o"><title>r = 11, q = 15, n = 165: Open</title></rect>
+<rect x="586.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 16, n = 166: briel (Lean)</title></rect>
+<rect x="589.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 16, n = 167: briel (Lean)</title></rect>
+<rect x="592.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 16, n = 168: briel (Lean)</title></rect>
+<rect x="595.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 16, n = 169: briel (Lean)</title></rect>
+<rect x="598.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 16, n = 170: briel (Lean)</title></rect>
+<rect x="601.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 16, n = 171: briel (Lean)</title></rect>
+<rect x="604.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 16, n = 172: briel (Lean)</title></rect>
+<rect x="607.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 16, n = 173: briel (Lean)</title></rect>
+<rect x="610.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 16, n = 174: briel (Lean)</title></rect>
+<rect x="613.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 16, n = 175: briel (Lean)</title></rect>
+<rect x="616.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 16, n = 176: briel (Lean)</title></rect>
+<rect x="622.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 17, n = 177: briel (Lean)</title></rect>
+<rect x="625.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 17, n = 178: briel (Lean)</title></rect>
+<rect x="628.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 17, n = 179: briel (Lean)</title></rect>
+<rect x="631.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 17, n = 180: briel (Lean)</title></rect>
+<rect x="634.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 17, n = 181: briel (Lean)</title></rect>
+<rect x="637.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 17, n = 182: briel (Lean)</title></rect>
+<rect x="640.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 17, n = 183: briel (Lean)</title></rect>
+<rect x="643.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 17, n = 184: briel (Lean)</title></rect>
+<rect x="646.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 17, n = 185: briel (Lean)</title></rect>
+<rect x="649.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 17, n = 186: briel (Lean)</title></rect>
+<rect x="652.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 17, n = 187: briel (Lean)</title></rect>
+<rect x="658.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 18, n = 188: briel (Lean)</title></rect>
+<rect x="661.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 18, n = 189: briel (Lean)</title></rect>
+<rect x="664.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 18, n = 190: briel (Lean)</title></rect>
+<rect x="667.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 18, n = 191: briel (Lean)</title></rect>
+<rect x="670.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 18, n = 192: briel (Lean)</title></rect>
+<rect x="673.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 18, n = 193: briel (Lean)</title></rect>
+<rect x="676.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 18, n = 194: briel (Lean)</title></rect>
+<rect x="679.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 18, n = 195: briel (Lean)</title></rect>
+<rect x="682.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 18, n = 196: briel (Lean)</title></rect>
+<rect x="685.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 18, n = 197: briel (Lean)</title></rect>
+<rect x="688.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 18, n = 198: briel (Lean)</title></rect>
+<rect x="694.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 19, n = 199: briel (Lean)</title></rect>
+<rect x="697.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 19, n = 200: briel (Lean)</title></rect>
+<rect x="700.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 19, n = 201: briel (Lean)</title></rect>
+<rect x="703.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 19, n = 202: briel (Lean)</title></rect>
+<rect x="706.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 19, n = 203: briel (Lean)</title></rect>
+<rect x="709.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 19, n = 204: briel (Lean)</title></rect>
+<rect x="712.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 19, n = 205: briel (Lean)</title></rect>
+<rect x="715.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 19, n = 206: briel (Lean)</title></rect>
+<rect x="718.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 19, n = 207: briel (Lean)</title></rect>
+<rect x="721.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 19, n = 208: briel (Lean)</title></rect>
+<rect x="724.00" y="109" width="2.50" height="26" fill="#188256"><title>r = 11, q = 19, n = 209: briel (Lean)</title></rect>
+<rect x="730.00" y="109" width="2.50" height="26" fill="#3fa9b5"><title>r = 11, q = 20, n = 210: Shen 2000</title></rect>
+<rect x="733.00" y="109" width="2.50" height="26" fill="#3fa9b5"><title>r = 11, q = 20, n = 211: Shen 2000</title></rect>
+<rect x="736.00" y="109" width="2.50" height="26" fill="#3fa9b5"><title>r = 11, q = 20, n = 212: Shen 2000</title></rect>
+<rect x="739.00" y="109" width="2.50" height="26" fill="#3fa9b5"><title>r = 11, q = 20, n = 213: Shen 2000</title></rect>
+<rect x="742.00" y="109" width="2.50" height="26" fill="#3fa9b5"><title>r = 11, q = 20, n = 214: Shen 2000</title></rect>
+<rect x="745.00" y="109" width="2.50" height="26" fill="#3fa9b5"><title>r = 11, q = 20, n = 215: Shen 2000</title></rect>
+<rect x="748.00" y="109" width="2.50" height="26" fill="#3fa9b5"><title>r = 11, q = 20, n = 216: Shen 2000</title></rect>
+<rect x="751.00" y="109" width="2.50" height="26" fill="#3fa9b5"><title>r = 11, q = 20, n = 217: Shen 2000</title></rect>
+<rect x="754.00" y="109" width="2.50" height="26" fill="#3fa9b5"><title>r = 11, q = 20, n = 218: Shen 2000</title></rect>
+<rect x="757.00" y="109" width="2.50" height="26" fill="#3fa9b5"><title>r = 11, q = 20, n = 219: Shen 2000</title></rect>
+<rect x="760.00" y="109" width="2.50" height="26" fill="#3fa9b5"><title>r = 11, q = 20, n = 220: Shen 2000</title></rect>
+<text class="t" x="38" y="97.0" text-anchor="end">12</text>
+<rect x="82.00" y="79" width="2.25" height="26" fill="#8a8f94"><title>r = 12, q = 2, n = 13: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="84.75" y="79" width="2.25" height="26" fill="#8a8f94"><title>r = 12, q = 2, n = 14: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="87.50" y="79" width="2.25" height="26" fill="#8a8f94"><title>r = 12, q = 2, n = 15: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="90.25" y="79" width="2.25" height="26" fill="#8a8f94"><title>r = 12, q = 2, n = 16: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="93.00" y="79" width="2.25" height="26" fill="#8a8f94"><title>r = 12, q = 2, n = 17: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="95.75" y="79" width="2.25" height="26" fill="#8a8f94"><title>r = 12, q = 2, n = 18: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="98.50" y="79" width="2.25" height="26" fill="#8a8f94"><title>r = 12, q = 2, n = 19: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="101.25" y="79" width="2.25" height="26" fill="#8a8f94"><title>r = 12, q = 2, n = 20: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="104.00" y="79" width="2.25" height="26" fill="#8a8f94"><title>r = 12, q = 2, n = 21: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="106.75" y="79" width="2.25" height="26" fill="#8a8f94"><title>r = 12, q = 2, n = 22: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="109.50" y="79" width="2.25" height="26" fill="#8a8f94"><title>r = 12, q = 2, n = 23: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="112.25" y="79" width="2.25" height="26" fill="#8a8f94"><title>r = 12, q = 2, n = 24: Elementary: r = 1 or n ≤ 2r</title></rect>
+<rect x="118.00" y="79" width="2.25" height="26" fill="#c95b8b"><title>r = 12, q = 3, n = 25: Hladký–Král’–Norin</title></rect>
+<rect x="120.75" y="79" width="2.25" height="26" fill="#c95b8b"><title>r = 12, q = 3, n = 26: Hladký–Král’–Norin</title></rect>
+<rect x="123.50" y="79" width="2.25" height="26" fill="#c95b8b"><title>r = 12, q = 3, n = 27: Hladký–Král’–Norin</title></rect>
+<rect x="126.25" y="79" width="2.25" height="26" fill="#c95b8b"><title>r = 12, q = 3, n = 28: Hladký–Král’–Norin</title></rect>
+<rect x="129.00" y="79" width="2.25" height="26" fill="#c95b8b"><title>r = 12, q = 3, n = 29: Hladký–Král’–Norin</title></rect>
+<rect x="131.75" y="79" width="2.25" height="26" fill="#c95b8b"><title>r = 12, q = 3, n = 30: Hladký–Král’–Norin</title></rect>
+<rect x="134.50" y="79" width="2.25" height="26" fill="#c95b8b"><title>r = 12, q = 3, n = 31: Hladký–Král’–Norin</title></rect>
+<rect x="137.25" y="79" width="2.25" height="26" fill="#c95b8b"><title>r = 12, q = 3, n = 32: Hladký–Král’–Norin</title></rect>
+<rect x="140.00" y="79" width="2.25" height="26" fill="#c95b8b"><title>r = 12, q = 3, n = 33: Hladký–Král’–Norin</title></rect>
+<rect x="142.75" y="79" width="2.25" height="26" fill="#c95b8b"><title>r = 12, q = 3, n = 34: Hladký–Král’–Norin</title></rect>
+<rect x="145.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 3, n = 35: Open</title></rect>
+<rect x="148.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 3, n = 36: Open</title></rect>
+<rect x="154.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 4, n = 37: briel (Lean)</title></rect>
+<rect x="156.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 4, n = 38: briel (Lean)</title></rect>
+<rect x="159.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 4, n = 39: briel (Lean)</title></rect>
+<rect x="162.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 4, n = 40: briel (Lean)</title></rect>
+<rect x="165.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 4, n = 41: briel (Lean)</title></rect>
+<rect x="167.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 4, n = 42: briel (Lean)</title></rect>
+<rect x="170.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 4, n = 43: briel (Lean)</title></rect>
+<rect x="173.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 4, n = 44: briel (Lean)</title></rect>
+<rect x="176.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 4, n = 45: briel (Lean)</title></rect>
+<rect x="178.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 4, n = 46: Open</title></rect>
+<rect x="181.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 4, n = 47: Open</title></rect>
+<rect x="184.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 4, n = 48: Open</title></rect>
+<rect x="190.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 5, n = 49: briel (Lean)</title></rect>
+<rect x="192.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 5, n = 50: briel (Lean)</title></rect>
+<rect x="195.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 5, n = 51: briel (Lean)</title></rect>
+<rect x="198.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 5, n = 52: briel (Lean)</title></rect>
+<rect x="201.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 5, n = 53: briel (Lean)</title></rect>
+<rect x="203.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 5, n = 54: briel (Lean)</title></rect>
+<rect x="206.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 5, n = 55: briel (Lean)</title></rect>
+<rect x="209.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 5, n = 56: Open</title></rect>
+<rect x="212.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 5, n = 57: Open</title></rect>
+<rect x="214.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 5, n = 58: Open</title></rect>
+<rect x="217.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 5, n = 59: Open</title></rect>
+<rect x="220.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 5, n = 60: Open</title></rect>
+<rect x="226.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 6, n = 61: briel (Lean)</title></rect>
+<rect x="228.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 6, n = 62: briel (Lean)</title></rect>
+<rect x="231.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 6, n = 63: briel (Lean)</title></rect>
+<rect x="234.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 6, n = 64: briel (Lean)</title></rect>
+<rect x="237.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 6, n = 65: briel (Lean)</title></rect>
+<rect x="239.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 6, n = 66: briel (Lean)</title></rect>
+<rect x="242.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 6, n = 67: Open</title></rect>
+<rect x="245.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 6, n = 68: Open</title></rect>
+<rect x="248.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 6, n = 69: Open</title></rect>
+<rect x="250.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 6, n = 70: Open</title></rect>
+<rect x="253.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 6, n = 71: Open</title></rect>
+<rect x="256.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 6, n = 72: Open</title></rect>
+<rect x="262.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 7, n = 73: briel (Lean)</title></rect>
+<rect x="264.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 7, n = 74: briel (Lean)</title></rect>
+<rect x="267.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 7, n = 75: briel (Lean)</title></rect>
+<rect x="270.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 7, n = 76: briel (Lean)</title></rect>
+<rect x="273.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 7, n = 77: briel (Lean)</title></rect>
+<rect x="275.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 7, n = 78: briel (Lean)</title></rect>
+<rect x="278.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 7, n = 79: briel (Lean)</title></rect>
+<rect x="281.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 7, n = 80: briel (Lean)</title></rect>
+<rect x="284.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 7, n = 81: Open</title></rect>
+<rect x="286.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 7, n = 82: Open</title></rect>
+<rect x="289.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 7, n = 83: Open</title></rect>
+<rect x="292.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 7, n = 84: Open</title></rect>
+<rect x="298.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 8, n = 85: briel (Lean)</title></rect>
+<rect x="300.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 8, n = 86: briel (Lean)</title></rect>
+<rect x="303.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 8, n = 87: briel (Lean)</title></rect>
+<rect x="306.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 8, n = 88: briel (Lean)</title></rect>
+<rect x="309.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 8, n = 89: briel (Lean)</title></rect>
+<rect x="311.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 8, n = 90: briel (Lean)</title></rect>
+<rect x="314.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 8, n = 91: Open</title></rect>
+<rect x="317.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 8, n = 92: Open</title></rect>
+<rect x="320.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 8, n = 93: Open</title></rect>
+<rect x="322.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 8, n = 94: Open</title></rect>
+<rect x="325.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 8, n = 95: Open</title></rect>
+<rect x="328.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 8, n = 96: Open</title></rect>
+<rect x="334.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 9, n = 97: briel (Lean)</title></rect>
+<rect x="336.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 9, n = 98: briel (Lean)</title></rect>
+<rect x="339.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 9, n = 99: briel (Lean)</title></rect>
+<rect x="342.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 9, n = 100: briel (Lean)</title></rect>
+<rect x="345.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 9, n = 101: briel (Lean)</title></rect>
+<rect x="347.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 9, n = 102: Open</title></rect>
+<rect x="350.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 9, n = 103: Open</title></rect>
+<rect x="353.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 9, n = 104: Open</title></rect>
+<rect x="356.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 9, n = 105: Open</title></rect>
+<rect x="358.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 9, n = 106: Open</title></rect>
+<rect x="361.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 9, n = 107: Open</title></rect>
+<rect x="364.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 9, n = 108: Open</title></rect>
+<rect x="370.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 10, n = 109: briel (Lean)</title></rect>
+<rect x="372.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 10, n = 110: briel (Lean)</title></rect>
+<rect x="375.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 10, n = 111: Open</title></rect>
+<rect x="378.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 10, n = 112: Open</title></rect>
+<rect x="381.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 10, n = 113: Open</title></rect>
+<rect x="383.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 10, n = 114: Open</title></rect>
+<rect x="386.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 10, n = 115: Open</title></rect>
+<rect x="389.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 10, n = 116: Open</title></rect>
+<rect x="392.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 10, n = 117: Open</title></rect>
+<rect x="394.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 10, n = 118: Open</title></rect>
+<rect x="397.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 10, n = 119: Open</title></rect>
+<rect x="400.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 10, n = 120: Open</title></rect>
+<rect x="406.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 11, n = 121: briel (Lean)</title></rect>
+<rect x="408.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 11, n = 122: briel (Lean)</title></rect>
+<rect x="411.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 11, n = 123: briel (Lean)</title></rect>
+<rect x="414.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 11, n = 124: briel (Lean)</title></rect>
+<rect x="417.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 11, n = 125: briel (Lean)</title></rect>
+<rect x="419.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 11, n = 126: Open</title></rect>
+<rect x="422.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 11, n = 127: Open</title></rect>
+<rect x="425.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 11, n = 128: Open</title></rect>
+<rect x="428.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 11, n = 129: Open</title></rect>
+<rect x="430.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 11, n = 130: Open</title></rect>
+<rect x="433.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 11, n = 131: Open</title></rect>
+<rect x="436.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 11, n = 132: Open</title></rect>
+<rect x="442.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 12, n = 133: briel (Lean)</title></rect>
+<rect x="444.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 12, n = 134: briel (Lean)</title></rect>
+<rect x="447.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 12, n = 135: briel (Lean)</title></rect>
+<rect x="450.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 12, n = 136: briel (Lean)</title></rect>
+<rect x="453.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 12, n = 137: briel (Lean)</title></rect>
+<rect x="455.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 12, n = 138: briel (Lean)</title></rect>
+<rect x="458.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 12, n = 139: briel (Lean)</title></rect>
+<rect x="461.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 12, n = 140: Open</title></rect>
+<rect x="464.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 12, n = 141: Open</title></rect>
+<rect x="466.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 12, n = 142: Open</title></rect>
+<rect x="469.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 12, n = 143: Open</title></rect>
+<rect x="472.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 12, n = 144: Open</title></rect>
+<rect x="478.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 13, n = 145: briel (Lean)</title></rect>
+<rect x="480.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 13, n = 146: briel (Lean)</title></rect>
+<rect x="483.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 13, n = 147: briel (Lean)</title></rect>
+<rect x="486.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 13, n = 148: briel (Lean)</title></rect>
+<rect x="489.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 13, n = 149: briel (Lean)</title></rect>
+<rect x="491.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 13, n = 150: briel (Lean)</title></rect>
+<rect x="494.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 13, n = 151: briel (Lean)</title></rect>
+<rect x="497.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 13, n = 152: briel (Lean)</title></rect>
+<rect x="500.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 13, n = 153: Open</title></rect>
+<rect x="502.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 13, n = 154: Open</title></rect>
+<rect x="505.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 13, n = 155: Open</title></rect>
+<rect x="508.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 13, n = 156: Open</title></rect>
+<rect x="514.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 14, n = 157: briel (Lean)</title></rect>
+<rect x="516.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 14, n = 158: briel (Lean)</title></rect>
+<rect x="519.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 14, n = 159: briel (Lean)</title></rect>
+<rect x="522.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 14, n = 160: briel (Lean)</title></rect>
+<rect x="525.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 14, n = 161: briel (Lean)</title></rect>
+<rect x="527.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 14, n = 162: briel (Lean)</title></rect>
+<rect x="530.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 14, n = 163: briel (Lean)</title></rect>
+<rect x="533.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 14, n = 164: briel (Lean)</title></rect>
+<rect x="536.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 14, n = 165: Open</title></rect>
+<rect x="538.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 14, n = 166: Open</title></rect>
+<rect x="541.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 14, n = 167: Open</title></rect>
+<rect x="544.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 14, n = 168: Open</title></rect>
+<rect x="550.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 15, n = 169: briel (Lean)</title></rect>
+<rect x="552.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 15, n = 170: briel (Lean)</title></rect>
+<rect x="555.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 15, n = 171: briel (Lean)</title></rect>
+<rect x="558.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 15, n = 172: briel (Lean)</title></rect>
+<rect x="561.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 15, n = 173: briel (Lean)</title></rect>
+<rect x="563.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 15, n = 174: briel (Lean)</title></rect>
+<rect x="566.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 15, n = 175: briel (Lean)</title></rect>
+<rect x="569.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 15, n = 176: briel (Lean)</title></rect>
+<rect x="572.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 15, n = 177: Open</title></rect>
+<rect x="574.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 15, n = 178: Open</title></rect>
+<rect x="577.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 15, n = 179: Open</title></rect>
+<rect x="580.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 15, n = 180: Open</title></rect>
+<rect x="586.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 16, n = 181: briel (Lean)</title></rect>
+<rect x="588.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 16, n = 182: briel (Lean)</title></rect>
+<rect x="591.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 16, n = 183: briel (Lean)</title></rect>
+<rect x="594.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 16, n = 184: briel (Lean)</title></rect>
+<rect x="597.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 16, n = 185: briel (Lean)</title></rect>
+<rect x="599.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 16, n = 186: briel (Lean)</title></rect>
+<rect x="602.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 16, n = 187: briel (Lean)</title></rect>
+<rect x="605.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 16, n = 188: Open</title></rect>
+<rect x="608.00" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 16, n = 189: Open</title></rect>
+<rect x="610.75" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 16, n = 190: Open</title></rect>
+<rect x="613.50" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 16, n = 191: Open</title></rect>
+<rect x="616.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 16, n = 192: Open</title></rect>
+<rect x="622.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 17, n = 193: briel (Lean)</title></rect>
+<rect x="624.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 17, n = 194: briel (Lean)</title></rect>
+<rect x="627.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 17, n = 195: briel (Lean)</title></rect>
+<rect x="630.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 17, n = 196: briel (Lean)</title></rect>
+<rect x="633.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 17, n = 197: briel (Lean)</title></rect>
+<rect x="635.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 17, n = 198: briel (Lean)</title></rect>
+<rect x="638.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 17, n = 199: briel (Lean)</title></rect>
+<rect x="641.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 17, n = 200: briel (Lean)</title></rect>
+<rect x="644.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 17, n = 201: briel (Lean)</title></rect>
+<rect x="646.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 17, n = 202: briel (Lean)</title></rect>
+<rect x="649.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 17, n = 203: briel (Lean)</title></rect>
+<rect x="652.25" y="79" width="2.25" height="26" class="o"><title>r = 12, q = 17, n = 204: Open</title></rect>
+<rect x="658.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 18, n = 205: briel (Lean)</title></rect>
+<rect x="660.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 18, n = 206: briel (Lean)</title></rect>
+<rect x="663.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 18, n = 207: briel (Lean)</title></rect>
+<rect x="666.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 18, n = 208: briel (Lean)</title></rect>
+<rect x="669.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 18, n = 209: briel (Lean)</title></rect>
+<rect x="671.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 18, n = 210: briel (Lean)</title></rect>
+<rect x="674.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 18, n = 211: briel (Lean)</title></rect>
+<rect x="677.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 18, n = 212: briel (Lean)</title></rect>
+<rect x="680.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 18, n = 213: briel (Lean)</title></rect>
+<rect x="682.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 18, n = 214: briel (Lean)</title></rect>
+<rect x="685.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 18, n = 215: briel (Lean)</title></rect>
+<rect x="688.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 18, n = 216: briel (Lean)</title></rect>
+<rect x="694.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 19, n = 217: briel (Lean)</title></rect>
+<rect x="696.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 19, n = 218: briel (Lean)</title></rect>
+<rect x="699.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 19, n = 219: briel (Lean)</title></rect>
+<rect x="702.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 19, n = 220: briel (Lean)</title></rect>
+<rect x="705.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 19, n = 221: briel (Lean)</title></rect>
+<rect x="707.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 19, n = 222: briel (Lean)</title></rect>
+<rect x="710.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 19, n = 223: briel (Lean)</title></rect>
+<rect x="713.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 19, n = 224: briel (Lean)</title></rect>
+<rect x="716.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 19, n = 225: briel (Lean)</title></rect>
+<rect x="718.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 19, n = 226: briel (Lean)</title></rect>
+<rect x="721.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 19, n = 227: briel (Lean)</title></rect>
+<rect x="724.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 19, n = 228: briel (Lean)</title></rect>
+<rect x="730.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 20, n = 229: briel (Lean)</title></rect>
+<rect x="732.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 20, n = 230: briel (Lean)</title></rect>
+<rect x="735.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 20, n = 231: briel (Lean)</title></rect>
+<rect x="738.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 20, n = 232: briel (Lean)</title></rect>
+<rect x="741.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 20, n = 233: briel (Lean)</title></rect>
+<rect x="743.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 20, n = 234: briel (Lean)</title></rect>
+<rect x="746.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 20, n = 235: briel (Lean)</title></rect>
+<rect x="749.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 20, n = 236: briel (Lean)</title></rect>
+<rect x="752.00" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 20, n = 237: briel (Lean)</title></rect>
+<rect x="754.75" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 20, n = 238: briel (Lean)</title></rect>
+<rect x="757.50" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 20, n = 239: briel (Lean)</title></rect>
+<rect x="760.25" y="79" width="2.25" height="26" fill="#188256"><title>r = 12, q = 20, n = 240: briel (Lean)</title></rect>
+<text class="t" x="62.5" y="452" text-anchor="middle">1</text>
+<text class="t" x="98.5" y="452" text-anchor="middle">2</text>
+<text class="t" x="134.5" y="452" text-anchor="middle">3</text>
+<text class="t" x="170.5" y="452" text-anchor="middle">4</text>
+<text class="t" x="206.5" y="452" text-anchor="middle">5</text>
+<text class="t" x="242.5" y="452" text-anchor="middle">6</text>
+<text class="t" x="278.5" y="452" text-anchor="middle">7</text>
+<text class="t" x="314.5" y="452" text-anchor="middle">8</text>
+<text class="t" x="350.5" y="452" text-anchor="middle">9</text>
+<text class="t" x="386.5" y="452" text-anchor="middle">10</text>
+<text class="t" x="422.5" y="452" text-anchor="middle">11</text>
+<text class="t" x="458.5" y="452" text-anchor="middle">12</text>
+<text class="t" x="494.5" y="452" text-anchor="middle">13</text>
+<text class="t" x="530.5" y="452" text-anchor="middle">14</text>
+<text class="t" x="566.5" y="452" text-anchor="middle">15</text>
+<text class="t" x="602.5" y="452" text-anchor="middle">16</text>
+<text class="t" x="638.5" y="452" text-anchor="middle">17</text>
+<text class="t" x="674.5" y="452" text-anchor="middle">18</text>
+<text class="t" x="710.5" y="452" text-anchor="middle">19</text>
+<text class="t" x="746.5" y="452" text-anchor="middle">20</text>
+<text class="t" x="406.0" y="474" text-anchor="middle">cutoff q = ⌈n/r⌉ · each square holds the r orders n = (q − 1)r + 1 … qr, left to right</text>
+<text class="t" x="14" y="258.0" text-anchor="middle" transform="rotate(-90 14 258.0)">degree r</text>
+</svg>

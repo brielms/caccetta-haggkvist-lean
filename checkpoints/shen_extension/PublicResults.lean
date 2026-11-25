@@ -247,6 +247,82 @@ theorem degree_one_to_nine {n r : ℕ} (D : CH.Digraph) (order : 0 < n)
   · obtain rfl : r = 9 := by omega
     exact degree_nine D order loopless degree
 
+/-! ### Laws from the degree-nine proof, for every cutoff `q`
+
+`QFree D V q`: the digraph `D` on the vertex set `V` has no directed cycle of length at most `q`.
+`outN D V v` is the out-neighbourhood of `v` in `V`, `ball D V v i` the vertices within `i`
+steps of `v` (with `v`), and `layer D V i v` those at distance exactly `i`. -/
+
+section Laws
+open Finset BRq2 BRq3
+open DotTwoPassShellTransport (layer)
+open Supplier54 (zRows)
+
+variable {D : CH.Digraph} {q : ℕ}
+
+/-- **Fragment budget.** `F` has no cycle of length at most `q`, every vertex keeps `2 + t`
+out-neighbours and those of `Fs` have exactly `r`. For radii `i, j ≥ 3` with `i + j ≤ q`:
+`|F|·(2(i+j) + 2t) + 2·|Fs|·(r + 3 − (i+j)) ≤ |F|·(|F| − 1)`. -/
+theorem fragment_budget {F Fs : Finset ℕ} {t r i j : ℕ} (free : QFree D F q)
+    (deg : ∀ v ∈ F, 2 + t ≤ (outN D F v).card) (FsF : Fs ⊆ F)
+    (full : ∀ x ∈ Fs, (outN D F x).card = r) (hr : r + 2 ≤ 2 * q) (hN : r + 1 + t ≤ F.card)
+    (hi : 3 ≤ i) (hj : 3 ≤ j) (hij : i + j ≤ q) :
+    F.card * (2 * (i + j) + 2 * t) + 2 * Fs.card * (r + 3 - (i + j)) ≤
+      F.card * (F.card - 1) :=
+  FragmentBudget.fragment_budget free deg FsF full hr hN hi hj hij
+
+/-- **Full row.** In the same setting with `r + 5 ≤ 2q`, a vertex with exactly `r`
+out-neighbours reaches at least `r + 5 + t` other vertices within `i` steps, for every `i ≥ 4`. -/
+theorem full_row {F : Finset ℕ} {t r i : ℕ} (free : QFree D F q) (hi4 : 4 ≤ i)
+    (hr : r + 5 ≤ 2 * q) (hN : r + 1 + t ≤ F.card)
+    (deg : ∀ v ∈ F, 2 + t ≤ (outN D F v).card) {x : ℕ} (hx : x ∈ F)
+    (full : (outN D F x).card = r) : r + 5 + t ≤ ((ball D F x i).erase x).card :=
+  FullRow.full_row free hi4 hr hN deg hx full
+
+/-- **Equal layers.** Two vertices with the same layer `j`, `2j ≤ q + 2`, the second within `q`
+steps of the first: the `(j-1)`-ball of the second lies inside that of the first, without the
+first vertex. -/
+theorem equal_layers {V : Finset ℕ} {u v j : ℕ} (free : QFree D V q) (hu : u ∈ V) (hv : v ∈ V)
+    (ne : u ≠ v) (hj : 1 ≤ j) (hjq : 2 * j ≤ q + 2) (same : layer D V j u = layer D V j v)
+    (near : v ∈ ball D V u q) : ball D V v (j - 1) ⊆ (ball D V u (j - 1)).erase u :=
+  EqualLayers.equal_layer_ball free hu hv ne hj hjq same near
+
+/-- **Two suppliers on the row `r = q + 3`, `q ≥ 6`.** Out-degree `q + 3` everywhere and a
+vertex `u` with layers two and three of sizes `q + 3` and `q + 2`. Then at least two vertices
+that point to all of layer three, with one further out-neighbour that does the same
+(`Supplier54.zRows`), have more than `3(q + 3)` vertices in their three-ball. -/
+theorem supplier_row {V : Finset ℕ} {u : ℕ} (free : QFree D V q) (hq : 6 ≤ q)
+    (reg : ∀ v ∈ V, (outN D V v).card = q + 3) (hu : u ∈ V)
+    (two : (layer D V 2 u).card = q + 3) (three : (layer D V 3 u).card = q + 2) :
+    2 ≤ ((zRows D V (layer D V 3 u)).filter
+      (fun s => 3 * (q + 3) + 1 ≤ (ball D V s 3).card)).card :=
+  AncestorRow.fat_supplier_row free hq reg hu two three
+
+/-- **A layer profile that cannot occur on the row `r = q + 1`, `q ≥ 8`.** Out-degree `q + 1`
+everywhere: no vertex has layers two, three and four of sizes `q + 2`, `q` and `q`. -/
+theorem layer_profile_row {V : Finset ℕ} {u : ℕ} (free : QFree D V q) (hq : 8 ≤ q)
+    (reg : ∀ v ∈ V, (outN D V v).card = q + 1) (hu : u ∈ V) :
+    ¬ ((layer D V 2 u).card = q + 2 ∧ (layer D V 3 u).card = q ∧
+      (layer D V 4 u).card = q) :=
+  fun ⟨two, three, four⟩ => Profiles72.profileII free hq reg hu two three four
+
+end Laws
+
+/-- info: 'LeanCH.Results.fragment_budget' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms fragment_budget
+/-- info: 'LeanCH.Results.full_row' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms full_row
+/-- info: 'LeanCH.Results.equal_layers' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms equal_layers
+/-- info: 'LeanCH.Results.supplier_row' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms supplier_row
+/-- info: 'LeanCH.Results.layer_profile_row' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms layer_profile_row
 /-- info: 'LeanCH.Results.beyond_shen' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms beyond_shen
