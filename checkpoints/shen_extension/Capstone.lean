@@ -120,6 +120,7 @@ import checkpoints.shen_extension.WideCutoffOrder
 import checkpoints.shen_extension.RecipientUnionReplay
 import checkpoints.shen_extension.ShellBankFrontier
 import checkpoints.shen_extension.ShellTransferCatalog
+import checkpoints.shen_extension.FlatTwoWitnesses
 /-!
 # Full CH capstone for the Shen extension path
 

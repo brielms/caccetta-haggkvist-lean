@@ -228,6 +228,12 @@ for module in SharedBankOrderTransfer DistinctReceiverBudget RecursivePrefixBudg
   compile "checkpoints/shen_extension/$module.lean"
 done
 
+# Two Seymour vertices in every sinkless oriented graph, the flat bank, and
+# the two-deficit results built on them.
+for module in FlatSeymourVertex TwoSeymourDeficit TwoSeymourEndgame TwoSeymourVertices FlatTwoWitnesses TiedDual TwoDeficitBasics TwoDeficits LoneSelection TwoMarks; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
 echo "Checkpoint files: $compiled compiled, $skipped up to date."
 
 if [[ ${1:-} == --build-only ]]; then
