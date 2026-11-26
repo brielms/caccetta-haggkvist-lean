@@ -1,6 +1,6 @@
 # Caccetta–Häggkvist in Lean
 
-Goal: every loopless digraph on n vertices with minimum outdegree r has a directed cycle of length at most ⌈n/r⌉. **Open.** The [capstone](checkpoints/shen_extension/Capstone.lean) replay leaves [48 Lean contexts](evidence/README.md).
+Goal: every loopless digraph on n vertices with minimum outdegree r has a directed cycle of length at most ⌈n/r⌉. **Open.** The [capstone](checkpoints/shen_extension/Capstone.lean) replay leaves [32 Lean contexts](evidence/README.md).
 
 ## Results ([Lean](checkpoints/shen_extension/PublicResults.lean))
 
@@ -50,6 +50,10 @@ Every theorem named here is in the [same file](checkpoints/shen_extension/Public
 - Row r = q + 1, q ≥ 8 (`layer_profile_row`). Every outdegree is q + 1. No vertex has exactly q + 2, q and q vertices at distances two, three and four.
 
 **The coverage map.** CH holds at every (n, r) whose cell in the map is nonzero (`of_covered_cell`); this is what the picture above draws. [Interactive map](docs/coverage.html).
+
+## Research notes
+
+- [Counterexample to the joint in-degree and second out-neighborhood bound (GD)](docs/gd-counterexample.md).
 
 ## Check
 

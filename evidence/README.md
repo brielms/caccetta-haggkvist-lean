@@ -1,8 +1,8 @@
 # Saved full replay
 
-The canonical replay of `checkpoints/shen_extension/Capstone.lean` ended with 48 open Lean contexts. The reporter groups their alternatives into factors of 6, 4 and 2, giving 12 separate obligations by its counting convention. The root has an unsolved-goals diagnostic. The source and receipt therefore document an incomplete proof of full CH.
+The [26 Nov 2026 replay](https://github.com/brielms/caccetta-haggkvist-lean/commit/8b99e5c7b0c9ed59f5899d8a5cd7f4ec6a05cf20) of `checkpoints/shen_extension/Capstone.lean` ended with 32 open Lean contexts and one unsolved-goals diagnostic at the root. The reporter groups the alternatives into factors of 4, 4 and 2, giving 10 separate obligations by its counting convention. Full CH remains open.
 
-The stored snapshot predates the import of `FlatTwoWitnesses` into the capstone. With that import, the replay of 26 Nov 2026 ends with 32 open contexts (factors of 4, 4 and 2, giving 10 separate obligations) and the same single unsolved-goals diagnostic at the root.
+This archive comes from a Windows replay of the byte-identical capstone using prebuilt imports. GitHub Actions builds the proof dependencies and compares the live frontier with this snapshot.
 
 - [frontier.json](frontier.json) lists every open case, its conclusion and its line numbers in the decompressed Lean log.
 - [Capstone.log.gz](Capstone.log.gz) contains the entire Lean output, including the hypotheses of each case.
