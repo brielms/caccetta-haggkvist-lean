@@ -275,7 +275,7 @@ for module in BankKernelSAT CleanSwapKernel CleanSwapTransport CleanBankTransiti
   compile "checkpoints/shen_extension/$module.lean"
 done
 
-for module in TwoPathReturnBudget FourCycleMarkedReturns FourCycleReturnSlack BankWalkReturnBudget WitnessTargetChoice ReverseTargetBudget ReverseDonors TwoRowSharedBlockers MaximalBankTwoRows RotatedLockedRows RotatedThreeRows FourLayerReversal; do
+for module in TwoPathReturnBudget FourCycleMarkedReturns FourCycleReturnSlack BankWalkReturnBudget WitnessTargetChoice ReverseTargetBudget ReverseDonors TwoRowSharedBlockers MaximalBankTwoRows RotatedLockedRows RotatedThreeRows FourLayerReversal FourLayerSharedSource; do
   compile "checkpoints/shen_extension/$module.lean"
 done
 

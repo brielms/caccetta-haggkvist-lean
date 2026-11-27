@@ -93,8 +93,13 @@ def edits(A, sources, limit=400):
     solver = cp_model.CpSolver()
     solver.parameters.enumerate_all_solutions = True
     solver.parameters.num_workers = 1
-    solver.Solve(mdl, Collect())
-    return found, len(found) >= limit
+    status = solver.Solve(mdl, Collect())
+    capped = len(found) >= limit
+    if status == cp_model.OPTIMAL and found or status == cp_model.INFEASIBLE and not found:
+        return found, capped
+    if status == cp_model.FEASIBLE and capped:
+        return found, True
+    raise RuntimeError(f"Enumeration did not finish: {solver.StatusName(status)}")
 
 
 def show(arc_list):
