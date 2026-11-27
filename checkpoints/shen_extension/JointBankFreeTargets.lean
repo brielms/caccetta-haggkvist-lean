@@ -182,6 +182,36 @@ theorem remaining_obstruction {D : CH.Digraph} {V R : Finset ℕ} {s p h z : ℕ
 
 
 
+/-- With precisely two short rows, a free head anywhere for one row forces
+the other row to see every common target of the deleted labels. -/
+theorem other_row_hits_target {D : CH.Digraph} {V : Finset ℕ} {s p h z c d : ℕ}
+    (free : QFree D V 3) (reg : OutEq s D V) (hs : 2 ≤ s) (pv : p ∈ V) (hv : h ∈ V)
+    (ph : p ≠ h) (zv : z ∈ V) (pz : D p z=true) (hz : D h z=true)
+    (room : V.card = 3*(s-1)+2) (none : BypassRepair.NoHost 3 (s-1))
+    (rows : inN D V p ∩ inN D V h = {c,d}) (cd : c ≠ d)
+    (head : ∃ v, FreeTarget D V c v) : D d z = true := by
+  classical
+  obtain ⟨v,fv⟩ := head
+  have candidates (a) (ac : a ∈ ({c} : Finset ℕ)) : ∃ w, FreeTarget D V a w ∧ w ∉ ({c} : Finset ℕ) := by
+    obtain rfl := mem_singleton.mp ac
+    exact ⟨v,fv,fun vc => fv.2.1 (mem_singleton.mp vc)⟩
+  have selected : ({c} : Finset ℕ) ⊆ inN D V p ∩ inN D V h := by simp [rows]
+  have obs := remaining_obstruction free reg hs pv hv ph zv pz hz room none selected candidates
+  have rest : (inN D V p ∩ inN D V h) \ {c} = {d} := by
+    rw [rows]
+    ext w
+    simp only [mem_sdiff,mem_insert,mem_singleton]
+    grind
+  dsimp only at obs
+  rw [rest] at obs
+  rcases obs with ⟨a,ad,az⟩ | ⟨w,_,_,_,_,debt,_⟩
+  · rwa [mem_singleton.mp ad] at az
+  · have small := card_le_card (inter_subset_right : outN D (V \ {p,h}) w ∩ {d} ⊆ {d})
+    simp only [card_singleton] at small
+    omega
+
+#print axioms other_row_hits_target
+
 /-- Intrinsic locked rows for the deleted pair. The common target z plays
 no role in this set. -/
 noncomputable def lockedRows (D : CH.Digraph) (V S : Finset ℕ) : Finset ℕ := by
