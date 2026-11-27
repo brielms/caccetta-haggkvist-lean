@@ -83,7 +83,7 @@ theorem free_after_edit {D : CH.Digraph} {U J : Finset ℕ} {z e c v : ℕ}
     · exact zc old
 
 
-private theorem retained_floor {D : CH.Digraph} {V : Finset ℕ} {s p h c : ℕ}
+theorem retained_floor {D : CH.Digraph} {V : Finset ℕ} {s p h c : ℕ}
     (reg : OutEq s D V) (cv : c ∈ V) (ph : p ≠ h) :
     s-1 ≤ (outN D (V \ {p,h}) c).card + 1 := by
   let B : Finset ℕ := {p,h}
@@ -97,7 +97,7 @@ private theorem retained_floor {D : CH.Digraph} {V : Finset ℕ} {s p h c : ℕ}
   rw [row]
   omega
 
-private theorem retained_target {D : CH.Digraph} {V : Finset ℕ} {p h c v : ℕ}
+theorem retained_target {D : CH.Digraph} {V : Finset ℕ} {p h c v : ℕ}
     (cs : c ∈ inN D V p ∩ inN D V h) (target : FreeTarget D V c v) :
     FreeTarget D (V \ {p,h}) c v := by
   obtain ⟨cp,ch⟩ := mem_inter.mp cs
