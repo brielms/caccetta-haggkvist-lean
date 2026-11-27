@@ -275,6 +275,10 @@ for module in BankKernelSAT CleanSwapKernel CleanSwapTransport CleanBankTransiti
   compile "checkpoints/shen_extension/$module.lean"
 done
 
+for module in TwoPathReturnBudget FourCycleMarkedReturns FourCycleReturnSlack BankWalkReturnBudget; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
 echo "Checkpoint files: $compiled compiled, $skipped up to date."
 
 if [[ ${1:-} == --build-only ]]; then
