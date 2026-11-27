@@ -235,7 +235,7 @@ for module in FlatSeymourVertex TwoSeymourDeficit TwoSeymourEndgame TwoSeymourVe
 done
 
 for module in JointPairCounting JointBankGeometry JointBankConstruction JointBankChoice \
-    JointBankPrivateHeads JointBankParentChoice JointBankBinaryReturn JointBankOrderReplay PairPowerOrder PairPowerReservoir PairPowerGrowth PairPowerBank \
+    JointBankPrivateHeads JointBankParentChoice JointBankBinaryReturn JointBankOrderReplay PairPowerOrder PairPowerDomination PairPowerTransfer PairPowerDeletion PairPowerReservoir PairPowerGrowth PairPowerBank \
     JointBankPairLoad PairCoverMixing BankAncestorCover CutDeficit PairBankSpare; do
   compile "checkpoints/shen_extension/$module.lean"
 done

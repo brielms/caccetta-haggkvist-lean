@@ -43,6 +43,7 @@ def published_bounds(lines, leaf):
         "2 ^ (q - 1) < s",
         "q * (s - 1) + 3 ≤ n",
         "2 ^ (2 ^ (q / 2) + 1) ≤ q * (s - 1) + 3",
+        "(2 ^ (q / 2) + 2) * 2 ^ (2 ^ (q / 2) - 1) ≤ q * (s - 1) + 3",
     }
     bounds = []
     def take(name, parts):
