@@ -190,6 +190,28 @@ def cyclic_layer_refinements(lines, leaf):
     return result
 
 
+def common_core_refinements(lines, leaf):
+    """Require both row bounds on the exact labels in the native ForkLaw."""
+    facts = leaf_facts(lines, leaf, strip_hygiene=False)
+    prefix = "CommonCoreReplay.RowCoreBound source.D source.V "
+    bounds = {
+        fact.removeprefix(prefix) for fact in facts
+        if fact.startswith(prefix) and len(fact.removeprefix(prefix).split()) == 2
+    }
+    if not bounds:
+        return []
+    law = "CommonHeadCutReplay.ForkLaw source.D source.V "
+    for fact in facts:
+        if not fact.startswith(law):
+            continue
+        labels = fact.removeprefix(law).split()
+        if len(labels) == 4:
+            _, s, p, h = labels
+            if p != h and bounds == {f"{s} {p}", f"{s} {h}"}:
+                return ["row core bounds for both labels of the native ForkLaw"]
+    return ["native row core bounds with unmatched labels"]
+
+
 def independent_obligations(lines, leaves):
     """Factor the open contexts into splits that never interact.
 
@@ -330,6 +352,10 @@ def main():
     cyclic = {leaf["case"]: cyclic_layer_refinements(lines, leaf) for leaf in leaves}
     if any(cyclic.values()):
         result["cyclic_layer_refinements"] = cyclic
+
+    common_core = {leaf["case"]: common_core_refinements(lines, leaf) for leaf in leaves}
+    if any(common_core.values()):
+        result["common_core_refinements"] = common_core
     factored = independent_obligations(lines, leaves)
     if factored:
         result["independent_obligations"] = factored

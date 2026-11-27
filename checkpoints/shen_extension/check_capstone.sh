@@ -286,9 +286,16 @@ for module in CommonHeadLastCut CommonHeadTwoLayerCut CommonHeadCutCore CommonHe
   compile "checkpoints/shen_extension/$module.lean"
 done
 
-for module in CyclicLayerCount CyclicLayerReplay CyclicLayerReplayTest CommonCoreCompression CommonCoreGrowth; do
+for module in CyclicLayerCount CyclicLayerReplay CyclicLayerReplayTest; do
   compile "checkpoints/shen_extension/$module.lean"
 done
+
+for module in CommonCoreCompression CommonCoreGrowth CommonCoreReplay CommonCoreReplayTest; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+compile "checkpoints/shen_extension/ReplacementRowTypes.lean"
+compile "checkpoints/shen_extension/NearRowTriangleCount.lean"
 
 echo "Checkpoint files: $compiled compiled, $skipped up to date."
 

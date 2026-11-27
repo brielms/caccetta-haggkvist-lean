@@ -14,6 +14,8 @@ Each shared-parent context additionally contains a native `CommonBank` with a ma
 
 All eight shared-parent contexts also carry a cyclic layer count on the same native bank and assignment. The count uses one function of chosen rows for both layer membership and the bound. It charges the number of outside vertices, $q^2$, and $q$ times the number of distinct exterior heads against the backward arcs and the exterior heads counted with multiplicity. The comparator checks those row witnesses by named case. [CyclicLayerReplayTest.lean](../checkpoints/shen_extension/CyclicLayerReplayTest.lean) tests symbolic shared and missed cases, repeated replay and two assignments. [layer_count_controls.py](../checkpoints/shen_extension/layer_count_controls.py) checks the layer statistics on examples above the critical order.
 
+Both labels of that shared bank carry the row core bound. Remove any one head from either label's native outneighborhood. At most $s-3$ native vertices point to every remaining head. The bound follows from excluding complete directed $(s-2)$ by $(s-1)$ rectangles at the critical order under the lower-degree induction hypothesis. The comparator checks the two row labels against the same `ForkLaw` in each shared case. [CommonCoreReplayTest.lean](../checkpoints/shen_extension/CommonCoreReplayTest.lean) tests both labels, repeated replay and the missed control.
+
 This archive comes from a Windows replay with Lean 4.35.0 using prebuilt imports. GitHub Actions builds the proof dependencies and compares the live frontier with this snapshot.
 
 - [frontier.json](frontier.json) lists every open case, its conclusion and its line numbers in the decompressed Lean log.

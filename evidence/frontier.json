@@ -1,6 +1,6 @@
 {
   "source_log": "Capstone.log",
-  "sha256": "72f0af7a65961223c4c58f738f3a9ad7d4775e3bda9fa332ad0d9f40d6858c4e",
+  "sha256": "1b5c89a22eab98d6bd1703b7cc57c67114a7ee4cd03ec89124620b8eda0e25ea",
   "open_leaves": 16,
   "rounds": [
     "CH-FAMILY ROUND [anonymous] added=223 expanded=2 children=1",
@@ -8,7 +8,7 @@
     "CH-FAMILY ROUND neg.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=144 expanded=5 children=4",
     "CH-FAMILY ROUND neg.inl.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=8 expanded=2 children=1",
     "CH-FAMILY ROUND neg.inl.inl.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=4 expanded=1 children=1",
-    "CH-FAMILY ROUND neg.inl.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=5 expanded=3 children=1",
+    "CH-FAMILY ROUND neg.inl.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=6 expanded=4 children=1",
     "CH-FAMILY ROUND neg.inl.inl.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=0 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inl.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=1 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inl.inr.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=149 expanded=6 children=8",
@@ -16,22 +16,22 @@
     "CH-FAMILY ROUND neg.inl.inr.inl.inl.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=45 expanded=1 children=1",
     "CH-FAMILY ROUND neg.inl.inr.inl.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=49 expanded=2 children=1",
     "CH-FAMILY ROUND neg.inl.inr.inl.inr.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=45 expanded=1 children=1",
-    "CH-FAMILY ROUND neg.inl.inr.inl.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=5 expanded=3 children=1",
+    "CH-FAMILY ROUND neg.inl.inr.inl.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=6 expanded=4 children=1",
     "CH-FAMILY ROUND neg.inl.inr.inl.inl.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=0 expanded=0 children=1",
-    "CH-FAMILY ROUND neg.inl.inr.inl.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=5 expanded=3 children=1",
+    "CH-FAMILY ROUND neg.inl.inr.inl.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=6 expanded=4 children=1",
     "CH-FAMILY ROUND neg.inl.inr.inl.inr.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=0 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inl.inr.inl.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=1 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inl.inr.inl.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=1 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inl.inr.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=150 expanded=5 children=4",
     "CH-FAMILY ROUND neg.inl.inr.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=8 expanded=2 children=1",
     "CH-FAMILY ROUND neg.inl.inr.inr.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=4 expanded=1 children=1",
-    "CH-FAMILY ROUND neg.inl.inr.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=5 expanded=3 children=1",
+    "CH-FAMILY ROUND neg.inl.inr.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=6 expanded=4 children=1",
     "CH-FAMILY ROUND neg.inl.inr.inr.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=0 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inl.inr.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=1 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inr.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=145 expanded=5 children=4",
     "CH-FAMILY ROUND neg.inr.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=8 expanded=2 children=1",
     "CH-FAMILY ROUND neg.inr.inl.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=4 expanded=1 children=1",
-    "CH-FAMILY ROUND neg.inr.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=5 expanded=3 children=1",
+    "CH-FAMILY ROUND neg.inr.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=6 expanded=4 children=1",
     "CH-FAMILY ROUND neg.inr.inl.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=0 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inr.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=1 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inr.inr.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=150 expanded=6 children=8",
@@ -39,114 +39,114 @@
     "CH-FAMILY ROUND neg.inr.inr.inl.inl.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=45 expanded=1 children=1",
     "CH-FAMILY ROUND neg.inr.inr.inl.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=49 expanded=2 children=1",
     "CH-FAMILY ROUND neg.inr.inr.inl.inr.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=45 expanded=1 children=1",
-    "CH-FAMILY ROUND neg.inr.inr.inl.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=5 expanded=3 children=1",
+    "CH-FAMILY ROUND neg.inr.inr.inl.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=6 expanded=4 children=1",
     "CH-FAMILY ROUND neg.inr.inr.inl.inl.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=0 expanded=0 children=1",
-    "CH-FAMILY ROUND neg.inr.inr.inl.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=5 expanded=3 children=1",
+    "CH-FAMILY ROUND neg.inr.inr.inl.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=6 expanded=4 children=1",
     "CH-FAMILY ROUND neg.inr.inr.inl.inr.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=0 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inr.inr.inl.inl.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=1 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inr.inr.inl.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=1 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inr.inr.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=151 expanded=5 children=4",
     "CH-FAMILY ROUND neg.inr.inr.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=8 expanded=2 children=1",
     "CH-FAMILY ROUND neg.inr.inr.inr.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=4 expanded=1 children=1",
-    "CH-FAMILY ROUND neg.inr.inr.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=5 expanded=3 children=1",
+    "CH-FAMILY ROUND neg.inr.inr.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=6 expanded=4 children=1",
     "CH-FAMILY ROUND neg.inr.inr.inr.inl.inr._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=0 expanded=0 children=1",
     "CH-FAMILY ROUND neg.inr.inr.inr.inl.inl._@.checkpoints.shen_extension.Capstone.3379678192._hygCtx._hyg.19193 added=1 expanded=0 children=1"
   ],
   "leaves": [
     {
       "case": "neg.inl.inl.inl.inr",
-      "context_line": 50160,
-      "goal_line": 58822,
+      "context_line": 50256,
+      "goal_line": 58918,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inl.inl.inl.inl",
-      "context_line": 58827,
-      "goal_line": 67634,
+      "context_line": 58923,
+      "goal_line": 67736,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inl.inr.inl.inl.inl.inr",
-      "context_line": 67639,
-      "goal_line": 76630,
+      "context_line": 67741,
+      "goal_line": 76732,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inl.inr.inl.inr.inl.inr",
-      "context_line": 76635,
-      "goal_line": 85626,
+      "context_line": 76737,
+      "goal_line": 85728,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inl.inr.inl.inl.inl.inl",
-      "context_line": 85631,
-      "goal_line": 94767,
+      "context_line": 85733,
+      "goal_line": 94875,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inl.inr.inl.inr.inl.inl",
-      "context_line": 94772,
-      "goal_line": 103908,
+      "context_line": 94880,
+      "goal_line": 104022,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inl.inr.inr.inl.inr",
-      "context_line": 103913,
-      "goal_line": 113440,
+      "context_line": 104027,
+      "goal_line": 113554,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inl.inr.inr.inl.inl",
-      "context_line": 113445,
-      "goal_line": 123117,
+      "context_line": 113559,
+      "goal_line": 123237,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inr.inl.inl.inr",
-      "context_line": 123122,
-      "goal_line": 131349,
+      "context_line": 123242,
+      "goal_line": 131469,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inr.inl.inl.inl",
-      "context_line": 131354,
-      "goal_line": 139726,
+      "context_line": 131474,
+      "goal_line": 139852,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inr.inr.inl.inl.inl.inr",
-      "context_line": 139731,
-      "goal_line": 148287,
+      "context_line": 139857,
+      "goal_line": 148413,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inr.inr.inl.inr.inl.inr",
-      "context_line": 148292,
-      "goal_line": 156848,
+      "context_line": 148418,
+      "goal_line": 156974,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inr.inr.inl.inl.inl.inl",
-      "context_line": 156853,
-      "goal_line": 165554,
+      "context_line": 156979,
+      "goal_line": 165686,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inr.inr.inl.inr.inl.inl",
-      "context_line": 165559,
-      "goal_line": 174260,
+      "context_line": 165691,
+      "goal_line": 174398,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inr.inr.inr.inl.inr",
-      "context_line": 174265,
-      "goal_line": 183357,
+      "context_line": 174403,
+      "goal_line": 183495,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     },
     {
       "case": "neg.inr.inr.inr.inl.inl",
-      "context_line": 183362,
-      "goal_line": 192599,
+      "context_line": 183500,
+      "goal_line": 192743,
       "missing_implication_conclusion": "Closure.SharedArcPivotGate.ProgressAt dualSource attachFamily outsideCycle packetInverse terminalPrices\n      terminalValue ∨\n    Closure.ForwardMerge.NativeMergePays q dualSource.D dualSource.V ∨\n      Closure.RankedMerge.PairPays q dualSource.D dualSource.V"
     }
   ],
@@ -1694,6 +1694,40 @@
       "matching representatives and layer budget"
     ]
   },
+  "common_core_refinements": {
+    "neg.inl.inl.inl.inr": [],
+    "neg.inl.inl.inl.inl": [
+      "row core bounds for both labels of the native ForkLaw"
+    ],
+    "neg.inl.inr.inl.inl.inl.inr": [],
+    "neg.inl.inr.inl.inr.inl.inr": [],
+    "neg.inl.inr.inl.inl.inl.inl": [
+      "row core bounds for both labels of the native ForkLaw"
+    ],
+    "neg.inl.inr.inl.inr.inl.inl": [
+      "row core bounds for both labels of the native ForkLaw"
+    ],
+    "neg.inl.inr.inr.inl.inr": [],
+    "neg.inl.inr.inr.inl.inl": [
+      "row core bounds for both labels of the native ForkLaw"
+    ],
+    "neg.inr.inl.inl.inr": [],
+    "neg.inr.inl.inl.inl": [
+      "row core bounds for both labels of the native ForkLaw"
+    ],
+    "neg.inr.inr.inl.inl.inl.inr": [],
+    "neg.inr.inr.inl.inr.inl.inr": [],
+    "neg.inr.inr.inl.inl.inl.inl": [
+      "row core bounds for both labels of the native ForkLaw"
+    ],
+    "neg.inr.inr.inl.inr.inl.inl": [
+      "row core bounds for both labels of the native ForkLaw"
+    ],
+    "neg.inr.inr.inr.inl.inr": [],
+    "neg.inr.inr.inr.inl.inl": [
+      "row core bounds for both labels of the native ForkLaw"
+    ]
+  },
   "independent_obligations": {
     "open_contexts": 16,
     "factors": [
@@ -1708,8 +1742,8 @@
         "varying_statements": 188,
         "shortest_varying_statements": [
           "freshMenu.card = q",
-          "freshRow ∈ freshCycle",
           "freshHead ∈ freshMenu",
+          "freshRow ∈ freshCycle",
           "seedPair.x ∈ freshMenu",
           "freshHead ∈ freshCycle",
           "seedPair.y ∈ freshMenu"
@@ -1747,7 +1781,7 @@
           8,
           8
         ],
-        "varying_statements": 39,
+        "varying_statements": 41,
         "shortest_varying_statements": [
           "w ≠ w",
           "w.Nonempty",
