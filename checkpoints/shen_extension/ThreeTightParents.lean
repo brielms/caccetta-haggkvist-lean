@@ -8,14 +8,15 @@ leaving all the other predecessors' outgoing rows unchanged. -/
 namespace LeanCH.BR.TripleBank
 open Finset BRq2 BRq3 BR45
 
-theorem promote_parent {D : CH.Digraph} {U : Finset ℕ} {a c k t : ℕ}
+theorem promote_parent_with_edges {D : CH.Digraph} {U : Finset ℕ} {a c k t : ℕ}
     (safe : QFree D U 3) (cu : c ∈ U) (ku : k ∈ U) (ck : D c k = true)
     (parents : a ∈ tightParents D U c t) (miss : D a k ≠ true)
     (spare : ∀ w ∈ outN D U k, t < (outN D U w).card)
     (others : ∀ v ∈ U, v ≠ c → t ≤ (outN D U v).card) :
     ∃ E : CH.Digraph, QFree E U 3 ∧ (∀ v ∈ U, v ≠ c → t ≤ (outN E U v).card) ∧
       tightParents E U c t = (tightParents D U c t).erase a ∧
-      ∀ v ∈ inN D U c, v ≠ a → outN E U v = outN D U v := by
+      (∀ v ∈ inN D U c, v ≠ a → outN E U v = outN D U v) ∧
+      ∀ v z, E v z = true → D v z = true ∨ v = a ∧ z = k := by
   classical
   obtain ⟨parent,cap⟩ := mem_filter.mp parents
   obtain ⟨au,ac⟩ := mem_inN.mp parent
@@ -56,7 +57,10 @@ theorem promote_parent {D : CH.Digraph} {U : Finset ℕ} {a c k t : ℕ}
     have noCut : c ∉ C v := by
       by_cases wk : v ∈ outN D U k <;> simp [C,wk,Ne.symm an]
     simp [E,patch,mem_inN,noNew,noCut]
-  refine ⟨E,ok,?_,?_,keep⟩
+  have edges (v z) (ed : E v z = true) : D v z = true ∨ v = a ∧ z = k :=
+    (of_decide_eq_true ed : z ∈ A v ∨ D v z = true ∧ z ∉ C v).elim
+      (fun m => Or.inr (added m)) (fun h => Or.inl h.1)
+  refine ⟨E,ok,?_,?_,keep,edges⟩
   · intro v vu vc
     by_cases va : v = a
     · subst v; have := others a au an; omega
@@ -76,6 +80,17 @@ theorem promote_parent {D : CH.Digraph} {U : Finset ℕ} {a c k t : ℕ}
     by_cases vm : v ∈ inN D U c
     · rw [keep v vm va]; tauto
     · tauto
+
+theorem promote_parent {D : CH.Digraph} {U : Finset ℕ} {a c k t : ℕ}
+    (safe : QFree D U 3) (cu : c ∈ U) (ku : k ∈ U) (ck : D c k = true)
+    (parents : a ∈ tightParents D U c t) (miss : D a k ≠ true)
+    (spare : ∀ w ∈ outN D U k, t < (outN D U w).card)
+    (others : ∀ v ∈ U, v ≠ c → t ≤ (outN D U v).card) :
+    ∃ E : CH.Digraph, QFree E U 3 ∧ (∀ v ∈ U, v ≠ c → t ≤ (outN E U v).card) ∧
+      tightParents E U c t = (tightParents D U c t).erase a ∧
+      ∀ v ∈ inN D U c, v ≠ a → outN E U v = outN D U v := by
+  obtain ⟨E,ok,rest,eq,keep,_⟩ := promote_parent_with_edges safe cu ku ck parents miss spare others
+  exact ⟨E,ok,rest,eq,keep⟩
 
 private theorem two_tight {D : CH.Digraph} {U : Finset ℕ} {q c k t : ℕ}
     (safe : QFree D U q) (cu : c ∈ U) (ku : k ∈ U) (kc : k ≠ c)

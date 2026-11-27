@@ -248,7 +248,8 @@ for module in TripleBankFreeRepair TripleBankSelection TripleBankMenu TripleBank
   compile "checkpoints/shen_extension/$module.lean"
 done
 
-for module in LoneRowBudget SharedRepairHead RotatedBank ThreeTightParents; do
+for module in LoneRowBudget SharedRepairHead RotatedBank ThreeTightParents \
+    TightParentNeutral ThreeParentOverlap RotatedNeutral; do
   compile "checkpoints/shen_extension/$module.lean"
 done
 
