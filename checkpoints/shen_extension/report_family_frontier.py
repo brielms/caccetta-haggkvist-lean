@@ -163,6 +163,33 @@ def common_head_refinements(lines, leaf):
     return sorted(max(candidates, key=lambda candidate: (len(candidate), candidate)))
 
 
+def cyclic_layer_refinements(lines, leaf):
+    """Match the counted assignment and its cyclic row budget on the native source."""
+    facts = leaf_facts(lines, leaf, strip_hygiene=False)
+    prefix = "CyclicLayerReplay.CountedBank source.D source.V "
+    candidates = [
+        fact.removeprefix(prefix).split()
+        for fact in facts if fact.startswith(prefix)
+    ]
+    if not candidates:
+        return []
+    if len(candidates) != 1 or len(candidates[0]) != 4:
+        return ["nonunique native cyclic count"]
+    q, p, h, f = candidates[0]
+    if f"CommonHeadCutReplay.Assignment source.D source.V {p} {h} {f}" not in facts:
+        return ["native cyclic count with unmatched assignment"]
+    result = ["native cyclic count on matching bank and assignment"]
+    rows = f"CyclicLayerReplay.Representatives source.D source.V {q} {p} "
+    budget = f"CyclicLayerReplay.Budget source.D source.V {q} {p} "
+    representatives = {
+        fact.removeprefix(rows) for fact in facts if fact.startswith(rows)
+    }
+    budgets = {fact.removeprefix(budget) for fact in facts if fact.startswith(budget)}
+    if len(representatives) == 1 and representatives == budgets:
+        result.append("matching representatives and layer budget")
+    return result
+
+
 def independent_obligations(lines, leaves):
     """Factor the open contexts into splits that never interact.
 
@@ -300,6 +327,9 @@ def main():
     common_head = {leaf["case"]: common_head_refinements(lines, leaf) for leaf in leaves}
     if any(common_head.values()):
         result["common_head_refinements"] = common_head
+    cyclic = {leaf["case"]: cyclic_layer_refinements(lines, leaf) for leaf in leaves}
+    if any(cyclic.values()):
+        result["cyclic_layer_refinements"] = cyclic
     factored = independent_obligations(lines, leaves)
     if factored:
         result["independent_obligations"] = factored

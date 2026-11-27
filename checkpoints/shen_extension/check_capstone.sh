@@ -286,6 +286,10 @@ for module in CommonHeadLastCut CommonHeadTwoLayerCut CommonHeadCutCore CommonHe
   compile "checkpoints/shen_extension/$module.lean"
 done
 
+for module in CyclicLayerCount CyclicLayerReplay CyclicLayerReplayTest CommonCoreCompression CommonCoreGrowth; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
 echo "Checkpoint files: $compiled compiled, $skipped up to date."
 
 if [[ ${1:-} == --build-only ]]; then

@@ -12,6 +12,8 @@ Each shared-parent context additionally contains a native `CommonBank` with a ma
 
 [common_head_controls.py](../checkpoints/shen_extension/common_head_controls.py) checks the branching and word counts on directed cycle powers and a 116-vertex pair-dominating example, all above the critical order.
 
+All eight shared-parent contexts also carry a cyclic layer count on the same native bank and assignment. The count uses one function of chosen rows for both layer membership and the bound. It charges the number of outside vertices, $q^2$, and $q$ times the number of distinct exterior heads against the backward arcs and the exterior heads counted with multiplicity. The comparator checks those row witnesses by named case. [CyclicLayerReplayTest.lean](../checkpoints/shen_extension/CyclicLayerReplayTest.lean) tests symbolic shared and missed cases, repeated replay and two assignments. [layer_count_controls.py](../checkpoints/shen_extension/layer_count_controls.py) checks the layer statistics on examples above the critical order.
+
 This archive comes from a Windows replay with Lean 4.35.0 using prebuilt imports. GitHub Actions builds the proof dependencies and compares the live frontier with this snapshot.
 
 - [frontier.json](frontier.json) lists every open case, its conclusion and its line numbers in the decompressed Lean log.
