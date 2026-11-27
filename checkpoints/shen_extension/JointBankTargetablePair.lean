@@ -81,7 +81,8 @@ same set of rows for every pair of their labels. -/
 private theorem maximal_heads {V P₀ : Finset ℕ} {K : ℕ → Finset ℕ}
     (loop : ∀ c ∈ V, c ∉ K c) (base : P₀ ⊆ V)
     (two : 2 ≤ (V.filter (fun c => P₀ ⊆ K c)).card) :
-    ∃ P ⊆ V, P₀.card ≤ P.card ∧ ∃ a ∈ V, ∃ b ∈ V, a ≠ b ∧ P ⊆ K a ∧ P ⊆ K b ∧
+    ∃ P ⊆ V, P₀.card ≤ P.card ∧
+      (∀ Q ⊆ V, ∀ x ∈ V, ∀ j ∈ V, x ≠ j → Q ⊆ K x → Q ⊆ K j → Q.card ≤ P.card) ∧ ∃ a ∈ V, ∃ b ∈ V, a ≠ b ∧ P ⊆ K a ∧ P ⊆ K b ∧
       ∀ c ∈ V, a ∈ K c → b ∈ K c → ¬ P ⊆ K c := by
   classical
   let W (P : Finset ℕ) := V.filter (fun c => P ⊆ K c)
@@ -90,7 +91,10 @@ private theorem maximal_heads {V P₀ : Finset ℕ} {K : ℕ → Finset ℕ}
   obtain ⟨P,pm,best⟩ := options.exists_max_image Finset.card ⟨P₀,start⟩
   obtain ⟨pSub,atLeast⟩ := mem_filter.mp pm
   have sub := mem_powerset.mp pSub
-  refine ⟨P,sub,best _ start,?_⟩
+  refine ⟨P,sub,best _ start,?_,?_⟩
+  · intro Q qv x xv j jv xj qx qj
+    exact best Q (mem_filter.mpr ⟨mem_powerset.mpr qv,one_lt_card.mpr
+      ⟨x,mem_filter.mpr ⟨xv,qx⟩,j,mem_filter.mpr ⟨jv,qj⟩,xj⟩⟩)
   by_contra! complete
   have pred {a b} (aW : a ∈ W P) (bW : b ∈ W P) (ab : a ≠ b) :
       ∃ c ∈ W P, a ∈ K c ∧ b ∈ K c := by
@@ -118,10 +122,12 @@ private theorem maximal_heads {V P₀ : Finset ℕ} {K : ℕ → Finset ℕ}
 /-- One deleted pair has at least two locked rows and at least two common
 targets. For every locked row, some target in the very same set is missed
 by it or by one of its free targets. -/
-theorem targetable_locked_pair {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
+theorem maximal_targetable_locked_pair {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
     (free : QFree D V 3) (reg : OutEq s D V) (hs : 2 ≤ s)
     (room : V.card = 3*(s-1)+2) (none : BypassRepair.NoHost 3 (s-1)) :
     ∃ a ∈ V, ∃ b ∈ V, a ≠ b ∧ ∃ P ⊆ outN D V a ∩ outN D V b, 2 ≤ P.card ∧
+      (∀ Q ⊆ V, ∀ x ∈ V, ∀ j ∈ V, x ≠ j → Q ⊆ sharedHeads D V x →
+        Q ⊆ sharedHeads D V j → Q.card ≤ P.card) ∧
       let L := lockedRows D V (inN D V a ∩ inN D V b)
       2 ≤ L.card ∧ ∀ c ∈ L, ∃ z ∈ P, z ∉ sharedHeads D V c := by
   classical
@@ -134,7 +140,7 @@ theorem targetable_locked_pair {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
     intro c cm
     obtain ⟨cv,cp,ch⟩ := (locked_iff pv hv).mp cm
     exact mem_filter.mpr ⟨cv,insert_subset_iff.mpr ⟨cp,singleton_subset_iff.mpr ch⟩⟩
-  obtain ⟨P,sub,size,a,av,b,bv,ab,pa,pb,miss⟩ := maximal_heads
+  obtain ⟨P,sub,size,best,a,av,b,bv,ab,pa,pb,miss⟩ := maximal_heads
     (fun c cv cc => loopfree free (by decide) cv (mem_outN.mp (edge cc)).2)
     (show P₀ ⊆ V from insert_subset pv (singleton_subset_iff.mpr hv)) init
   have count : 2 ≤ P.card := (show P₀.card = 2 from card_pair ph) ▸ size
@@ -143,7 +149,7 @@ theorem targetable_locked_pair {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
     obtain ⟨cv,ca,cb⟩ := (locked_iff av bv).mp cm
     exact not_subset.mp (miss c cv ca cb)
   refine ⟨a,av,b,bv,ab,P,fun z zp => mem_inter.mpr ⟨edge (pa zp),edge (pb zp)⟩,
-    count,?_,obstruction⟩
+    count,best,?_,obstruction⟩
   obtain ⟨c,cv,ca,cb⟩ := pair_covered free reg hs av bv ab room none
   have cm : c ∈ L := (locked_iff av bv).mpr ⟨cv,ca,cb⟩
   by_contra! few
@@ -153,6 +159,15 @@ theorem targetable_locked_pair {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
   obtain ⟨z,zp,cz⟩ := obstruction c cm
   exact cz (singleton_locked_target free reg hs av bv ab (sub zp)
     (mem_outN.mp (edge (pa zp))).2 (mem_outN.mp (edge (pb zp))).2 room none only)
+
+theorem targetable_locked_pair {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
+    (free : QFree D V 3) (reg : OutEq s D V) (hs : 2 ≤ s)
+    (room : V.card = 3*(s-1)+2) (none : BypassRepair.NoHost 3 (s-1)) :
+    ∃ a ∈ V, ∃ b ∈ V, a ≠ b ∧ ∃ P ⊆ outN D V a ∩ outN D V b, 2 ≤ P.card ∧
+      let L := lockedRows D V (inN D V a ∩ inN D V b)
+      2 ≤ L.card ∧ ∀ c ∈ L, ∃ z ∈ P, z ∉ sharedHeads D V c := by
+  obtain ⟨a,av,b,bv,ab,P,sub,pc,_,rest⟩ := maximal_targetable_locked_pair free reg hs room none
+  exact ⟨a,av,b,bv,ab,P,sub,pc,rest⟩
 
 /-- With the target set and bank held fixed, each locked row supplies a
 capstone mark either at itself or at one of its own free targets. -/
@@ -346,6 +361,6 @@ theorem simultaneous_or_saturated {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
 #print axioms all_rows_repairable
 #print axioms marked_repair_choices
 #print axioms singleton_locked_target
+#print axioms maximal_targetable_locked_pair
 #print axioms targetable_locked_pair
 end LeanCH.BR.JointTargetablePair
-
