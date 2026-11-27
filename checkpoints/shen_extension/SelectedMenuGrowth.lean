@@ -9,7 +9,7 @@ open Finset BRq2 BRq3 BR45
 
 /-- Restrict to the one of the two rows that misses the other. Its t-1
 heads off c avoid all three labels a,b,c, and are forbidden to L. -/
-private theorem exterior_pool {D : CH.Digraph} {U L : Finset ℕ} {a b c d t : ℕ}
+theorem exterior_pool {D : CH.Digraph} {U L : Finset ℕ} {a b c d t : ℕ}
     (safe : QFree D U 3) (size : U.card = 3*t) (sat : L.card+1 = t)
     (au : a ∈ U) (bu : b ∈ U) (cu : c ∈ U) (du : d ∈ U)
     (ab : a ≠ b) (ac : D a c = true) (bc : D b c = true)

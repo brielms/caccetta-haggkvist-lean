@@ -249,11 +249,15 @@ for module in TripleBankFreeRepair TripleBankSelection TripleBankMenu GlobalTrip
 done
 
 for module in LoneRowBudget SharedRepairHead RotatedBank ThreeTightParents \
-    TightParentNeutral ThreeParentOverlap RotatedNeutral; do
+    TightParentNeutral ThreeParentOverlap RotatedNeutral ThreeParentFreePromotion; do
   compile "checkpoints/shen_extension/$module.lean"
 done
 
 for module in TripleMomentCount TripleColumnTangent SelectedMenuGrowth SelectedMenuMoment; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+for module in CloneTargetPayment FiveCommonHeads BankFiveCommonHeads FiveReturnIncidence; do
   compile "checkpoints/shen_extension/$module.lean"
 done
 
