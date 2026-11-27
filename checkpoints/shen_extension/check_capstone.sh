@@ -279,6 +279,9 @@ for module in TwoPathReturnBudget FourCycleMarkedReturns FourCycleReturnSlack Ba
   compile "checkpoints/shen_extension/$module.lean"
 done
 
+compile "checkpoints/shen_extension/BankRefinementReplay.lean"
+compile "checkpoints/shen_extension/BankRefinementReplayTest.lean"
+
 echo "Checkpoint files: $compiled compiled, $skipped up to date."
 
 if [[ ${1:-} == --build-only ]]; then

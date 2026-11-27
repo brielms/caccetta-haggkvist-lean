@@ -4,6 +4,10 @@ The 27 Nov 2026 replay of [Capstone.lean](../checkpoints/shen_extension/Capstone
 
 The capstone now chooses a deletion bank with two surviving short rows. The 16 lone-bank contexts in the previous replay close. Eight open contexts retain the shared-parent alternative with $2^{q-1}<s$. The other eight retain the missed-parent alternative with $q(s-1)+3\le n$. The shared-parent contexts also carry the bound $2^{2^{\lfloor q/2\rfloor}+1}\le q(s-1)+3$. The domination bound $(2^{\lfloor q/2\rfloor}+2)2^{2^{\lfloor q/2\rfloor}-1}\le q(s-1)+3$ also holds in those eight shared-parent contexts. At $q=4$ it forces $s\ge 13$ for this alternative. The frontier index records all four bounds.
 
+All 16 contexts now carry $s\ge 10$ and the exclusion of `DeletionWindow` on the surviving input. The replay derives both facts on the original input too. On the reduced leaves the deletion-window exclusion follows from the recorded bank bounds and the degree floor.
+
+The eight shared-parent contexts carry `AtTriangle q (SharedTriangleBank source)` and the eight missed-parent contexts carry `AtTriangle q (MissedTriangleBank source)`. The cutoff stays symbolic in the full replay. The focused Lean checks in [BankRefinementReplayTest.lean](../checkpoints/shen_extension/BankRefinementReplayTest.lean) supply $q=3$ and exercise the matching labelled refinements. The frontier comparison checks the surviving-input facts and matching native guard separately for each named case.
+
 This archive comes from a Windows replay with Lean 4.35.0 using prebuilt imports. GitHub Actions builds the proof dependencies and compares the live frontier with this snapshot.
 
 - [frontier.json](frontier.json) lists every open case, its conclusion and its line numbers in the decompressed Lean log.
