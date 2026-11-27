@@ -17,22 +17,24 @@ theorem signature_far {H : CH.Digraph} {U K : Finset ℕ} {a b : ℕ}
   rw [eq] at mem
   exact (mem_filter.mp mem).2.1 rfl
 
-/-- An auxiliary graph J inside equal-signature classes promotes all its nonsinks.
-Only the sinks among tight middles need to be paid for by the new head y. -/
-theorem patch_pays {H J : CH.Digraph} {U : Finset ℕ} {w y t : ℕ}
-    (safe : QFree H U 3) (wu : w∈U) (yu : y∈U) (wy : w≠y)
-    (off : H w y≠true) (back : H y w≠true) (need : t≤(outN H U w).card+1)
+/-- Promote the tight middles using auxiliary arcs inside their signature classes.
+Keep both marked row degrees, the backward arc, and the remaining tight middles. -/
+theorem prepare {H J : CH.Digraph} {U : Finset ℕ} {w y t : ℕ}
+    (safe : QFree H U 3) (wu : w∈U) (yu : y∈U)
+    (off : H w y≠true)
     (floor : ∀ v∈U, v≠w → t≤(outN H U v).card) (aux : QFree J U 3)
     (internal : ∀ a∈U, ∀ b∈outN J U a, a∈tight H U y w t ∧ b∈tight H U y w t ∧
       seen H U (tight H U y w t) 2 a = seen H U (tight H U y w t) 2 b)
-    (budget : t+((tight H U y w t).filter (fun z => (outN J U z).card=0)).card≤(outN H U y).card) :
-    ∃ E : CH.Digraph, QFree E U 3 ∧ E w y=true ∧ ∀ i∈U, t≤(outN E U i).card := by
+    : ∃ G : CH.Digraph, QFree G U 3 ∧ G w y≠true ∧ (G y w=true ↔ H y w=true) ∧
+      (outN G U y).card=(outN H U y).card ∧ (outN G U w).card=(outN H U w).card ∧
+      (∀ i∈U, (outN H U i).card≤(outN G U i).card) ∧
+      tight G U y w t ⊆ (tight H U y w t).filter (fun z => (outN J U z).card=0) := by
   classical
   let K := tight H U y w t
   let A := outN J U
   let G := patch H A (fun _ => ∅)
-  have nw : w∉K := fun m => back (mem_outN.mp (mem_inter.mp (mem_filter.mp m).1).1).2
-  have ny : y∉K := fun m => back (mem_inN.mp (mem_inter.mp (mem_filter.mp m).1).2).2
+  have nw : w∉K := fun m => loopfree safe (by decide) wu (mem_inN.mp (mem_inter.mp (mem_filter.mp m).1).2).2
+  have ny : y∉K := fun m => loopfree safe (by decide) yu (mem_outN.mp (mem_inter.mp (mem_filter.mp m).1).1).2
   have short {a b} (au : a∈U) (bu : b∈U) (h : H a b=true) : b∈ball H U a 2 :=
     ball_mono_radius (by decide : 1≤2) (ball_step (self_mem_ball (k:=0) au) bu h)
   obtain ⟨clean,rows⟩ := patch_certificate (A:=A) (C:=fun _ => ∅) safe
@@ -88,15 +90,27 @@ theorem patch_pays {H J : CH.Digraph} {U : Finset ℕ} {w y t : ℕ}
     rw [row z zu] at low
     exact mem_filter.mpr ⟨mem_filter.mpr ⟨mem_inter.mpr
       ⟨mem_outN.mpr ⟨zu,hyz⟩,mem_inN.mpr ⟨zu,hzw⟩⟩,by omega⟩,by omega⟩
-  have bound := card_le_card retain
-  have yrow := row y yu
-  have wrow := row w wu
-  refine one_arc_return_budget (D:=G) clean wu yu wy sameWy (fun h => back ((sameY wu).mp h))
-    (by omega) (fun i iu diff => (floor i iu diff).trans (by have := row i iu; omega)) ?_
-  change t+(tight G U y w t).card≤(outN G U y).card
-  change _ ≤ (K.filter _).card at bound
-  change t+(K.filter _).card≤_ at budget
-  omega
+  have empty {a} (au : a∈U) (absent : a∉K) : outN J U a=∅ :=
+    eq_empty_iff_forall_notMem.mpr (fun b h => absent (internal a au b h).1)
+  refine ⟨G,clean,sameWy,sameY wu,?_,?_,fun i iu => ?_,retain⟩
+  · simp [row y yu,empty yu ny]
+  · simp [row w wu,empty wu nw]
+  · rw [row i iu]
+    omega
+
+/-- Only sinks among the promoted tight middles require payment at y. -/
+theorem patch_pays {H J : CH.Digraph} {U : Finset ℕ} {w y t : ℕ}
+    (safe : QFree H U 3) (wu : w∈U) (yu : y∈U) (wy : w≠y)
+    (off : H w y≠true) (back : H y w≠true) (need : t≤(outN H U w).card+1)
+    (floor : ∀ v∈U, v≠w → t≤(outN H U v).card) (aux : QFree J U 3)
+    (internal : ∀ a∈U, ∀ b∈outN J U a, a∈tight H U y w t ∧ b∈tight H U y w t ∧
+      seen H U (tight H U y w t) 2 a = seen H U (tight H U y w t) 2 b)
+    (budget : t+((tight H U y w t).filter (fun z => (outN J U z).card=0)).card≤(outN H U y).card) :
+    ∃ E : CH.Digraph, QFree E U 3 ∧ E w y=true ∧ ∀ i∈U, t≤(outN E U i).card := by
+  obtain ⟨G,ok,off',back',yr,wr,mono,sub⟩ := prepare safe wu yu off floor aux internal
+  exact one_arc_return_budget (D:=G) ok wu yu wy off' (fun h => back (back'.mp h))
+    (wr ▸ need) (fun i iu iw => (floor i iu iw).trans (mono i iu))
+    ((Nat.add_le_add_left (card_le_card sub) t).trans (yr ▸ budget))
 
 /-- Count the different signatures occurring on one, two or three tight middles. -/
 def smallClasses (K : Finset ℕ) (sig : ℕ → Finset ℕ) :=
@@ -127,10 +141,11 @@ private theorem past_triangle {m i j k : ℕ} : next m i j → next m j k → ¬
 
 /-- Inside each class use a directed cycle if it has four or more labels;
 on smaller classes all labels except one point to their representative. -/
-private theorem plan {U K : Finset ℕ} (kv : K⊆U) (sig : ℕ → Finset ℕ) :
+theorem plan {U K : Finset ℕ} (kv : K⊆U) (sig : ℕ → Finset ℕ) :
     ∃ J : CH.Digraph, QFree J U 3 ∧
       (∀ a∈U, ∀ b∈outN J U a, a∈K ∧ b∈K ∧ sig a=sig b) ∧
-      (K.filter (fun z => (outN J U z).card=0)).card≤smallClasses K sig := by
+      (K.filter (fun z => (outN J U z).card=0)).card≤smallClasses K sig ∧
+      ∀ a∈K, (outN J U a).card=0 → (K.filter (fun b => sig b=sig a)).card≤3 := by
   classical
   let C (l : Finset ℕ) := K.filter (fun z => sig z=l)
   let num (l : Finset ℕ) (a : ℕ) := if h : a∈C l then
@@ -194,7 +209,7 @@ private theorem plan {U K : Finset ℕ} (kv : K⊆U) (sig : ℕ → Finset ℕ) 
     exact mem_filter.mpr ⟨mem_image_of_mem sig (mem_filter.mp am).1,(sink am).1⟩
   have cnt := card_le_card imageIncl
   rw [card_image_of_injOn unique] at cnt
-  exact cnt
+  exact ⟨cnt,fun a ak zero => (sink (mem_filter.mpr ⟨ak,zero⟩)).1⟩
 
 /-- For the triangle witness repair, y pays once for each small class. -/
 theorem small_classes_pay {H : CH.Digraph} {U : Finset ℕ} {w y t : ℕ}
@@ -205,7 +220,7 @@ theorem small_classes_pay {H : CH.Digraph} {U : Finset ℕ} {w y t : ℕ}
     ∃ E : CH.Digraph, QFree E U 3 ∧ E w y=true ∧ ∀ i∈U, t≤(outN E U i).card := by
   let K := tight H U y w t
   have inside : K⊆U := fun _ h => outN_subset (mem_inter.mp (mem_filter.mp h).1).1
-  obtain ⟨J,clean,arcs,count⟩ := plan inside (seen H U K 2)
+  obtain ⟨J,clean,arcs,count,_⟩ := plan inside (seen H U K 2)
   exact patch_pays safe wu yu wy off back need floor clean arcs ((Nat.add_le_add_left count t).trans budget)
 
 #print axioms small_classes_pay
