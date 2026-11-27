@@ -81,28 +81,8 @@ private theorem native_miss {D : CH.Digraph} {V P : Finset ℕ} {t a b x j : ℕ
       rw [exactS] at vs
       simpa [fv.2.1] using vs
     subst v
-    have js : j ∈ inN D V a ∩ inN D V b := by simp [exactS]
-    have xs := (mem_filter.mp lock).1
-    obtain ⟨E,safe,done⟩ := repair_two free reg (by omega) av bv ab zv az (mem_outN.mp bz).2
-      js xs xj vz fv
-    have empty : ((inN D V a ∩ inN D V b).erase j).erase x = ∅ := by
-      ext k
-      simp [exactS]
-      tauto
-    have xu : x ∈ V \ {a,b} := by
-      obtain ⟨xa,xb⟩ := mem_inter.mp xs
-      have xv := (mem_inN.mp xa).1
-      have na : x ≠ a := fun e => loopfree free (by decide) av (e ▸ (mem_inN.mp xa).2)
-      have nb : x ≠ b := fun e => loopfree free (by decide) bv (e ▸ (mem_inN.mp xb).2)
-      exact mem_sdiff.mpr ⟨xv,by simp [na,nb]⟩
-    exfalso
-    apply no E (V \ {a,b}) ⟨x,xu⟩ (bank_size av bv ab order) safe
-    intro i iu
-    by_contra! small
-    have hit : i ∈ (V \ {a,b}).filter (fun k => (outN E (V \ {a,b}) k).card < t+1-1) :=
-      mem_filter.mpr ⟨iu,by simpa using small⟩
-    rw [done,empty] at hit
-    exact Finset.notMem_empty i hit
+    exact False.elim (vz (other_row_hits_target free reg (by omega) av bv ab zv az
+      (mem_outN.mp bz).2 (by simpa using order) (by simpa using no) exactS xj ⟨j,fv⟩))
   · exact ⟨z,zp,xz⟩
 
 /-- On this same selected bank the two rows admit distinct fresh targets. -/

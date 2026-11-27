@@ -122,10 +122,10 @@ private theorem maximal_heads {V P₀ : Finset ℕ} {K : ℕ → Finset ℕ}
 /-- One deleted pair has at least two locked rows and at least two common
 targets. For every locked row, some target in the very same set is missed
 by it or by one of its free targets. -/
-theorem maximal_targetable_locked_pair {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
+theorem certified_maximal_targetable_locked_pair {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
     (free : QFree D V 3) (reg : OutEq s D V) (hs : 2 ≤ s)
     (room : V.card = 3*(s-1)+2) (none : BypassRepair.NoHost 3 (s-1)) :
-    ∃ a ∈ V, ∃ b ∈ V, a ≠ b ∧ ∃ P ⊆ outN D V a ∩ outN D V b, 2 ≤ P.card ∧
+    ∃ a ∈ V, ∃ b ∈ V, a ≠ b ∧ ∃ P ⊆ sharedHeads D V a ∩ sharedHeads D V b, 2 ≤ P.card ∧
       (∀ Q ⊆ V, ∀ x ∈ V, ∀ j ∈ V, x ≠ j → Q ⊆ sharedHeads D V x →
         Q ⊆ sharedHeads D V j → Q.card ≤ P.card) ∧
       let L := lockedRows D V (inN D V a ∩ inN D V b)
@@ -148,7 +148,7 @@ theorem maximal_targetable_locked_pair {D : CH.Digraph} {V : Finset ℕ} {s : �
   have obstruction (c) (cm : c ∈ L) : ∃ z ∈ P, z ∉ K c := by
     obtain ⟨cv,ca,cb⟩ := (locked_iff av bv).mp cm
     exact not_subset.mp (miss c cv ca cb)
-  refine ⟨a,av,b,bv,ab,P,fun z zp => mem_inter.mpr ⟨edge (pa zp),edge (pb zp)⟩,
+  refine ⟨a,av,b,bv,ab,P,fun z zp => mem_inter.mpr ⟨pa zp,pb zp⟩,
     count,best,?_,obstruction⟩
   obtain ⟨c,cv,ca,cb⟩ := pair_covered free reg hs av bv ab room none
   have cm : c ∈ L := (locked_iff av bv).mpr ⟨cv,ca,cb⟩
@@ -159,6 +159,20 @@ theorem maximal_targetable_locked_pair {D : CH.Digraph} {V : Finset ℕ} {s : �
   obtain ⟨z,zp,cz⟩ := obstruction c cm
   exact cz (singleton_locked_target free reg hs av bv ab (sub zp)
     (mem_outN.mp (edge (pa zp))).2 (mem_outN.mp (edge (pb zp))).2 room none only)
+
+theorem maximal_targetable_locked_pair {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
+    (free : QFree D V 3) (reg : OutEq s D V) (hs : 2 ≤ s)
+    (room : V.card = 3*(s-1)+2) (none : BypassRepair.NoHost 3 (s-1)) :
+    ∃ a ∈ V, ∃ b ∈ V, a ≠ b ∧ ∃ P ⊆ outN D V a ∩ outN D V b, 2 ≤ P.card ∧
+      (∀ Q ⊆ V, ∀ x ∈ V, ∀ j ∈ V, x ≠ j → Q ⊆ sharedHeads D V x →
+        Q ⊆ sharedHeads D V j → Q.card ≤ P.card) ∧
+      let L := lockedRows D V (inN D V a ∩ inN D V b)
+      2 ≤ L.card ∧ ∀ c ∈ L, ∃ z ∈ P, z ∉ sharedHeads D V c := by
+  classical
+  obtain ⟨a,av,b,bv,ab,P,sub,rest⟩ := certified_maximal_targetable_locked_pair free reg hs room none
+  exact ⟨a,av,b,bv,ab,P,fun z zp => by
+    obtain ⟨az,bz⟩ := mem_inter.mp (sub zp)
+    exact mem_inter.mpr ⟨(mem_filter.mp az).1,(mem_filter.mp bz).1⟩,rest⟩
 
 theorem targetable_locked_pair {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
     (free : QFree D V 3) (reg : OutEq s D V) (hs : 2 ≤ s)
@@ -361,6 +375,7 @@ theorem simultaneous_or_saturated {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
 #print axioms all_rows_repairable
 #print axioms marked_repair_choices
 #print axioms singleton_locked_target
+#print axioms certified_maximal_targetable_locked_pair
 #print axioms maximal_targetable_locked_pair
 #print axioms targetable_locked_pair
 end LeanCH.BR.JointTargetablePair
