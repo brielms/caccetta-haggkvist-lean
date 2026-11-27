@@ -39,7 +39,12 @@ def published_bounds(lines, leaf):
                  "GuardedFamilyRules.Fits", "GuardedProfileBudget.Window", "InheritedProfileWindow.Fits", "OneSpareGrowth.BelowFour",
                  "OneSpareGrowth.Window", "ParentCutFrontier.Gate",
                  "ProjectedQuotaTransfer.from_recorded_projection", "SymbolicQuotaSweep.Covers")
-    selected_bank_bounds = {"2 ^ (q - 1) < s", "q * (s - 1) + 3 ≤ n"}
+    selected_bank_bounds = {
+        "2 ^ (q - 1) < s",
+        "q * (s - 1) + 3 ≤ n",
+        "2 ^ (2 ^ (q / 2) + 1) ≤ q * (s - 1) + 3",
+        "(2 ^ (q / 2) + 2) * 2 ^ (2 ^ (q / 2) - 1) ≤ q * (s - 1) + 3",
+    }
     bounds = []
     def take(name, parts):
         statement = " ".join(" ".join(parts).split())
@@ -81,6 +86,22 @@ def leaf_facts(lines, leaf):
             parts = [first] if colon else None
     take(parts)
     return facts
+
+
+def native_bank_refinements(lines, leaf):
+    """Track refinements of the surviving input and its native source."""
+    local_inputs = ("input", "{ n := n, s := s, D := D }")
+    degree = {"10 ≤ s"} | {f"10 ≤ {input_term}.s" for input_term in local_inputs}
+    deletion = {
+        f"¬BankRefinementReplay.DeletionWindow {input_term}.n {input_term}.s "
+        f"(CHRuleCatalog.cutoff {input_term})"
+        for input_term in local_inputs
+    }
+    guards = {
+        f"BankRefinementReplay.AtTriangle q (BankRefinementReplay.{kind}TriangleBank source)"
+        for kind in ("Shared", "Missed")
+    }
+    return sorted(leaf_facts(lines, leaf) & (degree | deletion | guards))
 
 
 def independent_obligations(lines, leaves):
@@ -214,6 +235,9 @@ def main():
     result = {"source_log": str(args.log.resolve()), "sha256": hashlib.sha256(data).hexdigest(),
               "open_leaves": len(leaves), "rounds": rounds, "leaves": leaves}
     result["published_bounds"] = {leaf["case"]: published_bounds(lines, leaf) for leaf in leaves}
+    native = {leaf["case"]: native_bank_refinements(lines, leaf) for leaf in leaves}
+    if any(native.values()):
+        result["native_bank_refinements"] = native
     factored = independent_obligations(lines, leaves)
     if factored:
         result["independent_obligations"] = factored

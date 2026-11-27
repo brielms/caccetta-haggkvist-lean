@@ -122,6 +122,9 @@ import checkpoints.shen_extension.ShellBankFrontier
 import checkpoints.shen_extension.ShellTransferCatalog
 import checkpoints.shen_extension.FlatTwoWitnesses
 import checkpoints.shen_extension.JointBankOrderReplay
+import checkpoints.shen_extension.PairPowerOrder
+import checkpoints.shen_extension.PairPowerDomination
+import checkpoints.shen_extension.BankRefinementReplay
 /-!
 # Full CH capstone for the Shen extension path
 

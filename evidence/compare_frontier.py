@@ -7,8 +7,10 @@ from pathlib import Path
 
 def signature(data):
     leaves = [(row["case"], row["missing_implication_conclusion"]) for row in data["leaves"]]
-    return (sorted(leaves), data["open_leaves"], data["published_bounds"],
-            data["independent_obligations"]["separate_obligations"])
+    return (
+        sorted(leaves), data["open_leaves"], data["published_bounds"],
+        data["independent_obligations"]["separate_obligations"], data.get("native_bank_refinements", {}),
+    )
 
 
 if __name__ == "__main__":

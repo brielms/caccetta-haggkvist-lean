@@ -235,10 +235,52 @@ for module in FlatSeymourVertex TwoSeymourDeficit TwoSeymourEndgame TwoSeymourVe
 done
 
 for module in JointPairCounting JointBankGeometry JointBankConstruction JointBankChoice \
-    JointBankPrivateHeads JointBankParentChoice JointBankBinaryReturn JointBankOrderReplay \
+    JointBankPrivateHeads JointBankParentChoice JointBankBinaryReturn JointBankOrderReplay PairPowerOrder PairPowerDomination PairPowerTransfer PairPowerDeletion PairPowerReservoir PairPowerGrowth PairPowerBank \
     JointBankPairLoad PairCoverMixing BankAncestorCover CutDeficit PairBankSpare; do
   compile "checkpoints/shen_extension/$module.lean"
 done
+
+for module in JointBankFreshDiamond JointBankFreshRepair JointBankFreeTargets JointBankLockedPair JointBankTargetablePair; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+for module in TripleBankFreeRepair OneArcReturnBudget ReturnSignature CriticalReturnPool PairReturnOverlap TripleBankSelection \
+    TripleBankMenu GlobalTripleChoice TripleMomentArithmetic TripleBankCuts; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+for module in LoneRowBudget SharedRepairHead RotatedBank ThreeTightParents \
+    TightParentNeutral ThreeParentOverlap RotatedNeutral ThreeParentFreePromotion; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+for module in TripleMomentCount TripleColumnTangent SelectedMenuGrowth SelectedMenuMoment; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+for module in CloneTargetPayment FiveCommonHeads BankFiveCommonHeads FiveReturnIncidence; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+for module in VacantTargetPayment ThreeParentVacantPayment VacantPoolBudget \
+    RotatedPaymentCore RotatedPairPayment BankRotatedPayment; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+for module in ExactFiveInternalHead ExactFiveTriple UnitBankHall; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+for module in BankKernelSAT CleanSwapKernel CleanSwapTransport CleanBankTransition SelectedCleanBank; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+for module in TwoPathReturnBudget FourCycleMarkedReturns FourCycleReturnSlack BankWalkReturnBudget WitnessTargetChoice ReverseTargetBudget ReverseDonors TwoRowSharedBlockers MaximalBankTwoRows RotatedLockedRows RotatedThreeRows FourLayerReversal LabelledTrianglePatch FourLayerSharedSource FourTargetPayment FourTargetChoice TwoSinkPayer; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+compile "checkpoints/shen_extension/BankRefinementReplay.lean"
+compile "checkpoints/shen_extension/BankRefinementReplayTest.lean"
 
 echo "Checkpoint files: $compiled compiled, $skipped up to date."
 
