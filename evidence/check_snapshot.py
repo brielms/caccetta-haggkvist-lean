@@ -26,8 +26,11 @@ def main():
         # The reporter samples six examples by length from a Python set. Ties
         # can yield different illustrations while the proof contexts are identical.
         for index in (actual, expected):
-            for factor in index["independent_obligations"]["factors"]:
+            factors = index["independent_obligations"]["factors"]
+            for factor in factors:
                 factor.pop("shortest_varying_statements")
+            # Equal-size factors can appear in either order.
+            factors.sort(key=lambda factor: (-factor["kinds"], factor["one_context_per_kind"]))
         if actual != expected:
             raise SystemExit("The regenerated frontier differs from the saved index.")
     print(f"Verified {actual['open_leaves']} open contexts and "

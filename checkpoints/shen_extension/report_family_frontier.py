@@ -39,7 +39,11 @@ def published_bounds(lines, leaf):
                  "GuardedFamilyRules.Fits", "GuardedProfileBudget.Window", "InheritedProfileWindow.Fits", "OneSpareGrowth.BelowFour",
                  "OneSpareGrowth.Window", "ParentCutFrontier.Gate",
                  "ProjectedQuotaTransfer.from_recorded_projection", "SymbolicQuotaSweep.Covers")
-    selected_bank_bounds = {"2 ^ (q - 1) < s", "q * (s - 1) + 3 ≤ n"}
+    selected_bank_bounds = {
+        "2 ^ (q - 1) < s",
+        "q * (s - 1) + 3 ≤ n",
+        "2 ^ (2 ^ (q / 2) + 1) ≤ q * (s - 1) + 3",
+    }
     bounds = []
     def take(name, parts):
         statement = " ".join(" ".join(parts).split())
