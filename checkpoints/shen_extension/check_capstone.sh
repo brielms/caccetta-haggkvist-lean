@@ -240,7 +240,7 @@ for module in JointPairCounting JointBankGeometry JointBankConstruction JointBan
   compile "checkpoints/shen_extension/$module.lean"
 done
 
-for module in JointBankFreshDiamond JointBankFreshRepair JointBankFreeTargets; do
+for module in JointBankFreshDiamond JointBankFreshRepair JointBankFreeTargets JointBankLockedPair; do
   compile "checkpoints/shen_extension/$module.lean"
 done
 
