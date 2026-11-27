@@ -125,6 +125,7 @@ import checkpoints.shen_extension.JointBankOrderReplay
 import checkpoints.shen_extension.PairPowerOrder
 import checkpoints.shen_extension.PairPowerDomination
 import checkpoints.shen_extension.BankRefinementReplay
+import checkpoints.shen_extension.CommonHeadCutReplay
 /-!
 # Full CH capstone for the Shen extension path
 

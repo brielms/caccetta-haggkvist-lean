@@ -282,6 +282,10 @@ done
 compile "checkpoints/shen_extension/BankRefinementReplay.lean"
 compile "checkpoints/shen_extension/BankRefinementReplayTest.lean"
 
+for module in CommonHeadLastCut CommonHeadTwoLayerCut CommonHeadCutCore CommonHeadCutDepth CommonHeadCutReplay CommonHeadCutReplayTest; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
 echo "Checkpoint files: $compiled compiled, $skipped up to date."
 
 if [[ ${1:-} == --build-only ]]; then

@@ -66,14 +66,15 @@ def published_bounds(lines, leaf):
     return sorted(set(bounds))
 
 
-def leaf_facts(lines, leaf):
+def leaf_facts(lines, leaf, *, strip_hygiene=True):
     """Statements of one saved context, without local names, name suffixes or replay bookkeeping."""
     facts, parts = set(), None
     def take(parts):
         if parts is None:
             return
         statement = " ".join(" ".join(parts).split())
-        statement = re.sub(r"✝[⁰¹²³⁴⁵⁶⁷⁸⁹]*", "", statement)
+        if strip_hygiene:
+            statement = re.sub(r"✝[⁰¹²³⁴⁵⁶⁷⁸⁹]*", "", statement)
         if statement and not re.search(r"CHFamilyWorklist\.Opened|CHContextCatalog\.Fired", statement):
             facts.add(statement)
     for line in lines[leaf["context_line"]:leaf["goal_line"] - 1]:
@@ -102,6 +103,64 @@ def native_bank_refinements(lines, leaf):
         for kind in ("Shared", "Missed")
     }
     return sorted(leaf_facts(lines, leaf) & (degree | deletion | guards))
+
+
+def common_head_refinements(lines, leaf):
+    """Index witnesses whose pair, assignment and tree root agree on this leaf."""
+    facts = {
+        re.sub(r"(?:LeanCH\.BR\.)?CommonHead(?:CutReplay|CutDepth|LastCut|TwoLayerCut)\.", "", fact)
+        .replace("BypassBankReplay.jointParents", "jointParents")
+        for fact in leaf_facts(lines, leaf, strip_hygiene=False)
+    }
+    def holds_card(prefix, expression, suffix=""):
+        return (f"{prefix}({expression}).card{suffix}" in facts
+                or f"{prefix}#({expression}){suffix}" in facts)
+
+    candidates = [[]]
+    sources = [fact.removeprefix("CommonBank ") for fact in facts if fact.startswith("CommonBank ")]
+    for source in sources:
+        native = ["native CommonBank"]
+        candidates.append(native)
+        graph, vertices = f"{source}.D", f"{source}.V"
+        law_prefix = f"ForkLaw {graph} {vertices} "
+        for law in facts:
+            if not law.startswith(law_prefix):
+                continue
+            labels = law.removeprefix(law_prefix).split()
+            if len(labels) != 4:
+                continue
+            q, s, p, h = labels
+            matching_law = [*native, "native ForkLaw"]
+            candidates.append(matching_law)
+            assignment_prefix = f"Assignment {graph} {vertices} {p} {h} "
+            bank = rf"({vertices} \ {{{p}, {h}}})"
+            parents = f"(jointParents {graph} {vertices} {p} {h})"
+            for assignment in facts:
+                if not assignment.startswith(assignment_prefix):
+                    continue
+                f = assignment.removeprefix(assignment_prefix)
+                matching = {*matching_law, "matching Assignment"}
+                routes = f"(routes {graph} {bank} {parents} {q} {f})"
+                tree = f"{routes} {bank} {parents} ({q} - 1)"
+                prefix = f"Branches {tree} ({f} "
+                for branches in facts:
+                    if not branches.startswith(prefix) or not branches.endswith(")"):
+                        continue
+                    u = branches.removeprefix(prefix)[:-1]
+                    if f"{u} ∈ {parents[1:-1]}" not in facts:
+                        continue
+                    matching.add("matching Branches rooted at an assigned head")
+                    if holds_card(f"2 ^ ({q} - 1) ≤ ", f"words {tree} ({f} {u})"):
+                        matching.add("matching word bound at depth q - 1")
+                retained_suffix = f" ∈ {bank[1:-1]}"
+                for member in facts:
+                    if member.endswith(retained_suffix):
+                        b = member.removesuffix(retained_suffix)
+                        if (holds_card("2 ≤ ", f"previousBill {graph} {bank} {parents} {q} {f} {b}")
+                                and holds_card("", f"outN {graph} {bank} {b}", f" = {s}")):
+                            matching.add("matching full-row fork to two contested payers")
+                candidates.append(sorted(matching))
+    return sorted(max(candidates, key=lambda candidate: (len(candidate), candidate)))
 
 
 def independent_obligations(lines, leaves):
@@ -238,6 +297,9 @@ def main():
     native = {leaf["case"]: native_bank_refinements(lines, leaf) for leaf in leaves}
     if any(native.values()):
         result["native_bank_refinements"] = native
+    common_head = {leaf["case"]: common_head_refinements(lines, leaf) for leaf in leaves}
+    if any(common_head.values()):
+        result["common_head_refinements"] = common_head
     factored = independent_obligations(lines, leaves)
     if factored:
         result["independent_obligations"] = factored

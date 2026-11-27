@@ -8,6 +8,10 @@ All 16 contexts now carry $s\ge 10$ and the exclusion of `DeletionWindow` on the
 
 The eight shared-parent contexts carry `AtTriangle q (SharedTriangleBank source)` and the eight missed-parent contexts carry `AtTriangle q (MissedTriangleBank source)`. The cutoff stays symbolic in the full replay. The focused Lean checks in [BankRefinementReplayTest.lean](../checkpoints/shen_extension/BankRefinementReplayTest.lean) supply $q=3$ and exercise the matching labelled refinements. The frontier comparison checks the surviving-input facts and matching native guard separately for each named case.
 
+Each shared-parent context additionally contains a native `CommonBank` with a maximal common-head pair, its `ForkLaw`, an actual assignment on that pair and a minimal repair obstruction. The same assignment witnesses a full row with arcs to two contested payers and a binary branching property through $q-1$ layers of original return arcs. At least $2^{q-1}$ distinct walk words start at the assigned head of the recorded short row. Distinct words may share vertices. All eight shared-parent contexts contain the matching assignment, branching property and word count. The eight missed-parent contexts carry no common-head-bank refinement. The frontier comparison checks these facts by named case and checks that the pair, assignment and root in the relevant hypotheses agree. The focused checks in [CommonHeadCutReplayTest.lean](../checkpoints/shen_extension/CommonHeadCutReplayTest.lean) exercise the symbolic shared and missed cases, two assignments and an unrelated-bank control.
+
+[common_head_controls.py](../checkpoints/shen_extension/common_head_controls.py) checks the branching and word counts on directed cycle powers and a 116-vertex pair-dominating example, all above the critical order.
+
 This archive comes from a Windows replay with Lean 4.35.0 using prebuilt imports. GitHub Actions builds the proof dependencies and compares the live frontier with this snapshot.
 
 - [frontier.json](frontier.json) lists every open case, its conclusion and its line numbers in the decompressed Lean log.

@@ -10,6 +10,7 @@ def signature(data):
     return (
         sorted(leaves), data["open_leaves"], data["published_bounds"],
         data["independent_obligations"]["separate_obligations"], data.get("native_bank_refinements", {}),
+        data.get("common_head_refinements", {}),
     )
 
 
