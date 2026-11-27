@@ -248,6 +248,10 @@ for module in TripleBankFreeRepair TripleBankSelection TripleBankMenu TripleBank
   compile "checkpoints/shen_extension/$module.lean"
 done
 
+for module in LoneRowBudget SharedRepairHead RotatedBank ThreeTightParents; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
 echo "Checkpoint files: $compiled compiled, $skipped up to date."
 
 if [[ ${1:-} == --build-only ]]; then
