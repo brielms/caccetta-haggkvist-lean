@@ -244,12 +244,16 @@ for module in JointBankFreshDiamond JointBankFreshRepair JointBankFreeTargets Jo
   compile "checkpoints/shen_extension/$module.lean"
 done
 
-for module in TripleBankFreeRepair TripleBankSelection TripleBankMenu TripleBankCuts; do
+for module in TripleBankFreeRepair TripleBankSelection TripleBankMenu GlobalTripleChoice TripleMomentArithmetic TripleBankCuts; do
   compile "checkpoints/shen_extension/$module.lean"
 done
 
 for module in LoneRowBudget SharedRepairHead RotatedBank ThreeTightParents \
     TightParentNeutral ThreeParentOverlap RotatedNeutral; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+for module in TripleMomentCount TripleColumnTangent SelectedMenuGrowth SelectedMenuMoment; do
   compile "checkpoints/shen_extension/$module.lean"
 done
 

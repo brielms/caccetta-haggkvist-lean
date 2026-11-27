@@ -196,10 +196,12 @@ private theorem clean_three {G : CH.Digraph} {W : Finset ℕ} (safe : QFree G W 
 /-- Preserve any initial common target set covered by three rows in the
 cardinality bound. Every short survivor of the selected triple misses a
 target in the same maximizing set. -/
-theorem maximal_triple {D : CH.Digraph} {V P₀ : Finset ℕ}
+private theorem maximal_triple_bound {D : CH.Digraph} {V P₀ : Finset ℕ}
     (safe : QFree D V 3) (base : P₀ ⊆ V)
     (start : 3 ≤ (V.filter (fun a => P₀ ⊆ outN D V a)).card) :
-    ∃ P ⊆ V, P₀ ⊆ P ∧ ∃ B ⊆ V, B.card = 3 ∧ (∀ a ∈ B, P ⊆ outN D V a) ∧
+    ∃ P ⊆ V, P₀ ⊆ P ∧
+      (∀ Q ⊆ V, P₀ ⊆ Q → 3 ≤ (V.filter (fun a => Q ⊆ outN D V a)).card → Q.card ≤ P.card) ∧
+      ∃ B ⊆ V, B.card = 3 ∧ (∀ a ∈ B, P ⊆ outN D V a) ∧
       ∀ c ∈ V \ B, 2 ≤ (outN D B c).card → ∃ z ∈ P, D c z ≠ true := by
   classical
   let W (P : Finset ℕ) := V.filter (fun a => P ⊆ outN D V a)
@@ -224,7 +226,7 @@ theorem maximal_triple {D : CH.Digraph} {V P₀ : Finset ℕ}
     rw [card_insert_of_notMem tp] at bound
     omega
   obtain ⟨B,bw,three,clean⟩ := clean_three (G := G) (safe.reverse.mono_set sw) large cap
-  refine ⟨P,mem_powerset.mp pv,baseP,B,bw.trans sw,three,fun _ am => (mem_filter.mp (bw am)).2,?_⟩
+  refine ⟨P,mem_powerset.mp pv,baseP,fun Q qv inc count => top Q (mem_filter.mpr ⟨mem_powerset.mpr qv,inc,count⟩),B,bw.trans sw,three,fun _ am => (mem_filter.mp (bw am)).2,?_⟩
   intro c cu hits
   by_contra! allHit
   have cw : c ∈ W P := mem_filter.mpr ⟨(mem_sdiff.mp cu).1,
@@ -232,6 +234,14 @@ theorem maximal_triple {D : CH.Digraph} {V P₀ : Finset ℕ}
   have small := clean c (mem_sdiff.mpr ⟨cw,(mem_sdiff.mp cu).2⟩)
   change (outN D B c).card ≤ 1 at small
   omega
+
+theorem maximal_triple {D : CH.Digraph} {V P₀ : Finset ℕ}
+    (safe : QFree D V 3) (base : P₀ ⊆ V)
+    (start : 3 ≤ (V.filter (fun a => P₀ ⊆ outN D V a)).card) :
+    ∃ P ⊆ V, P₀ ⊆ P ∧ ∃ B ⊆ V, B.card = 3 ∧ (∀ a ∈ B, P ⊆ outN D V a) ∧
+      ∀ c ∈ V \ B, 2 ≤ (outN D B c).card → ∃ z ∈ P, D c z ≠ true := by
+  obtain ⟨P,pv,inc,_,B,bv,three,common,miss⟩ := maximal_triple_bound safe base start
+  exact ⟨P,pv,inc,B,bv,three,common,miss⟩
 
 private theorem seed_pair {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
     (live : V.Nonempty) (reg : OutEq s D V) (dense : 2*(V.card-1) < s*(s-1)) :
@@ -271,17 +281,31 @@ private theorem seed_pair {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
   exact mem_filter.mpr ⟨(mem_inN.mp ap).1,insert_subset_iff.mpr
     ⟨mem_outN.mpr ⟨pv,(mem_inN.mp ap).2⟩,singleton_subset_iff.mpr (mem_outN.mpr ⟨hv,ah⟩)⟩⟩
 
-theorem top_triple {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
+theorem top_triple_maximum {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
     (safe : QFree D V 3) (reg : OutEq s D V) (hs : 7 ≤ s) (order : V.card = 3*s) :
-    ∃ P ⊆ V, 2 ≤ P.card ∧ ∃ B ⊆ V, B.card = 3 ∧ (∀ a ∈ B, P ⊆ outN D V a) ∧
+    ∃ P ⊆ V, 2 ≤ P.card ∧
+      (∀ Q ⊆ V, 3 ≤ (V.filter (fun a => Q ⊆ outN D V a)).card → Q.card ≤ P.card) ∧
+      ∃ B ⊆ V, B.card = 3 ∧ (∀ a ∈ B, P ⊆ outN D V a) ∧
       ∀ c ∈ V \ B, 2 ≤ (outN D B c).card → ∃ z ∈ P, D c z ≠ true := by
   have dense : 2*(V.card-1) < s*(s-1) := by
     have a : 6 ≤ s-1 := by omega
     have le := Nat.mul_le_mul_left s a
     omega
   obtain ⟨P₀,base,size,start⟩ := seed_pair (card_pos.mp (by omega)) reg dense
-  obtain ⟨P,pv,includeBase,B,sub,bc,allHeads,miss⟩ := maximal_triple safe base start
-  exact ⟨P,pv,size ▸ card_le_card includeBase,B,sub,bc,allHeads,miss⟩
+  have enough : 3 ≤ V.card := by omega
+  have empty : 3 ≤ (V.filter (fun a => (∅ : Finset ℕ) ⊆ outN D V a)).card := by
+    simpa using enough
+  obtain ⟨P,pv,_,cap,B,sub,bc,allHeads,miss⟩ := maximal_triple_bound safe (empty_subset V) empty
+  have large := cap P₀ base (empty_subset _) start
+  exact ⟨P,pv,size ▸ large,fun Q qv count => cap Q qv (empty_subset _) count,
+    B,sub,bc,allHeads,miss⟩
+
+theorem top_triple {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
+    (safe : QFree D V 3) (reg : OutEq s D V) (hs : 7 ≤ s) (order : V.card = 3*s) :
+    ∃ P ⊆ V, 2 ≤ P.card ∧ ∃ B ⊆ V, B.card = 3 ∧ (∀ a ∈ B, P ⊆ outN D V a) ∧
+      ∀ c ∈ V \ B, 2 ≤ (outN D B c).card → ∃ z ∈ P, D c z ≠ true := by
+  obtain ⟨P,pv,large,_,B,bv,three,common,miss⟩ := top_triple_maximum safe reg hs order
+  exact ⟨P,pv,large,B,bv,three,common,miss⟩
 
 #print axioms three_disjoint
 #print axioms maximal_triple

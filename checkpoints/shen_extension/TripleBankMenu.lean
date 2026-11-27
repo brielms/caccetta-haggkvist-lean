@@ -75,12 +75,12 @@ theorem single_menu {D : CH.Digraph} {V B P : Finset ℕ} {s c : ℕ}
     · rw [erase_eq_of_notMem edge]
   · simp [A,C,active,ac,U]
 
-/-- On the chosen triple all short rows can recover a degree unit, while a
-lone short row must lose three heads and have a one-element repair menu. -/
-theorem top_repair_frontier {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
+/-- Repair menus and the shortage alternative for the same selected triple. -/
+theorem repair_on_triple {D : CH.Digraph} {V P B : Finset ℕ} {s : ℕ}
     (safe : QFree D V 3) (reg : OutEq s D V) (hs : 7 ≤ s) (room : V.card = 3*s)
-    (none : BypassRepair.NoHost 3 (s-1)) :
-    ∃ P ⊆ V, 2 ≤ P.card ∧ ∃ B ⊆ V, B.card = 3 ∧ (∀ b ∈ B, P ⊆ outN D V b) ∧
+    (none : BypassRepair.NoHost 3 (s-1)) (pv : P ⊆ V) (bv : B ⊆ V) (bc : B.card = 3)
+    (common : ∀ b ∈ B, P ⊆ outN D V b)
+    (miss : ∀ c ∈ V \ B, 2 ≤ (outN D B c).card → ∃ z ∈ P, D c z ≠ true) :
       let U := V \ B
       let S := U.filter (fun c => 2 ≤ (outN D B c).card)
       (∀ c ∈ S, ∃ z ∈ P, D c z ≠ true) ∧
@@ -89,12 +89,11 @@ theorem top_repair_frontier {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
         ∀ a ∈ U, a ≠ c → min (s-1) (outN E U a).card = min (s-1) (outN D U a).card) ∧
       (2 ≤ S.card ∨ ∃ c, S = {c} ∧ (outN D B c).card = 3 ∧ (rowMenu D U P c).card = 1) := by
   classical
-  obtain ⟨P,pv,pc,B,bv,bc,common,miss⟩ := top_triple safe reg hs room
   let U := V \ B
   let S := U.filter (fun c => 2 ≤ (outN D B c).card)
   have each (c) (cs : c ∈ S) := single_menu safe reg bv pv common (mem_filter.mp cs).1
     (card_pos.mp (lt_of_lt_of_le (by decide : 0 < 2) (mem_filter.mp cs).2))
-  refine ⟨P,pv,pc,B,bv,bc,common,fun c cs => miss c (mem_filter.mp cs).1 (mem_filter.mp cs).2,each,?_⟩
+  refine ⟨fun c cs => miss c (mem_filter.mp cs).1 (mem_filter.mp cs).2,each,?_⟩
   change 2 ≤ S.card ∨ ∃ c, S = {c} ∧ (outN D B c).card = 3 ∧ (rowMenu D U P c).card = 1
   by_cases many : 2 ≤ S.card
   · exact Or.inl many
@@ -131,6 +130,22 @@ theorem top_repair_frontier {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
   have cnt := split c cu
   have limit := (card_le_card (outN_subset : outN D B c ⊆ B)).trans bc.le
   exact ⟨c,single,by omega,by omega⟩
+
+/-- On the chosen triple all short rows can recover a degree unit, while a
+lone short row must lose three heads and have a one-element repair menu. -/
+theorem top_repair_frontier {D : CH.Digraph} {V : Finset ℕ} {s : ℕ}
+    (safe : QFree D V 3) (reg : OutEq s D V) (hs : 7 ≤ s) (room : V.card = 3*s)
+    (none : BypassRepair.NoHost 3 (s-1)) :
+    ∃ P ⊆ V, 2 ≤ P.card ∧ ∃ B ⊆ V, B.card = 3 ∧ (∀ b ∈ B, P ⊆ outN D V b) ∧
+      let U := V \ B
+      let S := U.filter (fun c => 2 ≤ (outN D B c).card)
+      (∀ c ∈ S, ∃ z ∈ P, D c z ≠ true) ∧
+      (∀ c ∈ S, ∃ E : CH.Digraph, QFree E U 3 ∧
+        (outN E U c).card = (outN D U c).card + (rowMenu D U P c).card ∧
+        ∀ a ∈ U, a ≠ c → min (s-1) (outN E U a).card = min (s-1) (outN D U a).card) ∧
+      (2 ≤ S.card ∨ ∃ c, S = {c} ∧ (outN D B c).card = 3 ∧ (rowMenu D U P c).card = 1) := by
+  obtain ⟨P,pv,pc,B,bv,bc,common,miss⟩ := top_triple safe reg hs room
+  exact ⟨P,pv,pc,B,bv,bc,common,repair_on_triple safe reg hs room none pv bv bc common miss⟩
 
 #print axioms single_menu
 #print axioms top_repair_frontier
