@@ -266,7 +266,11 @@ for module in VacantTargetPayment ThreeParentVacantPayment VacantPoolBudget \
   compile "checkpoints/shen_extension/$module.lean"
 done
 
-for module in ExactFiveInternalHead UnitBankHall; do
+for module in ExactFiveInternalHead ExactFiveTriple UnitBankHall; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
+for module in BankKernelSAT CleanSwapKernel CleanSwapTransport CleanBankTransition SelectedCleanBank; do
   compile "checkpoints/shen_extension/$module.lean"
 done
 
