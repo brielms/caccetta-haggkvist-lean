@@ -244,6 +244,10 @@ for module in JointBankFreshDiamond JointBankFreshRepair JointBankFreeTargets Jo
   compile "checkpoints/shen_extension/$module.lean"
 done
 
+for module in TripleBankFreeRepair TripleBankSelection TripleBankMenu TripleBankCuts; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
 echo "Checkpoint files: $compiled compiled, $skipped up to date."
 
 if [[ ${1:-} == --build-only ]]; then
