@@ -1,8 +1,10 @@
 # Saved full replay
 
-The [26 Nov 2026 replay](https://github.com/brielms/caccetta-haggkvist-lean/commit/8b99e5c7b0c9ed59f5899d8a5cd7f4ec6a05cf20) of `checkpoints/shen_extension/Capstone.lean` ended with 32 open Lean contexts and one unsolved-goals diagnostic at the root. The reporter groups the alternatives into factors of 4, 4 and 2, giving 10 separate obligations by its counting convention. Full CH remains open.
+The 26 Nov 2026 replay of [Capstone.lean](../checkpoints/shen_extension/Capstone.lean) ended with 16 open Lean contexts and one unsolved-goals diagnostic at the root. The reporter groups the alternatives into factors of 4, 2 and 2, giving 8 separate obligations by its counting convention. Full CH remains open.
 
-This archive comes from a Windows replay of the byte-identical capstone using prebuilt imports. GitHub Actions builds the proof dependencies and compares the live frontier with this snapshot.
+The capstone now chooses a deletion bank with two surviving short rows. The 16 lone-bank contexts in the previous replay close. Eight open contexts retain the shared-parent alternative with $2^{q-1}<s$. The other eight retain the missed-parent alternative with $q(s-1)+3\le n$. Both bounds are recorded in the frontier index.
+
+This archive comes from a Windows replay with Lean 4.35.0 using prebuilt imports. GitHub Actions builds the proof dependencies and compares the live frontier with this snapshot.
 
 - [frontier.json](frontier.json) lists every open case, its conclusion and its line numbers in the decompressed Lean log.
 - [Capstone.log.gz](Capstone.log.gz) contains the entire Lean output, including the hypotheses of each case.

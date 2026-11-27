@@ -1,6 +1,6 @@
 # Caccetta–Häggkvist in Lean
 
-Goal: every loopless digraph on n vertices with minimum outdegree r has a directed cycle of length at most ⌈n/r⌉. **Open.** The [capstone](checkpoints/shen_extension/Capstone.lean) replay leaves [32 Lean contexts](evidence/README.md).
+Goal: every loopless digraph on n vertices with minimum outdegree r has a directed cycle of length at most ⌈n/r⌉. **Open.** The [capstone](checkpoints/shen_extension/Capstone.lean) replay leaves [16 Lean contexts](evidence/README.md).
 
 ## Results ([Lean](checkpoints/shen_extension/PublicResults.lean))
 

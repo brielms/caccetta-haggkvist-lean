@@ -121,6 +121,7 @@ import checkpoints.shen_extension.RecipientUnionReplay
 import checkpoints.shen_extension.ShellBankFrontier
 import checkpoints.shen_extension.ShellTransferCatalog
 import checkpoints.shen_extension.FlatTwoWitnesses
+import checkpoints.shen_extension.JointBankOrderReplay
 /-!
 # Full CH capstone for the Shen extension path
 
@@ -130,6 +131,12 @@ Run from the repository root:
 The theorem below is the literal full CH target. Lean checks the completed
 cases and reports what remains to prove at the lower-cutoff frontier.
 -/
+
+-- Select the joint-short bank at the root's two source entries.
+attribute [-aesop] LeanCH.BR.BypassBankReplay.mark
+
+attribute [aesop safe forward (immediate := [joint,lone]) (rule_sets := [CHGraphFamilies])]
+  LeanCH.BR.BypassBankReplay.joint_excludes_lone
 
 namespace LeanCH.BR.ShenExtensionCapstone
 open BRq2 BRq3 BR45 ShenFirstStrip
@@ -382,6 +389,9 @@ theorem proof : CH.CaccettaHaggkvistConjecture := by with_ch_root_catalog
       by_contra hnoCycle
       obtain ⟨source,horder,hCycleRegular,seed,hSeed,hCycleReach⟩ := hcycleSource hnoCycle
       rw [Finset.card_range] at horder
+      obtain ⟨jointBank,hJointMarked,hJointShort,hSelectedParentOrder⟩ :=
+        BypassBankReplay.exists_ordered_joint_mark source hCycleRegular hq3
+          ((by decide : 4≤6).trans hdegreeSix) (horder.trans hcover) hNoLowerQuotaHost
       have hPaymentImpossible {M x} (C : ShenCycleSuccessor.Cycle source.D source.V q M)
           (hx : x ∈ M) (p : ShenCycleSuccessor.Payment source M x) : False :=
         (horder.trans hcover).not_gt (ShenCycleSuccessor.order_of_payment source (by omega) hs hCycleRegular C hx p)
@@ -1290,6 +1300,9 @@ theorem proof : CH.CaccettaHaggkvistConjecture := by with_ch_root_catalog
       exact ShenSharedHead.large_arc_of_survival hn hs hcover hloop hdegree hnoCycle
     obtain ⟨source,horder,hCycleRegular,seed,hSeed,hCycleReach⟩ := hcycleSource hnoCycle
     rw [Finset.card_range] at horder
+    obtain ⟨jointBank,hJointMarked,hJointShort,hSelectedParentOrder⟩ :=
+      BypassBankReplay.exists_ordered_joint_mark source hCycleRegular hq3
+        ((by decide : 4≤6).trans hdegreeSix) (horder.trans hcover) hNoLowerQuotaHost
     have hSeedSuccessors := ShenCycleSuccessor.successors source (by omega) hs (horder.trans hcover) hSeed
     have hPaymentImpossible {M x} (C : ShenCycleSuccessor.Cycle source.D source.V q M)
         (hx : x ∈ M) (p : ShenCycleSuccessor.Payment source M x) : False :=

@@ -234,6 +234,12 @@ for module in FlatSeymourVertex TwoSeymourDeficit TwoSeymourEndgame TwoSeymourVe
   compile "checkpoints/shen_extension/$module.lean"
 done
 
+for module in JointPairCounting JointBankGeometry JointBankConstruction JointBankChoice \
+    JointBankPrivateHeads JointBankParentChoice JointBankBinaryReturn JointBankOrderReplay \
+    JointBankPairLoad PairCoverMixing BankAncestorCover CutDeficit PairBankSpare; do
+  compile "checkpoints/shen_extension/$module.lean"
+done
+
 echo "Checkpoint files: $compiled compiled, $skipped up to date."
 
 if [[ ${1:-} == --build-only ]]; then

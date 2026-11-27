@@ -39,12 +39,15 @@ def published_bounds(lines, leaf):
                  "GuardedFamilyRules.Fits", "GuardedProfileBudget.Window", "InheritedProfileWindow.Fits", "OneSpareGrowth.BelowFour",
                  "OneSpareGrowth.Window", "ParentCutFrontier.Gate",
                  "ProjectedQuotaTransfer.from_recorded_projection", "SymbolicQuotaSweep.Covers")
+    selected_bank_bounds = {"2 ^ (q - 1) < s", "q * (s - 1) + 3 ≤ n"}
     bounds = []
     def take(name, parts):
         statement = " ".join(" ".join(parts).split())
         if name in names:
             bounds.append(name + " : " + statement)
-        elif name.startswith("fwd") and any(p in statement for p in projected):
+        elif name.startswith("fwd") and (
+            statement in selected_bank_bounds or any(p in statement for p in projected)
+        ):
             bounds.append(statement)
     name, parts = "", []
     for line in lines[leaf["context_line"]:leaf["goal_line"] - 1]:
